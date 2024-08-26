@@ -1,0 +1,30 @@
+\documentclass{article}
+% preamble (Packages importieren)
+\usepackage[utf8]{inputenc}
+
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{references.bib} %Imports bibliography file
+
+
+% Dokument
+\begin{document}
+	
+	\section{Mein erster Abschnitt}
+	\subsection{Mein zweiter Abschnitt}
+	
+	Willkommen zu meinem Dokument
+	\begin{itemize}
+		\item Erster bullet point... \cite{ts101}.
+	\end{itemize}
+	
+	\section{Mein zweiter Abschnitt}
+	\printbibliography[
+	heading=bibintoc,
+	title={Bibliography}
+	]	
+\end{document}
