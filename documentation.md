@@ -1,2 +1,10 @@
-# documentation
-## week 
+# Documentation
+
+## Week 22.9-29.9
+
+1. Adding to Ground Station and Mission Planner
+2. short adding of information about preexisting flightsoftware of Kakute H7 in parts
+3. downloading of STM32 CubeProgrammer and latest stable version of Ardupilot for the Kakute H7
+### Open Questions
+-  If there is no date when the Website was created and no author can I leave them out or should I write something like "unknown"?
+[STM32CubeProgrammer](www.st.com/en/development-tools/stm32cubeprog.html)
