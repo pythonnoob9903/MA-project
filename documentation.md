@@ -1,4 +1,9 @@
 # Documentation
+## Week 30.9-6.10
+1. Flashing Ardupilot onto the Fc with STM32 CubeProgrammer
+2. First connection Fc wih Mission Planner
+
+### Open Questions
 
 ## Week 22.9-29.9
 
