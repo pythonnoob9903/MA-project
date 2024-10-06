@@ -29,9 +29,18 @@ sorting=ynt
 	\section{Methodology}
 	(only what has been done + which parts are needed and why I choose them)
 	\subsection{parts}
-	\begin{itemize}
-		\item \textbf{Kakute H7}, comes with betaflight
-	\end{itemize}
+	
+	\subsubsection[Fc]{Flight Controller}
+	\textbf{Kakute H7}, comes with betaflight
+	
+	
+	\subsubsection{GNSS(Global Navigation Satellite System)}
+	Micro M10 from Holybro choosen, because it is from the same manufacturer as the Fc.
+	4 Concurrent GPS
+	CEP of 2 m(short explanation box)
+	
+	
+	
 	\subsection{soldering}
 	
 	\subsection{ardupilot}
@@ -51,6 +60,16 @@ sorting=ynt
 	
 	reconnecting Fc with Comp. 
 	opening Mission Planner and connecting to Fc seeing first Yaw measurements 
+	\\
+	\\ Trying to get GPS connection -- No GPS
+	changing the GPS\_Type to 2 for Ublox GPS... doesn't work
+	\\
+	\\ Micro M10 probably connected, due to compass being seen on Mission Planner
+	\\
+	\\ soldering might be the problem?-- Should be fine
+	\\ blinking blue LED indicates no satellite fix... did blink in- and outside
+	\\ cables are also connected correctly
+	
 	\section{Results}
 	\section{Discussion and Outlook}
 	\section{Conclusion}

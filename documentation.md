@@ -2,9 +2,11 @@
 ## Week 30.9-6.10
 1. Flashing Ardupilot onto the Fc with STM32 CubeProgrammer
 2. First connection Fc wih Mission Planner
+3. problems with trying to get a GPS signal
+
 
 ### Open Questions
-
+- no new ones
 ## Week 22.9-29.9
 
 1. Adding to Ground Station and Mission Planner
