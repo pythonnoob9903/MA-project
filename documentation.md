@@ -1,7 +1,16 @@
 # Documentation
+## Week 7.10-13-10
+1. solving the GPS issue(was really easy when I finally found the issue(took 3 hours))
+2. trying to get the transmitter connection to the receiver works but not to mission planner or the Fc
+3. receiver transmitter works
+4. connecting battery to esc via smoke stopper works fine
+5. changing parameters to see voltage and amperage on MP
+6. compass calibration fail due to no GPS lock
+
+
 ## Week 30.9-6.10
 1. Flashing Ardupilot onto the Fc with STM32 CubeProgrammer
-2. First connection Fc wih Mission Planner
+2. First connection Fc wih MP(Mission Planner)
 3. problems with trying to get a GPS signal
 
 

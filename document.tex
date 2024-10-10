@@ -20,6 +20,10 @@ sorting=ynt
 \maketitle
 	\section{Introduction}
 	do at the end of the writing process
+	\\
+	\\ drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
+	\\ article about more and more autonomous drones in the Ukraine-Russia War
+	
 	\section{Personal Motivation}
 	rather short
 	\section{Literature Review}
@@ -32,12 +36,34 @@ sorting=ynt
 	
 	\subsubsection[Fc]{Flight Controller}
 	\textbf{Kakute H7}, comes with betaflight
+	\subsubsection[ESC]{Electronic Speed Controler}
+	runs Blheli32 however seized their operation and I might need to flash Am32 if problems arise.
+	\\supports dshot 
+	
 	
 	
 	\subsubsection{GNSS(Global Navigation Satellite System)}
 	Micro M10 from Holybro choosen, because it is from the same manufacturer as the Fc.
 	4 Concurrent GPS
 	CEP of 2 m(short explanation box)
+	connects via Uart
+	\\ built-in compass connects to the Fc with a I2C protocol...
+	
+	\subsubsection{Radio/Transmitter}
+	
+	you can play games on the Boxer Radio
+	\subsubsection{Transmitter Protocols}
+	\subsubsection*{Elrs}
+	\subsubsection*{Frsky}
+	\subsubsection*{Crossfire TX}
+	
+	\subsubsection{Data Transfer Protocols}
+	\subsubsection*{SPI}
+	\subsubsection*{Uart}
+	\subsubsection*{I2C}
+	
+	\subsubsection{Smoke Stopper}
+	A part that stops the ESC from short circuiting due to wrongly soldered parts. It is there to prevent the part getting destroyed. There are two groups of it one that you buy and gets destroyed when the ESC short circuits instead of the ESC and it saves you money by not destroying the ESC and sacrificing itself. There is another category that does not destroy itself and there are also some that you can solder together on your own. These work by using a lamp(Glühbirne).
 	
 	
 	
@@ -60,16 +86,33 @@ sorting=ynt
 	
 	reconnecting Fc with Comp. 
 	opening Mission Planner and connecting to Fc seeing first Yaw measurements 
-	\\
-	\\ Trying to get GPS connection -- No GPS
+	\subsubsection{GPS Connection}
+	
+	Trying to get GPS connection, No GPS message
 	changing the GPS\_Type to 2 for Ublox GPS... doesn't work
 	\\
-	\\ Micro M10 probably connected, due to compass being seen on Mission Planner
+	\\ Micro M10 probably connected, due to compass being seen on Mission Planner, was however unable to calibrate it
 	\\
 	\\ soldering might be the problem?-- Should be fine
 	\\ blinking blue LED indicates no satellite fix... did blink in- and outside
 	\\ cables are also connected correctly
-	
+	\\
+	\\ Lots of questions... So theoretically my GPS should be connected, but the Fc does not recognize it, however it recognizes the compass from the GPS module???
+	\\
+	\\ The problem was that the Serial3\_Protocol(Which is for the Uart3) was set to 5 which meant GPS, however I will be needing the Uart3 for the Raspi and not a GPS and so it blocked the Uart4 which was also set to GPS. Not it finally works.
+	\subsubsection{Receiver/Transmitter}
+	changing RC\_optopns to 420 k baudrate for Elrs
+	\\ connection between the receiver and radio exist... radio says telemetry recovered and receiver isn't flashing a green light anymore, but has a constant blue light. However no connection to Fc yet.
+	\\ followed the page (reference to expresslrs.org page) it does not work yet. 
+	\\ could change the receiver to the uart1 which is usually for the receiver, but it would require an JHSt thingy and more soldering
+	\\
+	\\ it works now... I needed to set Brd\_Alt\_Config to 1, which is a Fc specific parameter and I found it in the kakute H7 section which said that it needed to be done
+	\subsubsection*{Battery/Servos/Smoke Stopper/Compass Calibration}
+	pluging in battery with smoke stopper attached, smoke stopper does not light up
+	\\changing the battery settings for the tekko32 F4 4 in 1 Esc as explained in the kakute h7 fc page of ardupilot only needed to change the BATT\_MONITOR ot 4 all the others were already correct, I can see now the voltage and the Amperage of the battery
+	\\the only thing missing before I can arm it is the compass calibration...(note: I'm inside so the GNSS has no connection but it works as soon as I get under the free sky.)
+	\\ compass calibration fails multiple times.. even tried changing it as the docs from holybro suggest compass\_ortient= 6 still does not work. 
+	\\ turns out you need good GPS lock to do it...I'm inside
 	\section{Results}
 	\section{Discussion and Outlook}
 	\section{Conclusion}
