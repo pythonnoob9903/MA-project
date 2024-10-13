@@ -20,7 +20,7 @@ sorting=ynt
 \maketitle
 	\section{Introduction}
 	do at the end of the writing process
-	\\
+	\\maybe a quick explanation of the term "drone"
 	\\ drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
 	\\ article about more and more autonomous drones in the Ukraine-Russia War
 	
@@ -48,6 +48,7 @@ sorting=ynt
 	CEP of 2 m(short explanation box)
 	connects via Uart
 	\\ built-in compass connects to the Fc with a I2C protocol...
+	
 	
 	\subsubsection{Radio/Transmitter}
 	
@@ -113,6 +114,25 @@ sorting=ynt
 	\\the only thing missing before I can arm it is the compass calibration...(note: I'm inside so the GNSS has no connection but it works as soon as I get under the free sky.)
 	\\ compass calibration fails multiple times.. even tried changing it as the docs from holybro suggest compass\_ortient= 6 still does not work. 
 	\\ turns out you need good GPS lock to do it...I'm inside
+	\\with GPS lock and outside with relaxed settings and both compass\_orient =6 and 0 it does not work
+	the failure could be caused by the computer which is nearby or the table which is metal on which I've done it. 
+	There could also be the fix by doing the largevehicle Magcal, which helped a person online who also had a 5 inch copter. 
+	\\ somehow it calibrated??? I tried to calibrate it multiple times in different settings and it never worked and without even being able to finish my last try at calibration it worked??? it might have been the largevehical magcal that has done it...
+	\\
+	\\ Motor testing works after connecting assigning the right position to the motors and setting the mot\_pwm\_type to dshot 600
+	\\new error message: battery failsafe, begins to continously beep(but not always???) might be caused from the connection to the computer... so that it will take the wrong power input as main power
+	\\ the motors suddenly began to beep I have no idea why
+	\\ I got the error compass variance, but when I move further away from my computer it goes away.
+	\\ all prearm checks are gone now except magfield
+	\\ magfield problems went away after positioning the drone further away from the computer... now there is no prearm check(you can also disable them by setting arming\_check to 0) that needs to be done and I can arm the drone
+	\\ only problem is that I don't now how... I was able to assign the rc channel 5 to it. 
+	\\ disabling arming check... however the MAV rejects the forece arm command. 
+	\\ arming worked via radio and MP after I disabled the Geofence that I put in somewhen earlier, even though I disabled arming\_check the geofence did not get disabled.
+	\\ I can do it without mission planner, but the Fc does not get any power from the esc... it might be, because I have connection between the Fc and Esc in the second slot. 
+
+	
+	
+	
 	\section{Results}
 	\section{Discussion and Outlook}
 	\section{Conclusion}
