@@ -6,6 +6,12 @@
 4. connecting battery to esc via smoke stopper works fine
 5. changing parameters to see voltage and amperage on MP
 6. compass calibration fail due to no GPS lock
+7. compass calibration works(no idea why, probably large vehicle mag cal)
+8. magfield problems
+9. arming on my table after disabling arming_check
+
+### Open Questions
+- I will write a message per teams tomorrow(14.10) with them
 
 
 ## Week 30.9-6.10
