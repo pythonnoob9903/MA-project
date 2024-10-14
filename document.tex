@@ -1,6 +1,9 @@
 \documentclass{article}
 % preamble (Packages importieren)
 
+\newcommand{\comment}[1]{}
+
+
 \author{Eduard Scherer}
 \title{Development \& Construction of an Autonomous Path-Following Drone}
 \date{\today}
@@ -11,7 +14,6 @@ backend=biber,
 style=numeric,
 sorting=ynt
 ]{biblatex}
-
 \addbibresource{references.bib} %Imports bibliography file
 
 
@@ -19,19 +21,31 @@ sorting=ynt
 \begin{document}
 \maketitle
 	\section{Introduction}
-	do at the end of the writing process
+	\comment{do at the end of the writing process
 	\\maybe a quick explanation of the term "drone"
 	\\ drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
 	\\ article about more and more autonomous drones in the Ukraine-Russia War
-	
+}
 	\section{Personal Motivation}
-	rather short
+	\comment{rather short}
 	\section{Literature Review}
-	\subsection{general software considerations}
-	why I choose the software
-	(work around the same topic that already exists)
+	\subsection{General Software Considerations}
+	\comment{why I choose the software
+	(work around the same topic that already exists)}
+	
+	There are three main softwares to consider when it comes to drones Betaflight, INAV and Ardupilot. All of them are open source. Multiwii was the origin of Betaflight and INAV. Multwii was Arduino based and then upgraded to Baseflight to be able to use the STM32 chips. Then it was forked to Cleanflight, which was later forked again into Betaflight and INAV\cite{Abriefhistoryofaflightcontroller-FromMultiWiitoBetaflightandbeyond}. 
+	\\Betaflight is in general the go-to option for first person view drones, commonly known as FPV drones, for either filming or racing. It is the most beginner friendly out of the three, because it has a large community, which results in a wide range of tutorials. When a new board comes out it is normally made to be used with Betaflight. However Betaflight lacks the option for different types of vehicles and generally the automated features are less developed compared to the other two. 
+	\\ INAV offers basic waypoints for automated landing and does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface to Betaflight so switching from one to the other is somewhat easy.
+	betaflight mainly for racing, has basic GPS, supports all types of FPV, only quadcopter, simple automated landing, easy to setup, cheap, basically supports every Fc
+	INAV basic waypoints for autonomous flight, more options than only quadcopters(Boats/Rovers/Planes/Wings), quite good automated landing, similar interface to betaflight
+	Ardupilot basically a jack of trades. It isn't really for racing but everything else plus more. Also VTOL/Submarines/Gliders options. Few years ago really expensive only ran on Pixhawk Fc now it supports a wider range of Fc
+	
+	
+	
+	
+	
 	\section{Methodology}
-	(only what has been done + which parts are needed and why I choose them)
+	\comment{(only what has been done + which parts are needed and why I choose them)}
 	\subsection{parts}
 	
 	\subsubsection[Fc]{Flight Controller}
@@ -74,14 +88,14 @@ sorting=ynt
 	\subsubsection{Ground Station}
 	\textbf{ground station} = software running on ground-based computer, transmit data to the UAV and can control it
 	\begin{itemize}
-		\item \textbf{Mission Planner} widely used and has a wiki(Open Source)
+		\item \textbf{Mission Planner} \cite{MissionPlanner} widely used and has a wiki(Open Source)
 		\begin{itemize}
 			\item 
 		\end{itemize}
 		\item \textbf{Mavproxy}, for Linux used for code developers, written in Python(Open Source)
 		\item some considerations for Smartphone (might be useful for connection between Raspi and ground)
 	\end{itemize}
-	downloading of latest stable Ardupilot firmware for Kakute H7 fc	
+	downloading of latest stable Ardupilot firmware \cite{ArduPilotFirmware} for Kakute H7 fc	
 	
 	loading Ardupilot firmware onto Fc with STM32 CubeProgrammer by connecting the Fc in DFU(Direct Firmware Update) Mode with the computer(quick explanation box for STM32 and DFU mode)
 	
@@ -128,8 +142,11 @@ sorting=ynt
 	\\ only problem is that I don't now how... I was able to assign the rc channel 5 to it. 
 	\\ disabling arming check... however the MAV rejects the forece arm command. 
 	\\ arming worked via radio and MP after I disabled the Geofence that I put in somewhen earlier, even though I disabled arming\_check the geofence did not get disabled.
-	\\ I can do it without mission planner, but the Fc does not get any power from the esc... it might be, because I have connection between the Fc and Esc in the second slot. 
-
+	\\ I can do it without mission planner, but the Fc does not get any power from the esc... it might be, because I have connection between the Fc and Esc in the second slot. It was only a bad connection between the Fc and ESC nothing about the slot I put them in. 
+	\\ bench testing with propellers... I hit one of the receiver antennas with a prop it fell off I was able to easily attach it again, however I'm not sure if that particular antenna is working now
+	\\ new prearm error crashdump bin detected, so through my research I've concluded that the error is currently insignificant, because it was probably caused through my bench testing.
+	\\ I was not able to get rid off the error and I will analyse the crash dump file later on somewhen. I just did all the prearm checks except crash dump bin detected and then disabled prearm checks. 
+	\\ the drone flew, even though it was only spinning in one direction because either one or two motors currrently spin in the wrong direction.
 	
 	
 	
@@ -143,5 +160,5 @@ sorting=ynt
 	title={Bibliography}
 	]	
 	\section{Table of Figures}
-	(short table on which every figure description with the page number is listed)
+	\comment{(short table on which every figure description with the page number is listed)}
 \end{document}

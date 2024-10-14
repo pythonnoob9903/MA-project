@@ -1,4 +1,10 @@
 # Documentation
+## Week 14.10-20.10
+1. adding the command \comment[1]{} to latex
+2. starting software considerations chapter
+3. soldering motor wire that fell off to esc again
+4. getting drone to spin(not to fly because motors are wrongly configured)
+
 ## Week 7.10-13-10
 1. solving the GPS issue(was really easy when I finally found the issue(took 3 hours))
 2. trying to get the transmitter connection to the receiver works but not to mission planner or the Fc
@@ -7,8 +13,9 @@
 5. changing parameters to see voltage and amperage on MP
 6. compass calibration fail due to no GPS lock
 7. compass calibration works(no idea why, probably large vehicle mag cal)
-8. magfield problems
-9. arming on my table after disabling arming_check
+8. soldering one of the Motor cables, because it fell off
+9. magfield problems
+10. arming on my table after disabling arming_check
 
 ### Open Questions
 - I will write a message per teams tomorrow(14.10) with them
