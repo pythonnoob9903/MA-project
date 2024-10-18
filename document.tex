@@ -146,7 +146,18 @@ sorting=ynt
 	\\ bench testing with propellers... I hit one of the receiver antennas with a prop it fell off I was able to easily attach it again, however I'm not sure if that particular antenna is working now
 	\\ new prearm error crashdump bin detected, so through my research I've concluded that the error is currently insignificant, because it was probably caused through my bench testing.
 	\\ I was not able to get rid off the error and I will analyse the crash dump file later on somewhen. I just did all the prearm checks except crash dump bin detected and then disabled prearm checks. 
-	\\ the drone flew, even though it was only spinning in one direction because either one or two motors currrently spin in the wrong direction.
+	\\ the drone flew, even though it was only spinning in one direction because two motors currrently spin in the wrong direction.
+	\\ the reverse button in MP is not working
+	\\ to reverse the motors I need to set servo\_blh\_auto to one and open it in Blhelisuite32\cite{BLHeliSuite32}. By using the reversed mode in Blhelisuite32 I was able to reverse one motor but one that should not be reversed. After trying multiple times I now finally got the A and C motor spinning counter clockwise. 
+	\\ it flew really shaky after disabling the arming\_check again it might really be a compass problem again.
+	\\ the compass calibration worked correctly after I took the GPS module and put it directly onto the flight controller instead of having it on the frame
+	\\ again trying to fly shaking violently and somewhat crashing into the ground.
+	\\ tightening everything on the quad... might work
+	\\ I tightened everything tried different props, due to damage on the first set and possiblity of inbalanced props in the second set, it still wobbled extremely. 
+	\\ then I came to the conclusion through different websites that my PID values are wrong and it turns out they actually were and I needed to change my parameters from a 9 inch drone to a 5 inch.
+	\\ it flew well, however I still need to invert the switches from the radio, because it currently goes into the wrong direction when I steer left it goes right and vice versa. 
+	
+	
 	
 	
 	

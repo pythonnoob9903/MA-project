@@ -4,6 +4,10 @@
 2. starting software considerations chapter
 3. soldering motor wire that fell off to esc again
 4. getting drone to spin(not to fly because motors are wrongly configured)
+5. getting drone to fly, really wobbly
+6. drone flies without wobblying
+
+
 
 ## Week 7.10-13-10
 1. solving the GPS issue(was really easy when I finally found the issue(took 3 hours))
