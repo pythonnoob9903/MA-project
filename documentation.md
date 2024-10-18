@@ -6,7 +6,7 @@
 4. getting drone to spin(not to fly because motors are wrongly configured)
 5. getting drone to fly, really wobbly
 6. drone flies without wobblying
-
+7. writing at software considerations, Fc, ESC and Problems
 
 
 ## Week 7.10-13-10

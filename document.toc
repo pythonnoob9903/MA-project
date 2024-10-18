@@ -7,21 +7,22 @@
 \contentsline {subsection}{\numberline {4.2}parts}{3}{}%
 \contentsline {subsubsection}{\numberline {4.2.1}Fc}{3}{}%
 \contentsline {subsubsection}{\numberline {4.2.2}ESC}{3}{}%
-\contentsline {subsubsection}{\numberline {4.2.3}Motor}{3}{}%
-\contentsline {subsubsection}{\numberline {4.2.4}Battery}{3}{}%
-\contentsline {subsubsection}{\numberline {4.2.5}GNSS(Global Navigation Satellite System)}{3}{}%
+\contentsline {subsubsection}{\numberline {4.2.3}Motor}{4}{}%
+\contentsline {subsubsection}{\numberline {4.2.4}Battery}{4}{}%
+\contentsline {subsubsection}{\numberline {4.2.5}GNSS(Global Navigation Satellite System)}{4}{}%
 \contentsline {subsubsection}{\numberline {4.2.6}Transmitter Protocols}{4}{}%
 \contentsline {subsubsection}{\numberline {4.2.7}Data Transfer Protocols}{4}{}%
 \contentsline {subsubsection}{\numberline {4.2.8}Radio/Transmitter}{4}{}%
 \contentsline {subsubsection}{\numberline {4.2.9}Smoke Stopper}{4}{}%
-\contentsline {subsection}{\numberline {4.3}soldering}{4}{}%
-\contentsline {subsection}{\numberline {4.4}ardupilot}{4}{}%
-\contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{4}{}%
+\contentsline {subsubsection}{\numberline {4.2.10}Problems with the Parts}{5}{}%
+\contentsline {subsection}{\numberline {4.3}soldering}{5}{}%
+\contentsline {subsection}{\numberline {4.4}ardupilot}{5}{}%
+\contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{5}{}%
 \contentsline {subsubsection}{\numberline {4.4.2}GPS Connection}{5}{}%
-\contentsline {subsubsection}{\numberline {4.4.3}Receiver/Transmitter}{5}{}%
-\contentsline {section}{\numberline {5}Results}{7}{}%
-\contentsline {section}{\numberline {6}Discussion and Outlook}{7}{}%
-\contentsline {section}{\numberline {7}Conclusion}{7}{}%
-\contentsline {section}{\numberline {8}References}{7}{}%
-\contentsline {section}{Bibliography}{7}{}%
+\contentsline {subsubsection}{\numberline {4.4.3}Receiver/Transmitter}{6}{}%
+\contentsline {section}{\numberline {5}Results}{8}{}%
+\contentsline {section}{\numberline {6}Discussion and Outlook}{8}{}%
+\contentsline {section}{\numberline {7}Conclusion}{8}{}%
+\contentsline {section}{\numberline {8}References}{8}{}%
+\contentsline {section}{Bibliography}{8}{}%
 \contentsline {section}{\numberline {9}Table of Figures}{8}{}%

@@ -89,17 +89,18 @@ sorting=ynt
 	\subsection{parts}
 	
 	\subsubsection[Fc]{Flight Controller}
-	%TODO Flight Controller
 	There are two different kind of flight controller the All-in-one(AIO) and just a Fc. The AIO is not only a Fc but also the ESC in one piece. This has the advantage of only needing one board instead of two or five. However if only parts of the ESC or the Fc are damaged you need to replace the whole board which is more expensive than replacing only the Fc or ESC. 
 	
-	
-	
-	\textbf{Kakute H7}, comes with betaflight
+	Betaflight and INAV both support a wide variety of Fcs compared to Ardupilot which is only supporting a very specific sample of boards\cite{FcSupport}. They have the option of open and closed hardware. Because the open hardware Fcs are quite expensive, so I decided to go with a closed one. The chip used in Fcs is usually a STM32. There are multiple generations of it the mainly used ones are F4, F7 and H7. The F7 and H7 are much faster than the F4 chips so the decision was not that difficult to make. I then decided to go with the Kakute H7 v1.3 (MPU6000)\cite{KakuteH7} from Holybro, because it was ok in the price and available as a stack. It comes shipped with Betaflight so I will need to flash Ardupilot. 
+
 	\subsubsection[ESC]{Electronic Speed Controler}
 	%TODO ESC 
-	runs Blheli32 however seized their operation and I might need to flash Am32 if problems arise.
-	\\supports dshot 
+	There are two different kind of ESCs, 4in1 and single ESCs. If you use single ESCs you will need one for each motor instead of a single board for all of them. The advantage of 4in1 ESCs is that you do not need a power distribution board, because it is already incorporated in the ESC, and that it can come in a stack. A stack is a Fc and ESC mounted on top of each other. It normally comes with stack screws. The disadvantage is that if a part of the ESC is damaged you need to replace the whole board. What needs to be looked upon buying a ESC is that the peak current of the motor is not higher than the burst current of the ESC, because it could damage a two high current could damage the ESC.
 	
+	My decision was to go with a 4in1 on a stack, because it is slightly cheaper and normally easier to wire. The only option with the Kakute H7 was the stack with the Tekko32 4in1 with a continuous current of either 50, 60 or 65 Ampere. I chose the 50A\cite{Tekko32} one, because you do not need a high continuous current rating when flying rather slowly and the motors I chose have a peak current of around 42A. 
+	
+	At the time I bought the ESC it was still shipped with BLHeli32 which as mentioned has seized their operations. I could however flash AM32 onto it.
+
 	\subsubsection{Motor}
 	
 	\subsubsection{Battery}
@@ -133,6 +134,12 @@ sorting=ynt
 
 	\subsubsection{Smoke Stopper}
 	A part that stops the ESC from short circuiting due to wrongly soldered parts. It is there to prevent the part getting destroyed. There are two groups of it one that you buy and gets destroyed when the ESC short circuits instead of the ESC and it saves you money by not destroying the ESC and sacrificing itself. There is another category that does not destroy itself and there are also some that you can solder together on your own. These work by using a lamp(Glühbirne).
+	
+	\subsubsection{Problems with the Parts}
+	% TODO Problems
+	There were two problems that arose one less severe than the other. One problem was that my ordered Kakute-Tekko stack did not include stack screws, which they normally do. Stack screws are just screws that you can use to mount the stack onto the frame. So I needed to purchase them separately.
+	% the batteries from aliexpress were not delivered instead I received insect traps
+	
 	
 	
 	
