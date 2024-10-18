@@ -16,47 +16,97 @@ sorting=ynt
 ]{biblatex}
 \addbibresource{references.bib} %Imports bibliography file
 
+\usepackage{parskip}
+
+\usepackage{listings}
+\lstdefinestyle{BaselineStyle}
+{ %
+	commentstyle=\color{Blue},
+	keywordstyle=\color{Green},
+	numberstyle=\tiny\color{Gray},
+	stringstyle=\color{Fuchsia},
+	basicstyle=\ttfamily,
+	columns=flexible,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2,
+	xleftmargin=1.5em,
+	frame=single,
+	framexleftmargin=1.5em
+} %
+% set to 'BaselineStyle'
+\lstset{style=BaselineStyle}
+
+
 
 % Dokument
 \begin{document}
 \maketitle
+\tableofcontents
 	\section{Introduction}
-	\comment{do at the end of the writing process
-	\\maybe a quick explanation of the term "drone"
-	\\ drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
-	\\ article about more and more autonomous drones in the Ukraine-Russia War
-}
+	% TODO introduction
+	% do at the end of the writing process
+	% maybe a quick explanation of the term "drone"
+	% drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
+	% article about more and more autonomous drones in the Ukraine-Russia War
+
 	\section{Personal Motivation}
 	\comment{rather short}
 	\section{Literature Review}
 	\subsection{General Software Considerations}
-	\comment{why I choose the software
-	(work around the same topic that already exists)}
+	% TODO {why I choose the software (work around the same topic that already exists)}
 	
-	There are three main softwares to consider when it comes to drones Betaflight, INAV and Ardupilot. All of them are open source. Multiwii was the origin of Betaflight and INAV. Multwii was Arduino based and then upgraded to Baseflight to be able to use the STM32 chips. Then it was forked to Cleanflight, which was later forked again into Betaflight and INAV\cite{Abriefhistoryofaflightcontroller-FromMultiWiitoBetaflightandbeyond}. 
-	\\Betaflight is in general the go-to option for first person view drones, commonly known as FPV drones, for either filming or racing. It is the most beginner friendly out of the three, because it has a large community, which results in a wide range of tutorials. When a new board comes out it is normally made to be used with Betaflight. However Betaflight lacks the option for different types of vehicles and generally the automated features are less developed compared to the other two. 
-	\\ INAV offers basic waypoints for automated landing and does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface to Betaflight so switching from one to the other is somewhat easy.
-	betaflight mainly for racing, has basic GPS, supports all types of FPV, only quadcopter, simple automated landing, easy to setup, cheap, basically supports every Fc
-	INAV basic waypoints for autonomous flight, more options than only quadcopters(Boats/Rovers/Planes/Wings), quite good automated landing, similar interface to betaflight
-	Ardupilot basically a jack of trades. It isn't really for racing but everything else plus more. Also VTOL/Submarines/Gliders options. Few years ago really expensive only ran on Pixhawk Fc now it supports a wider range of Fc
+	There are three main softwares to consider when it comes to drones Betaflight, INAV and Ardupilot. All of them are open source. Multiwii was the origin of Betaflight and INAV. Multwii was Arduino based and then upgraded to Baseflight to be able to use the STM32 chips. Then it was forked to Cleanflight, which was later forked again into Betaflight and INAV\cite{history}. 
+	
+	The following three paragraphs are mostly based on \cite{firmwarearticle} and \cite{firmwarevideo}.
+	
+	Betaflight is in general the go-to option for first person view drones, commonly known as FPV drones, for either filming or racing. It is the most beginner friendly out of the three, because it has a large community, which results in a wide range of tutorials. When a new board comes out it is normally made to be used with Betaflight. However Betaflight lacks the option for different types of vehicles and generally the automated features are less developed compared to the other two. 
+	
+	INAV offers basic autonomous flight using waypoints and automated landing. It does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface to Betaflight so switching from one to the other is easier than switching to Ardupilot.
+	
+	Ardupilot basically offers everything the other two have to offer and more for example Submarines and VTOLs. It is not commonly used with FPV, yet you can if you want to. It is more complicated to get into, but as a trade off you will be able to customize everything to your will. It is also the only option for a companion computer like the RaspberryPi. A few years ago it was really expensive to start, because it only supported the Pixhawk family of flight controllers which cost several hundred Franks a piece. However in recent years it has began to support more and cheaper flight controllers.
+	
 	
 	
 	
 	
 	
 	\section{Methodology}
-	\comment{(only what has been done + which parts are needed and why I choose them)}
+	% TODO {(only what has been done + which parts are needed and why I choose them)}
+	\subsection{Drone Overview}
+	If you want to fly a drone you have two options available either you buy one or you built one. The second option is for people who are interested in tinkering with their electronics until they work, not only the better option but also the cheaper one.
+	
+	The main parts needed for a drone are the flight controller(Fc), the electronic speed controller(ESC), the receiver, the battery and of course the frame, in addition you can also add a GPS, LEDs and more. The flight controller and electronic speed controller are referred to as Fc and ESC. The Fc runs the chosen software and controls every other part in one way or another. It is directly connected to the ESC, which controls the motors and is connected to the battery. The Fc also communicates with the receiver and GPS if there is one. In my case there is also a RaspberryPi which also connects to the Fc.
+	% TODO add a graphic which illustrates the connection between the parts
+	  
 	\subsection{parts}
 	
 	\subsubsection[Fc]{Flight Controller}
+	%TODO Flight Controller
+	There are two different kind of flight controller the All-in-one(AIO) and just a Fc. The AIO is not only a Fc but also the ESC in one piece. This has the advantage of only needing one board instead of two or five. However if only parts of the ESC or the Fc are damaged you need to replace the whole board which is more expensive than replacing only the Fc or ESC. 
+	
+	
+	
 	\textbf{Kakute H7}, comes with betaflight
 	\subsubsection[ESC]{Electronic Speed Controler}
+	%TODO ESC 
 	runs Blheli32 however seized their operation and I might need to flash Am32 if problems arise.
 	\\supports dshot 
 	
+	\subsubsection{Motor}
+	
+	\subsubsection{Battery}
 	
 	
 	\subsubsection{GNSS(Global Navigation Satellite System)}
+	% TODO GNSS/Compass
 	Micro M10 from Holybro choosen, because it is from the same manufacturer as the Fc.
 	4 Concurrent GPS
 	CEP of 2 m(short explanation box)
@@ -64,9 +114,8 @@ sorting=ynt
 	\\ built-in compass connects to the Fc with a I2C protocol...
 	
 	
-	\subsubsection{Radio/Transmitter}
 	
-	you can play games on the Boxer Radio
+
 	\subsubsection{Transmitter Protocols}
 	\subsubsection*{Elrs}
 	\subsubsection*{Frsky}
@@ -77,6 +126,11 @@ sorting=ynt
 	\subsubsection*{Uart}
 	\subsubsection*{I2C}
 	
+	\subsubsection{Radio/Transmitter}
+	%TODO Radio/Transmitter
+	you can play games on the Boxer Radio
+		
+
 	\subsubsection{Smoke Stopper}
 	A part that stops the ESC from short circuiting due to wrongly soldered parts. It is there to prevent the part getting destroyed. There are two groups of it one that you buy and gets destroyed when the ESC short circuits instead of the ESC and it saves you money by not destroying the ESC and sacrificing itself. There is another category that does not destroy itself and there are also some that you can solder together on your own. These work by using a lamp(Glühbirne).
 	
@@ -85,6 +139,7 @@ sorting=ynt
 	\subsection{soldering}
 	
 	\subsection{ardupilot}
+	The following was based on the Ardupilot documentation
 	\subsubsection{Ground Station}
 	\textbf{ground station} = software running on ground-based computer, transmit data to the UAV and can control it
 	\begin{itemize}
@@ -114,7 +169,7 @@ sorting=ynt
 	\\
 	\\ Lots of questions... So theoretically my GPS should be connected, but the Fc does not recognize it, however it recognizes the compass from the GPS module???
 	\\
-	\\ The problem was that the Serial3\_Protocol(Which is for the Uart3) was set to 5 which meant GPS, however I will be needing the Uart3 for the Raspi and not a GPS and so it blocked the Uart4 which was also set to GPS. Not it finally works.
+	\\ The problem was that the \lstinline|Serial3_Protocol|(Which is for the Uart3) was set to 5 which meant GPS, however I will be needing the Uart3 for the Raspi and not a GPS and so it blocked the Uart4 which was also set to GPS. Not it finally works.
 	\subsubsection{Receiver/Transmitter}
 	changing RC\_optopns to 420 k baudrate for Elrs
 	\\ connection between the receiver and radio exist... radio says telemetry recovered and receiver isn't flashing a green light anymore, but has a constant blue light. However no connection to Fc yet.
