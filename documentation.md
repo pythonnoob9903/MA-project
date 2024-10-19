@@ -1,13 +1,13 @@
 # Documentation
 ## Week 14.10-20.10
-1. adding the command \comment[1]{} to latex
+1. adding the command \comment[1]{} to latex(deleting it again and using %TODO)
 2. starting software considerations chapter
 3. soldering motor wire that fell off to esc again
 4. getting drone to spin(not to fly because motors are wrongly configured)
 5. getting drone to fly, really wobbly
 6. drone flies without wobblying
-7. writing at software considerations, Fc, ESC and Problems
-
+7. writing at software considerations, Fc, ESC,Motor, Battery, Problems, GCS, Firmware installation, GPS connection
+8. flying drone and filming it
 
 ## Week 7.10-13-10
 1. solving the GPS issue(was really easy when I finally found the issue(took 3 hours))

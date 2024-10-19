@@ -16,6 +16,7 @@ sorting=ynt
 ]{biblatex}
 \addbibresource{references.bib} %Imports bibliography file
 
+\usepackage{graphicx}
 \usepackage{parskip}
 
 \usepackage{listings}
@@ -50,6 +51,7 @@ sorting=ynt
 \begin{document}
 \maketitle
 \tableofcontents
+\pagebreak
 	\section{Introduction}
 	% TODO introduction
 	% do at the end of the writing process
@@ -102,12 +104,25 @@ sorting=ynt
 	At the time I bought the ESC it was still shipped with BLHeli32 which as mentioned has seized their operations. I could however flash AM32 onto it.
 
 	\subsubsection{Motor}
+	There are two types of motor brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven and the brushless motors are electrically driven. Therefor brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in really small drones with 1S batteries. However even in the small drones brushless motors are the more popular choice\cite{brush/lessmotors}. 
+	
+	The numbers that are seen on the motors like 2207 are describing the stator of the motor itself. In the case of a 2207 that would be 22mm diameter and a height of 7mm. The usual stator sizes of 5 inch drones are either 2207 or 2306. There is also the KV value which has to be considered. The KV value is the number of revolutions per minute(rpm) a motor turns when one volt is applied. The lower the KV value the more efficient is the motor and the higher the KV value the more responsive it is. The KV value for a 5 inch drone with a 4S battery is between 2300 and 2800. I chose the Iflight Xing-E Pro 2207\cite{xingepro} with a KV value of 2450, because the IFlight-Xing motors are known to be of good quality. 
+	% TODO get a new brush/brushless motor picture
+%\begin{figure}
+%	\centering
+%	\includegraphics[0.5]{pictures/motor}
+%	\caption{\cite{picturemotor}}
+%	\label{fig:motor}
+%\end{figure}
 	
 	\subsubsection{Battery}
+	There are two main types of batteries lithium polymer(LiPO) and Lithium-ion(Li-ion) batteries. LiPo batteries have a tendency to go up in flames by themselves. They have compared to the Li-ion batteries a much higher discharge rate, also seen as C value, so they are well suited for racing drones. However Li-ion batteries have a higher energy density, which means that they can store more mAh with the same weight as LiPo batteries, so they are more used in long range flying. The batteries have normally multiple cells, for example a 4S LiPo batterie contains 4 cells. This is important, because the more cells you have the higher is the voltage and so you will need a motor with a lower KV value. 
 	
+	I first wanted to buy two Li-ion battery packs, however they are firstly hard to get and secondly much more expensive. The other option would have been to solder them together myself, but it requires some soldering skill, which I did not have then. So I decided to go with 4S LiPo batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I want something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress from where I got all the other components, so it seemed to be easier to also chose a battery from there. 
 	
-	\subsubsection{GNSS(Global Navigation Satellite System)}
+	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
 	% TODO GNSS/Compass
+	
 	Micro M10 from Holybro choosen, because it is from the same manufacturer as the Fc.
 	4 Concurrent GPS
 	CEP of 2 m(short explanation box)
@@ -118,9 +133,11 @@ sorting=ynt
 	
 
 	\subsubsection{Transmitter Protocols}
-	\subsubsection*{Elrs}
+	
 	\subsubsection*{Frsky}
 	\subsubsection*{Crossfire TX}
+	\subsubsection*{Elrs}
+	\subsubsection*{mLrs}
 	
 	\subsubsection{Data Transfer Protocols}
 	\subsubsection*{SPI}
@@ -136,47 +153,49 @@ sorting=ynt
 	A part that stops the ESC from short circuiting due to wrongly soldered parts. It is there to prevent the part getting destroyed. There are two groups of it one that you buy and gets destroyed when the ESC short circuits instead of the ESC and it saves you money by not destroying the ESC and sacrificing itself. There is another category that does not destroy itself and there are also some that you can solder together on your own. These work by using a lamp(Glühbirne).
 	
 	\subsubsection{Problems with the Parts}
-	% TODO Problems
+
 	There were two problems that arose one less severe than the other. One problem was that my ordered Kakute-Tekko stack did not include stack screws, which they normally do. Stack screws are just screws that you can use to mount the stack onto the frame. So I needed to purchase them separately.
-	% the batteries from aliexpress were not delivered instead I received insect traps
 	
+	The more severe problem I ran into was that the batteries from AliExpress were first hold by the swiss border control and then I received two insect traps instead of batteries. Luckily I ordered one of the same batteries from Conrad, because the other two took too long to deliver. 
 	
 	
 	
 	\subsection{soldering}
 	
 	\subsection{ardupilot}
-	The following was based on the Ardupilot documentation
+	The following is based on the ArduPilot copter documentation\cite{ardupilotdocs}.
 	\subsubsection{Ground Station}
-	\textbf{ground station} = software running on ground-based computer, transmit data to the UAV and can control it
-	\begin{itemize}
-		\item \textbf{Mission Planner} \cite{MissionPlanner} widely used and has a wiki(Open Source)
-		\begin{itemize}
-			\item 
-		\end{itemize}
-		\item \textbf{Mavproxy}, for Linux used for code developers, written in Python(Open Source)
-		\item some considerations for Smartphone (might be useful for connection between Raspi and ground)
-	\end{itemize}
-	downloading of latest stable Ardupilot firmware \cite{ArduPilotFirmware} for Kakute H7 fc	
+	To configure ArduPilot there are multiple softwares so called ground stations(GCS) required. They are normally ground-based and can transmit data via with a wireless telemetry device or USB cable.  With the telemetry device they can also control the drone from the ground and alter the route it is autonomously flying. 
 	
-	loading Ardupilot firmware onto Fc with STM32 CubeProgrammer by connecting the Fc in DFU(Direct Firmware Update) Mode with the computer(quick explanation box for STM32 and DFU mode)
+	The most widely used GCS is Mission Planner(MP)\cite{MissionPlanner} it is widely used, but runs only on Windows and Mac OS. It also has a wiki which helps you install it. I will use it for the first-time configuration of my drone. 
 	
-	reconnecting Fc with Comp. 
-	opening Mission Planner and connecting to Fc seeing first Yaw measurements 
+	Another GCS is MavProxy it is based on Python and is only for the Linux operation system(OS). Which is the OS I will have on my RaspberryPi companion computer. 
+	
+	There is also QGroundContrlol which is unique, because it supports next to Windows, Mac OS and Linux also Android and IOS.
+
+	\subsection{Firmware Installation}
+	
+	For the first time installation I need to flash the Kakute H7 with ArduPilot, because it is shipped with Betaflight as mentioned earlier on. For that I downloaded the ArduPilot firmware\cite{ArduPilotFirmware} for the Kakute H7. Afterwards the STM32CubeProgrammer\cite{STM32CubeProgrammer}, to flash the firmware onto the Fc. I connected the Fc in DFU mode directly with the computer using a USB cable. Then selected the USB port with which the Fc is connected and flashed the Fc. A reboot to get out of the DFU mode was required before connecting the Fc to MP and saw the first Yaw measurements. The progress of flashing the firmware was straight forward which will not be the case for the rest of the configuration. 
+	% TODO add an explanation box for the DFU mode.
+	% TODO add pictures of Yaw measurement.
+
 	\subsubsection{GPS Connection}
+	When I tried to get a GPS connection a No GPS message appeared. Changing the \lstinline|GPS_Type = 2| for the Ublox GPS did not change the No GPS error message.
 	
-	Trying to get GPS connection, No GPS message
-	changing the GPS\_Type to 2 for Ublox GPS... doesn't work
-	\\
-	\\ Micro M10 probably connected, due to compass being seen on Mission Planner, was however unable to calibrate it
-	\\
-	\\ soldering might be the problem?-- Should be fine
-	\\ blinking blue LED indicates no satellite fix... did blink in- and outside
-	\\ cables are also connected correctly
-	\\
-	\\ Lots of questions... So theoretically my GPS should be connected, but the Fc does not recognize it, however it recognizes the compass from the GPS module???
-	\\
-	\\ The problem was that the \lstinline|Serial3_Protocol|(Which is for the Uart3) was set to 5 which meant GPS, however I will be needing the Uart3 for the Raspi and not a GPS and so it blocked the Uart4 which was also set to GPS. Not it finally works.
+	%TODO add picture No_GPS
+	Even though I was certain that the GPS worked well, because the compass of the GPS was already detected in the compass calibration tab.
+	
+	% TODO add picture compass_detected
+	I then went outside, away from metal tables and as far away from my computer that was possible with the USB cable it still did not show up in MP. I also checked the soldering and if the cables from the GPS to the Fc are connected correctly and both seemed fine. The GPS itself was not damaged, because the blue led was blinking constantly which means it is connecting to a GNSS.
+
+	The problem was that the \lstinline|Serial3_Protocol|(Which is for the Uart3, which will be used for the connection to the RaspberryPi) was set to 5 which means GPS, however by being on 5 it blocked the Uart4, to which my GPS was really connected. After disabling the Uart3 it finally worked.
+	
+	The GPS is quite precise outside.
+	%TODO insert picture GPS_Outside
+	
+	It also works sometimes inside and is precisely on my room, but sometimes it shows that I'm in Poland the middle of the Atlantic Ocean or Iceland.
+	%TODO insert pictures GPS_Inside1/2
+	 
 	\subsubsection{Receiver/Transmitter}
 	changing RC\_optopns to 420 k baudrate for Elrs
 	\\ connection between the receiver and radio exist... radio says telemetry recovered and receiver isn't flashing a green light anymore, but has a constant blue light. However no connection to Fc yet.
