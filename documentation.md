@@ -8,8 +8,13 @@
 6. drone flies without wobblying
 7. writing at software considerations, Fc, ESC,Motor, Battery, Problems, GCS, Firmware installation, GPS connection
 8. flying drone and filming it
-9. writing GNSS, Radio/Transmitter, Smoke stopper, props/battery charger, reciever/transmitter, battery, motor test, compass callibration
+9. writing GNSS, Radio/Transmitter, Smoke stopper, props/battery charger, reciever/transmitter, battery, motor test, compass callibration, road to first flight
+10. adding the pictures
 
+### Questions
+- How to cite a picture/the source of the picture?
+- What should be in the caption of the picture?
+- How should the links be sorted? Because I don't think having them sorted from their dates is a good option.
 ## Week 7.10-13-10
 1. solving the GPS issue(was really easy when I finally found the issue(took 3 hours))
 2. trying to get the transmitter connection to the receiver works but not to mission planner or the Fc
