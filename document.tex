@@ -122,41 +122,47 @@ sorting=ynt
 	
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
 	% TODO GNSS/Compass
+	There are two different kinds of GNSS\footnote{The GNSS is usually referred to as GPS even though GPS is only the American GNSS system} modules the normal GPS/Compass boards and real time kinematic(RTK) GPS. Usually the chips used in both the RTK GPS and the normal GPS are from Ublox. The RTK GPS can achieve a accuracy of 1cm by incorporating information correction data from a RTCM, short for radio technical commision for maritime\footnote{It was first used for the positions of boats and other vessels}. However the correction data is either subscription based, is not guaranteed to cover all of the area or you need to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it is also not worth it to have a RTK GPS that costs several hundred Franks instead of a GPS with a 2m CEP which costs less than 30 Franks. Some of the GPS units also have a compass built-in so you will not need to buy an extra compass when using ArduPilot. 
+	% TODO Explanation box for CEP
 	
-	Micro M10 from Holybro choosen, because it is from the same manufacturer as the Fc.
-	4 Concurrent GPS
-	CEP of 2 m(short explanation box)
-	connects via Uart
-	\\ built-in compass connects to the Fc with a I2C protocol...
-	
-	
-	
+	I chose the Holybro Micro M10 GPS\cite{holybrom10micro}, because it comes from the same brand as the Fc and will be easier to connect. In addition to that the M10 chip is the newest version of Ublox chips and it would be senseless to buy an older version. It also is at least as good as other better-known GPS as the Matek M10Q\cite{gpstest}. It also comes with a built-in compass.	
 
-	\subsubsection{Transmitter Protocols}
-	
-	\subsubsection*{Frsky}
-	\subsubsection*{Crossfire TX}
-	\subsubsection*{Elrs}
-	\subsubsection*{mLrs}
-	
-	\subsubsection{Data Transfer Protocols}
-	\subsubsection*{SPI}
-	\subsubsection*{Uart}
-	\subsubsection*{I2C}
-	
 	\subsubsection{Radio/Transmitter}
-	%TODO Radio/Transmitter
-	you can play games on the Boxer Radio
-		
+	The following information about transmitter protocols is based on two videos\cite{transprotocols}\cite{mlrs}.
+	\subsubsection*{FrSky}
+	There are three FrSky protocols that are not compatible with each other ACCST, ACCESS and FrSky R9 ACCESS. ACCST has a range of around 1-2 km in open air. The firmware is built into almost all radios. It has a good latency but not as good as the other options. ACCESS is the successor to ACCST and has about the same range, but a lower latency, however not a class leading one. FrSky R9 ACCCESS gives you a range of over 50km in ideal condition. Unfortunately, the FrSky ACCESS porotcols are only supported by FrSky radios. There is one problem with FrSky. It is quite a problem to manage, because of the three protocols that are not compatible with each other.
+	% TODO Latency box
+	\subsubsection*{TBS Crossfire/Tracer and Immersion RC Ghost}
+	TBS Crossfire has a range of over 100km and is easy to use. It is also well tested and stable and has a good latency. 
+	TBS Tracer can have also over 10km, but drains the battery when flying further away. It is more focused on racing due to the low-latency.
+	Immersion RC Ghost as a range of over 10km. It is possible to switch between a low-latency for racing and a high-latency for long range flying. 
+	\subsubsection*{ExpressLRS}
+	ExpressLRS is the best in long range and in the combination of long range and latency. It has been shown by Wezley Varty\cite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so here is a copy of it.} that it really can fly up to 100km\footnote{There are two version a 900MHz and a 2.4GHz and the main difference is that the 2.4GHz only at least over 30km but unlikely over 100km, but it has the lowest latency compared to any other Protocol.}. It is together with mLRS the only two options who are open source.
+	\subsubsection*{mLrs}
+	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency to send larger data packages to your telemetry device. Which is something that is needed for Mavlink and use with GCS. 
+	
+	\subsubsection*{Transmitter/Radio}
+	I've decided to go with the Radiomaster RP4TD ExpressLRS 2.4GHz True Diversity Receiver\cite{radiomasterreceiver} on a recommendation of a friend. It also is compatible with mLRS if I want to switch later on.
+	
+	I went with the Radiomaster Boxer\cite{radiomasterboxer} radio, because it is somewhat in the middle range from radios and seems to be quite reliable and has many knobs to customize. 
 
 	\subsubsection{Smoke Stopper}
-	A part that stops the ESC from short circuiting due to wrongly soldered parts. It is there to prevent the part getting destroyed. There are two groups of it one that you buy and gets destroyed when the ESC short circuits instead of the ESC and it saves you money by not destroying the ESC and sacrificing itself. There is another category that does not destroy itself and there are also some that you can solder together on your own. These work by using a lamp(Glühbirne).
+	A part that stops the ESC from short circuiting due to wrongly soldered parts. It is there to prevent wrongly connected parts from burning and saves you quite a lot of money doing that. There are two groups of smoke stoppers one that you buy and gets destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
 	
 	\subsubsection{Problems with the Parts}
 
 	There were two problems that arose one less severe than the other. One problem was that my ordered Kakute-Tekko stack did not include stack screws, which they normally do. Stack screws are just screws that you can use to mount the stack onto the frame. So I needed to purchase them separately.
 	
-	The more severe problem I ran into was that the batteries from AliExpress were first hold by the swiss border control and then I received two insect traps instead of batteries. Luckily I ordered one of the same batteries from Conrad, because the other two took too long to deliver. 
+	The more severe problem I ran into was that the batteries from AliExpress were first held by the swiss border control and then I received two insect traps instead of batteries. Luckily I ordered one of the same batteries from Conrad, because the other two took too long to deliver. 
+	
+	\subsubsection{Propellers and Battery Charger}
+	For the propellers(props) and battery chargers I went of the recommendations from AOS-RC and FPVknowitall. For the props I chose the Foxeer Donut 5145\cite{toroidal} and the HQ 5x4.3x3 V1S\cite{hqprops}. And for the battery charger I went with the cheapest option the 608 AC Lipo Battery Charger\cite{lipocharger}.
+
+\subsubsection{Data Transfer Protocols}
+	\subsubsection*{SPI}
+	\subsubsection*{Uart}
+	\subsubsection*{I2C}
+	
 	
 	
 	
@@ -173,7 +179,7 @@ sorting=ynt
 	
 	There is also QGroundContrlol which is unique, because it supports next to Windows, Mac OS and Linux also Android and IOS.
 
-	\subsection{Firmware Installation}
+	\subsubsection{Firmware Installation}
 	
 	For the first time installation I need to flash the Kakute H7 with ArduPilot, because it is shipped with Betaflight as mentioned earlier on. For that I downloaded the ArduPilot firmware\cite{ArduPilotFirmware} for the Kakute H7. Afterwards the STM32CubeProgrammer\cite{STM32CubeProgrammer}, to flash the firmware onto the Fc. I connected the Fc in DFU mode directly with the computer using a USB cable. Then selected the USB port with which the Fc is connected and flashed the Fc. A reboot to get out of the DFU mode was required before connecting the Fc to MP and saw the first Yaw measurements. The progress of flashing the firmware was straight forward which will not be the case for the rest of the configuration. 
 	% TODO add an explanation box for the DFU mode.
@@ -197,28 +203,29 @@ sorting=ynt
 	%TODO insert pictures GPS_Inside1/2
 	 
 	\subsubsection{Receiver/Transmitter}
-	changing RC\_optopns to 420 k baudrate for Elrs
-	\\ connection between the receiver and radio exist... radio says telemetry recovered and receiver isn't flashing a green light anymore, but has a constant blue light. However no connection to Fc yet.
-	\\ followed the page (reference to expresslrs.org page) it does not work yet. 
-	\\ could change the receiver to the uart1 which is usually for the receiver, but it would require an JHSt thingy and more soldering
-	\\
-	\\ it works now... I needed to set Brd\_Alt\_Config to 1, which is a Fc specific parameter and I found it in the kakute H7 section which said that it needed to be done
-	\subsubsection*{Battery/Servos/Smoke Stopper/Compass Calibration}
-	pluging in battery with smoke stopper attached, smoke stopper does not light up
-	\\changing the battery settings for the tekko32 F4 4 in 1 Esc as explained in the kakute h7 fc page of ardupilot only needed to change the BATT\_MONITOR ot 4 all the others were already correct, I can see now the voltage and the Amperage of the battery
-	\\the only thing missing before I can arm it is the compass calibration...(note: I'm inside so the GNSS has no connection but it works as soon as I get under the free sky.)
-	\\ compass calibration fails multiple times.. even tried changing it as the docs from holybro suggest compass\_ortient= 6 still does not work. 
-	\\ turns out you need good GPS lock to do it...I'm inside
-	\\with GPS lock and outside with relaxed settings and both compass\_orient =6 and 0 it does not work
-	the failure could be caused by the computer which is nearby or the table which is metal on which I've done it. 
-	There could also be the fix by doing the largevehicle Magcal, which helped a person online who also had a 5 inch copter. 
-	\\ somehow it calibrated??? I tried to calibrate it multiple times in different settings and it never worked and without even being able to finish my last try at calibration it worked??? it might have been the largevehical magcal that has done it...
-	\\
-	\\ Motor testing works after connecting assigning the right position to the motors and setting the mot\_pwm\_type to dshot 600
-	\\new error message: battery failsafe, begins to continously beep(but not always???) might be caused from the connection to the computer... so that it will take the wrong power input as main power
-	\\ the motors suddenly began to beep I have no idea why
-	\\ I got the error compass variance, but when I move further away from my computer it goes away.
-	\\ all prearm checks are gone now except magfield
+	To get the connection between the receiver and radio I first followed the ExpressLRS\cite{expresslrsorg} page. I changed the \lstinline|Serial6_Protocol| to 23 and the \lstinline|RSSI_Type| to 3 for the receiver protocol. I also changed the \lstinline|RC_Options| to the correct bitmask.
+	% TODO insert Bitmask picture  
+	The connection between the radio and receiver then worked, because the receiver had a constant blue light and the receiver said telemetry recovered after it was lost for a moment. However as it comes it did not have a connection to the Fc. I thought about changing the receiver from Uart6 to Uart 1, because Uart1 is the usual Uart for a receiver on the Kakute H7, but it would require a JST and more soldering. So I searched for a different solution. I looked at the Kakute H7 tab in the documentation and saw that for the Kakute H7 I needed to set \lstinline|Brd_Alt_Config| to 1 for the CRSF interface of the receiver. \lstinline|Brd_Alt_Config| is a Fc specific parameter so it makes sense that it did not come up in the search for a solution. 
+
+	\subsubsection*{Battery}
+	When I plugged in the battery the smoke stopper in between did not light up. The battery was not immediately recognized in MP and I needed to change the battery settings for the Tekko32 F4 4in1 I only needed to change the \lstinline|Batt_Monitor| to 4 the other parameters were already correct. I was now able to see the voltage and amperage of the battery.
+	% TODO add picture battery
+	The only prearm check missing now is the compass calibration.
+	% TODO add prearm check picture
+	% (note: I'm inside so the GNSS has no connection but it works as soon as I get under the free sky.)
+	\subsubsection{Motor Test}
+	The motor test works correct after assigning the right position to the motors, because I'm using the M5-M8 ports instead of the M1-M4. I also needed to set \lstinline|Mot_PWM_Type| to dshot 600 for the 
+	\\ Motor testing works after connecting assigning the right position to the motors and setting the mot\_pwm\_type to dshot 600. Dshot is just the digital protocol for communication between the Fc and ESC. After some time the motors began to beep, but after testing them again they stopped so it was most likely a inactivity warning. A new error also appeared called battery failsafe. This was caused by a unstable connection between the ESC and Fc and so the Fc took the connection from the computer as power source and had to little power to use the motors. 
+	
+	\subsubsection{Compass Calibration}
+	I first tried to callibrate the compass inside, but it turns out that you need a good GPS lock. I went outside and tried calibrating the compass and it failed multiple times. I set the fitness to relaxed and it still failed. The Holybro docs\cite{holybrodocs} recommended to set the parameter \lstinline|Compass_Orient| to 6 for proper orientation. It failed again. I was definitely far enough away from metal or my computer which could influence the calibration.
+	\\ I then fixed it temporarily by doing the large vehical MagCal, however this only took away the prearm message and did not really work. What I did not know at the time is that the ArduPilot documentation warns from using this calibration, because it can look as if it is correctly configured, but in reality the orientation is correct. 
+	I later on needed to disassamble the copter anyway, because a wire between the motor and ESC came off and needed to be soldered on again, and put the GPS module directly onto the Fc and it worked using the normal compass calibration. 
+	
+
+
+	\subsubsection{Road to First Flight}
+	all prearm checks are gone now except magfield
 	\\ magfield problems went away after positioning the drone further away from the computer... now there is no prearm check(you can also disable them by setting arming\_check to 0) that needs to be done and I can arm the drone
 	\\ only problem is that I don't now how... I was able to assign the rc channel 5 to it. 
 	\\ disabling arming check... however the MAV rejects the forece arm command. 

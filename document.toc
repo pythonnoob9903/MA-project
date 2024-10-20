@@ -10,20 +10,23 @@
 \contentsline {subsubsection}{\numberline {4.2.3}Motor}{5}{}%
 \contentsline {subsubsection}{\numberline {4.2.4}Battery}{5}{}%
 \contentsline {subsubsection}{\numberline {4.2.5}GNSS(Global Navigation Satellite System)/Compass}{6}{}%
-\contentsline {subsubsection}{\numberline {4.2.6}Transmitter Protocols}{6}{}%
-\contentsline {subsubsection}{\numberline {4.2.7}Data Transfer Protocols}{6}{}%
-\contentsline {subsubsection}{\numberline {4.2.8}Radio/Transmitter}{6}{}%
-\contentsline {subsubsection}{\numberline {4.2.9}Smoke Stopper}{6}{}%
-\contentsline {subsubsection}{\numberline {4.2.10}Problems with the Parts}{6}{}%
-\contentsline {subsection}{\numberline {4.3}soldering}{7}{}%
-\contentsline {subsection}{\numberline {4.4}ardupilot}{7}{}%
-\contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{7}{}%
-\contentsline {subsection}{\numberline {4.5}Firmware Installation}{7}{}%
-\contentsline {subsubsection}{\numberline {4.5.1}GPS Connection}{7}{}%
-\contentsline {subsubsection}{\numberline {4.5.2}Receiver/Transmitter}{8}{}%
-\contentsline {section}{\numberline {5}Results}{10}{}%
-\contentsline {section}{\numberline {6}Discussion and Outlook}{10}{}%
-\contentsline {section}{\numberline {7}Conclusion}{10}{}%
-\contentsline {section}{\numberline {8}References}{10}{}%
-\contentsline {section}{Bibliography}{10}{}%
-\contentsline {section}{\numberline {9}Table of Figures}{11}{}%
+\contentsline {subsubsection}{\numberline {4.2.6}Radio/Transmitter}{6}{}%
+\contentsline {subsubsection}{\numberline {4.2.7}Smoke Stopper}{7}{}%
+\contentsline {subsubsection}{\numberline {4.2.8}Problems with the Parts}{7}{}%
+\contentsline {subsubsection}{\numberline {4.2.9}Propellers and Battery Charger}{8}{}%
+\contentsline {subsubsection}{\numberline {4.2.10}Data Transfer Protocols}{8}{}%
+\contentsline {subsection}{\numberline {4.3}soldering}{8}{}%
+\contentsline {subsection}{\numberline {4.4}ardupilot}{8}{}%
+\contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{8}{}%
+\contentsline {subsubsection}{\numberline {4.4.2}Firmware Installation}{8}{}%
+\contentsline {subsubsection}{\numberline {4.4.3}GPS Connection}{9}{}%
+\contentsline {subsubsection}{\numberline {4.4.4}Receiver/Transmitter}{9}{}%
+\contentsline {subsubsection}{\numberline {4.4.5}Motor Test}{10}{}%
+\contentsline {subsubsection}{\numberline {4.4.6}Compass Calibration}{10}{}%
+\contentsline {subsubsection}{\numberline {4.4.7}Road to First Flight}{10}{}%
+\contentsline {section}{\numberline {5}Results}{11}{}%
+\contentsline {section}{\numberline {6}Discussion and Outlook}{11}{}%
+\contentsline {section}{\numberline {7}Conclusion}{11}{}%
+\contentsline {section}{\numberline {8}References}{11}{}%
+\contentsline {section}{Bibliography}{11}{}%
+\contentsline {section}{\numberline {9}Table of Figures}{13}{}%

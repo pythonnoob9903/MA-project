@@ -8,6 +8,7 @@
 6. drone flies without wobblying
 7. writing at software considerations, Fc, ESC,Motor, Battery, Problems, GCS, Firmware installation, GPS connection
 8. flying drone and filming it
+9. writing GNSS, Radio/Transmitter, Smoke stopper, props/battery charger, reciever/transmitter, battery, motor test, compass callibration
 
 ## Week 7.10-13-10
 1. solving the GPS issue(was really easy when I finally found the issue(took 3 hours))
