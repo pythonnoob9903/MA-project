@@ -1,4 +1,6 @@
 # Documentation
+## Week 21.10-27.10
+1. small mostly grammatical changes
 ## Week 14.10-20.10
 1. adding the command \comment[1]{} to latex(deleting it again and using %TODO)
 2. starting software considerations chapter
@@ -28,7 +30,7 @@
 10. arming on my table after disabling arming_check
 
 ### Open Questions
-- I will write a message per teams tomorrow(14.10) with them
+- I will write a message per teams tomorrow.(14.10) with them
 
 
 ## Week 30.9-6.10

@@ -81,7 +81,7 @@ sorting=ynt
 	\subsection{Drone Overview}
 	If you want to fly a drone you have two options available either you buy one or you built one. The second option is for people who are interested in tinkering with their electronics until they work, not only the better option but also the cheaper one.
 	
-	The main parts needed for a drone are the flight controller(Fc), the electronic speed controller(ESC), the receiver, the battery and of course the frame, in addition you can also add a GPS, LEDs and more. The flight controller and electronic speed controller are referred to as Fc and ESC. The Fc runs the chosen software and controls every other part in one way or another. It is directly connected to the ESC, which controls the motors and is connected to the battery. The Fc also communicates with the receiver and GPS if there is one. In my case there will also a RaspberryPi which also connects to the Fc.
+	The main parts needed for a drone are the flight controller, the electronic speed controller, the receiver, the battery, servos and of course the frame, in addition you can also add a GPS, LEDs and more. The flight controller and electronic speed controller are referred to as Fc and ESC. The Fc runs the chosen software and controls every other part in one way or another. It is directly connected to the ESC, which controls the motors and is connected to the battery. The Fc also communicates with the receiver and GPS if there is one. In my case there will also a RaspberryPi which also connects to the Fc.
 	% TODO add a graphic which illustrates the connection between the parts
 	  
 	\subsection{parts}
@@ -100,6 +100,7 @@ sorting=ynt
 
 	\subsubsection{Motor}
 	There are two types of motor brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven and the brushless motors are electrically driven. Therefor brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in really small drones with 1S batteries. However even in the small drones brushless motors are the more popular choice\cite{brush/lessmotors}. 
+	% TODO explain brush/less motors better
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.2]{pictures/motor}
@@ -112,18 +113,20 @@ sorting=ynt
 
 	
 	\subsubsection{Battery}
-	There are two main types of batteries lithium polymer(LiPO) and Lithium-ion(Li-ion) batteries. LiPo batteries have a tendency to go up in flames. They have compared to the Li-ion batteries a much higher discharge rate, also seen as C value, so they are well suited for racing drones. However Li-ion batteries have a higher energy density, which means that they can store more mAh with the same weight as LiPo batteries, so they are more used in long range flying. The batteries have normally multiple cells, for example a 4S LiPo batterie contains 4 cells. This is important, because the more cells you have the higher is the voltage and so you will need a motor with a lower KV value. 
+	There are two main types of batteries lithium polymer(LiPO) and Lithium-ion(Li-ion) batteries. LiPo batteries have a tendency to go up in flames. They have compared to the Li-ion batteries a much higher discharge rate, also denoted as C value, so they are well suited for racing drones. However Li-ion batteries have a higher energy density, which means that they can store more mAh with the same weight as LiPo batteries, so they are more common in long range flying. The batteries normally have multiple cells, for example a 4S LiPo batterie contains 4 cells. This is important, because the more cells you have the higher is the voltage and so you will need a motor with a lower KV value. 
 	
 	I first wanted to buy two Li-ion battery packs, however they are hard to get and much more expensive. The other option would have been to solder them together myself, but it requires some soldering skill, which I did not have then. So I decided to go with 4S LiPo batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I want something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress from where I got all the other components, so it seemed to be easier to also chose a battery from there. 
 	
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
 	There are two different kinds of GNSS\footnote{The GNSS is usually referred to as GPS even though GPS is only the American GNSS system} modules the normal GPS/Compass boards and real time kinematic(RTK) GPS. Usually the chips used in both the RTK GPS and the normal GPS are from Ublox. The RTK GPS can achieve a accuracy of 1cm by incorporating information correction data from a RTCM, short for radio technical commision for maritime\footnote{It was first used for the positions of boats and other vessels}. However the correction data is either subscription based, is not guaranteed to cover all of the area or you need to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it is also not worth it to have a RTK GPS that costs several hundred Franks instead of a GPS with a 2m CEP which costs less than 30 Franks. Some of the GPS units also have a compass built-in so you will not need to buy an extra compass when using ArduPilot. 
 	% TODO Explanation box for CEP
+	% TODO better description of the Ublox chip
 	
-	I chose the Holybro Micro M10 GPS\cite{holybrom10micro}, because it comes from the same brand as the Fc and will be easier to connect. In addition to that the M10 chip is the newest version of Ublox chips and it would be senseless to buy an older version. It also is at least as good as other better-known GPS as the Matek M10Q\cite{gpstest}. It also comes with a built-in compass.	
+	I chose the Holybro Micro M10 GPS\cite{holybrom10micro}, because it comes from the same brand as the Fc and will be easier to connect. In addition to that the M10 chip is the newest version of Ublox chips and it would be senseless to buy an older version. It also is at least as good as other better-known GPS as the Matek M10Q\cite{gpstest} and comes with a built-in compass that is needed for ArduPilot.
 
 	\subsubsection{Radio/Transmitter}
 	The following information about transmitter protocols is based on two videos\cite{transprotocols}\cite{mlrs}.
+	% TODO explain difference between 900MHz and 2.4 GHz
 	\subsubsection*{FrSky}
 	There are three FrSky protocols that are not compatible with each other ACCST, ACCESS and FrSky R9 ACCESS. ACCST has a range of around 1-2 km in open air. The firmware is built into almost all radios. It has a good latency but not as good as the other options. ACCESS is the successor to ACCST and has about the same range, but a lower latency, however not a class leading one. FrSky R9 ACCCESS gives you a range of over 50km in ideal condition. Unfortunately, the FrSky ACCESS porotcols are only supported by FrSky radios. There is one problem with FrSky. It is quite a difficult to manage, because of the three protocols that are not compatible with each other.
 	% TODO Latency box
@@ -132,7 +135,7 @@ sorting=ynt
 	TBS Tracer can have also over 10km, but drains the battery when flying further away. It is more focused on racing due to the low-latency.
 	Immersion RC Ghost as a range of over 10km. It is possible to switch between a low-latency for racing and a high-latency for long range flying. 
 	\subsubsection*{ExpressLRS}
-	ExpressLRS is the best in long range and in the combination of long range and latency. It has been shown by Wezley Varty\cite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so here is a copy of it.} that it really can fly up to 100km\footnote{There are two version a 900MHz and a 2.4GHz and the main difference is that the 2.4GHz only at least over 30km but unlikely over 100km, but it has the lowest latency compared to any other protocol.}. It is together with mLRS the only two options who are open source.
+	ExpressLRS is the best in long range and in the combination of long range and latency. It has been shown by Wezley Varty\cite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km\footnote{There are two version a 900MHz and a 2.4GHz and the main difference is that the 2.4GHz only at least over 30km but unlikely over 100km, but it has the lowest latency compared to any other protocol.}. It is together with mLRS the only two options who are open source.
 	\subsubsection*{mLrs}
 	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency to send larger data packages to your telemetry device. Which is something that is needed if you want to adjust something or get more data from your drone over the Mavlink protocol during the flight. 
 	
@@ -142,7 +145,7 @@ sorting=ynt
 	I went with the Radiomaster Boxer\cite{radiomasterboxer} radio, because it is somewhat in the middle range from radios and seems to be quite reliable and has many knobs to customize. 
 
 	\subsubsection{Smoke Stopper}
-	A part that stops the ESC from short circuiting due to wrongly soldered parts. It is there to prevent wrongly connected parts from burning and saves you quite a lot of money doing that. There are two groups of smoke stoppers one that you buy and gets destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
+	A part that stops the ESC from short circuiting due to wrongly soldered parts and can save you quite a lot of money. There are two groups of smoke stoppers one that you buy and gets destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
 	
 	\subsubsection{Problems with the Parts}
 
