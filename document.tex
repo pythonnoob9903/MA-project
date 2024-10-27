@@ -127,6 +127,7 @@ sorting=ynt
 	\subsubsection{Radio/Transmitter}
 	The following information about transmitter protocols is based on two videos\cite{transprotocols}\cite{mlrs}.
 	% TODO explain difference between 900MHz and 2.4 GHz
+	% TODO explain latency and range in the beginning of subsubsection
 	\subsubsection*{FrSky}
 	There are three FrSky protocols that are not compatible with each other ACCST, ACCESS and FrSky R9 ACCESS. ACCST has a range of around 1-2 km in open air. The firmware is built into almost all radios. It has a good latency but not as good as the other options. ACCESS is the successor to ACCST and has about the same range, but a lower latency, however not a class leading one. FrSky R9 ACCCESS gives you a range of over 50km in ideal condition. Unfortunately, the FrSky ACCESS porotcols are only supported by FrSky radios. There is one problem with FrSky. It is quite a difficult to manage, because of the three protocols that are not compatible with each other.
 	% TODO Latency box
@@ -154,6 +155,8 @@ sorting=ynt
 	The more severe problem I ran into was that the batteries from AliExpress were first held by the swiss border control and then I received two insect traps instead of batteries. Luckily I ordered one of the same batteries from Conrad, because the other two took too long to deliver.
 	% TODO add pictures of the insect traps 
 	
+	Two months later when my father decided open the insect traps. To our shock the LiPo batteries were inside of the insect traps at the bottom. And in hindsight it was also obvious that they were in there, because it had the numbering 3 4s 2000 on top which stands for version 3 of the 4s batteries with 2000 mAh. However, we dismissed the numbering on top as just some random numbers put there. 
+	
 	\subsubsection{Propellers and Battery Charger}
 	For the propellers(props) and battery chargers I went of the recommendations from AOS-RC and FPVknowitall. For the props I chose the Foxeer Donut 5145\cite{toroidal} and the HQ 5x4.3x3 V1S\cite{hqprops}. And for the battery charger I went with the cheapest option the 608 AC Lipo Battery Charger\cite{lipocharger}.
 
@@ -170,7 +173,7 @@ sorting=ynt
 	\subsection{ardupilot}
 	The following is based on the ArduPilot copter documentation\cite{ardupilotdocs}.
 	\subsubsection{Ground Station}
-	To configure ArduPilot there are multiple softwares so called ground stations(GCS) required. They are normally ground-based and can transmit data via with a wireless telemetry device or USB cable.  With the telemetry device they can also control the drone from the ground and alter the route it is autonomously flying. 
+	To configure ArduPilot there are multiple softwares so called ground control stations(GCS) required. They are normally ground-based and can transmit data via with a wireless telemetry device or USB cable.  With the telemetry device they can also control the drone from the ground and alter the route it is autonomously flying. 
 	
 	The most widely used GCS is Mission Planner(MP)\cite{MissionPlanner} it is widely used, but runs only on Windows and Mac OS. It also has a wiki which helps you install it. I will use it for the first-time configuration of my drone. 
 	
@@ -306,6 +309,11 @@ sorting=ynt
 	After arming the quad and pushing the throttle I was able to get the drone to fly, but it was shaking violently also known as wobbling and then somewhat crashed it into the ground causing the props to get minimal damage. I tried to tighten everything on the drone, because until that point everything was just somewhat loosely taped onto it, the wobbling still continued. Trying new and also the other props, as there could be a prop imbalance that causes the drone to wobble, had no effect. Through a video\cite{dronewobblevideo} about drone wobbling I came to the conclusion that my PID values are for a 9 inch drone not a 5 inch drone. 
 	%TODO explanation box for PID
 	After adjusting them via the intial tuning parameter quick adjustment settings the drone flew. But when I put the stick left the drone flew right and vice versa. I was able to put the \lstinline|RC2_Reversed| to 1, which reversed the controls. 
+	
+	\subsubsection{RaspberryPi Setup}
+	downloading RaspberryPi software onto Sd card, putting it into the pi
+	getting ssh connection
+	trying to get a vnc connection via RealVNC viewer did not work 
 	
 
 	\section{Results}

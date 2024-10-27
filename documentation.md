@@ -1,6 +1,8 @@
 # Documentation
 ## Week 21.10-27.10
 1. small mostly grammatical changes
+2. setting up raspberry pi with ssh connection
+3. trying to get VNC connection
 ## Week 14.10-20.10
 1. adding the command \comment[1]{} to latex(deleting it again and using %TODO)
 2. starting software considerations chapter
