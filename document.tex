@@ -20,6 +20,12 @@ sorting=ynt
 %\graphicspath{{C:\Users\eduar\Documents\Maturarbeit\MA-project\pictures}}
 \usepackage{parskip}
 
+\usepackage{color}
+\definecolor{Blue}{rgb}{0,0,1}
+\definecolor{Green}{rgb}{0,0.5,0}
+\definecolor{Gray}{rgb}{0.5,0.5,0.5}
+\definecolor{Fuchsia}{rgb}{1,0,1}
+
 \usepackage{listings}
 \lstdefinestyle{BaselineStyle}
 { %
@@ -45,6 +51,16 @@ sorting=ynt
 } %
 % set to 'BaselineStyle'
 \lstset{style=BaselineStyle}
+
+% references for pictures
+\usepackage[dvipsnames,table,x11names]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	linkcolor={red!40!black},
+	urlcolor={blue!90!black},
+	citecolor=,
+}
 
 
 
@@ -168,7 +184,7 @@ sorting=ynt
 	
 	
 	
-	\subsection{soldering}
+	\subsection{mechanical work}
 	
 	\subsection{ardupilot}
 	The following is based on the ArduPilot copter documentation\cite{ardupilotdocs}.
@@ -297,7 +313,8 @@ sorting=ynt
 	All prearm checks are gone except the occasional magfield variance error(it disapeared completely after being able to calibrate the compass normally), which went away after positioning the drone further away from the computer. To arm
 	% TODO explanation box of arm
 	the drone I still needed to assign a switch on the radio. I did that by setting \lstinline|RC5_Option| to 153 which means to arm the drone when I flick the switch number 5. Even though there was no prearm check that failed I was not able to arm the drone, also when I disabled the parameter \lstinline|Arming_Check| it did not work. The Fc still rejected the force arm command from MP. The command however does not disable the geofence which I enabled some when earlier. I disabled it and was able to test the motors spinning on my bench. When I tried it with blades one of them hit one of the antennas from the receiver and tear it off. I was able to just attach it, but I'm not one hundred percent sure that this antenna is working. After this little hiccup a new prearm error appeared, crashdump bin detected. It comes from crashes with your drone to analyze what went wrong. 
-	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check|. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post\cite{blogcrashdump} I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc. I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. 
+	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check|. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post\cite{blogcrashdump} I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc. I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. It is also advisable to turn off beacon delay, when working on the bench, because it lets the motors beep after 10 minutes of being unused.
+	% TODO explain beacon delay, find out for what it is good, probably to locate a crashed drone
 	
 \begin{figure}[h]
 	\centering
@@ -313,9 +330,136 @@ sorting=ynt
 	\subsubsection{RaspberryPi Setup}
 	downloading RaspberryPi software onto Sd card, putting it into the pi
 	getting ssh connection
-	trying to get a vnc connection via RealVNC viewer did not work 
+	trying to get a vnc connection via RealVNC viewer did not work
+	works now via through the help of the website: \cite{ionisvnctutorial} 
+	note realvnc-vnc-viewer is not required, because you only want to see the raspPi and the raspPi does not need to see a VNC itself.
+	\subsubsection{MavProxy Installation}
+	The following was based on the MavProxy Documentation \cite{MavProxydocs} from the ArduPilot website
+	
+	downloading all the packages: sudo apt-get install python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame
+	
+	and this via pipx instead of pip3:pip3 install PyYAML
+	and separately again: mavproxy
+	
+	After trying mavproxy.py --master=/dev/ttyUSB0 i got the:
+	WARNING: You should uninstall ModemManager as it conflicts with APM and Pixhawk
+	
+	sudo apt-get remove modemmanager ...
+	
+	Bash: mavproxy.py: command not found
+	
+	nothing worked for three hours...
+	% ChatGPT
+	pip3 install MAVProxy--> did not work error: externally-managed-environement
+	
+	
+	resutling in:
+	\\python3 -m venv mavproxy-env (creates a virtual environement)
+	\\source mavproxy-env/bin/activate (activates the environement)
+	\\pip install MAVProxy works in the environemnt
+	
+	trying to run MAVProxy:
+	\\ mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600 --aircraft MyCopter does not work error: Failed to connect to /dev/ttyUSB0 : [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+	
+	checking if the device connected via USB is detected via: dmesg | tail -20 . it is...
+	% TODO insert picture USBRaspPiconnect 
+	% TODO visually showing on the picture where it shows the connection
 	
 
+	
+	it finally worked by using ttyACM instead of ttyUSB and the baudrate of 115200 instead of 912600 because it is not connected to the UART3 which is still planned to be in the future but not yet. 
+	mavproxy.py --master=/dev/ttyACM0 --baud 115200 --aircraft MyCopter
+	
+	I might need to implement a autostart of mavproxy later on when trying to fly without the connection to the laptop.
+	
+	was able to arm and disarm the copter via terminal... disabling arming check via param set arming\_check 0 and then arm throttle and afterwards disarm throttle
+	
+	\subsubsection{Dronekit}
+	It needs to be mentionned that the software dronekit is not maintained very well, as it says in the Github repository \cite{dronekitgithub}.
+	The following is mostly based on the Dronekit Documentation \cite{dronekitdocs}.
+	
+	installing dronekit in the virtual environement via: pip install dronekit 
+	
+	creating a file via terminal: nano dronekit.py
+	
+	writing 
+	\begin{lstlisting}[language=python, caption=Python DroneKit Example, label={lst:dronekit-example}]
+		from dronekit import connect
+		
+		vehicle = connect('/dev/ttyAMA0', wait_ready=True, baud=57600)
+	\end{lstlisting}
+	
+	getting this error:
+	
+	ImportError: cannot import name 'connect' from partially initialized module 'dronekit' (most likely due to a circular import) (/home/EduPi/dronekit.py), because I named the script the same as the dronekit library
+	
+	% ChatGPT
+	renaming the file to dronekittest.py via
+	mv dronekit.py dronekittest.py
+	and rm -r \_\_pycache\_\_
+	
+	now the error occurs
+	\begin{lstlisting}[caption= MutableMapping Error, language=bash]
+		dronekit/__init__.py" , line 2689, in <module>
+		class Parameters(collections.MutableMapping, HasObservers):
+		^^^^^^^^^^^^^^^^^^^^^^^^^^
+		AttributeError: module 'collections' has no attribute 'MutableMapping'
+	\end{lstlisting}
+	
+	% ChatGPT
+	In python 3.10 MutableMapping has been moved to from collections to collections.abc --> editing the dronekit source code 
+	
+	\begin{lstlisting}[language=bash]
+		nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
+	\end{lstlisting}
+	
+	and changing the line :class Parameters(collections.MutableMapping, HasObservers): 
+	% TODO might also work if I just write class Parameters(collections.abc.MutableMapping, HasObservers): 
+	to 
+	from collections.abc import MutableMapping
+	class Parameters(MutableMapping, HasObservers):
+	
+	trying to run dronekittest.py again: this error occurs
+	
+	\begin{lstlisting}[language=bash]
+		serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyAMA0: [Errno 2] No such file or directory: '/dev/ttyAMA0'
+	\end{lstlisting}
+	it is fixed by setting it to ACM0. Because different on rasppi ACM is for the USB and AMA shortened for AMBA is for the pins? \cite{ttyAMA}
+	
+	adding:
+	\begin{lstlisting}[language=python, caption={Python Dronekittest 2}]
+		print( "Autopilot version: %s" %vehicle.version)
+	\end{lstlisting}
+	to get a response from the copter. 
+	\begin{lstlisting}[language=bash]
+		Autopilot version: APM:Copter-4.5.7
+	\end{lstlisting}
+	connection now works via USB.
+	
+	connecting the ground and +5V pin from the flight controller to the Raspberry Pi it works but I get a low voltage warning.
+	
+	need to change \lstinline|Serial3_Protocol| to 2 for Mavlink
+	and \lstinline|Serial3_Baud| to 921 for the baudrate of 912600
+	
+	Uart ports are seen as /dev/ttyS0
+	can be looked at via:
+	\begin{lstlisting}[language=bash]
+		ls /dev/ttys0
+	\end{lstlisting}
+	
+	Error: 
+	\begin{lstlisting}[language=bash]
+		Failed to connect to /dev/ttys0 : [Errno 2] could not open port /dev/ttys0: [Errno 2] No such file or directory: '/dev/ttys0'
+	\end{lstlisting}
+	
+	needed to add 
+	\begin{lstlisting}[language=bash]
+		sudo usermod -a -G dialout $USER
+	\end{lstlisting}
+	which adds dialout so the pins to sudo
+	
+	
+	
 	\section{Results}
 	\section{Discussion and Outlook}
 	\section{Conclusion}

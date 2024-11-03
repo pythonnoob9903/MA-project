@@ -1,4 +1,11 @@
 # Documentation
+## Week 28.10-11-3
+1. VNC connection
+2. getting MAvProxy to work
+3. getting Dronekit to work
+
+
+
 ## Week 21.10-27.10
 1. small mostly grammatical changes
 2. setting up raspberry pi with ssh connection
