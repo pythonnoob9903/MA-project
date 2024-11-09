@@ -6,6 +6,7 @@
 \date{\today}
 \usepackage[utf8]{inputenc}
 
+
 \usepackage[
 backend=biber,
 style=numeric,
@@ -59,7 +60,14 @@ sorting=ynt
 	urlcolor={blue!90!black},
 	citecolor=,
 }
-
+\usepackage[acronym]{glossaries}
+\newacronym{Fc}{Fc}{flight controller}
+\newacronym{ESC}{ESC}{electronic speed controller}
+\newacronym{FPV}{FPV}{first person view}
+\newacronym{AIO}{AIO}{all-in-one}
+\newacronym{VTOL}{VTOL}{vertical takeoff and landing}
+\newacronym{GNSS}{GNSS}{global navigation satellite system}
+\newacronym{label}{abbrv}{long}
 
 
 % Dokument
@@ -75,7 +83,7 @@ sorting=ynt
 	% article about more and more autonomous drones in the Ukraine-Russia War
 
 	\section{Personal Motivation}
-	\comment{rather short}
+	%rather short
 	\section{Literature Review}
 	\subsection{General Software Considerations}
 	% TODO work around the same topic that already exists
@@ -468,5 +476,5 @@ sorting=ynt
 	title={Bibliography}
 	]	
 	\section{Table of Figures}
-	\comment{(short table on which every figure description with the page number is listed)}
+	%(short table on which every figure description with the page number is listed)
 \end{document}
