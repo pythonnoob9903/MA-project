@@ -355,7 +355,7 @@ sorting=ynt
 	Bash: mavproxy.py: command not found
 	
 	nothing worked for three hours...
-	% ChatGPT
+
 	pip3 install MAVProxy--> did not work error: externally-managed-environement
 	
 	
@@ -374,11 +374,11 @@ sorting=ynt
 
 	
 	it finally worked by using ttyACM instead of ttyUSB and the baudrate of 115200 instead of 912600 because it is not connected to the UART3 which is still planned to be in the future but not yet. 
-	mavproxy.py --master=/dev/ttyACM0 --baud 115200 --aircraft MyCopter
+	\lstinline|mavproxy.py --master=/dev/ttyACM0 --baud 115200 --aircraft MyCopter|
 	
 	I might need to implement a autostart of mavproxy later on when trying to fly without the connection to the laptop.
 	
-	was able to arm and disarm the copter via terminal... disabling arming check via param set arming\_check 0 and then arm throttle and afterwards disarm throttle
+	was able to arm and disarm the copter via terminal... disabling arming check via \lstinline|param set arming_check 0| and then arm throttle and afterwards disarm throttle
 	
 	\subsubsection{Dronekit}
 	It needs to be mentionned that the software dronekit is not maintained very well, as it says in the Github repository \cite{dronekitgithub}.
@@ -430,7 +430,7 @@ sorting=ynt
 	\begin{lstlisting}[language=bash]
 		serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyAMA0: [Errno 2] No such file or directory: '/dev/ttyAMA0'
 	\end{lstlisting}
-	it is fixed by setting it to ACM0. Because different on rasppi ACM is for the USB and AMA shortened for AMBA is for the pins? \cite{ttyAMA}
+	it is fixed by setting it to ACM0 or serial0. Because different on rasppi ACM is for the USB and AMA shortened for AMBA is for the pins? \cite{ttyAMA}
 	
 	adding:
 	\begin{lstlisting}[language=python, caption={Python Dronekittest 2}]
@@ -463,6 +463,15 @@ sorting=ynt
 		sudo usermod -a -G dialout $USER
 	\end{lstlisting}
 	which adds dialout so the pins to sudo
+	
+	it works...
+	
+	arming the motors for five seconds
+	\begin{lstlisting}[language=python]
+		vehicle.armed = True
+		time.sleep(5)
+		vehicle.armed = False
+	\end{lstlisting}
 	
 	
 	

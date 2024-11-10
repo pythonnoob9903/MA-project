@@ -1,4 +1,12 @@
 # Documentation
+## Week 4.11-10.11
+1. designing RasperryPi holder(all three parts)
+2. printing the parts and redesign one
+3. soldering longer wires to Fc for the Pi
+4. arming the motors via python script
+5. connecting via serial ports
+
+
 ## Week 28.10-11-3
 1. VNC connection
 2. getting MAvProxy to work
