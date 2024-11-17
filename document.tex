@@ -67,8 +67,13 @@ sorting=ynt
 \newacronym{AIO}{AIO}{all-in-one}
 \newacronym{VTOL}{VTOL}{vertical takeoff and landing}
 \newacronym{GNSS}{GNSS}{global navigation satellite system}
-\newacronym{label}{abbrv}{long}
+\newacronym{OS}{OS}{operating system}
+\newacronym{SSH}{SSH}{secure shell}
 
+
+\usepackage{tcolorbox}
+\newtcolorbox[auto counter, number within=section]{mybox}[2][]{%
+	title=Mybox~\thetcbcounter: #2, #1}
 
 % Dokument
 \begin{document}
@@ -141,6 +146,9 @@ sorting=ynt
 	
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
 	There are two different kinds of GNSS\footnote{The GNSS is usually referred to as GPS even though GPS is only the American GNSS system} modules the normal GPS/Compass boards and real time kinematic(RTK) GPS. Usually the chips used in both the RTK GPS and the normal GPS are from Ublox. The RTK GPS can achieve a accuracy of 1cm by incorporating information correction data from a RTCM, short for radio technical commision for maritime\footnote{It was first used for the positions of boats and other vessels}. However the correction data is either subscription based, is not guaranteed to cover all of the area or you need to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it is also not worth it to have a RTK GPS that costs several hundred Franks instead of a GPS with a 2m CEP which costs less than 30 Franks. Some of the GPS units also have a compass built-in so you will not need to buy an extra compass when using ArduPilot. 
+	\begin{tcolorbox}[]
+		Hallo
+	\end{tcolorbox}
 	% TODO Explanation box for CEP
 	% TODO better description of the Ublox chip
 	
@@ -334,6 +342,15 @@ sorting=ynt
 	After adjusting them via the intial tuning parameter quick adjustment settings the drone flew. But when I put the stick left the drone flew right and vice versa. I was able to put the \lstinline|RC2_Reversed| to 1, which reversed the controls. 
 	
 	\subsubsection{RaspberryPi Setup}
+	
+	To let the drone fly on its own a companion computer is needed, because the \ref{Fc} does not have enough power to process more complex operations as autonomous flight.
+	
+	Choosing the RaspberryPi instead of an other companion computer is advisable, due to it being the most used in drone projects.
+	
+	The RaspberryPi is not shipped with an microSD card and through that also not with the \ref{OS}. To download the \ref{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the wifi and the possibility for the \ref{SSH} connection. 
+	% TODO explanaition box OS
+	
+	
 	downloading RaspberryPi software onto Sd card, putting it into the pi
 	getting ssh connection
 	trying to get a vnc connection via RealVNC viewer did not work
@@ -362,7 +379,7 @@ sorting=ynt
 	resutling in:
 	\\python3 -m venv mavproxy-env (creates a virtual environement)
 	\\source mavproxy-env/bin/activate (activates the environement)
-	\\pip install MAVProxy works in the environemnt
+	\\pip install MAVProxy (installs MavProxy)works in the environemnt
 	
 	trying to run MAVProxy:
 	\\ mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600 --aircraft MyCopter does not work error: Failed to connect to /dev/ttyUSB0 : [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
@@ -473,6 +490,38 @@ sorting=ynt
 		vehicle.armed = False
 	\end{lstlisting}
 	
+	
+	trying to get a channel value over dronekitpython... does not work
+	
+	seeing it over mavproxy via the status command, but not the rc status
+	
+	is probably a bug in dronekit, might have found the issue in question and a  "solution" for it
+	
+	after a lot of trial and error I got this which works to retrieve a value from the radio
+	\begin{lstlisting}[language=python]
+		from dronekit import connect, VehicleMode
+		import time
+		
+		vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
+		
+		latest_rc_channels = None
+		
+		@vehicle.on_message("RC_CHANNELS")
+		def rc_channel_listener(vehicle, name, message):
+			global latest_rc_channels
+			latest_rc_channels = message
+		
+		def get_rc_channel_value(channel_number):
+			global latest_rc_channels
+			if latest_rc_channels is None:
+				return None
+			channel_value = getattr(latest_rc_channels, f"chan{channel_number}_raw", None)
+			return channel_value
+		
+		while True: 
+			time.sleep(1)
+			print(get_rc_channel_value(6))
+	\end{lstlisting}
 	
 	
 	\section{Results}

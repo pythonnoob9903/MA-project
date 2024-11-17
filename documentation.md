@@ -1,4 +1,7 @@
 # Documentation
+## Week 11.11-17.11
+1. getting the channel value to be able to use in the dronekit script
+2. beginning to write RaspberryPi Setup
 ## Week 4.11-10.11
 1. designing RasperryPi holder(all three parts)
 2. printing the parts and redesign one
