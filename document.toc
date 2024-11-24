@@ -11,25 +11,25 @@
 \contentsline {subsubsection}{\numberline {4.2.4}Battery}{5}{subsubsection.4.2.4}%
 \contentsline {subsubsection}{\numberline {4.2.5}GNSS(Global Navigation Satellite System)/Compass}{6}{subsubsection.4.2.5}%
 \contentsline {subsubsection}{\numberline {4.2.6}Radio/Transmitter}{6}{subsubsection.4.2.6}%
-\contentsline {subsubsection}{\numberline {4.2.7}Smoke Stopper}{7}{subsubsection.4.2.7}%
+\contentsline {subsubsection}{\numberline {4.2.7}Smoke Stopper}{8}{subsubsection.4.2.7}%
 \contentsline {subsubsection}{\numberline {4.2.8}Problems with the Parts}{8}{subsubsection.4.2.8}%
 \contentsline {subsubsection}{\numberline {4.2.9}Propellers and Battery Charger}{8}{subsubsection.4.2.9}%
 \contentsline {subsubsection}{\numberline {4.2.10}Data Transfer Protocols}{8}{subsubsection.4.2.10}%
 \contentsline {subsection}{\numberline {4.3}mechanical work}{8}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}ardupilot}{8}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{8}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{9}{subsubsection.4.4.1}%
 \contentsline {subsubsection}{\numberline {4.4.2}Firmware Installation}{9}{subsubsection.4.4.2}%
 \contentsline {subsubsection}{\numberline {4.4.3}GPS Connection}{9}{subsubsection.4.4.3}%
 \contentsline {subsubsection}{\numberline {4.4.4}Receiver/Transmitter}{11}{subsubsection.4.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.5}Motor Test}{13}{subsubsection.4.4.5}%
+\contentsline {subsubsection}{\numberline {4.4.5}Motor Test}{12}{subsubsection.4.4.5}%
 \contentsline {subsubsection}{\numberline {4.4.6}Compass Calibration}{13}{subsubsection.4.4.6}%
-\contentsline {subsubsection}{\numberline {4.4.7}Road to First Flight}{13}{subsubsection.4.4.7}%
-\contentsline {subsubsection}{\numberline {4.4.8}RaspberryPi Setup}{15}{subsubsection.4.4.8}%
-\contentsline {subsubsection}{\numberline {4.4.9}MavProxy Installation}{15}{subsubsection.4.4.9}%
-\contentsline {subsubsection}{\numberline {4.4.10}Dronekit}{16}{subsubsection.4.4.10}%
-\contentsline {section}{\numberline {5}Results}{19}{section.5}%
-\contentsline {section}{\numberline {6}Discussion and Outlook}{19}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{19}{section.7}%
-\contentsline {section}{\numberline {8}References}{19}{section.8}%
-\contentsline {section}{Bibliography}{19}{section*.11}%
-\contentsline {section}{\numberline {9}Table of Figures}{22}{section.9}%
+\contentsline {subsubsection}{\numberline {4.4.7}Road to First Flight}{14}{subsubsection.4.4.7}%
+\contentsline {subsubsection}{\numberline {4.4.8}RaspberryPi Setup}{16}{subsubsection.4.4.8}%
+\contentsline {subsubsection}{\numberline {4.4.9}MavProxy Installation}{16}{subsubsection.4.4.9}%
+\contentsline {subsubsection}{\numberline {4.4.10}Dronekit}{17}{subsubsection.4.4.10}%
+\contentsline {section}{\numberline {5}Results}{20}{section.5}%
+\contentsline {section}{\numberline {6}Discussion and Outlook}{20}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}%
+\contentsline {section}{\numberline {8}References}{20}{section.8}%
+\contentsline {section}{Bibliography}{20}{section*.11}%
+\contentsline {section}{\numberline {9}Table of Figures}{23}{section.9}%

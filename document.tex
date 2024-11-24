@@ -61,25 +61,31 @@ sorting=ynt
 	citecolor=,
 }
 \usepackage[acronym]{glossaries}
+
 \newacronym{Fc}{Fc}{flight controller}
 \newacronym{ESC}{ESC}{electronic speed controller}
 \newacronym{FPV}{FPV}{first person view}
-\newacronym{AIO}{AIO}{all-in-one}
 \newacronym{VTOL}{VTOL}{vertical takeoff and landing}
 \newacronym{GNSS}{GNSS}{global navigation satellite system}
+\newacronym{GPS}{GPS}{global positioning system}
 \newacronym{OS}{OS}{operating system}
 \newacronym{SSH}{SSH}{secure shell}
+\newacronym{DFU}{DFU}{device firmware updgrad}
+\newacronym{PID}{PID}{proportional, integral, derivative}
+\newacronym{AIO}{AIO}{All-in-One}
+\newacronym{CEP}{CEP}{circular error probable}
 
 
 \usepackage{tcolorbox}
-\newtcolorbox[auto counter, number within=section]{mybox}[2][]{%
-	title=Mybox~\thetcbcounter: #2, #1}
-
+\newtcolorbox[auto counter, number within=section]{Explanation}[2][]{%
+	title=Explanation~\thetcbcounter: #1, colframe=blue!30, 
+	coltitle= white}
 % Dokument
 \begin{document}
 \maketitle
 \tableofcontents
 \pagebreak
+
 	\section{Introduction}
 	% TODO introduction
 	% do at the end of the writing process
@@ -108,15 +114,18 @@ sorting=ynt
 	\subsection{Drone Overview}
 	If you want to fly a drone you have two options available either you buy one or you built one. The second option is for people who are interested in tinkering with their electronics until they work, not only the better option but also the cheaper one.
 	
-	The main parts needed for a drone are the flight controller, the electronic speed controller, the receiver, the battery, servos and of course the frame, in addition you can also add a GPS, LEDs and more. The flight controller and electronic speed controller are referred to as Fc and ESC. The Fc runs the chosen software and controls every other part in one way or another. It is directly connected to the ESC, which controls the motors and is connected to the battery. The Fc also communicates with the receiver and GPS if there is one. In my case there will also a RaspberryPi which also connects to the Fc.
+	The main parts needed for a drone are the \gls{Fc}, the \gls{ESC}, the receiver, the battery, servos and of course the frame, in addition you can also add a \gls{GPS}, LEDs and more. The flight controller and electronic speed controller are referred to as \gls{Fc} and ESC. The \gls{Fc} runs the chosen software and controls every other part in one way or another. It is directly connected to the \gls{ESC}, which controls the motors and is connected to the battery. The \gls{Fc} also communicates with the receiver and \gls{GPS} if there is one. In my case there will also a RaspberryPi which also connects to the \gls{Fc}.
 	% TODO add a graphic which illustrates the connection between the parts
 	  
 	\subsection{parts}
 	
 	\subsubsection[Fc]{Flight Controller}
-	There are two different kind of flight controller the All-in-one(AIO) and just a Fc. The AIO is not only a Fc but also the ESC in one board. This has the advantage of only needing one board instead of two or five. However if only parts of the ESC or the Fc are damaged you need to replace the whole board which is more expensive than replacing only the Fc or ESC. 
+	There are two different kind of flight controller the \gls{AIO} and just a \gls{Fc}. The \gls{AIO} is not only a \gls{Fc} but also the \gls{ESC} in one board. This has the advantage of only needing one board instead of two or five. However if only parts of the \gls{ESC} or the \gls{Fc} are damaged you need to replace the whole board which is more expensive than replacing only the \gls{Fc} or \gls{ESC}. 
 	
-	Betaflight and INAV both support a wide variety of Fcs compared to Ardupilot which is only supporting a very specific sample of boards\cite{FcSupport}. They have the option of open and closed hardware. Because the open hardware Fcs are quite expensive, so I decided to go with a closed one. The chip used in Fcs is usually a STM32. There are multiple generations of it the mainly used ones are F4, F7 and H7. The F7 and H7 are much faster than the F4 chips so the decision was not that difficult to make. I then decided to go with the Kakute H7 v1.3 (MPU6000)\cite{KakuteH7} from Holybro, because it was ok in the price and available as a stack. It comes shipped with Betaflight so I will need to flash Ardupilot. 
+	Betaflight and INAV both support a wide variety of \gls{Fc}s compared to Ardupilot which is only supporting a very specific sample of boards\cite{FcSupport}. They have the option of open and closed hardware. Because the open hardware \gls{Fc}s are quite expensive, so I decided to go with a closed one. The chip used in \gls{Fc}s is usually a STM32. There are multiple generations of it the mainly used ones are F4, F7 and H7. The F7 and H7 are much faster than the F4 chips so the decision was not that difficult to make. I then decided to go with the Kakute H7 v1.3 (MPU6000)\cite{KakuteH7} from Holybro, because it was ok in the price and available as a stack. It comes shipped with Betaflight so I will need to flash Ardupilot. 
+
+	% TODO \gls from now on
+
 
 	\subsubsection[ESC]{Electronic Speed Controler}
 	There are two different kind of ESCs, 4in1 and single ESCs. If you use single ESCs you will need one for each motor instead of a single board for all of them. The advantage of 4in1 ESCs is that you do not need a power distribution board, because it is already incorporated in the ESC, and that it can come in a stack. A stack is a Fc and ESC mounted on top of each other. It normally comes with stack screws. The disadvantage is that if a part of the ESC is damaged you need to replace the whole board. What needs to be looked upon buying a ESC is that the peak current of the motor is not higher than the burst current of the ESC, because it could damage a two high current could damage the ESC.
@@ -145,11 +154,11 @@ sorting=ynt
 	I first wanted to buy two Li-ion battery packs, however they are hard to get and much more expensive. The other option would have been to solder them together myself, but it requires some soldering skill, which I did not have then. So I decided to go with 4S LiPo batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I want something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress from where I got all the other components, so it seemed to be easier to also chose a battery from there. 
 	
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
-	There are two different kinds of GNSS\footnote{The GNSS is usually referred to as GPS even though GPS is only the American GNSS system} modules the normal GPS/Compass boards and real time kinematic(RTK) GPS. Usually the chips used in both the RTK GPS and the normal GPS are from Ublox. The RTK GPS can achieve a accuracy of 1cm by incorporating information correction data from a RTCM, short for radio technical commision for maritime\footnote{It was first used for the positions of boats and other vessels}. However the correction data is either subscription based, is not guaranteed to cover all of the area or you need to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it is also not worth it to have a RTK GPS that costs several hundred Franks instead of a GPS with a 2m CEP which costs less than 30 Franks. Some of the GPS units also have a compass built-in so you will not need to buy an extra compass when using ArduPilot. 
-	\begin{tcolorbox}[]
-		Hallo
-	\end{tcolorbox}
-	% TODO Explanation box for CEP
+	There are two different kinds of GNSS\footnote{The GNSS is usually referred to as GPS even though GPS is only the American GNSS system} modules the normal GPS/Compass boards and real time kinematic(RTK) GPS. Usually the chips used in both the RTK GPS and the normal GPS are from Ublox. The RTK GPS can achieve a accuracy of 1cm by incorporating information correction data from a RTCM, short for radio technical commision for maritime\footnote{It was first used for the positions of boats and other vessels}. However the correction data is either subscription based, is not guaranteed to cover all of the area or you need to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it is also not worth it to have a RTK GPS that costs several hundred Franks instead of a GPS with a 2m \gls{CEP} which costs less than 30 Franks. Some of the GPS units also have a compass built-in so you will not need to buy an extra compass when using ArduPilot. 
+	\begin{Explanation}[circular error probable (CEP)]
+		The \gls{CEP} refers to how close to the real value the \gls{GPS} normally is. So if a \gls{GPS} has a \gls{CEP}
+		of 2m it is normally in the range of 2 meters of the correct value. \cite{CEP}
+	\end{Explanation}
 	% TODO better description of the Ublox chip
 	
 	I chose the Holybro Micro M10 GPS\cite{holybrom10micro}, because it comes from the same brand as the Fc and will be easier to connect. In addition to that the M10 chip is the newest version of Ublox chips and it would be senseless to buy an older version. It also is at least as good as other better-known GPS as the Matek M10Q\cite{gpstest} and comes with a built-in compass that is needed for ArduPilot.
@@ -158,9 +167,11 @@ sorting=ynt
 	The following information about transmitter protocols is based on two videos\cite{transprotocols}\cite{mlrs}.
 	% TODO explain difference between 900MHz and 2.4 GHz
 	% TODO explain latency and range in the beginning of subsubsection
+	% TODO delete uneccessary radio protocols
+	% TODO i don't know something, forgot...
 	\subsubsection*{FrSky}
 	There are three FrSky protocols that are not compatible with each other ACCST, ACCESS and FrSky R9 ACCESS. ACCST has a range of around 1-2 km in open air. The firmware is built into almost all radios. It has a good latency but not as good as the other options. ACCESS is the successor to ACCST and has about the same range, but a lower latency, however not a class leading one. FrSky R9 ACCCESS gives you a range of over 50km in ideal condition. Unfortunately, the FrSky ACCESS porotcols are only supported by FrSky radios. There is one problem with FrSky. It is quite a difficult to manage, because of the three protocols that are not compatible with each other.
-	% TODO Latency box
+
 	\subsubsection*{TBS Crossfire/Tracer and Immersion RC Ghost}
 	TBS Crossfire has a range of over 100km and is easy to use. It is also well tested and stable and has a good latency. 
 	TBS Tracer can have also over 10km, but drains the battery when flying further away. It is more focused on racing due to the low-latency.
@@ -207,14 +218,16 @@ sorting=ynt
 	
 	The most widely used GCS is Mission Planner(MP)\cite{MissionPlanner} it is widely used, but runs only on Windows and Mac OS. It also has a wiki which helps you install it. I will use it for the first-time configuration of my drone. 
 	
-	Another GCS is MavProxy it is based on Python and is only for the Linux operation system(OS). Which is the OS I will have on my RaspberryPi companion computer. 
-	
-	There is also QGroundContrlol which is unique, because it supports next to Windows, Mac OS and Linux also Android and IOS.
+	Another GCS is MavProxy it is based on Python and is only for the Linux operation system(OS). Which is the OS I will use on the RaspberryPi companion computer. 
 
 	\subsubsection{Firmware Installation}
 	
-	For the first time installation I need to flash the Kakute H7 with ArduPilot, because it is shipped with Betaflight as mentioned earlier on. For that I downloaded the ArduPilot firmware\cite{ArduPilotFirmware} for the Kakute H7. Afterwards the STM32CubeProgrammer\cite{STM32CubeProgrammer}, to flash the firmware onto the Fc. I connected the Fc in DFU mode directly with the computer using a USB cable. Then selected the USB port with which the Fc is connected and flashed the Fc. A reboot to get out of the DFU mode was required before connecting the Fc to MP and saw the first Yaw measurements. The progress of flashing the firmware was straight forward which will not be the case for the rest of the configuration. 
+	For the first time installation I need to flash the Kakute H7 with ArduPilot, because it is shipped with Betaflight as mentioned earlier on. For that I downloaded the ArduPilot firmware\cite{ArduPilotFirmware} for the Kakute H7. Afterwards the STM32CubeProgrammer\cite{STM32CubeProgrammer}, to flash the firmware onto the Fc. I connected the Fc in \gls{DFU} mode directly with the computer using a USB cable. Then selected the USB port with which the Fc is connected and flashed the Fc. A reboot to get out of the DFU mode was required before connecting the Fc to MP and saw the first Yaw measurements. The progress of flashing the firmware was straight forward which will not be the case for the rest of the configuration. 
 	% TODO add an explanation box for the DFU mode.
+	\begin{Explanation}[device firmware upgrade (DFU)]% no \gls because it looks bad in the text box
+		The \gls{DFU} mode is the mode, which allows the user to upload new firmware to the \gls{Fc}. It is normally accessible through a button which needs to be pressed, while connecting the battery. 
+
+	\end{Explanation}
 
 \begin{figure}[h]
 	\centering
@@ -326,6 +339,9 @@ sorting=ynt
 	\subsubsection{Road to First Flight}
 	All prearm checks are gone except the occasional magfield variance error(it disapeared completely after being able to calibrate the compass normally), which went away after positioning the drone further away from the computer. To arm
 	% TODO explanation box of arm
+	\begin{Explanation}[to arm]
+		
+	\end{Explanation}
 	the drone I still needed to assign a switch on the radio. I did that by setting \lstinline|RC5_Option| to 153 which means to arm the drone when I flick the switch number 5. Even though there was no prearm check that failed I was not able to arm the drone, also when I disabled the parameter \lstinline|Arming_Check| it did not work. The Fc still rejected the force arm command from MP. The command however does not disable the geofence which I enabled some when earlier. I disabled it and was able to test the motors spinning on my bench. When I tried it with blades one of them hit one of the antennas from the receiver and tear it off. I was able to just attach it, but I'm not one hundred percent sure that this antenna is working. After this little hiccup a new prearm error appeared, crashdump bin detected. It comes from crashes with your drone to analyze what went wrong. 
 	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check|. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post\cite{blogcrashdump} I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc. I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. It is also advisable to turn off beacon delay, when working on the bench, because it lets the motors beep after 10 minutes of being unused.
 	% TODO explain beacon delay, find out for what it is good, probably to locate a crashed drone
@@ -337,8 +353,11 @@ sorting=ynt
 	\label{fig:quadx}
 \end{figure}
 
-	After arming the quad and pushing the throttle I was able to get the drone to fly, but it was shaking violently also known as wobbling and then somewhat crashed it into the ground causing the props to get minimal damage. I tried to tighten everything on the drone, because until that point everything was just somewhat loosely taped onto it, the wobbling still continued. Trying new and also the other props, as there could be a prop imbalance that causes the drone to wobble, had no effect. Through a video\cite{dronewobblevideo} about drone wobbling I came to the conclusion that my PID values are for a 9 inch drone not a 5 inch drone. 
+	After arming the quad and pushing the throttle I was able to get the drone to fly, but it was shaking violently also known as wobbling and then somewhat crashed it into the ground causing the props to get minimal damage. I tried to tighten everything on the drone, because until that point everything was just somewhat loosely taped onto it, the wobbling still continued. Trying new and also the other props, as there could be a prop imbalance that causes the drone to wobble, had no effect. Through a video\cite{dronewobblevideo} about drone wobbling I came to the conclusion that my \gls{PID} values are for a 9 inch drone not a 5 inch drone. 
 	%TODO explanation box for PID
+	\begin{Explanation}[{{proportional, integral, derivative (PID)}}]
+		
+	\end{Explanation}
 	After adjusting them via the intial tuning parameter quick adjustment settings the drone flew. But when I put the stick left the drone flew right and vice versa. I was able to put the \lstinline|RC2_Reversed| to 1, which reversed the controls. 
 	
 	\subsubsection{RaspberryPi Setup}
@@ -347,9 +366,11 @@ sorting=ynt
 	
 	Choosing the RaspberryPi instead of an other companion computer is advisable, due to it being the most used in drone projects.
 	
-	The RaspberryPi is not shipped with an microSD card and through that also not with the \ref{OS}. To download the \ref{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the wifi and the possibility for the \ref{SSH} connection. 
+	The RaspberryPi is not shipped with an microSD card and through that also not with the \gls{OS}. To download the \gls{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the wifi and the possibility for the \gls{SSH} connection. 
 	% TODO explanaition box OS
-	
+	\begin{Explanation}[operating system(OS)]
+
+	\end{Explanation}
 	
 	downloading RaspberryPi software onto Sd card, putting it into the pi
 	getting ssh connection
