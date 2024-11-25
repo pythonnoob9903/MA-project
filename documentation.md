@@ -1,9 +1,12 @@
 # Documentation
+## Week 25.11-1.12
+1. 
 ## Week 18.11-24.11
 1. getting glossary and tcolorbox to work
 2. beginning to program drone
 3. getting github to work on RaspberryPi
 4. adding the dronekittest.py document to github
+5. adding flowchart comments to dronekittest.py
 
 ## Week 11.11-17.11
 1. getting the channel value to be able to use in the dronekit script

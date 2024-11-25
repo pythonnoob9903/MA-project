@@ -1,5 +1,10 @@
 from dronekit import connect, VehicleMode
 import time
+from coordinatesreadtest import *
+
+Xcord = getcords()[0]
+Ycord = getcords()[1]
+Zcord = getcords()[2]
 
 vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
 
@@ -25,16 +30,19 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		return True
 
 while radiocontrol() is True: 
-	# set home point with intitial GPS data  
-	# read a file to set a target array
+	# set home point with intitial GPS data--> is already set when arming the drone
+	# read a file to set a target array(use a flat file with only ascii informations probably .txt)
 	# set target from the array(list or dict)
+	vehicle.armed = True
 	# read the sensors/GPS
+	radiocontrol()
 	# control interrupt(radiocontrol())
+	
 	# look up the direction the drone is facing
 	# get difference in current GPS and target
 	# check interrupt
 	# adjust height
-	# set mode to loiter
+	# set mode to loiter --> just to keep the height(probably not loiter)
 	# fly in direction for a short period and try last step again
 	# if target distance achieved--> check if it is the last target if no: go to next target else repeat
 	# if last target: interrupt
