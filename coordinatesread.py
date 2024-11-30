@@ -1,4 +1,5 @@
 from pathlib import Path
+import math
 def getcords():
     p = Path(__file__).with_name('coordinates.txt')
 
@@ -21,3 +22,17 @@ def getcords():
         Ycord += [lines[i][counter1+1:counter2]]
         Zcord += [lines[i][counter2+1:-1]]
     return Xcord, Ycord, Zcord
+
+
+def meters_to_coordinates(Xcord, Ycord): # converts coordinates in meters to coordinates in degrees with the global frame in connection to the home_location
+    home_location = vehicle.home_location 
+    newXcord = []
+    newYcord = []
+    for i in range(len(Xcord)):
+        earth_radius = 6378137.0
+        changeX = home_location.lat + math.degrees(int(Xcord[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
+        changeY = home_location.lon + math.degrees(int(Ycord[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
+        newXcord += [changeX]
+        newYcord += [changeY]
+    
+    return newXcord, newYcord

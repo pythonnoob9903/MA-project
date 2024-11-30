@@ -1,17 +1,18 @@
-from dronekit import connect, VehicleMode
+from dronekit import connect, VehicleMode, LocationGlobalRelative
 import time
 from coordinatesreadtest import *
+import math
 
-Xcord = getcords()[0]
-Ycord = getcords()[1]
+Xcord = meters_to_coordinates(getcords()[0], getcords()[1])[0]
+Ycord = meters_to_coordinates(getcords()[0], getcords()[1])[1]
 Zcord = getcords()[2]
 
 vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
 
 latest_rc_channels = None
 
-@vehicle.on_message("RC_CHANNELS")
-def rc_channel_listener(vehicle, name, message):
+@vehicle.on_message("RC_CHANNELS") # listens to the RC_Channels
+def rc_channel_listener(vehicle, name, message): 
 	global latest_rc_channels
 	latest_rc_channels = message
 
@@ -31,11 +32,18 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 
 while radiocontrol() is True: 
 	# set home point with intitial GPS data--> is already set when arming the drone
-	# read a file to set a target array(use a flat file with only ascii informations probably .txt)
+	# read a file to set a target array(use a flat file with only ascii informations probably .txt) --> done by coordinatesread.py
 	# set target from the array(list or dict)
 	vehicle.armed = True
-	# read the sensors/GPS
 	radiocontrol()
+	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0])
+	# read the sensors/GPS
+	vehicle.mode = VehicleMode("GUIDED") # sets the vehicle mode to guided to be used with the vehicle.simple_goto
+	vehicle.simple_takeoff(Zcord)
+	radiocontrol()
+	vehicle.simple_goto(target)
+	vehicle.mode = VehicleMode("LOITER")
+	time.sleep(1)
 	# control interrupt(radiocontrol())
 	
 	# look up the direction the drone is facing
