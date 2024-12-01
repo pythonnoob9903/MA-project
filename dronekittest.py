@@ -1,13 +1,15 @@
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 import time
-from coordinatesreadtest import *
+from coordinatesread import *
 import math
 
-Xcord = meters_to_coordinates(getcords()[0], getcords()[1])[0]
-Ycord = meters_to_coordinates(getcords()[0], getcords()[1])[1]
+vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
+
+
+Xcord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[0]
+Ycord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[1]
 Zcord = getcords()[2]
 
-vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
 
 latest_rc_channels = None
 
@@ -29,7 +31,8 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		return False
 	else:
 		return True
-
+print(vehicle.battery)
+vehicle.parameters['ARMING_CHECK'] = 1
 while radiocontrol() is True: 
 	# set home point with intitial GPS data--> is already set when arming the drone
 	# read a file to set a target array(use a flat file with only ascii informations probably .txt) --> done by coordinatesread.py
