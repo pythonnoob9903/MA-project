@@ -1,6 +1,8 @@
 # Documentation
 ## Week 25.11-1.12
-1. 
+1. meters to coordinates convertion
+2. getting the VNC to work with my hotspot(I have no idea why it took so long)
+3. my code needs more fault proofing before I can testfly
 ## Week 18.11-24.11
 1. getting glossary and tcolorbox to work
 2. beginning to program drone
