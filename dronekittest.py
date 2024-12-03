@@ -6,10 +6,6 @@ import math
 vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
 
 
-Xcord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[0]
-Ycord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[1]
-Zcord = getcords()[2]
-
 
 latest_rc_channels = None
 
@@ -40,6 +36,9 @@ while radiocontrol():
 		time.sleep(1)
 
 	setup()
+	Xcord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[0]
+	Ycord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[1]
+	Zcord = getcords()[2]
 
 	radiocontrol()
 
@@ -57,7 +56,7 @@ while radiocontrol():
 			print("Heigth reached")
 			break
 		time.sleep(1)
-	
+        	
 	radiocontrol()
 
 	vehicle.simple_goto(target)
@@ -70,7 +69,7 @@ while radiocontrol():
 		print("Vehicle mode is not yet Loiter")
 		time.sleep(1) 
 	time.sleep(1)
-	return 
+	break 
 	# control interrupt(radiocontrol())
 	
 	# look up the direction the drone is facing

@@ -1,6 +1,6 @@
 from pathlib import Path
 import math
-
+import time
 def getcords():
     p = Path(__file__).with_name('coordinates.txt')
 
@@ -30,7 +30,9 @@ def meters_to_coordinates(Xcord, Ycord, vehicle): # converts coordinates in mete
 
     home_location = vehicle.home_location 
     if not home_location:
-        raise ValueError("No home location")
+        print("Waiting for home location to be set")
+    while not home_location:
+        time.sleep()
 
     newXcord = []
     newYcord = []
