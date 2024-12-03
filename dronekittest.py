@@ -30,29 +30,47 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		print('Giving back control to radio')
 		return False
 	else:
+		print("control stays autonomous")
 		return True
+
 print(vehicle.battery)
 vehicle.parameters['ARMING_CHECK'] = 1
-while radiocontrol() is True: 
+while radiocontrol(): 
 	while checks() is False:
 		time.sleep(1)
-	# set home point with intitial GPS data--> is already set when arming the drone
-	# read a file to set a target array(use a flat file with only ascii informations probably .txt) --> done by coordinatesread.py
-	# set target from the array(list or dict)
+
 	setup()
+
 	radiocontrol()
+
 	if checks() is False:
+		print("Arming Checks failed midflight setting mode to loiter.")
+		vehicle.mode = VehicleMode["LOITER"]
 		break
+
 	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0])
-	# read the sensors/GPS
 	vehicle.mode = VehicleMode("GUIDED") # sets the vehicle mode to guided to be used with the vehicle.simple_goto
+	
 	vehicle.simple_takeoff(Zcord)
+	while True:
+		if vehicle.location.global_relative_frame.alt >= Zcord -0.1:
+			print("Heigth reached")
+			break
+		time.sleep(1)
+	
 	radiocontrol()
-	if checks() is False:
-		break
+
 	vehicle.simple_goto(target)
+
+	time.sleep(3)
+	
 	vehicle.mode = VehicleMode("LOITER")
+	while not vehicle.mode.name == "LOITER":
+		radiocontrol()
+		print("Vehicle mode is not yet Loiter")
+		time.sleep(1) 
 	time.sleep(1)
+	return 
 	# control interrupt(radiocontrol())
 	
 	# look up the direction the drone is facing

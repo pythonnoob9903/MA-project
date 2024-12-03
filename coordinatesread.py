@@ -43,13 +43,20 @@ def meters_to_coordinates(Xcord, Ycord, vehicle): # converts coordinates in mete
     
     return newXcord, newYcord
 
-def setup():
+def setup(): #sets up the initial variables for flight
+    print("Initial mode and groundspeed set/vehicle armed.")
     vehicle.groundspeed = 1
     vehicle.mode = VehicleMode("GUIDED")
+    while not vehicle.mode.name == "GUIDED":
+        print("Not in Guided mode")
+        time.sleep(1)
+    vehicle.parameters["PILOT_SPEED_UP"] = 50
     vehicle.armed = True
 
-def checks():
+def checks(): #checks arming checks and can stall the while loop if it fails.
     vehicle.parameters["ARMING_CHECK"] = 1
     if vehicle.is_armable is True:
+        print("Vehicle is armable.")
         return True
+    print("Vehicle failed Arming_checks")
     return False
