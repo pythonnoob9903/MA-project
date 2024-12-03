@@ -42,3 +42,14 @@ def meters_to_coordinates(Xcord, Ycord, vehicle): # converts coordinates in mete
         newYcord += [changeY]
     
     return newXcord, newYcord
+
+def setup():
+    vehicle.groundspeed = 1
+    vehicle.mode = VehicleMode("GUIDED")
+    vehicle.armed = True
+
+def checks():
+    vehicle.parameters["ARMING_CHECK"] = 1
+    if vehicle.is_armable is True:
+        return True
+    return False

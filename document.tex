@@ -76,7 +76,7 @@ sorting=ynt
 \newacronym{CEP}{CEP}{circular error probable}
 \newacronym{LiPo}{LiPo}{lithium polymere}
 \newacronym{Li-ion}{Li-ion}{lithium-ion}
-
+\newacronym{VNC}{VNC}{virtual network computing}
 
 \usepackage{tcolorbox}
 \newtcolorbox[auto counter, number within=section]{Explanation}[2][]{%
@@ -160,7 +160,7 @@ sorting=ynt
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
 	There are two different kinds of GNSS\footnote{The GNSS is usually referred to as GPS even though GPS is only the American GNSS system} modules the normal GPS/Compass boards and real time kinematic(RTK) GPS. Usually the chips used in both the RTK GPS and the normal GPS are from Ublox. The RTK GPS can achieve a accuracy of 1cm by incorporating information correction data from a RTCM, short for radio technical commision for maritime\footnote{It was first used for the positions of boats and other vessels}. However the correction data is either subscription based, is not guaranteed to cover all of the area or you need to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it is also not worth it to have a RTK GPS that costs several hundred Franks instead of a GPS with a 2m \gls{CEP} which costs less than 30 Franks. Some of the GPS units also have a compass built-in so you will not need to buy an extra compass when using ArduPilot. 
 	\begin{Explanation}[circular error probable (CEP)]
-		The \gls{CEP} refers to how close to the real value the \gls{GPS} normally is. So if a \gls{GPS} has a \gls{CEP}
+		\item The \gls{CEP} refers to how close to the real value the \gls{GPS} normally is. So if a \gls{GPS} has a \gls{CEP}
 		of 2m it is normally in the range of 2 meters of the correct value. \cite{CEP}
 	\end{Explanation}
 	% TODO better description of the Ublox chip
@@ -229,7 +229,7 @@ sorting=ynt
 	For the first time installation I need to flash the Kakute H7 with ArduPilot, because it is shipped with Betaflight as mentioned earlier on. For that I downloaded the ArduPilot firmware\cite{ArduPilotFirmware} for the Kakute H7. Afterwards the STM32CubeProgrammer\cite{STM32CubeProgrammer}, to flash the firmware onto the Fc. I connected the Fc in \gls{DFU} mode directly with the computer using a USB cable. Then selected the USB port with which the Fc is connected and flashed the Fc. A reboot to get out of the DFU mode was required before connecting the Fc to MP and saw the first Yaw measurements. The progress of flashing the firmware was straight forward which will not be the case for the rest of the configuration. 
 	% TODO add an explanation box for the DFU mode.
 	\begin{Explanation}[device firmware upgrade (DFU)]% no \gls because it looks bad in the text box
-		The \gls{DFU} mode is the mode, which allows the user to upload new firmware to the \gls{Fc}. It is normally accessible through a button which needs to be pressed, while connecting the battery. 
+		\item The \gls{DFU} mode is the mode, which allows the user to upload new firmware to the \gls{Fc}. It is normally accessible through a button which needs to be pressed, while connecting the battery. 
 
 	\end{Explanation}
 
@@ -344,7 +344,7 @@ sorting=ynt
 	All prearm checks are gone except the occasional magfield variance error(it disapeared completely after being able to calibrate the compass normally), which went away after positioning the drone further away from the computer. To arm
 	% TODO explanation box of arm
 	\begin{Explanation}[to arm]
-		
+		\item To arm a drone means that the motors begin to spin without producing enough thrust to lift the drone from the ground. It is done when you want to fly before the actual flight.		
 	\end{Explanation}
 	the drone I still needed to assign a switch on the radio. I did that by setting \lstinline|RC5_Option| to 153 which means to arm the drone when I flick the switch number 5. Even though there was no prearm check that failed I was not able to arm the drone, also when I disabled the parameter \lstinline|Arming_Check| it did not work. The Fc still rejected the force arm command from MP. The command however does not disable the geofence which I enabled some when earlier. I disabled it and was able to test the motors spinning on my bench. When I tried it with blades one of them hit one of the antennas from the receiver and tear it off. I was able to just attach it, but I'm not one hundred percent sure that this antenna is working. After this little hiccup a new prearm error appeared, crashdump bin detected. It comes from crashes with your drone to analyze what went wrong. 
 	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check|. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post\cite{blogcrashdump} I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc. I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. It is also advisable to turn off beacon delay, when working on the bench, because it lets the motors beep after 10 minutes of being unused.
@@ -360,7 +360,7 @@ sorting=ynt
 	After arming the quad and pushing the throttle I was able to get the drone to fly, but it was shaking violently also known as wobbling and then somewhat crashed it into the ground causing the props to get minimal damage. I tried to tighten everything on the drone, because until that point everything was just somewhat loosely taped onto it, the wobbling still continued. Trying new and also the other props, as there could be a prop imbalance that causes the drone to wobble, had no effect. Through a video\cite{dronewobblevideo} about drone wobbling I came to the conclusion that my \gls{PID} values are for a 9 inch drone not a 5 inch drone. 
 	%TODO explanation box for PID
 	\begin{Explanation}[{{proportional, integral, derivative (PID)}}]
-		
+		\item The \gls{PID} refers to three variables who control the error adjusting system in a drone. With error is meant the difference between how much the motors rotate and how much they should rotate. 
 	\end{Explanation}
 	After adjusting them via the intial tuning parameter quick adjustment settings the drone flew. But when I put the stick left the drone flew right and vice versa. I was able to put the \lstinline|RC2_Reversed| to 1, which reversed the controls. 
 	
@@ -373,39 +373,30 @@ sorting=ynt
 	The RaspberryPi is not shipped with an microSD card and through that also not with the \gls{OS}. To download the \gls{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the wifi and the possibility for the \gls{SSH} connection. 
 	% TODO explanaition box OS
 	\begin{Explanation}[operating system(OS)]
-
+		\item A \gls{OS} is a software, which controls all the hardware of a computer.
 	\end{Explanation}
 	
-	downloading RaspberryPi software onto Sd card, putting it into the pi
-	getting ssh connection
-	trying to get a vnc connection via RealVNC viewer did not work
-	works now via through the help of the website: \cite{ionisvnctutorial} 
-	note realvnc-vnc-viewer is not required, because you only want to see the raspPi and the raspPi does not need to see a VNC itself.
+	To see a desktop instead of only a command line based interface with an \gls{SSH} a \gls{VNC} is used. In this case the recommended option was RealVNC viewer a widely spread \gls{VNC}. For this RealVNC server needs to be installed over the terminal via \lstinline|sudo apt-get realvnc-vnc-server| \cite{ionisvnctutorial}\footnote{realvnc-vnc-viewer only required if you want to see a VNC from the RaspberryPi}.
+	
 	\subsubsection{MavProxy Installation}
-	The following was based on the MavProxy Documentation \cite{MavProxydocs} from the ArduPilot website
+	The following was based on the MavProxy Documentation \cite{MavProxydocs} from the ArduPilot website.
 	
-	downloading all the packages: sudo apt-get install python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame
-	
-	and this via pipx instead of pip3:pip3 install PyYAML
-	and separately again: mavproxy
-	
-	After trying mavproxy.py --master=/dev/ttyUSB0 i got the:
-	WARNING: You should uninstall ModemManager as it conflicts with APM and Pixhawk
-	
-	sudo apt-get remove modemmanager ...
-	
-	Bash: mavproxy.py: command not found
-	
-	nothing worked for three hours...
-
-	pip3 install MAVProxy--> did not work error: externally-managed-environement
-	
-	
-	resutling in:
-	\\python3 -m venv mavproxy-env (creates a virtual environement)
-	\\source mavproxy-env/bin/activate (activates the environement)
-	\\pip install MAVProxy (installs MavProxy)works in the environemnt
-	
+	First all the needed packages need to be installed through the \lstinline|sudo apt-get install| command. 
+	\begin{lstlisting}
+		sudo apt-get install python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame
+		pip3 install PyYAML
+	\end{lstlisting}
+	What is not said in the MavProxy Documentation, is that you need a virtual environment and can not download it without one or the this error; \lstinline|error: externally-managed-environment| pops up. To get around this issue you need to create and activate a virtual environment.
+	\begin{lstlisting}[language=bash]
+		python3 -m venv mavproxy-env
+		source mavproxy-env/bin/activate
+		pip install MAVProxy
+	\end{lstlisting} 
+	While trying to connect to the drone over MAVProxy via \lstinline|mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600 --aircraft MyCopter| a new error appeared. 
+	\begin{lstlisting}
+		Failed to connect to /dev/ttyUSB0 : [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+	\end{lstlisting}
+	However with the \lstinline|dmesg | tail|
 	trying to run MAVProxy:
 	\\ mavproxy.py --master=/dev/ttyUSB0 --baudrate 921600 --aircraft MyCopter does not work error: Failed to connect to /dev/ttyUSB0 : [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
 	

@@ -34,16 +34,22 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 print(vehicle.battery)
 vehicle.parameters['ARMING_CHECK'] = 1
 while radiocontrol() is True: 
+	while checks() is False:
+		time.sleep(1)
 	# set home point with intitial GPS data--> is already set when arming the drone
 	# read a file to set a target array(use a flat file with only ascii informations probably .txt) --> done by coordinatesread.py
 	# set target from the array(list or dict)
-	vehicle.armed = True
+	setup()
 	radiocontrol()
+	if checks() is False:
+		break
 	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0])
 	# read the sensors/GPS
 	vehicle.mode = VehicleMode("GUIDED") # sets the vehicle mode to guided to be used with the vehicle.simple_goto
 	vehicle.simple_takeoff(Zcord)
 	radiocontrol()
+	if checks() is False:
+		break
 	vehicle.simple_goto(target)
 	vehicle.mode = VehicleMode("LOITER")
 	time.sleep(1)
