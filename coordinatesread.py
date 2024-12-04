@@ -1,6 +1,8 @@
 from pathlib import Path
 import math
 import time
+
+
 def getcords():
     p = Path(__file__).with_name('coordinates.txt')
 
@@ -45,20 +47,24 @@ def meters_to_coordinates(Xcord, Ycord, vehicle): # converts coordinates in mete
     
     return newXcord, newYcord
 
-def setup(): #sets up the initial variables for flight
+def setup(vehicle): #sets up the initial variables for flight
     print("Initial mode and groundspeed set/vehicle armed.")
     vehicle.groundspeed = 1
     vehicle.mode = VehicleMode("GUIDED")
     while not vehicle.mode.name == "GUIDED":
         print("Not in Guided mode")
-        time.sleep(1)
     vehicle.parameters["PILOT_SPEED_UP"] = 50
     vehicle.armed = True
 
-def checks(): #checks arming checks and can stall the while loop if it fails.
-    vehicle.parameters["ARMING_CHECK"] = 1
+def checks(vehicle): #checks arming checks and can stall the while loop if it fails.
+    vehicle.parameters["ARMING_CHECK"] = 1 # enables Arming_checks.
+    tempbin = False
     if vehicle.is_armable is True:
         print("Vehicle is armable.")
-        return True
-    print("Vehicle failed Arming_checks")
-    return False
+        tempbin = True
+    else:
+        print("Vehicle failed Arming_checks")
+    if vehicle.battery.voltage <= 14:
+        print(f'battery to low: {vehicle.battery.voltage}')
+        tempbin = False
+    return tempbin

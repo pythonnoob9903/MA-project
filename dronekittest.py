@@ -31,18 +31,23 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 
 print(vehicle.battery)
 vehicle.parameters['ARMING_CHECK'] = 1
-while radiocontrol(): 
-	while checks() is False:
+while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
+	print(f"currently no communication to radio: {get_rc_channel_value(6)}")
+	time.sleep(1)
+print(get_rc_channel_value(6))
+
+while radiocontrol() is True: 
+	while checks(vehicle) is False:
 		time.sleep(1)
 
-	setup()
+	setup(vehicle)
 	Xcord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[0]
 	Ycord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[1]
 	Zcord = getcords()[2]
 
 	radiocontrol()
 
-	if checks() is False:
+	if checks(vehicle) is False:
 		print("Arming Checks failed midflight setting mode to loiter.")
 		vehicle.mode = VehicleMode["LOITER"]
 		break
