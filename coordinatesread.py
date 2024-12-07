@@ -34,7 +34,7 @@ def meters_to_coordinates(Xcord, Ycord, vehicle): # converts coordinates in mete
     if not home_location:
         print("Waiting for home location to be set")
     while not home_location:
-        time.sleep()
+        time.sleep(1)
 
     newXcord = []
     newYcord = []
@@ -50,10 +50,7 @@ def meters_to_coordinates(Xcord, Ycord, vehicle): # converts coordinates in mete
 def setup(vehicle): #sets up the initial variables for flight
     print("Initial mode and groundspeed set/vehicle armed.")
     vehicle.groundspeed = 1
-    vehicle.mode = VehicleMode("GUIDED")
-    while not vehicle.mode.name == "GUIDED":
-        print("Not in Guided mode")
-    vehicle.parameters["PILOT_SPEED_UP"] = 50
+    vehicle.parameters["PILOT_SPEED_UP"] = 100
     vehicle.armed = True
 
 def checks(vehicle): #checks arming checks and can stall the while loop if it fails.

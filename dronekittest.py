@@ -36,7 +36,7 @@ vehicle.parameters['ARMING_CHECK'] = 1
 while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
 	print(f"currently no communication to radio: {get_rc_channel_value(6)}")
 	time.sleep(1)
-print(get_rc_channel_value(6))
+print(get_rc_channel_value)
 
 while radiocontrol() is True: 
 	while checks(vehicle) is False:
@@ -51,8 +51,10 @@ while radiocontrol() is True:
 	print(Ycord[0])
 	print(Zcord[0])
 
+	vehicle.mode = VehicleMode('GUIDED')
+	while not vehicle.mode.name == "GUIDED":
+        	print("Not in Guided mode")
 
-	radiocontrol()
 	time.sleep(5)
 	if checks(vehicle) is False:
 		print("Arming Checks failed midflight setting mode to loiter.")
@@ -60,10 +62,12 @@ while radiocontrol() is True:
 		break
 
 	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0])
+	if radiocontrol() is False:
+		break
+	vehicle.simple_takeoff(Zcord[0])
 	
-	vehicle.simple_takeoff(Zcord)
 	while True:
-		if vehicle.location.global_relative_frame.alt >= Zcord -0.1:
+		if vehicle.location.global_relative_frame.alt >= int(Zcord[0]):
 			radiocontrol()
 			print("Heigth reached")
 			break
