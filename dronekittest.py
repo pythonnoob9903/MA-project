@@ -30,7 +30,9 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		return True
 
 print(vehicle.battery)
+
 vehicle.parameters['ARMING_CHECK'] = 1
+
 while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
 	print(f"currently no communication to radio: {get_rc_channel_value(6)}")
 	time.sleep(1)
@@ -41,29 +43,34 @@ while radiocontrol() is True:
 		time.sleep(1)
 
 	setup(vehicle)
+	time.sleep(5)
 	Xcord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[0]
 	Ycord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[1]
 	Zcord = getcords()[2]
+	print(Xcord[0])
+	print(Ycord[0])
+	print(Zcord[0])
+
 
 	radiocontrol()
-
+	time.sleep(5)
 	if checks(vehicle) is False:
 		print("Arming Checks failed midflight setting mode to loiter.")
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
 	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0])
-	vehicle.mode = VehicleMode("GUIDED") # sets the vehicle mode to guided to be used with the vehicle.simple_goto
 	
 	vehicle.simple_takeoff(Zcord)
 	while True:
 		if vehicle.location.global_relative_frame.alt >= Zcord -0.1:
+			radiocontrol()
 			print("Heigth reached")
 			break
 		time.sleep(1)
-        	
+    
 	radiocontrol()
-
+	time.sleep(5)
 	vehicle.simple_goto(target)
 
 	time.sleep(3)
@@ -75,13 +82,3 @@ while radiocontrol() is True:
 		time.sleep(1) 
 	time.sleep(1)
 	break 
-	# control interrupt(radiocontrol())
-	
-	# look up the direction the drone is facing
-	# get difference in current GPS and target
-	# check interrupt
-	# adjust height
-	# set mode to loiter --> just to keep the height(probably not loiter)
-	# fly in direction for a short period and try last step again
-	# if target distance achieved--> check if it is the last target if no: go to next target else repeat
-	# if last target: interrupt
