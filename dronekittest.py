@@ -23,18 +23,18 @@ def get_rc_channel_value(channel_number): # checks the value of a certain channe
 
 def radiocontrol(): # checks if the switch is still on the right position to fly autonomously
 	if int(get_rc_channel_value(6)) >= 1800:
-		print('Giving back control to radio')
+		log('Giving back control to radio')
 		return False
 	else:
-		print("control stays autonomous")
+		log("control stays autonomous")
 		return True
 
-print(vehicle.battery)
+log(vehicle.battery.voltage + "battery voltage")
 
-vehicle.parameters['ARMING_CHECK'] = 1
+
 
 while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
-	print(f"currently no communication to radio: {get_rc_channel_value(6)}")
+	log(f"currently no communication to radio: {get_rc_channel_value(6)}")
 	time.sleep(1)
 print(get_rc_channel_value)
 
@@ -44,33 +44,35 @@ while radiocontrol() is True:
 
 	setup(vehicle)
 	time.sleep(5)
-	Xcord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[0]
-	Ycord = meters_to_coordinates(getcords()[0], getcords()[1], vehicle)[1]
-	Zcord = getcords()[2]
-	print(Xcord[0])
-	print(Ycord[0])
-	print(Zcord[0])
+	Xcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[0]
+	Ycord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[1]
+	Zcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[2]
+	log(Xcord[0])
+	log(Ycord[0])
+	log(Zcord[0])
 
 	vehicle.mode = VehicleMode('GUIDED')
 	while not vehicle.mode.name == "GUIDED":
-        	print("Not in Guided mode")
+        	log("Not in Guided mode")
 
 	time.sleep(5)
 	if checks(vehicle) is False:
-		print("Arming Checks failed midflight setting mode to loiter.")
+		log("Arming Checks failed midflight setting mode to loiter.")
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
 	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0])
 	if radiocontrol() is False:
+		log("radiocontrol failed")
+		vehicle.mode = VehicleMode["LOITER"]
 		break
 	vehicle.simple_takeoff(Zcord[0])
 	
 	while True:
 		if vehicle.location.global_relative_frame.alt >= int(Zcord[0]):
 			radiocontrol()
-			print("Heigth reached")
-			break
+			log("Heigth reached")
+			return
 		time.sleep(1)
     
 	radiocontrol()
@@ -82,7 +84,7 @@ while radiocontrol() is True:
 	vehicle.mode = VehicleMode("LOITER")
 	while not vehicle.mode.name == "LOITER":
 		radiocontrol()
-		print("Vehicle mode is not yet Loiter")
+		log("Vehicle mode is not yet Loiter")
 		time.sleep(1) 
 	time.sleep(1)
 	break 
