@@ -2,6 +2,8 @@
 ## Week 2.12-8.12
 1. writing RaspPi and parts of MavProxy
 2. some code failsafes and messages to see what failed
+3. adding a log file
+4. trying to get the drone to fly autonomously, but the simple_takeoff function failed?
 ## Week 25.11-1.12
 1. meters to coordinates convertion
 2. getting the VNC to work with my hotspot(I have no idea why it took so long)

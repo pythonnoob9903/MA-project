@@ -41,7 +41,12 @@ print(get_rc_channel_value)
 while radiocontrol() is True: 
 	while checks(vehicle) is False:
 		time.sleep(1)
+	vehicle.mode = VehicleMode('LOITER')
+	while not vehicle.mode.name == "LOITER":
+        	log(f"Not in Loiter mode: {vehicle.mode.name}")
+	log(f"in loiter mode: {vehicle.mode.name}")
 
+	
 	setup(vehicle)
 	time.sleep(5)
 	Xcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[0]
@@ -51,9 +56,6 @@ while radiocontrol() is True:
 	log(Ycord[0])
 	log(Zcord[0])
 
-	vehicle.mode = VehicleMode('GUIDED')
-	while not vehicle.mode.name == "GUIDED":
-        	log("Not in Guided mode")
 
 	time.sleep(5)
 	if checks(vehicle) is False:
@@ -75,18 +77,22 @@ while radiocontrol() is True:
 		radiocontrol()
 		log("in takeoffloop")
 		current_altitude = vehicle.location.global_frame.alt
-		if current_altitude >= int(target.alt) -0.1:
+		if int(current_altitude) >= int(target.alt) -0.1:
 			log(f"target altitude reached{target[2]}")
 			break
-		if current_altitude >= 5 + current_altitude:
+		if int(current_altitude) >= 5 + int(current_altitude):
 			log(f"drone is too far from home{current_altitude}") 
 			vehicle.mode = VehicleMode["LOITER"]
 			break
-		if elapsed_time > 10:
+		if elapsed_time >= 5:
 			log(f"Timoeout, took to long to reach target altitude: {current_altitude}")
 			break
+		time.sleep(1)
 	
-	
+	vehicle.mode = VehicleMode('GUIDED')
+	while not vehicle.mode.name == "GUIDED":
+        	log(f"Not in Guided mode: {vehicle.mode.name}")
+	log(f"in guided mode: {vehicle.mode.name}")
 	radiocontrol()
 	time.sleep(5)
 	vehicle.simple_goto(target)
