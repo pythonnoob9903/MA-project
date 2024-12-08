@@ -1,4 +1,4 @@
-from dronekit import connect, VehicleMode, LocationGlobalRelative
+from dronekit import connect, VehicleMode, LocationGlobal
 import time
 from coordinatesread import *
 import math
@@ -29,9 +29,9 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		log("control stays autonomous")
 		return True
 
-log(vehicle.battery.voltage + "battery voltage")
+log(str(vehicle.battery.voltage) + " battery voltage")
 
-
+initial_log()
 
 while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
 	log(f"currently no communication to radio: {get_rc_channel_value(6)}")
@@ -61,30 +61,42 @@ while radiocontrol() is True:
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
-	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0])
+	target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0])
 	if radiocontrol() is False:
 		log("radiocontrol failed")
 		vehicle.mode = VehicleMode["LOITER"]
 		break
-	vehicle.simple_takeoff(Zcord[0])
+
 	
+	vehicle.simple_takeoff(Zcord[0])
+	start_time = time.time()
 	while True:
-		if vehicle.location.global_relative_frame.alt >= int(Zcord[0]):
-			radiocontrol()
-			log("Heigth reached")
-			return
-		time.sleep(1)
-    
+		elapsed_time = time.time() - start_time
+		radiocontrol()
+		log("in takeoffloop")
+		current_altitude = vehicle.location.global_frame.alt
+		if current_altitude >= int(target.alt) -0.1:
+			log(f"target altitude reached{target[2]}")
+			break
+		if current_altitude >= 5 + current_altitude:
+			log(f"drone is too far from home{current_altitude}") 
+			vehicle.mode = VehicleMode["LOITER"]
+			break
+		if elapsed_time > 10:
+			log(f"Timoeout, took to long to reach target altitude: {current_altitude}")
+			break
+	
+	
 	radiocontrol()
 	time.sleep(5)
 	vehicle.simple_goto(target)
 
 	time.sleep(3)
 	
-	vehicle.mode = VehicleMode("LOITER")
-	while not vehicle.mode.name == "LOITER":
+	vehicle.mode = VehicleMode("RTL")
+	while not vehicle.mode.name == "RTL":
 		radiocontrol()
-		log("Vehicle mode is not yet Loiter")
+		log("Vehicle mode is not yet RTL")
 		time.sleep(1) 
 	time.sleep(1)
 	break 

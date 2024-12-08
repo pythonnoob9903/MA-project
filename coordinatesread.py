@@ -15,7 +15,7 @@ def initial_log():
     log(current_time)
 
 def getcords():
-    p = Path(__file__).with_name('coordinates.txt')
+    p = pathlib.Path(__file__).with_name('coordinates.txt')
 
     Xcord = []
     Ycord = []
@@ -57,7 +57,7 @@ def meters_to_coordinates(Xcord, Ycord, Zcord, vehicle): # converts coordinates 
         earth_radius = 6378137.0
         changeX = home_location.lat + math.degrees(int(Xcord[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
         changeY = home_location.lon + math.degrees(int(Ycord[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
-        changeZ = home_location.alt + Zcord
+        changeZ = home_location.alt + int(Zcord[i])
         newXcord += [changeX]
         newYcord += [changeY]
         newZcord += [changeZ]
