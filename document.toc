@@ -27,9 +27,9 @@
 \contentsline {subsubsection}{\numberline {4.4.8}RaspberryPi Setup}{16}{subsubsection.4.4.8}%
 \contentsline {subsubsection}{\numberline {4.4.9}MAVProxy Installation}{16}{subsubsection.4.4.9}%
 \contentsline {subsubsection}{\numberline {4.4.10}Dronekit}{17}{subsubsection.4.4.10}%
-\contentsline {section}{\numberline {5}Results}{20}{section.5}%
-\contentsline {section}{\numberline {6}Discussion and Outlook}{20}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}%
-\contentsline {section}{\numberline {8}References}{20}{section.8}%
-\contentsline {section}{Bibliography}{20}{section*.11}%
+\contentsline {section}{\numberline {5}Results}{21}{section.5}%
+\contentsline {section}{\numberline {6}Discussion and Outlook}{21}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{21}{section.7}%
+\contentsline {section}{\numberline {8}References}{21}{section.8}%
+\contentsline {section}{Bibliography}{21}{section*.11}%
 \contentsline {section}{\numberline {9}Table of Figures}{23}{section.9}%

@@ -60,7 +60,17 @@ sorting=ynt
 	urlcolor={blue!90!black},
 	citecolor=,
 }
+
+
+\usepackage{tcolorbox}
+\newtcolorbox[auto counter, number within=section]{Explanation}[2][]{%
+	title=Explanation~\thetcbcounter: #1, colframe=blue!30, 
+	coltitle= white}
+
 \usepackage[acronym]{glossaries}
+
+\makeglossaries
+
 
 \newacronym{Fc}{Fc}{flight controller}
 \newacronym{ESC}{ESC}{electronic speed controller}
@@ -79,10 +89,7 @@ sorting=ynt
 \newacronym{VNC}{VNC}{virtual network computing}
 \newacronym{venv}{venv}{virtual environment}
 
-\usepackage{tcolorbox}
-\newtcolorbox[auto counter, number within=section]{Explanation}[2][]{%
-	title=Explanation~\thetcbcounter: #1, colframe=blue!30, 
-	coltitle= white}
+
 % Dokument
 \begin{document}
 \maketitle
@@ -422,32 +429,27 @@ sorting=ynt
 		^^^^^^^^^^^^^^^^^^^^^^^^^^
 		AttributeError: module 'collections' has no attribute 'MutableMapping'
 	\end{lstlisting}
-	The source of it is that 
-	In python 3.10 MutableMapping has been moved to from collections to collections.abc --> editing the dronekit source code 
+	The source of the error is that in python 3.10 the abstract base class, MutapleMapping, was moved from collections to collections.abc. This needs to be changed(\ref{changed line}) in the dronekit source code. Which can be accessed with the the command \ref{sourcecode}
 	
-	\begin{lstlisting}[language=bash]
+	\begin{lstlisting}[caption= accessing source code, language=bash, label=sourcecode]
 		nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	\end{lstlisting}
 	
-	and changing the line :class Parameters(collections.MutableMapping, HasObservers): 
-	% TODO might also work if I just write class Parameters(collections.abc.MutableMapping, HasObservers): 
-	to 
-	from collections.abc import MutableMapping
-	class Parameters(MutableMapping, HasObservers):
-	
-	trying to run dronekittest.py again: this error occurs
-	
-	\begin{lstlisting}[language=bash]
-		serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyAMA0: [Errno 2] No such file or directory: '/dev/ttyAMA0'
+	\begin{lstlisting}[caption= changed line, language=python, label=changed line]
+		class Parameters(collections.MutableMapping, HasObservers):
+		
+		to:
+		
+		class Parameters(collections.abc.MutableMapping, HasObservers):
+		
 	\end{lstlisting}
-	% TODO what is this ???? it is fixed by setting it to ACM0 or serial0. Because different on rasppi ACM is for the USB and AMA shortened for AMBA is for the pins? \cite{ttyAMA}
 	
-	adding:
-	\begin{lstlisting}[language=python, caption={Python Dronekittest 2}]
+	After this the program worked flawlessly and it was able to give information from the \gls{Fc} over the terminal. As shown with the example \ref{lst:listing-autopilot}, which 
+	
+	\begin{lstlisting}[language=python, caption={Python Dronekittest 2}, label=lst:listing-autopilot]
 		print( "Autopilot version: %s" %vehicle.version)
 	\end{lstlisting}
-	to get a response from the copter. 
-	\begin{lstlisting}[language=bash]
+	\begin{lstlisting}[caption= output from \ref{lst:listing-autopilot}, language=bash]
 		Autopilot version: APM:Copter-4.5.7
 	\end{lstlisting}
 	connection now works via USB.
@@ -456,7 +458,7 @@ sorting=ynt
 	
 	need to change \lstinline|Serial3_Protocol| to 2 for Mavlink
 	and \lstinline|Serial3_Baud| to 921 for the baudrate of 912600
-	
+	% TODO look at the exact connections again 
 	Uart ports are seen as /dev/ttyS0
 	can be looked at via:
 	\begin{lstlisting}[language=bash]
@@ -536,6 +538,7 @@ sorting=ynt
 	
 	converting the coordinates from the coordinates.txt to 
 	
+	trying to let the drone fly with the \lstinline|vehicle.simple_takeoff(Zcoordinate)| command does not work
 	
 	
 	\section{Results}
@@ -549,4 +552,7 @@ sorting=ynt
 	]	
 	\section{Table of Figures}
 	%(short table on which every figure description with the page number is listed)
+	
+	\printglossary[type=\acronymtype]
+	
 \end{document}

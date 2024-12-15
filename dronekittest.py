@@ -1,7 +1,10 @@
-from dronekit import connect, VehicleMode, LocationGlobal
+from dronekit import connect, VehicleMode, LocationGlobal, LocationGlobalRelative
 import time
 from coordinatesread import *
 import math
+from pymavlink import mavutil
+
+
 
 vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
 
@@ -41,17 +44,22 @@ print(get_rc_channel_value)
 while radiocontrol() is True: 
 	while checks(vehicle) is False:
 		time.sleep(1)
-	vehicle.mode = VehicleMode('LOITER')
-	while not vehicle.mode.name == "LOITER":
-        	log(f"Not in Loiter mode: {vehicle.mode.name}")
-	log(f"in loiter mode: {vehicle.mode.name}")
 
 	
-	setup(vehicle)
+	vehicle.mode = VehicleMode('GUIDED') #setting mode to guided
+	while not vehicle.mode.name == "GUIDED":
+			log(f"Not in GUIDED mode: {vehicle.mode.name}")
+			time.sleep(1)
+	log(f"in GUIDED mode: {vehicle.mode.name}")
+
+	
+	setup(vehicle) #arms and sets important parameters
+	log(armed)
 	time.sleep(5)
 	Xcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[0]
 	Ycord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[1]
-	Zcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[2]
+	Zcord = getcords()[2]
+	#Zcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[2]
 	log(Xcord[0])
 	log(Ycord[0])
 	log(Zcord[0])
@@ -63,15 +71,22 @@ while radiocontrol() is True:
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
-	target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0])
-	if radiocontrol() is False:
+	#target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
+	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
+
+
+
+	if radiocontrol() is False: 
 		log("radiocontrol failed")
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
-	
+	# vehicle.simple_goto(target)
 	vehicle.simple_takeoff(Zcord[0])
-	start_time = time.time()
+
+	log(f"{vehicle.mode.name}, --> mode")
+	start_time = time.time() # starts timer for the the vehicle.simple_takeoff
+
 	while True:
 		elapsed_time = time.time() - start_time
 		radiocontrol()
@@ -93,9 +108,10 @@ while radiocontrol() is True:
 	while not vehicle.mode.name == "GUIDED":
         	log(f"Not in Guided mode: {vehicle.mode.name}")
 	log(f"in guided mode: {vehicle.mode.name}")
+	
 	radiocontrol()
 	time.sleep(5)
-	vehicle.simple_goto(target)
+
 
 	time.sleep(3)
 	

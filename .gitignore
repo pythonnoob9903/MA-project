@@ -10,3 +10,7 @@
 *.raw
 *.parm
 *.pyc
+*.toc
+*.acn
+*.glo
+*.ist

@@ -81,4 +81,6 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     if vehicle.battery.voltage <= 14:
         log(f'battery to low: {vehicle.battery.voltage}')
         tempbin = False
+    if vehicle.gps_0.fix_type <= 3:
+        log(f"No 3D fix: {vehicle.gps_0.fix_type}")
     return tempbin
