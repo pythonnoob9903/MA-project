@@ -1,4 +1,8 @@
 # Documentation
+# Week 9.12-15.12
+1. writing MavProxy and parts of dronekit
+2. trying different ideas for the vehicle.simple_takeoff--> did not work
+3. sophisticating the log file
 ## Week 2.12-8.12
 1. writing RaspPi and parts of MavProxy
 2. some code failsafes and messages to see what failed

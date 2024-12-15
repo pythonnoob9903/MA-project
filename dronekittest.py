@@ -86,7 +86,11 @@ while radiocontrol() is True:
 
 	log(f"{vehicle.mode.name}, --> mode")
 	start_time = time.time() # starts timer for the the vehicle.simple_takeoff
-
+	log(datetime.now())
+	
+	time.sleep(5)
+	log(datetime.now())
+	
 	while True:
 		elapsed_time = time.time() - start_time
 		radiocontrol()
@@ -100,10 +104,12 @@ while radiocontrol() is True:
 			vehicle.mode = VehicleMode["LOITER"]
 			break
 		if elapsed_time >= 5:
-			log(f"Timoeout, took to long to reach target altitude: {current_altitude}")
+			log(f"Timoout, took to long to reach target altitude: {current_altitude}")
 			break
 		time.sleep(1)
 	
+	log(datetime.now())
+
 	vehicle.mode = VehicleMode('GUIDED')
 	while not vehicle.mode.name == "GUIDED":
         	log(f"Not in Guided mode: {vehicle.mode.name}")

@@ -6,7 +6,7 @@ from datetime import datetime
 def log(content):
     p = pathlib.Path(__file__).with_name('log.txt')
     o = p.open(mode="a")#opens the target file in append mode
-    o.write("\n"+ str(content))
+    o.write("\n"+ str(datetime.now()) +str(content))
     o.close()
 
 def initial_log():
