@@ -33,7 +33,7 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		return True
 
 log(str(vehicle.battery.voltage) + " battery voltage")
-
+log(vehicle.mode.name)
 initial_log()
 
 while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
@@ -54,12 +54,12 @@ while radiocontrol() is True:
 
 	
 	setup(vehicle) #arms and sets important parameters
-	log(armed)
+	log("armed")
 	time.sleep(5)
 	Xcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[0]
 	Ycord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[1]
-	Zcord = getcords()[2]
-	#Zcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[2]
+	#Zcord = getcords()[2]
+	Zcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[2]
 	log(Xcord[0])
 	log(Ycord[0])
 	log(Zcord[0])
@@ -71,8 +71,8 @@ while radiocontrol() is True:
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
-	#target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
-	target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
+	target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
+	#target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
 
 
 
@@ -81,7 +81,7 @@ while radiocontrol() is True:
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
-	# vehicle.simple_goto(target)
+	#vehicle.simple_goto(target)
 	vehicle.simple_takeoff(Zcord[0])
 
 	log(f"{vehicle.mode.name}, --> mode")
@@ -93,7 +93,7 @@ while radiocontrol() is True:
 		log("in takeoffloop")
 		current_altitude = vehicle.location.global_frame.alt
 		if int(current_altitude) >= int(target.alt) -0.1:
-			log(f"target altitude reached{target[2]}")
+			log(f"target altitude reached{target.alt}")
 			break
 		if int(current_altitude) >= 5 + int(current_altitude):
 			log(f"drone is too far from home{current_altitude}") 
@@ -111,7 +111,7 @@ while radiocontrol() is True:
 	
 	radiocontrol()
 	time.sleep(5)
-
+	log("out off takeoffloop")
 
 	time.sleep(3)
 	

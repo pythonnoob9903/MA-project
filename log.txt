@@ -1,4 +1,5 @@
 
+
 2024-12-08 10:24:55.387813
 currently no communication to radio: None
 control stays autonomous
@@ -13,3 +14,212 @@ LocationGlobal:lat=47.5972851,lon=8.6747917,alt=370.71
 Vehicle is armable.
 control stays autonomous
 in takeoffloop
+15.405 battery voltage
+LOITER
+
+
+2024-12-15 09:36:04.273020
+currently no communication to radio: None
+Giving back control to radio
+15.727 battery voltage
+LOITER
+
+
+2024-12-15 09:37:03.054167
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+Not in GUIDED mode: LOITER
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+15.69 battery voltage
+GUIDED
+
+
+2024-12-15 09:38:50.266837
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+LocationGlobal:lat=47.598128,lon=8.6754716,alt=369.55
+15.647 battery voltage
+GUIDED
+
+
+2024-12-15 09:40:20.120079
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+None
+Waiting for home location to be set
+
+15.634 battery voltage
+GUIDED
+
+
+2024-12-15 09:43:15.122564
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+LocationGlobal:lat=47.5981072,lon=8.6755001,alt=370.28
+LocationGlobal:lat=47.5981072,lon=8.6755001,alt=370.28
+47.5981072
+8.6755001
+0.5
+Vehicle is armable.
+control stays autonomous
+GUIDED, --> mode
+control stays autonomous
+in takeoffloop
+15.622 battery voltage
+GUIDED
+
+
+2024-12-15 09:44:52.164070
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+LocationGlobal:lat=47.5981253,lon=8.675471,alt=369.78
+LocationGlobal:lat=47.5981253,lon=8.675471,alt=369.78
+47.5981253
+8.675471
+1
+Vehicle is armable.
+control stays autonomous
+GUIDED, --> mode
+control stays autonomous
+in takeoffloop
+15.594 battery voltage
+GUIDED
+
+
+2024-12-15 09:46:05.102137
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+LocationGlobal:lat=47.5981047,lon=8.6754526,alt=369.67
+LocationGlobal:lat=47.5981047,lon=8.6754526,alt=369.67
+47.5981047
+8.6754526
+1
+Vehicle is armable.
+control stays autonomous
+GUIDED, --> mode
+control stays autonomous
+in takeoffloop
+target altitude reached1
+in guided mode: GUIDED
+control stays autonomous
+15.567 battery voltage
+GUIDED
+
+
+2024-12-15 09:47:25.102114
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+None
+Waiting for home location to be set
+15.235 battery voltage
+GUIDED
+
+
+2024-12-15 09:49:14.045627
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+LocationGlobal:lat=47.5981181,lon=8.6754703,alt=368.59
+LocationGlobal:lat=47.5981181,lon=8.6754703,alt=368.59
+47.5981181
+8.6754703
+1
+Vehicle is armable.
+control stays autonomous
+15.512 battery voltage
+GUIDED
+
+
+2024-12-15 09:53:01.093825
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+LocationGlobal:lat=47.5981361,lon=8.6754451,alt=367.44
+LocationGlobal:lat=47.5981361,lon=8.6754451,alt=367.44
+LocationGlobal:lat=47.5981361,lon=8.6754451,alt=367.44
+47.5981361
+8.6754451
+368.44
+Vehicle is armable.
+control stays autonomous
+GUIDED, --> mode
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+15.532 battery voltage
+GUIDED
+
+
+2024-12-15 09:54:40.087779
+currently no communication to radio: None
+control stays autonomous
+Vehicle is armable.
+in GUIDED mode: GUIDED
+Speed_Up and groundspeed set/vehicle armed.
+armed
+LocationGlobal:lat=47.5981414,lon=8.6754472,alt=366.94
+LocationGlobal:lat=47.5981414,lon=8.6754472,alt=366.94
+LocationGlobal:lat=47.5981414,lon=8.6754472,alt=366.94
+47.5981414
+8.6754472
+367.94
+Vehicle is armable.
+control stays autonomous
+GUIDED, --> mode
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+control stays autonomous
+in takeoffloop
+Timoeout, took to long to reach target altitude: 366.62
+in guided mode: GUIDED
+control stays autonomous
+out off takeoffloop
+control stays autonomous
+Vehicle mode is not yet RTL
