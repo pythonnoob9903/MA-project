@@ -81,7 +81,7 @@ while radiocontrol() is True:
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
-	#vehicle.simple_goto(target)
+	# vehicle.simple_goto(target)
 	vehicle.simple_takeoff(Zcord[0])
 
 	log(f"{vehicle.mode.name}, --> mode")

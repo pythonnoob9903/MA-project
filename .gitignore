@@ -15,3 +15,8 @@
 *.glo
 *.ist
 *.synctex(busy)
+*.glg
+*.acr
+*.gls
+*.alg
+*.toc

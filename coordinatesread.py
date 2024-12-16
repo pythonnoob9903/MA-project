@@ -83,4 +83,5 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
         tempbin = False
     if vehicle.gps_0.fix_type <= 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
+        tempbin = False
     return tempbin
