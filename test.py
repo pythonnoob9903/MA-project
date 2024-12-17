@@ -37,10 +37,10 @@ while get_rc_channel_value(6) == None: # checks if there is a rc_channel already
 	time.sleep(1)
 print(get_rc_channel_value)
 
-while checks() is not True:
-    checks()
-    time.sleep(1)
-
+setup(vehicle)
+vehicle.armed = True
+time.sleep(1)
+vehicle.armed = False
 
 Xcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[0]
 Ycord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[1]
@@ -51,7 +51,12 @@ log(Ycord[0])
 log(Zcord[0])
 target = LocationGlobal(float(Xcord[0]), float(Ycord[0]), float(Zcord[0]))
 
-log("geofence enaled")
+log("geofence enabled")
+
+while checks(vehicle) is False:
+    checks(vehicle)
+    time.sleep(1)
+
 
 while radiocontrol() is True:
     vehicle.mode = VehicleMode('GUIDED') #setting mode to guided
@@ -59,7 +64,7 @@ while radiocontrol() is True:
         log(f"Not in GUIDED mode: {vehicle.mode.name}")
         time.sleep(1)
     log(f"in GUIDED mode: {vehicle.mode.name}")
-    setup()
+    setup(vehicle)
 
     log("starting vehicle.simple_takeoff")
     vehicle.simple_takeoff(target.alt)
@@ -80,14 +85,14 @@ while radiocontrol() is True:
 	    	break
 	    if elapsed_time >= 10:
 	    	log(f"Timoout, took to long to reach target altitude: {current_altitude}")
-	    	return
+	    	break
 	    time.sleep(1)
     
     vehicle.armed = False
     log(f"simple_takeoff did not work: mode {vehicle.mode.name}")
 
-    setup()
-
+    setup(vehicle)
+    start_time = time.time()
     vehicle.simple_goto(target)
     while True:
 	    elapsed_time = time.time() - start_time
@@ -104,13 +109,13 @@ while radiocontrol() is True:
 	    	break
 	    if elapsed_time >= 10:
 	    	log(f"Timoout, took to long to reach target altitude: {current_altitude}")
-	    	return
+	    	break
 	    time.sleep(1)
     
     vehicle.armed = False
-    Vehicle.parameters["FENCE_ENABLE"] = 0
+    vehicle.parameters["FENCE_ENABLE"] = 0
     log(f"geofence disabled")
-    setup()
+    setup(vehicle)
 
     log("starting vehicle.simple_takeoff")
     vehicle.simple_takeoff(target.alt)
@@ -131,14 +136,14 @@ while radiocontrol() is True:
 	    	break
 	    if elapsed_time >= 10:
 	    	log(f"Timoout, took to long to reach target altitude: {current_altitude}")
-	    	return
+	    	break
 	    time.sleep(1)
     
     vehicle.armed = False
     log(f"simple_takeoff did not work: mode {vehicle.mode.name}")
 
-    setup()
-
+    setup(vehicle)
+    start_time = time.time()
     vehicle.simple_goto(target)
     while True:
 	    elapsed_time = time.time() - start_time
@@ -155,11 +160,11 @@ while radiocontrol() is True:
 	    	break
 	    if elapsed_time >= 10:
 	    	log(f"Timoout, took to long to reach target altitude: {current_altitude}")
-	    	return
+	    	break
 	    time.sleep(1)
     
     vehicle.armed = False
-    setup()
+    setup(vehicle)
     log("trying mavlink command")
     vehicle.mav.command_long_send(
     	vehicle.target_system,

@@ -1,225 +1,117 @@
 
-
-2024-12-08 10:24:55.387813
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-Speed_Up and groundspeed set/vehicle armed.
-LocationGlobal:lat=47.5972851,lon=8.6747917,alt=370.71
-LocationGlobal:lat=47.5972851,lon=8.6747917,alt=370.71
-LocationGlobal:lat=47.5972851,lon=8.6747917,alt=370.71
-47.59729408315284
-8.67480502145175
-372.71
-Vehicle is armable.
-control stays autonomous
-in takeoffloop
-15.405 battery voltage
-LOITER
-
-
-2024-12-15 09:36:04.273020
-currently no communication to radio: None
-Giving back control to radio
-15.727 battery voltage
-LOITER
-
-
-2024-12-15 09:37:03.054167
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-Not in GUIDED mode: LOITER
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-15.69 battery voltage
-GUIDED
-
-
-2024-12-15 09:38:50.266837
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-LocationGlobal:lat=47.598128,lon=8.6754716,alt=369.55
-15.647 battery voltage
-GUIDED
-
-
-2024-12-15 09:40:20.120079
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-None
-Waiting for home location to be set
-
-15.634 battery voltage
-GUIDED
-
-
-2024-12-15 09:43:15.122564
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-LocationGlobal:lat=47.5981072,lon=8.6755001,alt=370.28
-LocationGlobal:lat=47.5981072,lon=8.6755001,alt=370.28
-47.5981072
-8.6755001
-0.5
-Vehicle is armable.
-control stays autonomous
-GUIDED, --> mode
-control stays autonomous
-in takeoffloop
-15.622 battery voltage
-GUIDED
-
-
-2024-12-15 09:44:52.164070
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-LocationGlobal:lat=47.5981253,lon=8.675471,alt=369.78
-LocationGlobal:lat=47.5981253,lon=8.675471,alt=369.78
-47.5981253
-8.675471
-1
-Vehicle is armable.
-control stays autonomous
-GUIDED, --> mode
-control stays autonomous
-in takeoffloop
-15.594 battery voltage
-GUIDED
-
-
-2024-12-15 09:46:05.102137
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-LocationGlobal:lat=47.5981047,lon=8.6754526,alt=369.67
-LocationGlobal:lat=47.5981047,lon=8.6754526,alt=369.67
-47.5981047
-8.6754526
-1
-Vehicle is armable.
-control stays autonomous
-GUIDED, --> mode
-control stays autonomous
-in takeoffloop
-target altitude reached1
-in guided mode: GUIDED
-control stays autonomous
-15.567 battery voltage
-GUIDED
-
-
-2024-12-15 09:47:25.102114
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-None
-Waiting for home location to be set
-15.235 battery voltage
-GUIDED
-
-
-2024-12-15 09:49:14.045627
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-LocationGlobal:lat=47.5981181,lon=8.6754703,alt=368.59
-LocationGlobal:lat=47.5981181,lon=8.6754703,alt=368.59
-47.5981181
-8.6754703
-1
-Vehicle is armable.
-control stays autonomous
-15.512 battery voltage
-GUIDED
-
-
-2024-12-15 09:53:01.093825
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-LocationGlobal:lat=47.5981361,lon=8.6754451,alt=367.44
-LocationGlobal:lat=47.5981361,lon=8.6754451,alt=367.44
-LocationGlobal:lat=47.5981361,lon=8.6754451,alt=367.44
-47.5981361
-8.6754451
-368.44
-Vehicle is armable.
-control stays autonomous
-GUIDED, --> mode
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-15.532 battery voltage
-GUIDED
-
-
-2024-12-15 09:54:40.087779
-currently no communication to radio: None
-control stays autonomous
-Vehicle is armable.
-in GUIDED mode: GUIDED
-Speed_Up and groundspeed set/vehicle armed.
-armed
-LocationGlobal:lat=47.5981414,lon=8.6754472,alt=366.94
-LocationGlobal:lat=47.5981414,lon=8.6754472,alt=366.94
-LocationGlobal:lat=47.5981414,lon=8.6754472,alt=366.94
-47.5981414
-8.6754472
-367.94
-Vehicle is armable.
-control stays autonomous
-GUIDED, --> mode
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-control stays autonomous
-in takeoffloop
-Timoeout, took to long to reach target altitude: 366.62
-in guided mode: GUIDED
-control stays autonomous
-out off takeoffloop
-control stays autonomous
-Vehicle mode is not yet RTL
+2024-12-17 09:51:13.261281	currently no communication to radio: None
+2024-12-17 09:51:14.262196	Speed_Up and groundspeed set/vehicle armed.
+2024-12-17 09:51:15.266633	LocationGlobal:lat=47.5981864,lon=8.6754369,alt=354.71
+2024-12-17 09:51:15.268913	LocationGlobal:lat=47.5981864,lon=8.6754369,alt=354.71
+2024-12-17 09:51:15.270382	LocationGlobal:lat=47.5981864,lon=8.6754369,alt=354.71
+2024-12-17 09:51:15.270761	47.5981864
+2024-12-17 09:51:15.271043	8.6754369
+2024-12-17 09:51:15.271524	355.71
+2024-12-17 09:51:15.271853	geofence enabled
+2024-12-17 09:51:15.272632	Vehicle is armable.
+2024-12-17 09:51:15.272944	No 3D fix: 3
+2024-12-17 09:51:15.273232	control stays autonomous
+2024-12-17 09:51:15.273951	in GUIDED mode: GUIDED
+2024-12-17 09:51:15.274233	Speed_Up and groundspeed set/vehicle armed.
+2024-12-17 09:51:15.275119	starting vehicle.simple_takeoff
+2024-12-17 09:51:15.276383	control stays autonomous
+2024-12-17 09:51:15.277321	in takeoffloop
+2024-12-17 09:51:16.277933	control stays autonomous
+2024-12-17 09:51:16.278438	in takeoffloop
+2024-12-17 09:51:17.279051	control stays autonomous
+2024-12-17 09:51:17.279516	in takeoffloop
+2024-12-17 09:51:18.280020	control stays autonomous
+2024-12-17 09:51:18.280321	in takeoffloop
+2024-12-17 09:51:19.280823	control stays autonomous
+2024-12-17 09:51:19.281165	in takeoffloop
+2024-12-17 09:51:20.281752	control stays autonomous
+2024-12-17 09:51:20.282140	in takeoffloop
+2024-12-17 09:51:21.282735	control stays autonomous
+2024-12-17 09:51:21.283121	in takeoffloop
+2024-12-17 09:51:22.283825	control stays autonomous
+2024-12-17 09:51:22.284251	in takeoffloop
+2024-12-17 09:51:23.284923	control stays autonomous
+2024-12-17 09:51:23.285270	in takeoffloop
+2024-12-17 09:51:24.285801	control stays autonomous
+2024-12-17 09:51:24.286142	in takeoffloop
+2024-12-17 09:51:25.286662	control stays autonomous
+2024-12-17 09:51:25.287003	in takeoffloop
+2024-12-17 09:51:25.287344	Timoout, took to long to reach target altitude: 354.64
+2024-12-17 09:51:25.287607	simple_takeoff did not work: mode GUIDED
+2024-12-17 09:51:25.287839	Speed_Up and groundspeed set/vehicle armed.
+2024-12-17 09:51:25.289356	control stays autonomous
+2024-12-17 09:51:25.289613	in gotoloop
+2024-12-17 09:51:26.290152	control stays autonomous
+2024-12-17 09:51:26.290494	in gotoloop
+2024-12-17 09:51:27.291447	control stays autonomous
+2024-12-17 09:51:27.291849	in gotoloop
+2024-12-17 09:51:28.292430	control stays autonomous
+2024-12-17 09:51:28.292851	in gotoloop
+2024-12-17 09:51:29.293507	control stays autonomous
+2024-12-17 09:51:29.293907	in gotoloop
+2024-12-17 09:51:30.294445	control stays autonomous
+2024-12-17 09:51:30.294782	in gotoloop
+2024-12-17 09:51:31.295362	control stays autonomous
+2024-12-17 09:51:31.295709	in gotoloop
+2024-12-17 09:51:32.296245	control stays autonomous
+2024-12-17 09:51:32.296599	in gotoloop
+2024-12-17 09:51:33.297124	control stays autonomous
+2024-12-17 09:51:33.297461	in gotoloop
+2024-12-17 09:51:34.297952	control stays autonomous
+2024-12-17 09:51:34.298288	in gotoloop
+2024-12-17 09:51:35.298916	control stays autonomous
+2024-12-17 09:51:35.299379	in gotoloop
+2024-12-17 09:51:35.299717	Timoout, took to long to reach target altitude: 354.62
+2024-12-17 09:51:35.401089	geofence disabled
+2024-12-17 09:51:35.401443	Speed_Up and groundspeed set/vehicle armed.
+2024-12-17 09:51:35.402220	starting vehicle.simple_takeoff
+2024-12-17 09:51:35.402677	control stays autonomous
+2024-12-17 09:51:35.402953	in takeoffloop
+2024-12-17 09:51:36.403540	control stays autonomous
+2024-12-17 09:51:36.403879	in takeoffloop
+2024-12-17 09:51:37.404399	control stays autonomous
+2024-12-17 09:51:37.404736	in takeoffloop
+2024-12-17 09:51:38.405312	control stays autonomous
+2024-12-17 09:51:38.405698	in takeoffloop
+2024-12-17 09:51:39.406282	control stays autonomous
+2024-12-17 09:51:39.406669	in takeoffloop
+2024-12-17 09:51:40.407306	control stays autonomous
+2024-12-17 09:51:40.407733	in takeoffloop
+2024-12-17 09:51:41.408342	control stays autonomous
+2024-12-17 09:51:41.408744	in takeoffloop
+2024-12-17 09:51:42.409321	control stays autonomous
+2024-12-17 09:51:42.409703	in takeoffloop
+2024-12-17 09:51:43.410328	control stays autonomous
+2024-12-17 09:51:43.410712	in takeoffloop
+2024-12-17 09:51:44.411306	control stays autonomous
+2024-12-17 09:51:44.411655	in takeoffloop
+2024-12-17 09:51:45.412189	control stays autonomous
+2024-12-17 09:51:45.412534	in takeoffloop
+2024-12-17 09:51:45.412831	Timoout, took to long to reach target altitude: 354.58
+2024-12-17 09:51:45.413097	simple_takeoff did not work: mode GUIDED
+2024-12-17 09:51:45.413340	Speed_Up and groundspeed set/vehicle armed.
+2024-12-17 09:51:45.414855	control stays autonomous
+2024-12-17 09:51:45.415132	in gotoloop
+2024-12-17 09:51:46.415791	control stays autonomous
+2024-12-17 09:51:46.416221	in gotoloop
+2024-12-17 09:51:47.418288	control stays autonomous
+2024-12-17 09:51:47.418681	in gotoloop
+2024-12-17 09:51:48.419313	control stays autonomous
+2024-12-17 09:51:48.419714	in gotoloop
+2024-12-17 09:51:49.420336	control stays autonomous
+2024-12-17 09:51:49.420733	in gotoloop
+2024-12-17 09:51:50.421362	control stays autonomous
+2024-12-17 09:51:50.421945	in gotoloop
+2024-12-17 09:51:51.423131	control stays autonomous
+2024-12-17 09:51:51.423612	in gotoloop
+2024-12-17 09:51:52.425306	control stays autonomous
+2024-12-17 09:51:52.425660	in gotoloop
+2024-12-17 09:51:53.426238	control stays autonomous
+2024-12-17 09:51:53.426635	in gotoloop
+2024-12-17 09:51:54.427268	control stays autonomous
+2024-12-17 09:51:54.427672	in gotoloop
+2024-12-17 09:51:55.428269	control stays autonomous
+2024-12-17 09:51:55.428668	in gotoloop
+2024-12-17 09:51:55.429020	Timoout, took to long to reach target altitude: 354.55
+2024-12-17 09:51:55.429322	Speed_Up and groundspeed set/vehicle armed.
+2024-12-17 09:51:55.430615	trying mavlink command

@@ -6,7 +6,7 @@ from datetime import datetime
 def log(content):
     p = pathlib.Path(__file__).with_name('log.txt')
     o = p.open(mode="a")#opens the target file in append mode
-    o.write("\n"+ str(datetime.now()) +str(content))
+    o.write("\n"+ str(datetime.now())+"	" +str(content))
     o.close()
 
 def initial_log():
@@ -83,5 +83,4 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
         tempbin = False
     if vehicle.gps_0.fix_type <= 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
-        tempbin = False
     return tempbin
