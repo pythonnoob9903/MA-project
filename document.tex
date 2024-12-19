@@ -112,6 +112,7 @@ sorting=ynt
 \newacronym{Li-ion}{Li-ion}{lithium-ion}
 \newacronym{VNC}{VNC}{virtual network computing}
 \newacronym{venv}{venv}{virtual environment}
+\newacronym{UAV}{UAV}{unmanned aerial vehicle}
 
 \usepackage{amsmath}
 
@@ -128,9 +129,16 @@ sorting=ynt
 \pagebreak
 
 	\section{Introduction}
+	
+	In todays world of faster than ever advancing technology this "Maturitätsarbeit" tries to shine a light into the corner of self-built drones.
+	
+	However it first needs to be defined what a drone even is. According to the Cambridge Dictionary a drone is: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work drone will refer to a quadcopter which is a drone with four motors and propellers and not a conventional \gls{UAV}, which is mostly used for military grade drones. 
+
+	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now used widely and efficiently to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones also became more and more autonomous, meanwhile the drone pilots are able to only lock onto the target and let the drone follow and explode near it \cite{nytimesaidrones}. 
+
+
 	% TODO introduction
 	% do at the end of the writing process
-	% maybe a quick explanation of the term "drone"
 	% drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
 	% article about more and more autonomous drones in the Ukraine-Russia War
 	
@@ -440,7 +448,7 @@ pip3 install PyYAML
 	
 	% TODO insert picture USBRaspPiconnect 
 	% TODO visually showing on the picture where it shows the connection 
-	The command \lstinline|mavproxy.py --master=/dev/ttyACM0 --baudrate 115200 --aircraft MyCopter|, a error will appear if \lstinline|\ttyUSB0| is used. If the Raspberry Pi is connected over the serial ports, \lstinline|\serial0| is used instead of \lstinline|\ttyACM0| and if the baudrate is changed also take the other one, in this case it would be 921600. If the Raspberry Pi will not have another power source except over the \gls{Fc}, the 5+ V pin on the Raspberry Pi needs to be connected to a 5 volt pin on the \gls{Fc} and additionally a ground pin.
+	The command \lstinline|mavproxy.py --master=/dev/ttyACM0 --baudrate 115200 --aircraft MyCopter|, a error will appear if \lstinline|\ttyUSB0| is used. If the Raspberry Pi is connected over the serial ports, \lstinline|\serial0| is used instead of \lstinline|\ttyACM0| and if the baudrate is changed also take the other one, in this case it would be 921600. If the Raspberry Pi will not have another power source except over the \gls{Fc}, the 5+ V pin on the Raspberry Pi needs to be connected to a 5 volt pin on the \gls{Fc} and additionally a ground pin. There will be a low voltage warning that pops up, but the RaspberryPi works fine. In addition the \lstinline|Serial3_Protocol| needs to be changed to 2 for the Mavlink protocol.
 	
 	When connected to the \gls{Fc} you can use simple simple commands to change the parameters, as \lstinline|param set arming_check 0|, or to arm the copter with \lstinline|arm throttle|.
 	
@@ -487,12 +495,7 @@ to:
 	\begin{lstlisting}[caption= output from \ref{lst:listing-autopilot}]
 		Autopilot version: APM:Copter-4.5.7
 	\end{lstlisting}
-	
-	
-	connecting the ground and +5V pin from the flight controller to the Raspberry Pi it works but I get a low voltage warning.
-	
-	need to change \lstinline|Serial3_Protocol| to 2 for Mavlink
-	and \lstinline|Serial3_Baud| to 921 for the baudrate of 912600
+	% TODO might move up to the part where all the connections are explained to the RaspberryPi
 	% TODO look at the exact connections again 
 	Uart ports are seen as /dev/ttyS0 or as 
 	can be looked at via:
@@ -511,15 +514,18 @@ to:
 	\end{lstlisting}
 	which adds dialout so the pins to sudo
 	
-	it works...
+	% TODO might delete this part
 	
-	arming the motors for five seconds
-	\begin{lstlisting}[language=python, style=myPython]
-		vehicle.armed = True
-		time.sleep(5)
-		vehicle.armed = False
-	\end{lstlisting}
+	%it works...
 	
+	%arming the motors for five seconds
+	%\begin{lstlisting}[language=python, style=myPython]
+	%	vehicle.armed = True
+	%	time.sleep(5)
+	%	vehicle.armed = False
+	%\end{lstlisting}
+	
+	The main problem of the outdated Dronkitpython library is, that the function \lstinline|vehicle.channels|, which should read the channel values from the Radiocontroler, is only returning none. It is a long-known issue and to circumvent it a decorator is used \cite{rcchannelissue}. 
 	
 	trying to get a channel value over dronekitpython... does not work
 	
@@ -529,7 +535,7 @@ to:
 	
 	after a lot of trial and error I got this which works to retrieve a value from the radio
 	\begin{lstlisting}[language=python, style=myPython]
-		from dronekit import connect, VehicleMode
+^fjasdflkjasdf 		from dronekit import connect, VehicleMode
 		import time
 		
 		vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
@@ -582,8 +588,8 @@ to:
 	
 	\section{References}
 	\printbibliography[
-	heading=bibintoc,
-	title={Bibliography}
+		heading=bibintoc,
+		title={Bibliography}
 	]	
 	\section{Table of Figures}
 	%(short table on which every figure description with the page number is listed)
