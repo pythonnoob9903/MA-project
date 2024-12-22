@@ -115,7 +115,7 @@ sorting=ynt
 \newacronym{UAV}{UAV}{unmanned aerial vehicle}
 
 \usepackage{amsmath}
-
+\usepackage{array}
 
 	% Intelligent cross-referencing. [LOAD AFTER \hypersetup AND amsmath]
 
@@ -130,11 +130,11 @@ sorting=ynt
 
 	\section{Introduction}
 	
-	In todays world of faster than ever advancing technology this "Maturitätsarbeit" tries to shine a light into the corner of self-built drones.
+	In the world of today where technology is advancing faster than ever before this "Maturitätsarbeit" tries to shine a light into the corner of self-built and autonomous drones.
 	
 	However it first needs to be defined what a drone even is. According to the Cambridge Dictionary a drone is: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work drone will refer to a quadcopter which is a drone with four motors and propellers and not a conventional \gls{UAV}, which is mostly used for military grade drones. 
 
-	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now used widely and efficiently to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones also became more and more autonomous, meanwhile the drone pilots are able to only lock onto the target and let the drone follow and explode near it \cite{nytimesaidrones}. 
+	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now used widely and efficiently to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones also became more and more autonomous, meanwhile the drone pilots are able to only lock onto the target and let the drone follow and explode near it \cite{nytimesaidrones}. This increased use in war has also had and impact in the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides of the Ukraine war are just buying the controllers online.  
 
 
 	% TODO introduction
@@ -150,7 +150,11 @@ sorting=ynt
 	% TODO rather short
 	\subsection{General Software Considerations}
 	% TODO work around the same topic that already exists
+	\subsubsection{Open Source Software}
+	An important part of this "Maturitätsarbeit" is open source software. Open source software is software which everybody can download and develop in their own time. The main benefit to closed software is that it is free for everyone to have, but it comes with the downside that if the developing team loses interest in it and it gets outdate when it needs to work with other things
 	
+	
+	\subsubsection{Flight Softwares}
 	There are three main softwares to consider when it comes to drones Betaflight, INAV and Ardupilot. All of them are open source. Multiwii is the origin of Betaflight and INAV. Multwii was Arduino based and then upgraded to Baseflight to be able to use the STM32 chips. Then it was forked to Cleanflight, which was later forked again into Betaflight and INAV\cite{history}. 
 	
 	The following three paragraphs are mostly based on \cite{firmwarearticle} and \cite{firmwarevideo}.
@@ -320,7 +324,7 @@ sorting=ynt
 	The problem was that the \lstinline|Serial3_Protocol|(Which is for the Uart3, which will be used for the connection to the RaspberryPi) was set to 5 which means GPS, however by being on 5 it blocked the Uart4, to which my GPS was really connected. After disabling the Uart3 it finally worked.
 
 \pagebreak % temporary to have a better overview
-	The GPS is quite precise outside. (Figure 6)
+	The GPS is quite precise outside \cref{fig:gpsoutside}.
 	%TODO add point on the picture where I'm really at
 	
 \begin{figure}[h]
@@ -332,7 +336,7 @@ sorting=ynt
 	
 	It also works sometimes inside and is precisely on my room, but sometimes it shows that I'm in Poland the middle of the Atlantic Ocean or Iceland.
 
-	
+	% TODO delete this probably it is of now value to the work
 \begin{figure}[h]
 	\centering
 	\begin{minipage}[b]{0.4\textwidth}
@@ -345,11 +349,11 @@ sorting=ynt
 		\caption{}
 	\end{minipage}
 \end{figure}
-
+	% until here
 	 
 	\subsubsection{Receiver/Transmitter}
 	To get the connection between the receiver and radio I first followed the ExpressLRS\cite{expresslrsorg} page. I changed the \lstinline|Serial6_Protocol| to 23 and the \lstinline|RSSI_Type| to 3 for the receiver protocol. I also changed the \lstinline|RC_Options| to the correct bitmask.
-
+% TODO do I really need this picture
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/bitmask}
@@ -492,7 +496,7 @@ to:
 	\begin{lstlisting}[language=python, caption={information retrieval}, label=lst:listing-autopilot, style=myPython]
 		print( "Autopilot version: %s" %vehicle.version)
 	\end{lstlisting}
-	\begin{lstlisting}[caption= output from \ref{lst:listing-autopilot}]
+	\begin{lstlisting}[caption= output from \cref{lst:listing-autopilot}]
 		Autopilot version: APM:Copter-4.5.7
 	\end{lstlisting}
 	% TODO might move up to the part where all the connections are explained to the RaspberryPi
@@ -527,6 +531,27 @@ to:
 	
 	The main problem of the outdated Dronkitpython library is, that the function \lstinline|vehicle.channels|, which should read the channel values from the Radiocontroler, is only returning none. It is a long-known issue and to circumvent it a decorator is used \cite{rcchannelissue}. 
 	
+	\begin{Explanation}[Decorator]
+		\item 
+	\end{Explanation}
+	
+	\begin{lstlisting}[language=python, style=myPython, label={lst:decorator}, caption={decorator for channel values}]
+		@vehicle.on_message("RC_CHANNELS")
+		def rc_channel_listener(vehicle, name, message):
+		global latest_rc_channels
+		latest_rc_channels = message
+		
+		def get_rc_channel_value(channel_number):
+		global latest_rc_channels
+		if latest_rc_channels is None:
+		return None
+		channel_value = getattr(latest_rc_channels, f"chan{channel_number}_raw", None)
+		return channel_value
+		
+	\end{lstlisting}
+	
+	
+	
 	trying to get a channel value over dronekitpython... does not work
 	
 	seeing it over mavproxy via the status command, but not the rc status
@@ -535,7 +560,7 @@ to:
 	
 	after a lot of trial and error I got this which works to retrieve a value from the radio
 	\begin{lstlisting}[language=python, style=myPython]
-^fjasdflkjasdf 		from dronekit import connect, VehicleMode
+		from dronekit import connect, VehicleMode
 		import time
 		
 		vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
@@ -590,7 +615,9 @@ to:
 	\printbibliography[
 		heading=bibintoc,
 		title={Bibliography}
-	]	
+	]
+	\listoftables
+	\listoffigures	
 	\section{Table of Figures}
 	%(short table on which every figure description with the page number is listed)
 	

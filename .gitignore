@@ -20,3 +20,6 @@
 *.gls
 *.alg
 *.toc
+*.lot
+*.lof
+

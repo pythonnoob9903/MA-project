@@ -2,34 +2,36 @@
 \contentsline {section}{\numberline {2}Personal Motivation}{3}{section.2}%
 \contentsline {section}{\numberline {3}Literature Review}{3}{section.3}%
 \contentsline {subsection}{\numberline {3.1}General Software Considerations}{3}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Open Source Software}{3}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Flight Softwares}{3}{subsubsection.3.1.2}%
 \contentsline {section}{\numberline {4}Methodology}{4}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Drone Overview}{4}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}parts}{4}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Fc}{4}{subsubsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2}parts}{5}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Fc}{5}{subsubsection.4.2.1}%
 \contentsline {subsubsection}{\numberline {4.2.2}ESC}{5}{subsubsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.3}Motor}{5}{subsubsection.4.2.3}%
 \contentsline {subsubsection}{\numberline {4.2.4}Battery}{6}{subsubsection.4.2.4}%
-\contentsline {subsubsection}{\numberline {4.2.5}GNSS(Global Navigation Satellite System)/Compass}{6}{subsubsection.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.5}GNSS(Global Navigation Satellite System)/Compass}{7}{subsubsection.4.2.5}%
 \contentsline {subsubsection}{\numberline {4.2.6}Radio/Transmitter}{7}{subsubsection.4.2.6}%
 \contentsline {subsubsection}{\numberline {4.2.7}Smoke Stopper}{8}{subsubsection.4.2.7}%
 \contentsline {subsubsection}{\numberline {4.2.8}Problems with the Parts}{8}{subsubsection.4.2.8}%
-\contentsline {subsubsection}{\numberline {4.2.9}Propellers and Battery Charger}{8}{subsubsection.4.2.9}%
+\contentsline {subsubsection}{\numberline {4.2.9}Propellers and Battery Charger}{9}{subsubsection.4.2.9}%
 \contentsline {subsubsection}{\numberline {4.2.10}Data Transfer Protocols}{9}{subsubsection.4.2.10}%
 \contentsline {subsection}{\numberline {4.3}mechanical work}{9}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}ardupilot}{9}{subsection.4.4}%
 \contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{9}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}Firmware Installation}{9}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2}Firmware Installation}{10}{subsubsection.4.4.2}%
 \contentsline {subsubsection}{\numberline {4.4.3}GPS Connection}{10}{subsubsection.4.4.3}%
 \contentsline {subsubsection}{\numberline {4.4.4}Receiver/Transmitter}{12}{subsubsection.4.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.5}Motor Test}{13}{subsubsection.4.4.5}%
+\contentsline {subsubsection}{\numberline {4.4.5}Motor Test}{14}{subsubsection.4.4.5}%
 \contentsline {subsubsection}{\numberline {4.4.6}Compass Calibration}{14}{subsubsection.4.4.6}%
 \contentsline {subsubsection}{\numberline {4.4.7}Road to First Flight}{14}{subsubsection.4.4.7}%
 \contentsline {subsubsection}{\numberline {4.4.8}RaspberryPi Setup}{16}{subsubsection.4.4.8}%
 \contentsline {subsubsection}{\numberline {4.4.9}MAVProxy Installation}{17}{subsubsection.4.4.9}%
 \contentsline {subsubsection}{\numberline {4.4.10}Dronekit}{17}{subsubsection.4.4.10}%
-\contentsline {section}{\numberline {5}Results}{20}{section.5}%
-\contentsline {section}{\numberline {6}Discussion and Outlook}{20}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}%
-\contentsline {section}{\numberline {8}References}{20}{section.8}%
-\contentsline {section}{Bibliography}{20}{section*.11}%
-\contentsline {section}{\numberline {9}Table of Figures}{23}{section.9}%
+\contentsline {section}{\numberline {5}Results}{21}{section.5}%
+\contentsline {section}{\numberline {6}Discussion and Outlook}{21}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{21}{section.7}%
+\contentsline {section}{\numberline {8}References}{21}{section.8}%
+\contentsline {section}{Bibliography}{21}{section*.11}%
+\contentsline {section}{\numberline {9}Table of Figures}{24}{section.9}%

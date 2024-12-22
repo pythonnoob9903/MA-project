@@ -44,19 +44,27 @@ vehicle.armed = False
 
 Xcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[0]
 Ycord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[1]
-#Zcord = getcords()[2]
+Zcordrelative = getcords()[2]
 Zcord = meters_to_coordinates(getcords()[0], getcords()[1],getcords()[2], vehicle)[2]
 log(Xcord[0])
 log(Ycord[0])
 log(Zcord[0])
 target = LocationGlobal(float(Xcord[0]), float(Ycord[0]), float(Zcord[0]))
+targetrelative = LocationGlobalRelative(float(Xcord[0]), float(Ycord[0]), float(Zcordrelative[0]))
 
+vehicle.parameters["FENCE_ENABLE"] = 1
 log("geofence enabled")
 
 while checks(vehicle) is False:
     checks(vehicle)
     time.sleep(1)
 
+
+
+vehicle.parameters["BRD_SAFETYOPTION"] = 0
+log("safetyoption bitmask set to zero")
+vehicle.parameters["BRD_SAFETY_DEFLT"] = 0
+log("safety switch disabled")
 
 while radiocontrol() is True:
     vehicle.mode = VehicleMode('GUIDED') #setting mode to guided
@@ -70,10 +78,11 @@ while radiocontrol() is True:
     vehicle.simple_takeoff(target.alt)
 
     start_time = time.time()
+    log("before takeoffloop with geofence, simple_takeoff")
     while True:
 	    elapsed_time = time.time() - start_time
 	    radiocontrol()
-	    log("in takeoffloop")
+	    log(f"throttle channel from rc{get_rc_channel_value(3)}")
 	    current_altitude = vehicle.location.global_frame.alt
 	    if int(current_altitude) >= int(target.alt) -0.1:
 	    	log(f"target altitude reached{target.alt}")
@@ -84,7 +93,7 @@ while radiocontrol() is True:
 	    	vehicle.mode = VehicleMode["LOITER"]
 	    	break
 	    if elapsed_time >= 10:
-	    	log(f"Timoout, took to long to reach target altitude: {current_altitude}")
+	    	log(f"Timeout, took to long to reach target altitude: {current_altitude}")
 	    	break
 	    time.sleep(1)
     
@@ -93,11 +102,12 @@ while radiocontrol() is True:
 
     setup(vehicle)
     start_time = time.time()
+    log("in gotoloop, with fence")
     vehicle.simple_goto(target)
     while True:
 	    elapsed_time = time.time() - start_time
 	    radiocontrol()
-	    log("in gotoloop")
+	    log(f"throttle channel from rc{get_rc_channel_value(3)}")
 	    current_altitude = vehicle.location.global_frame.alt
 	    if int(current_altitude) >= int(target.alt) -0.1:
 	    	log(f"target altitude reached{target.alt}")
@@ -121,10 +131,11 @@ while radiocontrol() is True:
     vehicle.simple_takeoff(target.alt)
 
     start_time = time.time()
+    log("in takeoffloop, without fence")
     while True:
 	    elapsed_time = time.time() - start_time
 	    radiocontrol()
-	    log("in takeoffloop")
+	    log(f"throttle channel from rc{get_rc_channel_value(3)}")
 	    current_altitude = vehicle.location.global_frame.alt
 	    if int(current_altitude) >= int(target.alt) -0.1:
 	    	log(f"target altitude reached{target.alt}")
@@ -144,11 +155,56 @@ while radiocontrol() is True:
 
     setup(vehicle)
     start_time = time.time()
+    log("in gotoloop, without fence")
     vehicle.simple_goto(target)
     while True:
 	    elapsed_time = time.time() - start_time
 	    radiocontrol()
-	    log("in gotoloop")
+	    log(f"throttle channel from rc{get_rc_channel_value(3)}")
+	    current_altitude = vehicle.location.global_frame.alt
+	    if int(current_altitude) >= int(target.alt) -0.1:
+	    	log(f"target altitude reached{target.alt}")
+	    	vehicle.mode = VehicleMode["LOITER"]
+	    	break
+	    if int(current_altitude) >= 5 + int(current_altitude):
+	    	log(f"drone is too far from home{current_altitude}") 
+	    	vehicle.mode = VehicleMode["LOITER"]
+	    	break
+	    if elapsed_time >= 10:
+	    	log(f"Timoout, took to long to reach target altitude: {current_altitude}")
+	    	break
+	    time.sleep(1)
+	
+
+    log("simple takeoff with just meters not location global")
+    vehicle.simple_goto(1)
+	
+    while True:
+	    elapsed_time = time.time() - start_time
+	    radiocontrol()
+	    log(f"throttle channel from rc{get_rc_channel_value(3)}")
+	    current_altitude = vehicle.location.global_frame.alt
+	    if int(current_altitude) >= int(target.alt) -0.1:
+	    	log(f"target altitude reached{target.alt}")
+	    	vehicle.mode = VehicleMode["LOITER"]
+	    	break
+	    if int(current_altitude) >= 5 + int(current_altitude):
+	    	log(f"drone is too far from home{current_altitude}") 
+	    	vehicle.mode = VehicleMode["LOITER"]
+	    	break
+	    if elapsed_time >= 10:
+	    	log(f"Timoout, took to long to reach target altitude: {current_altitude}")
+	    	break
+	    time.sleep(1)
+
+
+
+    log("simple goto with targetrelative")
+    vehicle.simple_goto(targetrelative)
+    while True:
+	    elapsed_time = time.time() - start_time
+	    radiocontrol()
+	    log(f"throttle channel from rc{get_rc_channel_value(3)}")
 	    current_altitude = vehicle.location.global_frame.alt
 	    if int(current_altitude) >= int(target.alt) -0.1:
 	    	log(f"target altitude reached{target.alt}")
@@ -165,16 +221,17 @@ while radiocontrol() is True:
     
     vehicle.armed = False
     setup(vehicle)
-    log("trying mavlink command")
-    vehicle.mav.command_long_send(
-    	vehicle.target_system,
-    	vehicle.target_component,
+    log(f"throttle channel from rc{get_rc_channel_value(3)}")
+    log("trying mavlink command, without fence")
+    vehicle._master.mav.command_long_send(
+    	vehicle._master.target_system,
+    	vehicle._master.target_component,
     	mavutil.mavlink.MAV_CMD_NAV_TAKEOFF,
     	0,  # Confirmation
     	0, 0, 0, 0,  # No specific yaw/lat/lon/alt params
     	0, 0, 1  # Target altitude (1)
 	)
-
+    log(f"throttle channel from rc{get_rc_channel_value(3)}")
     time.sleep(5)
 
     vehicle.armed = False
