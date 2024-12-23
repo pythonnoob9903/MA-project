@@ -1,0 +1,119 @@
+\author{Eduard Scherer}
+\title{Development \& Construction of an Autonomous Path-Following Drone}
+\date{\today}
+\usepackage[utf8]{inputenc}
+
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=ynt
+]{biblatex}
+\addbibresource{references.bib} %Imports bibliography file
+
+\usepackage{graphicx}
+%\graphicspath{{C:\Users\eduar\Documents\Maturarbeit\MA-project\pictures}}
+
+%imports parskip, which jumps to the next paragraph when pressing a double enter instead of doing \\
+\usepackage{parskip}
+
+\usepackage{color}
+\definecolor{Blue}{rgb}{0,0,1}
+\definecolor{Green}{rgb}{0,0.5,0}
+\definecolor{Gray}{rgb}{0.5,0.5,0.5}
+\definecolor{Fuchsia}{rgb}{1,0,1}
+
+
+% references for pictures
+\usepackage[dvipsnames,table,x11names]{xcolor}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	linkcolor={red!40!black},
+	urlcolor={blue!90!black},
+	citecolor=,
+}
+
+
+% imports tcolorbox
+\usepackage{tcolorbox}
+% adds a explanation box
+\newtcolorbox[auto counter, number within=section]{Explanation}[2][]{%
+	title=Explanation~\thetcbcounter: #1, colframe=blue!30, 
+	coltitle= white}
+
+\usepackage{amsmath}
+\usepackage{array}
+
+
+% Intelligent cross-referencing. [LOAD AFTER \hypersetup AND amsmath]
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+\makeglossary
+\usepackage{lstautogobble}
+\usepackage{listings}
+\lstdefinestyle{BaselineStyle}
+{ 
+	commentstyle=\color{Blue},
+	keywordstyle=\color{Green},
+	numberstyle=\tiny\color{Gray},
+	stringstyle=\color{Fuchsia},
+	basicstyle=\ttfamily,
+	columns=flexible,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b, % sets the caption position 
+	keepspaces=true, % keeps spaces in text, keeping indentation of code
+	keywordstyle=\color{blue},
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2,
+	% might be adding: stepnummer=2, to have only have every other line numbered
+	xleftmargin=1.5em,
+	frame=single,
+	numbers=left,
+	framexleftmargin=1.5em,
+	autogobble=true
+} 
+
+% Python
+\lstdefinestyle{myPython}
+{ %
+	language=Python,
+	morekeywords={},
+	backgroundcolor=\color{Pink!15},
+	frame=none,
+	framexleftmargin=0em,
+	xleftmargin=0em,
+	belowskip=0pt
+} 
+
+% set to 'BaselineStyle'
+\lstset{style=BaselineStyle}
+
+% imports glossaries and activates it
+\usepackage[acronym, nomain]{glossaries}
+\makeglossaries
+
+\newacronym{Fc}{Fc}{flight controller}
+\newacronym{ESC}{ESC}{electronic speed controller}
+\newacronym{FPV}{FPV}{first person view}
+\newacronym{VTOL}{VTOL}{vertical takeoff and landing}
+\newacronym{GNSS}{GNSS}{global navigation satellite system}
+\newacronym{GPS}{GPS}{global positioning system}
+\newacronym{OS}{OS}{operating system}
+\newacronym{SSH}{SSH}{secure shell}
+\newacronym{DFU}{DFU}{device firmware updgrad}
+\newacronym{PID}{PID}{proportional, integral, derivative}
+\newacronym{AIO}{AIO}{All-in-One}
+\newacronym{CEP}{CEP}{circular error probable}
+\newacronym{LiPo}{LiPo}{lithium polymere}
+\newacronym{Li-ion}{Li-ion}{lithium-ion}
+\newacronym{VNC}{VNC}{virtual network computing}
+\newacronym{venv}{venv}{virtual environment}
+\newacronym{UAV}{UAV}{unmanned aerial vehicle}
+
+
+

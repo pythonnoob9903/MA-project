@@ -1,9 +1,13 @@
 # Documentation
-# Week 16.12-22.12
+## 23.12-29.12
+1. first autonomous takeoff
+2. writing
+3. preamble.tex instead of having it in the beginning of document.tex
+## Week 16.12-22.12
 1. trying different kinds of taking off methods did not work
 2. programming new ideas to take off
 3. writing parts of the introduction
-# Week 9.12-15.12
+## Week 9.12-15.12
 1. writing MavProxy and parts of dronekit
 2. trying different ideas for the vehicle.simple_takeoff--> did not work
 3. sophisticating the log file

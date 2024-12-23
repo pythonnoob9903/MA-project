@@ -1,126 +1,6 @@
 \documentclass[svgnames]{article}
-% preamble (Packages importieren)
 
-\author{Eduard Scherer}
-\title{Development \& Construction of an Autonomous Path-Following Drone}
-\date{\today}
-\usepackage[utf8]{inputenc}
-
-\usepackage[
-backend=biber,
-style=numeric,
-sorting=ynt
-]{biblatex}
-\addbibresource{references.bib} %Imports bibliography file
-
-\usepackage{graphicx}
-%\graphicspath{{C:\Users\eduar\Documents\Maturarbeit\MA-project\pictures}}
-\usepackage{parskip}
-
-
-
-\usepackage{color}
-\definecolor{Blue}{rgb}{0,0,1}
-\definecolor{Green}{rgb}{0,0.5,0}
-\definecolor{Gray}{rgb}{0.5,0.5,0.5}
-\definecolor{Fuchsia}{rgb}{1,0,1}
-
-
-% references for pictures
-\usepackage[dvipsnames,table,x11names]{xcolor}
-
-\usepackage{lstautogobble}
-\usepackage{listings}
-\lstdefinestyle{BaselineStyle}
-{ %
-	commentstyle=\color{Blue},
-	keywordstyle=\color{Green},
-	numberstyle=\tiny\color{Gray},
-	stringstyle=\color{Fuchsia},
-	basicstyle=\ttfamily,
-	columns=flexible,
-	breakatwhitespace=false,
-	breaklines=true,
-	captionpos=b, % sets the caption position 
-	keepspaces=true, % keeps spaces in text, keeping indentation of code
-	keywordstyle=\color{blue},
-	numbersep=5pt,
-	showspaces=false,
-	showstringspaces=false,
-	showtabs=false,
-	tabsize=2,
-	% might be adding: stepnummer=2, to have only have every other line numbered
-	xleftmargin=1.5em,
-	frame=single,
-	numbers=left,
-	framexleftmargin=1.5em,
-	autogobble=true
-} %
-
-
-% TigerJython syntax
-\lstdefinestyle{myPython}
-{ %
-	language=Python,
-	morekeywords={repeat,sqrt},
-	backgroundcolor=\color{Pink!15},
-	frame=none,
-	framexleftmargin=0em,
-	xleftmargin=0em,
-	belowskip=0pt
-} %
-
-
-% set to 'BaselineStyle'
-\lstset{style=BaselineStyle}
-
-
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks,
-	linkcolor={red!40!black},
-	urlcolor={blue!90!black},
-	citecolor=,
-}
-
-
-
-
-\usepackage{tcolorbox}
-\newtcolorbox[auto counter, number within=section]{Explanation}[2][]{%
-	title=Explanation~\thetcbcounter: #1, colframe=blue!30, 
-	coltitle= white}
-
-\usepackage[acronym, nomain]{glossaries}
-
-\makeglossaries
-
-
-\newacronym{Fc}{Fc}{flight controller}
-\newacronym{ESC}{ESC}{electronic speed controller}
-\newacronym{FPV}{FPV}{first person view}
-\newacronym{VTOL}{VTOL}{vertical takeoff and landing}
-\newacronym{GNSS}{GNSS}{global navigation satellite system}
-\newacronym{GPS}{GPS}{global positioning system}
-\newacronym{OS}{OS}{operating system}
-\newacronym{SSH}{SSH}{secure shell}
-\newacronym{DFU}{DFU}{device firmware updgrad}
-\newacronym{PID}{PID}{proportional, integral, derivative}
-\newacronym{AIO}{AIO}{All-in-One}
-\newacronym{CEP}{CEP}{circular error probable}
-\newacronym{LiPo}{LiPo}{lithium polymere}
-\newacronym{Li-ion}{Li-ion}{lithium-ion}
-\newacronym{VNC}{VNC}{virtual network computing}
-\newacronym{venv}{venv}{virtual environment}
-\newacronym{UAV}{UAV}{unmanned aerial vehicle}
-
-\usepackage{amsmath}
-\usepackage{array}
-
-	% Intelligent cross-referencing. [LOAD AFTER \hypersetup AND amsmath]
-
-\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
-
+\input{preamble.tex}
 
 % Dokument
 \begin{document}
@@ -134,7 +14,7 @@ sorting=ynt
 	
 	However it first needs to be defined what a drone even is. According to the Cambridge Dictionary a drone is: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work drone will refer to a quadcopter which is a drone with four motors and propellers and not a conventional \gls{UAV}, which is mostly used for military grade drones. 
 
-	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now used widely and efficiently to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones also became more and more autonomous, meanwhile the drone pilots are able to only lock onto the target and let the drone follow and explode near it \cite{nytimesaidrones}. This increased use in war has also had and impact in the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides of the Ukraine war are just buying the controllers online.  
+	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now used widely and efficiently to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones also became more and more autonomous, meanwhile the drone pilots are able to only lock onto the target and let the drone follow and explode near it \cite{nytimesaidrones}. This increased use in war has also had and impact in the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides in the Ukraine war are buying the \gls{Fc} no matter what software is on them.  
 
 
 	% TODO introduction
@@ -151,7 +31,7 @@ sorting=ynt
 	\subsection{General Software Considerations}
 	% TODO work around the same topic that already exists
 	\subsubsection{Open Source Software}
-	An important part of this "Maturitätsarbeit" is open source software. Open source software is software which everybody can download and develop in their own time. The main benefit to closed software is that it is free for everyone to have, but it comes with the downside that if the developing team loses interest in it and it gets outdate when it needs to work with other things
+	An important part of this "Maturitätsarbeit" is open source software. Open source software is software which everybody can download and develop in their own time. The main benefit over closed software is that it is free for everyone to have and everybody can change it for themselves if they like, but it comes with the downside that if the developing team loses interest in it and it gets outdated when it needs to work with other things. Both aspects will be found later on to be useful and time exhausting.
 	
 	
 	\subsubsection{Flight Softwares}
@@ -193,7 +73,7 @@ sorting=ynt
 	\subsubsection{Motor}
 	There are two types of motor brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven and the brushless motors are electrically driven. Therefor brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in really small drones with 1S batteries. However even in the small drones brushless motors are the more popular choice\cite{brush/lessmotors}. 
 	% TODO explain brush/less motors better
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.2]{pictures/motor}
 	\caption{\cite{picturemotor}}
@@ -263,12 +143,9 @@ sorting=ynt
 	\subsubsection*{SPI}
 	\subsubsection*{Uart}
 	\subsubsection*{I2C}
+	\subsubsection*{Mavlink}
 	
-	
-	
-	
-	\subsection{mechanical work}
-	
+
 	\subsection{ardupilot}
 	The following is based on the ArduPilot copter documentation\cite{ardupilotdocs}.
 	\subsubsection{Ground Station}
@@ -287,13 +164,13 @@ sorting=ynt
 
 	\end{Explanation}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/Gyro_pos2_large}
 	\caption{}
 	\label{fig:gyropos2large}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/Gyro_pos2.JPG}
 	\caption{}
@@ -303,7 +180,7 @@ sorting=ynt
 
 	\subsubsection{GPS Connection}
 	When I tried to get a GPS connection a No GPS message appeared. Changing the \lstinline|GPS_Type = 2| for the Ublox GPS did not change the No GPS error message.
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.2]{pictures/No_GPS}
 	\caption{}
@@ -312,7 +189,7 @@ sorting=ynt
 
 	Even though I was certain that the GPS worked well, because the compass of the GPS was already detected in the compass calibration tab.
 	% TODO get better picture
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/M10_compass_detected}
 	\caption{}
@@ -327,7 +204,7 @@ sorting=ynt
 	The GPS is quite precise outside \cref{fig:gpsoutside}.
 	%TODO add point on the picture where I'm really at
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.2]{pictures/GPS_Outside}
 	\caption{}
@@ -337,7 +214,7 @@ sorting=ynt
 	It also works sometimes inside and is precisely on my room, but sometimes it shows that I'm in Poland the middle of the Atlantic Ocean or Iceland.
 
 	% TODO delete this probably it is of now value to the work
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\begin{minipage}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{pictures/GPS_inside1}
@@ -354,7 +231,7 @@ sorting=ynt
 	\subsubsection{Receiver/Transmitter}
 	To get the connection between the receiver and radio I first followed the ExpressLRS\cite{expresslrsorg} page. I changed the \lstinline|Serial6_Protocol| to 23 and the \lstinline|RSSI_Type| to 3 for the receiver protocol. I also changed the \lstinline|RC_Options| to the correct bitmask.
 % TODO do I really need this picture
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/bitmask}
 	\caption{}
@@ -364,18 +241,18 @@ sorting=ynt
 	The connection between the radio and receiver then worked, because the receiver had a constant blue light and the receiver said telemetry recovered after it was lost for a moment. However as it comes it did not have a connection to the Fc. I thought about changing the receiver from Uart6 to Uart 1, because Uart1 is the usual Uart for a receiver on the Kakute H7, but it would require a JST and more soldering. So I searched for a different solution. I looked at the Kakute H7 tab in the documentation and saw that for the Kakute H7 I needed to set \lstinline|Brd_Alt_Config| to 1 for the CRSF interface of the receiver. \lstinline|Brd_Alt_Config| is a Fc specific parameter so it makes sense that it did not come up in the search for a solution. 
 
 	\subsubsection*{Battery}
-	When I plugged in the battery the smoke stopper in between did not light up. The battery was not immediately recognized in MP and I needed to change the battery settings for the Tekko32 F4 4in1 I only needed to change the \lstinline|Batt_Monitor| to 4 the other parameters were already correct. I was now able to see the voltage and amperage of the battery.
+	When I plugged in the battery the smoke stopper in between did not light up. The battery was not immediately recognized in MP and I needed to change the battery settings for the Tekko32 F4 4in1 I only needed to change the \lstinline|Batt_Monitor| to 4 the other parameters were already correct. The battery voltage and amperage now shows up in Mission Planner, as can be seen in \cref{fig:battery}.
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/Battery}
-	\caption{}
+	\caption{battery voltage and amperage}
 	\label{fig:battery}
 \end{figure}
 	
-	The only prearm check missing now is the compass calibration.(Figure 9\footnote{I'm currently inside and the GPS has no connection, but it works as soon as I'm under free Sky.})
-
-\begin{figure}[h]
+	The only prearm check missing now is the compass calibration.(Figure 9\footnote{The drone currently inside and the GPS has no fix, but it works as soon as it is under free Sky.})
+% TODO might delete this figure is of no value to the work
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/prearmcheck}
 	\caption{}
@@ -388,7 +265,7 @@ sorting=ynt
 	\\ Motor testing works after connecting assigning the right position to the motors and setting the mot\_pwm\_type to dshot 600. Dshot is just the digital protocol for communication between the Fc and ESC. After some time the motors began to beep, but after testing them again they stopped so it was most likely a inactivity warning. A new error also appeared called battery failsafe. This was caused by a unstable connection between the ESC and Fc and so the Fc took the connection from the computer as power source and had to little power to use the motors. 
 	
 	\subsubsection{Compass Calibration}
-	I first tried to callibrate the compass inside, but it turns out that you need a good GPS lock. I went outside and tried calibrating the compass and it failed multiple times. I set the fitness to relaxed and it still failed. The Holybro docs\cite{holybrodocs} recommended to set the parameter \lstinline|Compass_Orient| to 6 for proper orientation. It failed again. I was definitely far enough away from metal or my computer which could influence the calibration.
+	I first tried to callibrate the compass inside, but it turns out that you need a good GPS lock. I went outside and tried calibrating the compass and it failed multiple times. I set the fitness to relaxed and it still failed. The Holybro docs\cite{holybrodocscompass} recommended to set the parameter \lstinline|Compass_Orient| to 6 for proper orientation. It failed again. I was definitely far enough away from metal or my computer which could influence the calibration.
 	\\ I then fixed it temporarily by doing the large vehical MagCal, however this only took away the prearm message and did not really work. What I did not know at the time is that the ArduPilot documentation warns from using this calibration, because it can look as if it is correctly configured, but in reality the orientation is incorrect. 
 	I later on needed to disassamble the copter anyway, because a wire between the motor and ESC came off and needed to be soldered on again, and put the GPS module directly onto the Fc and it worked using the normal compass calibration. 
 	
@@ -404,7 +281,7 @@ sorting=ynt
 	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check| by setting it to 0. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post\cite{blogcrashdump} I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc. I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. It is also advisable to turn off beacon delay, when working on the bench, because it lets the motors beep after 10 minutes of being unused.
 	% TODO explain beacon delay, find out for what it is good, probably to locate a crashed drone
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.4]{pictures/quadx}
 	\caption{Correct turning directions for my drone}
@@ -475,7 +352,7 @@ class Parameters(collections.MutableMapping, HasObservers):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: module 'collections' has no attribute 'MutableMapping'
 \end{lstlisting}
-	The source of the error is that in python 3.10 the abstract base class, MutapleMapping, was moved from collections to collections.abc. This needs to be changed(\cref{changed line}) in the dronekit source code. Which can be accessed with the the command \cref{sourcecode}
+	The source of the error is that in python 3.10 the abstract base class, MutapleMapping, was moved from collections to collections.abc. This needs to be changed(\cref{changed line}) in the dronekit source code. Which can be accessed with the the command \cref{sourcecode}\footnote{If it would not be open source, the change(\cref{changed line}) would not be possible}.
 	
 	\begin{lstlisting}[caption= accessing source code, label=sourcecode]
 nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
@@ -531,22 +408,24 @@ to:
 	
 	The main problem of the outdated Dronkitpython library is, that the function \lstinline|vehicle.channels|, which should read the channel values from the Radiocontroler, is only returning none. It is a long-known issue and to circumvent it a decorator is used \cite{rcchannelissue}. 
 	
+	
+	% TODO explanation box do this decorator
 	\begin{Explanation}[Decorator]
-		\item 
-	\end{Explanation}
+		\item A decorator is a function that modifies the behavior of a function or a class \cite{decorator}.
+	\end{Explanation} 
 	
 	\begin{lstlisting}[language=python, style=myPython, label={lst:decorator}, caption={decorator for channel values}]
 		@vehicle.on_message("RC_CHANNELS")
 		def rc_channel_listener(vehicle, name, message):
-		global latest_rc_channels
-		latest_rc_channels = message
+			global latest_rc_channels
+			latest_rc_channels = message
 		
 		def get_rc_channel_value(channel_number):
-		global latest_rc_channels
-		if latest_rc_channels is None:
-		return None
-		channel_value = getattr(latest_rc_channels, f"chan{channel_number}_raw", None)
-		return channel_value
+			global latest_rc_channels
+			if latest_rc_channels is None:
+				return None
+			channel_value = getattr(latest_rc_channels, f"chan{channel_number}_raw", None)
+			return channel_value
 		
 	\end{lstlisting}
 	
@@ -578,10 +457,6 @@ to:
 				return None
 			channel_value = getattr(latest_rc_channels, f"chan{channel_number}_raw", None)
 			return channel_value
-		
-		while True: 
-			time.sleep(1)
-			print(get_rc_channel_value(6))
 	\end{lstlisting}
 	% TODO add flowchart of the code for what is planned
 	
@@ -606,6 +481,8 @@ to:
 	
 	trying to let the drone fly with the \lstinline|vehicle.simple_takeoff(Zcoordinate)| command does not work
 	
+	it worked miraculously after diabling the parameter \lstinline|BRD_Safety_Deflt| and setting the bitmask to zero of the parameter \lstinline|BRD_Safetyoption| 
+	this is used to enable or disable the outputs to motors and servos. there is also the parameter \lstinline|BRD_Safety_Mask| which controls which switches can still get through when the safety switch is enabled... So the problem was that the \lstinline|Brd_Safetyoption| was set to be activated when \lstinline|Brd_safety_deflt| was disabled and enabled... so there was nothing except radiocontrol going through to the motors not my script.
 	
 	\section{Results}
 	\section{Discussion and Outlook}
@@ -618,6 +495,8 @@ to:
 	]
 	\listoftables
 	\listoffigures	
+	% TODO do this into the appendix?
+	% TODO add list of the parts used in the drone build with links directing to websites used to purchase them
 	\section{Table of Figures}
 	%(short table on which every figure description with the page number is listed)
 	
