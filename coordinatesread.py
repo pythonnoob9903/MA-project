@@ -68,6 +68,10 @@ def setup(vehicle): #sets up the initial variables for flight
     log("Speed_Up and groundspeed set/vehicle armed.")
     vehicle.groundspeed = 1
     vehicle.parameters["PILOT_SPEED_UP"] = 100
+    vehicle.parameters["BRD_SAFETYOPTION"] = 0
+    log("safetyoption bitmask set to zero")
+    vehicle.parameters["BRD_SAFETY_DEFLT"] = 0
+    log("safety switch disabled")
     vehicle.armed = True
 
 def checks(vehicle): #checks arming checks and can stall the while loop if it fails.
@@ -81,6 +85,6 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     if vehicle.battery.voltage <= 14:
         log(f'battery to low: {vehicle.battery.voltage}')
         tempbin = False
-    if vehicle.gps_0.fix_type <= 3:
+    if vehicle.gps_0.fix_type < 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
     return tempbin

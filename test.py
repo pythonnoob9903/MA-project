@@ -32,6 +32,11 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		log("control stays autonomous")
 		return True
 
+time.sleep(10)
+
+print(latest_rc_channels)
+print(vehicle.parameters["ARMING_CHECK"])
+"""
 while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
 	log(f"currently no communication to radio: {get_rc_channel_value(6)}")
 	time.sleep(1)
@@ -84,13 +89,13 @@ while radiocontrol() is True:
 	    radiocontrol()
 	    log(f"throttle channel from rc{get_rc_channel_value(3)}")
 	    current_altitude = vehicle.location.global_frame.alt
-	    if int(current_altitude) >= int(target.alt) -0.1:
+	    if float(current_altitude) >= float(target.alt) *0.95:
 	    	log(f"target altitude reached{target.alt}")
-	    	vehicle.mode = VehicleMode["LOITER"]
+	    	vehicle.mode = VehicleMode["RTL"]
 	    	break
 	    if int(current_altitude) >= 5 + int(current_altitude):
 	    	log(f"drone is too far from home{current_altitude}") 
-	    	vehicle.mode = VehicleMode["LOITER"]
+	    	vehicle.mode = VehicleMode["RTL"]
 	    	break
 	    if elapsed_time >= 10:
 	    	log(f"Timeout, took to long to reach target altitude: {current_altitude}")
@@ -102,6 +107,7 @@ while radiocontrol() is True:
 
     setup(vehicle)
     start_time = time.time()
+
     log("in gotoloop, with fence")
     vehicle.simple_goto(target)
     while True:
@@ -235,3 +241,4 @@ while radiocontrol() is True:
     time.sleep(5)
 
     vehicle.armed = False
+"""

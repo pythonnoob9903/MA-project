@@ -27,6 +27,10 @@ def get_rc_channel_value(channel_number): # checks the value of a certain channe
 def radiocontrol(): # checks if the switch is still on the right position to fly autonomously
 	if int(get_rc_channel_value(6)) >= 1800:
 		log('Giving back control to radio')
+		vehicle.parameters["BRD_SAFETYOPTION"] = 3
+		log("safetyoption bitmask set to three")
+		vehicle.parameters["BRD_SAFETY_DEFLT"] = 1
+		log("safety switch enabled")
 		return False
 	else:
 		log("control stays autonomous")
@@ -40,6 +44,12 @@ while get_rc_channel_value(6) == None: # checks if there is a rc_channel already
 	log(f"currently no communication to radio: {get_rc_channel_value(6)}")
 	time.sleep(1)
 print(get_rc_channel_value)
+
+setup(vehicle)
+vehicle.armed = True
+time.sleep(1)
+vehicle.armed = False
+
 
 while radiocontrol() is True: 
 	while checks(vehicle) is False:
@@ -64,6 +74,8 @@ while radiocontrol() is True:
 	log(Ycord[0])
 	log(Zcord[0])
 
+	target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
+	#target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
 
 	time.sleep(5)
 	if checks(vehicle) is False:
@@ -71,16 +83,12 @@ while radiocontrol() is True:
 		vehicle.mode = VehicleMode["LOITER"]
 		break
 
-	target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
-	#target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
-
-
-
 	if radiocontrol() is False: 
 		log("radiocontrol failed")
 		vehicle.mode = VehicleMode["LOITER"]
 		break
-
+	
+	log(f"board safety option bitmask set to: {vehicle.parameters['BRD_SAFETYOPTION']}")
 	# vehicle.simple_goto(target)
 	vehicle.simple_takeoff(Zcord[0])
 
@@ -96,35 +104,21 @@ while radiocontrol() is True:
 		radiocontrol()
 		log("in takeoffloop")
 		current_altitude = vehicle.location.global_frame.alt
-		if int(current_altitude) >= int(target.alt) -0.1:
-			log(f"target altitude reached{target.alt}")
+		if float(current_altitude) >= float(target.alt) *0.95:
+			log(f"target altitude reached {target.alt}")
 			break
 		if int(current_altitude) >= 5 + int(current_altitude):
-			log(f"drone is too far from home{current_altitude}") 
+			log(f"drone is too far from home :{current_altitude}") 
 			vehicle.mode = VehicleMode["LOITER"]
 			break
 		if elapsed_time >= 5:
-			log(f"Timoout, took to long to reach target altitude: {current_altitude}")
+			log(f"Timeout, took to long to reach target altitude: {current_altitude}")
 			break
 		time.sleep(1)
 	
 	log(datetime.now())
 
-	vehicle.mode = VehicleMode('GUIDED')
-	while not vehicle.mode.name == "GUIDED":
-        	log(f"Not in Guided mode: {vehicle.mode.name}")
-	log(f"in guided mode: {vehicle.mode.name}")
-	
-	radiocontrol()
-	time.sleep(5)
-	log("out off takeoffloop")
-
-	time.sleep(3)
-	
-	vehicle.mode = VehicleMode("RTL")
+	vehicle.mode = VehicleMode('RTL')
 	while not vehicle.mode.name == "RTL":
-		radiocontrol()
-		log("Vehicle mode is not yet RTL")
-		time.sleep(1) 
-	time.sleep(1)
-	break 
+        	log(f"Not in RTL mode: {vehicle.mode.name}")
+	log(f"in RTL mode: {vehicle.mode.name}")
