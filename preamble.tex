@@ -23,16 +23,11 @@ sorting=ynt
 \definecolor{Fuchsia}{rgb}{1,0,1}
 
 
-% references for pictures
+
 \usepackage[dvipsnames,table,x11names]{xcolor}
 
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks,
-	linkcolor={red!40!black},
-	urlcolor={blue!90!black},
-	citecolor=,
-}
+% references for pictures
+
 
 
 % imports tcolorbox
@@ -46,8 +41,7 @@ sorting=ynt
 \usepackage{array}
 
 
-% Intelligent cross-referencing. [LOAD AFTER \hypersetup AND amsmath]
-\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
 
 \makeglossary
 \usepackage{lstautogobble}
@@ -97,8 +91,8 @@ sorting=ynt
 \usepackage[acronym, nomain]{glossaries}
 \makeglossaries
 
-\newacronym{Fc}{Fc}{flight controller}
-\newacronym{ESC}{ESC}{electronic speed controller}
+\newacronym[plural={flight controllers (FCs)}]{Fc}{Fc}{flight controller (FC)}
+\newacronym[plural={electronic speed controllers (ESCs)}]{ESC}{ESC}{electronic speed controller}
 \newacronym{FPV}{FPV}{first person view}
 \newacronym{VTOL}{VTOL}{vertical takeoff and landing}
 \newacronym{GNSS}{GNSS}{global navigation satellite system}
@@ -114,6 +108,20 @@ sorting=ynt
 \newacronym{VNC}{VNC}{virtual network computing}
 \newacronym{venv}{venv}{virtual environment}
 \newacronym{UAV}{UAV}{unmanned aerial vehicle}
+\newacronym{OSS}{OSS}{open source software}
+\newacronym{PCB}{PCB}{printed circuit board}
+\newacronym{RTCM}{RTCM}{radio technical commission for maritime}
+\newacronym{RTK}{RTK}{real time kinematic}
+\newacronym[plural=ground control stations (GCSs)]{GCS}{GCS}{ground control station}
+\newacronym{MP}{MP}{Mission Planner}
+\newacronym{OS}{OS}{operating system}
 
-
-
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	linkcolor={red!40!black},
+	urlcolor={blue!90!black},
+	citecolor=,
+}
+% Intelligent cross-referencing. [LOAD AFTER \hypersetup AND amsmath]
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}

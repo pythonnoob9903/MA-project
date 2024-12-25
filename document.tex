@@ -12,11 +12,11 @@
 	
 	In the world of today where technology is advancing faster than ever before this "Maturitätsarbeit" tries to shine a light into the corner of self-built and autonomous drones.
 	
-	However it first needs to be defined what a drone even is. According to the Cambridge Dictionary a drone is: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work drone will refer to a quadcopter which is a drone with four motors and propellers and not a conventional \gls{UAV}, which is mostly used for military grade drones. 
+	However, it first needs to be defined what a drone even is. According to the Cambridge Dictionary, a drone is defined as: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work, the term 'drone' will refer to a quadcopter which is a drone with four motors and propellers and not a conventional \gls{UAV}, which is mostly used for military grade drones. 
 
-	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now used widely and efficiently to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones also became more and more autonomous, meanwhile the drone pilots are able to only lock onto the target and let the drone follow and explode near it \cite{nytimesaidrones}. This increased use in war has also had and impact in the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides in the Ukraine war are buying the \gls{Fc} no matter what software is on them.  
+	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now widely and effectively used to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones have become increasingly autonomous. Drone pilots with more advanced setups, are able to simply lock onto the target and let the drone follow and detonate near it \cite{nytimesaidrones}. This increased use in war has also had an impact on the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides in the Ukraine war are buying the \glspl{ESC} no matter what software is on them.  
 
-
+	% TODO write personal motivation
 	% TODO introduction
 	% do at the end of the writing process
 	% drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
@@ -31,48 +31,61 @@
 	\subsection{General Software Considerations}
 	% TODO work around the same topic that already exists
 	\subsubsection{Open Source Software}
-	An important part of this "Maturitätsarbeit" is open source software. Open source software is software which everybody can download and develop in their own time. The main benefit over closed software is that it is free for everyone to have and everybody can change it for themselves if they like, but it comes with the downside that if the developing team loses interest in it and it gets outdated when it needs to work with other things. Both aspects will be found later on to be useful and time exhausting.
+	An important part of this "Maturitätsarbeit" is \gls{OSS}. \gls{OSS} is software which everybody can download and develop in their own time. This process is known as 'forking', which refers to when a person other than the original developer takes the code and modifies it independently. The main benefit over closed software is that it can be freely downloaded by everyone and everybody can modify it as they see fit. However the downside is that if the development team loses interest, the software will become outdated and will not work smoothly with other systems anymore. Both aspects will later be found both useful and time-consuming. 
 	
 	
 	\subsubsection{Flight Softwares}
-	There are three main softwares to consider when it comes to drones Betaflight, INAV and Ardupilot. All of them are open source. Multiwii is the origin of Betaflight and INAV. Multwii was Arduino based and then upgraded to Baseflight to be able to use the STM32 chips. Then it was forked to Cleanflight, which was later forked again into Betaflight and INAV\cite{history}. 
+	Based on the literature reviewed there are three main softwares to consider when it comes to drones Betaflight, INAV and Ardupilot. All of them are open source. Multiwii is the origin of Betaflight and INAV. Multwii was Arduino based and then upgraded to Baseflight to be able to utilize a better chipset. Then it was forked to Cleanflight, which was later forked again into Betaflight and INAV \cite{history}. 
 	
-	The following three paragraphs are mostly based on \cite{firmwarearticle} and \cite{firmwarevideo}.
+	The following overview of the three softwares, is mostly based on the article written by \textcite{firmwarearticle} and a video made by \textcite{firmwarevideo}.
 	
-	Betaflight is in general the go-to option for first person view drones, commonly known as FPV drones, for either filming or racing. It is the most beginner friendly out of the three, because it has a large community, which results in a wide range of tutorials. When a new board comes out it is normally made to be used with Betaflight. However Betaflight lacks the option for different types of vehicles and generally the automated features are less developed compared to the other two. 
+	Betaflight appears to be the go-to option for \gls{FPV}, commonly used for filming or racing. It is the most beginner friendly out of the three, because it has a large community, which results in a wide range of tutorials. When a new \gls{Fc} comes out it is normally made to be used with Betaflight. However, Betaflight lacks support for different types of vehicles and generally the automated features are less developed compared to the other two. 
 	
-	INAV offers basic autonomous flight using waypoints and automated landing. It does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface to Betaflight so switching from one to the other is easier than switching to Ardupilot.
+	INAV offers basic autonomous flight using waypoints and automated landing. It does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface to Betaflight, so switching from one to the other is easier than switching from INAV to Ardupilot.
 	
-	Ardupilot basically offers everything the other two have to offer and more for example Submarines and VTOLs. It is not commonly used with FPV, yet you can if you want to. It is more complicated to get into, but as a trade off you will be able to customize everything to your will. It is also the only option for a companion computer like the RaspberryPi. A few years ago it was really expensive to start, because it only supported the Pixhawk family of flight controllers which cost several hundred Franks a piece. However in recent years it has began to support more and cheaper flight controllers.
+	Ardupilot basically offers everything the other two have to offer and more, for example Submarines and VTOLs. Although it is not commonly used with \gls{FPV}, it is still possible. Ardupilot involves more steps to set up, which also leads to the main benefit of it, namely the nearly limitless customization options.
+	% TODO get this sentence to work somehow, that it says that it is more complicated, but this is also the benefit, because of the limitless customization options
+	
+	It is also the only option to use together with a companion computer like the RaspberryPi. A few years ago it was really expensive to start, because it only supported the Pixhawk family of flight controllers which cost several hundred Franks per piece. However, in recent years it has began to support more and cheaper flight controllers.
 	
 	\section{Methodology}
 	%only what has been done
 	\subsection{Drone Overview}
-	If you want to fly a drone you have two options available either you buy one or you built one. The second option is for people who are interested in tinkering with their electronics until they work, not only the better option but also the cheaper one.
+	If you want to fly a drone you have two options available: either you buy one or you build one. The second option is from a technical viewpoint, not only the better option but also the cheaper one.
 	
-	The main parts needed for a drone are the \gls{Fc}, the \gls{ESC}, the receiver, the battery, servos and of course the frame, in addition you can also add a \gls{GPS}, LEDs and more. The flight controller and electronic speed controller are referred to as \gls{Fc} and ESC. The \gls{Fc} runs the chosen software and controls every other part in one way or another. It is directly connected to the \gls{ESC}, which controls the motors and is connected to the battery. The \gls{Fc} also communicates with the receiver and \gls{GPS} if there is one. In my case there will also a RaspberryPi which also connects to the \gls{Fc}.
+	The main parts needed for a drone are the \gls{Fc}, the \gls{ESC}, the receiver, the battery, servos and of course the mainframe. Additionally a \gls{GPS} and LEDs can be added as needed. The \gls{Fc} and the \gls{ESC} are sometimes more generally referred to as \gls{PCB}\footnote{A \gls{PCB} is a board that consists of electronic components, which are connected through the laced copper wires in board} or simply 'board'. 
+	% TODO do footnote better sounds really weird
+	The \gls{Fc} runs the chosen software and controls every other part in one way or another. It is directly connected to the \gls{ESC}, which controls the motors and is connected to the battery. The \gls{Fc} also communicates with the receiver and \gls{GPS} if there is one. In this case there will also be a microcomputer, I chose the RaspberryPi, which connects to the \gls{Fc}.
 	% TODO add a graphic which illustrates the connection between the parts
-	  
-	\subsection{parts}
+	\subsection{Data Transfer Protocols}
+	\subsubsection{SPI}
+	\subsubsection{Uart}
+	\subsubsection{I2C}
+	\subsubsection{Mavlink}
+	
+	
+	\subsection{Parts}
 	
 	\subsubsection[Fc]{Flight Controller}
-	There are two different kind of flight controller the \gls{AIO} and just a \gls{Fc}. The \gls{AIO} is not only a \gls{Fc} but also the \gls{ESC} in one board. This has the advantage of only needing one board instead of two or five. However if only parts of the \gls{ESC} or the \gls{Fc} are damaged you need to replace the whole board which is more expensive than replacing only the \gls{Fc} or \gls{ESC}. 
+	There are two different types of flight controllers: the \gls{AIO} and a standalone \gls{Fc}. The \gls{AIO} consists not only a \gls{Fc} but also the \gls{ESC} in one board. This has the advantage of only needing one board instead of two or five, in some alternative setups. However, if only parts of the \gls{ESC} or the \gls{Fc} are damaged you need to replace the whole board, which is more expensive than replacing only the \gls{Fc} or \gls{ESC}. 
 	
-	Betaflight and INAV both support a wide variety of \gls{Fc}s compared to Ardupilot which is only supporting a very specific sample of boards\cite{FcSupport}. They have the option of open and closed hardware. Because the open hardware \gls{Fc}s are quite expensive, so I decided to go with a closed one. The chip used in \gls{Fc}s is usually a STM32. There are multiple generations of it the mainly used ones are F4, F7 and H7. The F7 and H7 are much faster than the F4 chips so the decision was not that difficult to make. I then decided to go with the Kakute H7 v1.3 (MPU6000)\cite{KakuteH7} from Holybro, because it was ok in the price and available as a stack. It comes shipped with Betaflight so I will need to flash Ardupilot. 
+	Betaflight and INAV both support a wide variety of \glspl{Fc} compared to Ardupilot which is only supporting a very specific sample of boards \cite{FcSupport}. They have the option of open and closed hardware. Because the open hardware \glspl{Fc} are quite expensive, so I decided to go with a closed one. The chip used in \glspl{Fc} is usually a STM32. There are multiple generations of it the mainly used ones are F4, F7 and H7, the newest version is the H7. I then decided to go with the Kakute H7 v1.3 (MPU6000) from Holybro, because it was affordable and available as a stack \cite{KakuteH7}. A stack is a \gls{Fc} and \gls{ESC} mounted on top of each other. It normally comes with stack screws. It comes shipped with Betaflight so it is required to flash Ardupilot. 
+	% TODO explanation open and closed hardware
 
 
 
 
 	\subsubsection[ESC]{Electronic Speed Controler}
-	There are two different kind of \gls{ESC}s, 4in1 and single \gls{ESC}s. If you use single \gls{ESC}s you will need one for each motor instead of a single board for all of them. The advantage of 4in1 \gls{ESC}s is that you do not need a power distribution board, because it is already incorporated in the \gls{ESC}, and that it can come in a stack. A stack is a \gls{Fc} and \gls{ESC} mounted on top of each other. It normally comes with stack screws. The disadvantage is that if a part of the \gls{ESC} is damaged you need to replace the whole board. What needs to be looked upon buying a \gls{ESC} is that the peak current of the motor is not higher than the burst current of the \gls{ESC}, because it could damage a two high current could damage the \gls{ESC}.
+	There are two different kind of \gls{ESC}s: 4in1 and single \glspl{ESC}. If you use single \gls{ESC}s, then one is needed for each motor instead of a single board for all of them. The advantage of 4in1 \gls{ESC}s is that it does not require a power distribution board, because it is already incorporated in the \gls{ESC}, and that it can come in a stack. The disadvantage is that if a part of the \gls{ESC} is damaged you need to replace the whole board. What needs to be considered before buying a \gls{ESC} is that the peak current of the motor is not higher than the burst current of the \gls{ESC}, because a too high current could damage the \gls{ESC}.
 	
-	My decision was to go with a 4in1 on a stack, because it is slightly cheaper and normally easier to wire. The only option with the Kakute H7 was the stack with the Tekko32 4in1 with a continuous current of either 50, 60 or 65 Ampere. I chose the 50A\cite{Tekko32} one, because you do not need a high continuous current rating when flying rather slowly and the motors I chose have a peak current of around 42A. 
+	My decision was to go with a 4in1 on a stack, because it is slightly cheaper and normally easier to wire compared to four single boards. The only option with the Kakute H7 was the stack with the Tekko32 4in1 with a continuous current of either 50A, 60A or 65A. I chose the 50A one, because you do not need a high continuous current rating when flying rather slowly and the motors I chose have a peak current of around 42A \cite{Tekko32}. 
 	
-	At the time I bought the \gls{ESC} it was still shipped with BLHeli32 which as mentioned has seized their operations. I could however flash AM32 onto it.
+	At the time I bought the Tekko32, it was still shipped with BLHeli32, which as mentioned in the beginning has since seized their operations. It is however possible to flash AM32\footnote{A different \gls{ESC} software, which has gained quite some popularity after BLHeli32 is off the market.} onto it \cite{AM32}.
 
 	\subsubsection{Motor}
-	There are two types of motor brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven and the brushless motors are electrically driven. Therefor brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in really small drones with 1S batteries. However even in the small drones brushless motors are the more popular choice\cite{brush/lessmotors}. 
+	There are two types of motor: brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven, while the brushless motors are electrically driven. Therefore brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in very small drones with 1S\footnote{What 1S means will be explained in the next section} batteries. However, even in the small drones brushless motors are the more popular choice \cite{brush/lessmotors}. 
 	% TODO explain brush/less motors better
+	% TODO get a better picture for this
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.2]{pictures/motor}
@@ -80,29 +93,29 @@
 	\label{fig:motor}
 \end{figure}
 
-	The numbers that are seen on the motors like 2207 are describing the stator of the motor itself. In the case of a 2207 that would be 22mm diameter and a height of 7mm. The usual stator sizes of 5 inch drones are either 2207 or 2306. There is also the KV value which has to be considered. The KV value is the number of revolutions per minute(rpm) a motor turns when one volt is applied. The lower the KV value the more efficient is the motor and the higher the KV value the more responsive it is. The KV value for a 5 inch drone with a 4S battery is between 2300 and 2800. I chose the Iflight Xing-E Pro 2207\cite{xingepro} with a KV value of 2450, because the IFlight-Xing motors are known to be of good quality. 
+	The numbers that are seen on the motors, such as '2207', describe the stator of the motor itself. In the case of a 2207 that would be a 22mm diameter and a height of 7mm. The usual stator sizes of 5 inch drones are either 2207 or 2306. There is also the KV value, which has to be considered. The KV value is the number of revolutions per minute (rpm) a motor turns when one volt is applied. The lower the KV value, the more efficient the motor is and the higher the KV value the more responsive it is. The KV value for a 5-inch drone with a 4S battery ranges from 2300 to 2800. I chose the Iflight Xing-E Pro 2207\cite{xingepro} with a KV value of 2450, because the IFlight-Xing motors are known to be of good quality, \textit{'they (Xing motors) also prove to be very reliable and most importantly durable'} \textcite{xingreview}. 
 
 
 	
 	\subsubsection{Battery}
-	There are two main types of batteries: \gls{LiPo} and \gls{Li-ion} batteries. \gls{LiPo} batteries have a tendency to go up in flames. They have compared to the \gls{Li-ion} batteries a much higher discharge rate, also denoted as C value, so they are well suited for racing drones. However \gls{Li-ion} batteries have a higher energy density, which means that they can store more mAh with the same weight as \gls{LiPo} batteries, so they are more common in long range flying. The batteries normally have multiple cells, for example a 4S \gls{LiPo} batterie contains 4 cells. This is important, because the more cells you have the higher is the voltage and so you will need a motor with a lower KV value. 
+	There are two main types of batteries: \gls{LiPo} and \gls{Li-ion} batteries. \gls{LiPo} batteries have a tendency to go up in flames. They have a much higher discharge rate compared to \gls{Li-ion} batteries, also denoted as the C value, so they are well suited for racing drones. However, \gls{Li-ion} batteries have a higher energy density, which means that they can store more mAh for the same weight compared to \gls{LiPo} batteries, so they are more common in long-range flying. The batteries normally have multiple cells, for example a 4S \gls{LiPo} battery contains 4 cells. This is important, because the more cells you have, the higher is the voltage and so you will need a motor with a lower KV value. 
 	
-	I first wanted to buy two \gls{Li-ion} battery packs, however they are hard to get and much more expensive. The other option would have been to solder them together myself, but it requires some soldering skill, which I did not have then. So I decided to go with 4S \gls{LiPo} batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I want something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress from where I got all the other components, so it seemed to be easier to also chose a battery from there. 
+	I first wanted to buy two \gls{Li-ion} battery packs, however they are hard to get and much more expensive. The other option would be to solder them together, but it requires some soldering skill, which I personally did not have then. Hence, I decided to go with 4S \gls{LiPo} batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I wanted something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress, from where I also sourced all the other components, so it seemed to be easier to also chose a battery from there. 
 	
-	% TODO \gls from now on	
+	% TODO \gls from now on	____________________________________
 
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
-	There are two different kinds of GNSS\footnote{The GNSS is usually referred to as GPS even though GPS is only the American GNSS system} modules the normal GPS/Compass boards and real time kinematic(RTK) GPS. Usually the chips used in both the RTK GPS and the normal GPS are from Ublox. The RTK GPS can achieve a accuracy of 1cm by incorporating information correction data from a RTCM, short for radio technical commision for maritime\footnote{It was first used for the positions of boats and other vessels}. However the correction data is either subscription based, is not guaranteed to cover all of the area or you need to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it is also not worth it to have a RTK GPS that costs several hundred Franks instead of a GPS with a 2m \gls{CEP} which costs less than 30 Franks. Some of the GPS units also have a compass built-in so you will not need to buy an extra compass when using ArduPilot. 
+	There are two different kinds of \gls{GNSS}\footnote{The \gls{GNSS} is usually referred to as \gls{GPS} even though \gls{GPS} is only the American \gls{GNSS} system} modules: the normal \gls{GPS} and compass boards and \gls{RTK} \gls{GPS}. Usually the chips used in both the RTK GPS and the normal GPS are manufactured by the company Ublox. The RTK GPS can achieve an accuracy of 1cm by incorporating information correction data from a \gls{RTCM}\footnote{It was first used for the positions of boats and other vessels}. However, the correction data is either subscription-based, not guaranteed to cover all of the area or one needs to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it may not be worth it to have a \gls{RTK} \gls{GPS} that costs several hundred Swiss Franks instead of a \gls{GPS} with a 2m \gls{CEP} which costs less than 30 Swiss Franks. Some of the \gls{GPS} units also have a compass built-in, so you will not need to buy an extra compass when using ArduPilot. 
 	\begin{Explanation}[circular error probable (CEP)]
 		\item The \gls{CEP} refers to how close to the real value the \gls{GPS} normally is. So if a \gls{GPS} has a \gls{CEP}
-		of 2m it is normally in the range of 2 meters of the correct value. \cite{CEP}
+		of 2m it is normally in the range of 2 meters of the correct value \cite{CEP}.
 	\end{Explanation}
 	% TODO better description of the Ublox chip
 	
-	I chose the Holybro Micro M10 GPS\cite{holybrom10micro}, because it comes from the same brand as the Fc and will be easier to connect. In addition to that the M10 chip is the newest version of Ublox chips and it would be senseless to buy an older version. It also is at least as good as other better-known GPS as the Matek M10Q\cite{gpstest} and comes with a built-in compass that is needed for ArduPilot.
+	I chose the Holybro Micro M10 \gls{GPS}, because it is produced by the same brand as the Fc and therefore seemed to be easier to connect \cite{holybrom10micro}. In addition, the M10 chip is the newest version of Ublox chips and it would be pointless to buy an older version at the same price. It also is at least as good as other better-known GPS as the Matek M10Q \cite{gpstest} and comes with a built-in compass that is needed for ArduPilot.
 
 	\subsubsection{Radio/Transmitter}
-	The following information about transmitter protocols is based on two videos\cite{transprotocols}\cite{mlrs}.
+	The following information about transmitter protocols is based on two YouTube videos from \textcite{transprotocols} and \textcite{mlrs}.
 	% TODO explain difference between 900MHz and 2.4 GHz
 	% TODO explain latency and range in the beginning of subsubsection
 	% TODO delete uneccessary radio protocols
@@ -118,64 +131,53 @@
 	ExpressLRS is the best in long range and in the combination of long range and latency. It has been shown by Wezley Varty\cite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km\footnote{There are two version a 900MHz and a 2.4GHz and the main difference is that the 2.4GHz only at least over 30km but unlikely over 100km, but it has the lowest latency compared to any other protocol.}. It is together with mLRS the only two options who are open source.
 	\subsubsection*{mLrs}
 	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency to send larger data packages to your telemetry device. Which is something that is needed if you want to adjust something or get more data from your drone over the Mavlink protocol during the flight. 
+	% TODO explanationbox for Mavlink
 	
 	\subsubsection*{Transmitter/Radio}
-	I've decided to go with the Radiomaster RP4TD ExpressLRS 2.4GHz True Diversity Receiver\cite{radiomasterreceiver} on a recommendation of a friend. It also is compatible with mLRS if I want to switch later on.
+	I've decided to go with the Radiomaster RP4TD ExpressLRS 2.4GHz True Diversity Receiver based on a recommendation of a friend \cite{radiomasterreceiver}. It also is compatible with mLRS if I want to switch later on.
 	
-	I went with the Radiomaster Boxer\cite{radiomasterboxer} radio, because it is somewhat in the middle range from radios and seems to be quite reliable and has many knobs to customize. 
+	I went with the Radiomaster Boxer\cite{radiomasterboxer} radio, because it is somewhat in the middle range from radios and seems to be quite reliable and has many switches to assign flight modes or other functions to. 
 
 	\subsubsection{Smoke Stopper}
-	A part that stops the ESC from short circuiting due to wrongly soldered parts and can save you quite a lot of money. There are two groups of smoke stoppers one that you buy and gets destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
+	A part that stops the ESC from short-circuiting due to wrongly soldered parts and can save you quite a lot of money. There are two groups of smoke stoppers one that you buy and get destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
 	
 	\subsubsection{Problems with the Parts}
 
-	There were two problems that arose one less severe than the other. One problem was that my ordered Kakute-Tekko stack did not include stack screws, which they normally do. Stack screws are just screws that you can use to mount the stack onto the frame. So I needed to purchase them separately.
+	There were mainly two problems that arose during the process of assembling the drone. One less severe than the other. One problem was that my ordered Kakute-Tekko stack did not include stack screws, which they normally do. Stack screws are just screws that you can use to mount the stack onto the frame. So I needed to purchase them separately, which was rather tedious and time-consuming.
 	
-	The more severe problem I ran into was that the batteries from AliExpress were first held by the swiss border control and then I received two insect traps instead of batteries. Luckily I ordered one of the same batteries from Conrad, because the other two took too long to deliver.
+	The more severe problem I ran into was that the batteries from AliExpress were first withheld by the Swiss border control and then I received two insect traps instead of batteries. Luckily I ordered one of the same batteries from another online shop (Conrad), because the other two took too long to deliver.
 	% TODO add pictures of the insect traps 
 	
-	Two months later when my father decided open the insect traps. To our shock the LiPo batteries were inside of the insect traps at the bottom. And in hindsight it was also obvious that they were in there, because it had the numbering 3 4s 2000 on top which stands for version 3 of the 4s batteries with 2000 mAh. However, we dismissed the numbering on top as just some random numbers put there. 
+	Two months later, when my father decided to open the insect traps. To our shock, the LiPo batteries were inside the insect traps at the bottom. And in hindsight it was also obvious that they were in there, because it had the numbering 3 4s 2000 on top which stands for version 3 of the 4s batteries with 2000 mAh. However, we dismissed the numbering on top as just some random numbers put there. 
 	
 	\subsubsection{Propellers and Battery Charger}
-	For the propellers(props) and battery chargers I went of the recommendations from AOS-RC and FPVknowitall. For the props I chose the Foxeer Donut 5145\cite{toroidal} and the HQ 5x4.3x3 V1S\cite{hqprops}. And for the battery charger I went with the cheapest option the 608 AC Lipo Battery Charger\cite{lipocharger}.
+	For the propellers and battery chargers, I went off the recommendations from AOS-RC and FPVknowitall. For the propeller, I chose the Foxeer Donut 5145 \cite{toroidal} and the HQ 5x4.3x3 V1S \cite{hqprops}. And for the battery charger, I went with the cheapest option the 608 AC Lipo Battery Charger \cite{lipocharger}.
 
-\subsubsection{Data Transfer Protocols}
-	\subsubsection*{SPI}
-	\subsubsection*{Uart}
-	\subsubsection*{I2C}
-	\subsubsection*{Mavlink}
+	\subsection{ArduPilot}
+	This chapter summarizes everything done for the first time flying and is based on the ArduPilot copter documentation \cite{ardupilotdocs}.
 	
-
-	\subsection{ardupilot}
-	The following is based on the ArduPilot copter documentation\cite{ardupilotdocs}.
 	\subsubsection{Ground Station}
-	To configure ArduPilot there are multiple softwares so called ground control stations(GCS) required. They are normally ground-based and can transmit data via with a wireless telemetry device or USB cable.  With the telemetry device they can also control the drone from the ground and alter the route it is autonomously flying. 
+	To configure ArduPilot, there are multiple softwares, so called \gls{GCS} required. They are normally ground-based and can transmit data via wireless telemetry device or USB cable.  With the telemetry device, they can also control the drone from the ground and alter the route as the drone is autonomously flying. 
 	
-	The most widely used GCS is Mission Planner(MP)\cite{MissionPlanner} it is widely used, but runs only on Windows and Mac OS. It also has a wiki which helps you install it. I will use it for the first-time configuration of my drone. 
+	The most widely used \gls{GCS} is \gls{MP} it is widely used, but runs only on Windows and Mac OS. It also has a wiki, which was used for the first-time configuration of my drone \cite{MissionPlanner}. 
 	
-	Another GCS is MavProxy it is based on Python and is only for the Linux operation system(OS). Which is the OS I will use on the RaspberryPi companion computer. 
-
-	\subsubsection{Firmware Installation}
-	
-	For the first time installation I need to flash the Kakute H7 with ArduPilot, because it is shipped with Betaflight as mentioned earlier on. For that I downloaded the ArduPilot firmware\cite{ArduPilotFirmware} for the Kakute H7. Afterwards the STM32CubeProgrammer\cite{STM32CubeProgrammer}, to flash the firmware onto the Fc. I connected the Fc in \gls{DFU} mode directly with the computer using a USB cable. Then selected the USB port with which the Fc is connected and flashed the Fc. A reboot to get out of the DFU mode was required before connecting the Fc to MP and saw the first Yaw measurements. The progress of flashing the firmware was straight forward which will not be the case for the rest of the configuration. 
-	% TODO add an explanation box for the DFU mode.
-	\begin{Explanation}[device firmware upgrade (DFU)]% no \gls because it looks bad in the text box
-		\item The \gls{DFU} mode is the mode, which allows the user to upload new firmware to the \gls{Fc}. It is normally accessible through a button which needs to be pressed, while connecting the battery. 
-
+	Another GCS is MavProxy it is based on Python and is only for the Linux \gls{OS}. Which is the \gls{OS} that will be used on the RaspberryPi companion computer. 
+	\begin{Explanation}[operating system(OS)]
+		\item A \gls{OS} is a software, which controls all the hardware of a computer.
 	\end{Explanation}
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.7\linewidth]{pictures/Gyro_pos2_large}
-	\caption{}
-	\label{fig:gyropos2large}
-\end{figure}
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.7\linewidth]{pictures/Gyro_pos2.JPG}
-	\caption{}
-	\label{fig:gyropos2}
-\end{figure}
+	\subsubsection{Firmware Installation}
+	The following section until 4.5 Companion Computer is rather technical and contains the necessary information for the steps to reproduce my setup.
+	
+	For the first time installation the Kakute H7 is required to be flashed with ArduPilot, because it is shipped with Betaflight. 
+	\begin{Explanation}[to flash]
+		\item Flashing is the process of taking new firmware and loading it onto the device the firmware is needed on.
+	\end{Explanation} 
+	In order to install the ArduPilot firmware for the Kakute H7  it needs to be downloaded onto a computer \cite{ArduPilotFirmware}. Afterwards the STM32CubeProgrammer is used to flash the firmware onto the Fc \cite{STM32CubeProgrammer}. The \gls{Fc} in \gls{DFU} mode is directly connected with the computer using a USB cable. Then the USB port, with which the \gls{Fc} is connected, select and firmware is flashed onto the \gls{Fc} . A reboot is required to leave the \gls{DFU} mode, before connecting the \gls{Fc} to \gls{MP}. The progress of flashing the firmware was straightforward which will not be the case for the rest of the configuration.
+	% TODO read through from here on further
+	\begin{Explanation}[device firmware upgrade (DFU)]% no \gls because it looks bad in the text box
+		\item The \gls{DFU} mode is the mode, which allows the user to upload new firmware to the \gls{Fc}. It is normally accessible through a button which needs to be pressed, while connecting the battery. 
+	\end{Explanation}
 
 
 	\subsubsection{GPS Connection}
@@ -200,7 +202,6 @@
 
 	The problem was that the \lstinline|Serial3_Protocol|(Which is for the Uart3, which will be used for the connection to the RaspberryPi) was set to 5 which means GPS, however by being on 5 it blocked the Uart4, to which my GPS was really connected. After disabling the Uart3 it finally worked.
 
-\pagebreak % temporary to have a better overview
 	The GPS is quite precise outside \cref{fig:gpsoutside}.
 	%TODO add point on the picture where I'm really at
 	
@@ -275,16 +276,16 @@
 	All prearm checks are gone except the occasional magfield variance error(it disapeared completely after being able to calibrate the compass normally), which went away after positioning the drone further away from the computer. To arm
 	% TODO explanation box of arm
 	\begin{Explanation}[to arm]
-		\item To arm a drone means that the motors begin to spin without producing enough thrust to lift the drone from the ground. It is done when you want to fly before the actual flight.		
+		\item To arm a drone means that the motors begin to spin without producing enough thrust to lift the drone from the ground. It is used when you want to fly before the actual flight.		
 	\end{Explanation}
 	the drone I still needed to assign a switch on the radio. I did that by setting \lstinline|RC5_Option| to 153 which means to arm the drone when I flick the switch number 5. Even though there was no prearm check that failed I was not able to arm the drone, also when I disabled the parameter \lstinline|Arming_Check| it did not work. The Fc still rejected the force arm command from MP. The command however does not disable the geofence which I enabled some when earlier. I disabled it and was able to test the motors spinning on my bench. When I tried it with blades one of them hit one of the antennas from the receiver and tear it off. I was able to just attach it, but I'm not one hundred percent sure that this antenna is working. After this little hiccup a new prearm error appeared, crashdump bin detected. It comes from crashes with your drone to analyze what went wrong. 
-	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check| by setting it to 0. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post\cite{blogcrashdump} I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc. I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. It is also advisable to turn off beacon delay, when working on the bench, because it lets the motors beep after 10 minutes of being unused.
+	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check| by setting it to 0. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc \cite{blogcrashdump}  . I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. It is also advisable to turn off beacon delay, when working on the bench, because it lets the motors beep after 10 minutes of being unused.
 	% TODO explain beacon delay, find out for what it is good, probably to locate a crashed drone
 	
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.4]{pictures/quadx}
-	\caption{Correct turning directions for my drone}
+	\caption{Motor turning directions}
 	\label{fig:quadx}
 \end{figure}
 
@@ -295,6 +296,7 @@
 	\end{Explanation}
 	After adjusting them via the intial tuning parameter quick adjustment settings the drone flew. But when I put the stick left the drone flew right and vice versa. I was able to put the \lstinline|RC2_Reversed| to 1, which reversed the controls. 
 	
+	\subsection{Companion Computer}
 	\subsubsection{RaspberryPi Setup}
 	
 	To let the drone fly on its own a companion computer is needed, because the \gls{Fc} does not have enough power to process more complex operations as autonomous flight.
@@ -303,9 +305,7 @@
 	
 	The RaspberryPi is not shipped with an microSD card and through that also not with the \gls{OS}. To download the \gls{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the wifi and the possibility for the \gls{SSH} connection. 
 	% TODO explanaition box OS
-	\begin{Explanation}[operating system(OS)]
-		\item A \gls{OS} is a software, which controls all the hardware of a computer.
-	\end{Explanation}
+	
 	
 	To see a desktop instead of only a command line based interface with an \gls{SSH} a \gls{VNC} is used. In this case the recommended option was RealVNC viewer a widely spread \gls{VNC}. For this RealVNC server needs to be installed over the terminal via \lstinline|sudo apt-get realvnc-vnc-server| \cite{ionisvnctutorial}\footnote{realvnc-vnc-viewer only required if you want to see a VNC from the RaspberryPi}.
 	
@@ -363,9 +363,8 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 \end{lstlisting}	
 to:
 %TODO mark inside the listing the change/write a little bit smoother transition inbetween the inserted points
-	\begin{lstlisting}[caption={changed line}, label=changed line, language=python, style=myPython]
+	\begin{lstlisting}[caption={changed line}, label=changed line, language=python, style=myPython, literate={.abc}{{\color{Green}.abc}}4]
 		class Parameters(collections.abc.MutableMapping, HasObservers):
-		
 	\end{lstlisting}
 	
 	After this the program worked flawlessly and it was able to give information from the \gls{Fc} over the terminal. As shown with the example \cref{lst:listing-autopilot}, which 
@@ -378,34 +377,23 @@ to:
 	\end{lstlisting}
 	% TODO might move up to the part where all the connections are explained to the RaspberryPi
 	% TODO look at the exact connections again 
-	Uart ports are seen as /dev/ttyS0 or as 
-	can be looked at via:
-	\begin{lstlisting}
-		ls /dev/ttys0
-	\end{lstlisting}
-	
-	Error: 
-	\begin{lstlisting}
-		Failed to connect to /dev/ttys0 : [Errno 2] could not open port /dev/ttys0: [Errno 2] No such file or directory: '/dev/ttys0'
-	\end{lstlisting}
-	
-	needed to add 
-	\begin{lstlisting}
-		sudo usermod -a -G dialout $USER
-	\end{lstlisting}
-	which adds dialout so the pins to sudo
-	
-	% TODO might delete this part
-	
-	%it works...
-	
-	%arming the motors for five seconds
-	%\begin{lstlisting}[language=python, style=myPython]
-	%	vehicle.armed = True
-	%	time.sleep(5)
-	%	vehicle.armed = False
+	%Uart ports are seen as /dev/ttyS0 or as 
+	%can be looked at via:
+	%\begin{lstlisting}
+	%	ls /dev/ttys0
 	%\end{lstlisting}
-	
+	% TODO might delete this
+	%Error: 
+	%\begin{lstlisting}
+	%	Failed to connect to /dev/ttys0 : [Errno 2] could not open port /dev/ttys0: [Errno 2] No such file or directory: '/dev/ttys0'
+	%\end{lstlisting}
+	%
+	%needed to add 
+	%\begin{lstlisting}
+	%	sudo usermod -a -G dialout $USER
+	%\end{lstlisting}
+	which adds dialout so the pins to sudo
+
 	The main problem of the outdated Dronkitpython library is, that the function \lstinline|vehicle.channels|, which should read the channel values from the Radiocontroler, is only returning none. It is a long-known issue and to circumvent it a decorator is used \cite{rcchannelissue}. 
 	
 	
@@ -428,8 +416,12 @@ to:
 			return channel_value
 		
 	\end{lstlisting}
+	The decorator in \cref{lst:decorator} is already predefined in the Dronekit library. When calling it with \lstinline|@vehicle.on_message("RC_CHANNELS)| and saving it to the global variable latest\_rc\_channels as a dictionary it looks like \cref{lst:message}.
 	
-	
+	\begin{lstlisting}[label=lst:message, caption={output from decorator in \cref{lst:decorator}\protect\footnote{}}]
+		chan{i}_raw : x
+	\end{lstlisting}
+	\footnotetext{With i being the channel number and x the value the channel receives form the radiocontroler}
 	
 	trying to get a channel value over dronekitpython... does not work
 	

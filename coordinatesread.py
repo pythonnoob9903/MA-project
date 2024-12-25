@@ -40,38 +40,41 @@ def getcords():
 
 def meters_to_coordinates(Xcord, Ycord, Zcord, vehicle): # converts coordinates in meters to coordinates in degrees with the global frame in connection to the home_location
 
-
     home_location = vehicle.home_location 
-    log(home_location)
+    log(f"home location: {home_location}")
     if not home_location:
         log("Waiting for home location to be set")
     while not home_location:
         time.sleep(1)
 
-    newXcord = []
-    newYcord = []
-    newZcord = []
-
+    global Xcord    # makes the coordinates global for no further redefinition
+    global Ycord
+    global Zcord
+    Xcord = []
+    Ycord = []
+    Zcord = []
 
     for i in range(len(Xcord)):
         earth_radius = 6378137.0
-        changeX = home_location.lat + math.degrees(int(Xcord[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
-        changeY = home_location.lon + math.degrees(int(Ycord[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
+        changeX = home_location.lat + math.degrees(float(Xcord[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
+        changeY = home_location.lon + math.degrees(float(Ycord[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
         changeZ = home_location.alt + float(Zcord[i])
-        newXcord += [changeX]
-        newYcord += [changeY]
-        newZcord += [changeZ]
-    
-    return newXcord, newYcord, newZcord
 
-def setup(vehicle): #sets up the initial variables for flight
+        Xcord += [changeX]
+        Ycord += [changeY]
+        Zcord += [changeZ]
+    
+    log(f"Xcoordinates {Xcord}")
+    log(f"Ycoordinates {Xcord}")
+    log(f"Zcoordinates {Xcord}")
+
+    return 
+
+def setup(vehicle): #sets up the initial variables for flight and calculates the target coordinates
     log("Speed_Up and groundspeed set/vehicle armed.")
     vehicle.groundspeed = 1
     vehicle.parameters["PILOT_SPEED_UP"] = 100
-    vehicle.parameters["BRD_SAFETYOPTION"] = 0
-    log("safetyoption bitmask set to zero")
-    vehicle.parameters["BRD_SAFETY_DEFLT"] = 0
-    log("safety switch disabled")
+    safetyoptions_on_off(vehicle, 0)
     vehicle.armed = True
 
 def checks(vehicle): #checks arming checks and can stall the while loop if it fails.
@@ -88,3 +91,58 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     if vehicle.gps_0.fix_type < 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
     return tempbin
+
+def safetyoptions_on_off(vehicle, on_off): # 1 sets(and puts the drone into RTL) and 0 disables safety option
+    if on_off == 1:
+        vehicle.mode = VehicleMode('RTL')
+        while not vehicle.mode.name == "RTL":
+        	log(f"Not in RTL mode: {vehicle.mode.name}")
+        log(f"in RTL mode: {vehicle.mode.name}")
+        vehicle.parameters["BRD_SAFETYOPTION"] = 3
+        log("safetyoption bitmask set to three")
+        vehicle.parameters["BRD_SAFETY_DEFLT"] = 1
+        log("safety switch enabled")
+        
+    else: 
+        vehicle.parameters["BRD_SAFETYOPTION"] = 0
+        log("safetyoption bitmask set to zero")
+        vehicle.parameters["BRD_SAFETY_DEFLT"] = 0
+        log("safety switch disabled")
+
+def flytoallcoordinates(vehicle, VehicleMode):
+    vehicle.mode = VehicleMode["GUIDED"]
+    radiocontrol()
+
+    while vehicle.mode.name != "GUIDED":
+        log(f"vehiclemode not GUIDED: {vehicle.mode.name}")
+        radiocontrol()
+    log(f"vehiclemode GUIDED: {vehicle.mode.name}")
+    for i in range(len(Xcord)):
+        target = LocationGlobal(Xcord[i], Ycord[i], Zcord[i])
+        vehicle.simple_goto(target)
+        radiocontrol()
+
+        start_time = time.time()
+        while True: # timeout if the target is not reached in 10 seconds or the drone flies more than 5 meters away
+            elapsed_time = time.time() - start_time
+            radiocontrol()
+            current_altitude = vehicle.location.global_frame.alt
+            current_longitude = vehicle.location.global_frame.lon
+            current_latitude = vehicle.location.global_frame.lat
+            log(f"in takeoffloop-> current altitude: {current_altitude}")
+            if current_altitude >= target.alt *0.95 and current_latitude >= Xcord * 0.95 and current_longitude >= Zcord * 0.95:
+            	log(f"target {i} reached {vehicle.location.global_frame}")
+            	break
+            if current_altitude >= 5 + current_altitude or current_latitude >= Xcord + 5 or current_longitude >= Zcord + 5: # does not work with coordinates that go into the negative direction of the starting point
+            	log(f"drone is too far from home :{vehicle.location.global_frame}")
+            	vehicle.mode = VehicleMode["RTL"]
+            	break
+            if elapsed_time >= 10:
+            	log(f"Timeout, took to long to reach target altitude: {vehicle.location.global_frame}")
+            	safetyoptions_on_off(vehicle, 1)
+            	vehicle.mode = VehicleMode["RTL"]
+            	while vehicle.mode.name != "RTL":
+            		log(f"vehiclemode not RTL: {vehicle.mode.name}")
+            	log(f"changing to RTL: {vehicle.mode.name}")
+            	break
+            time.sleep(1)
