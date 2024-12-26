@@ -105,7 +105,7 @@
 	% TODO \gls from now on	____________________________________
 
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
-	There are two different kinds of \gls{GNSS}\footnote{The \gls{GNSS} is usually referred to as \gls{GPS} even though \gls{GPS} is only the American \gls{GNSS} system} modules: the normal \gls{GPS} and compass boards and \gls{RTK} \gls{GPS}. Usually the chips used in both the RTK GPS and the normal GPS are manufactured by the company Ublox. The RTK GPS can achieve an accuracy of 1cm by incorporating information correction data from a \gls{RTCM}\footnote{It was first used for the positions of boats and other vessels}. However, the correction data is either subscription-based, not guaranteed to cover all of the area or one needs to build one yourself, which is quite complicated\cite{rtkgps}. For a small drone it may not be worth it to have a \gls{RTK} \gls{GPS} that costs several hundred Swiss Franks instead of a \gls{GPS} with a 2m \gls{CEP} which costs less than 30 Swiss Franks. Some of the \gls{GPS} units also have a compass built-in, so you will not need to buy an extra compass when using ArduPilot. 
+	There are two different kinds of \gls{GNSS}\footnote{The \gls{GNSS} is usually referred to as \gls{GPS} even though \gls{GPS} is only the American \gls{GNSS} system} modules: the normal \gls{GPS} and compass boards and \gls{RTK} \gls{GPS}. Usually the chips used in both the RTK GPS and the normal GPS are manufactured by the company Ublox. The RTK GPS can achieve an accuracy of 1cm by incorporating information correction data from a \gls{RTCM}\footnote{It was first used for the positions of boats and other vessels}. However, the correction data is either subscription-based, not guaranteed to cover all of the area or one needs to build one by themselves, which is quite complicated \cite{rtkgps}. For a small drone it may not be worth it to have a \gls{RTK} \gls{GPS} that costs several hundred Swiss Franks instead of a \gls{GPS} with a 2m \gls{CEP} which costs less than 30 Swiss Franks. Some of the \gls{GPS} units also have a compass built-in, so you will not need to buy an extra compass when using ArduPilot. 
 	\begin{Explanation}[circular error probable (CEP)]
 		\item The \gls{CEP} refers to how close to the real value the \gls{GPS} normally is. So if a \gls{GPS} has a \gls{CEP}
 		of 2m it is normally in the range of 2 meters of the correct value \cite{CEP}.
@@ -128,7 +128,7 @@
 	TBS Tracer can have also over 10km, but drains the battery when flying further away. It is more focused on racing due to the low-latency.
 	Immersion RC Ghost as a range of over 10km. It is possible to switch between a low-latency for racing and a high-latency for long range flying. 
 	\subsubsection*{ExpressLRS}
-	ExpressLRS is the best in long range and in the combination of long range and latency. It has been shown by Wezley Varty\cite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km\footnote{There are two version a 900MHz and a 2.4GHz and the main difference is that the 2.4GHz only at least over 30km but unlikely over 100km, but it has the lowest latency compared to any other protocol.}. It is together with mLRS the only two options who are open source.
+	ExpressLRS is the best in long range and in the combination of long range and latency. It has been shown by \textcite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km\footnote{There are two version a 900MHz and a 2.4GHz and the main difference is that the 2.4GHz only at least over 30km but unlikely over 100km, but it has the lowest latency compared to any other protocol.}. It is together with mLRS the only two options who are open source.
 	\subsubsection*{mLrs}
 	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency to send larger data packages to your telemetry device. Which is something that is needed if you want to adjust something or get more data from your drone over the Mavlink protocol during the flight. 
 	% TODO explanationbox for Mavlink
@@ -139,7 +139,7 @@
 	I went with the Radiomaster Boxer\cite{radiomasterboxer} radio, because it is somewhat in the middle range from radios and seems to be quite reliable and has many switches to assign flight modes or other functions to. 
 
 	\subsubsection{Smoke Stopper}
-	A part that stops the ESC from short-circuiting due to wrongly soldered parts and can save you quite a lot of money. There are two groups of smoke stoppers one that you buy and get destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
+	A smoke stopper is a device that prevents the ESC from short-circuiting due to incorrectly soldered parts and can save quite a lot of money. There are two groups of smoke stoppers one that you buy and get destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
 	
 	\subsubsection{Problems with the Parts}
 
@@ -151,10 +151,10 @@
 	Two months later, when my father decided to open the insect traps. To our shock, the LiPo batteries were inside the insect traps at the bottom. And in hindsight it was also obvious that they were in there, because it had the numbering 3 4s 2000 on top which stands for version 3 of the 4s batteries with 2000 mAh. However, we dismissed the numbering on top as just some random numbers put there. 
 	
 	\subsubsection{Propellers and Battery Charger}
-	For the propellers and battery chargers, I went off the recommendations from AOS-RC and FPVknowitall. For the propeller, I chose the Foxeer Donut 5145 \cite{toroidal} and the HQ 5x4.3x3 V1S \cite{hqprops}. And for the battery charger, I went with the cheapest option the 608 AC Lipo Battery Charger \cite{lipocharger}.
+	For the propellers and battery chargers, I went off the recommendations from AOS-RC and FPVknowitall. For the propeller, I chose the Foxeer Donut 5145 \cite{toroidal} and the HQ 5x4.3x3 V1S \cite{hqprops}. For the battery charger, I went with the cheapest option the 608 AC Lipo Battery Charger \cite{lipocharger}.
 
 	\subsection{ArduPilot}
-	This chapter summarizes everything done for the first time flying and is based on the ArduPilot copter documentation \cite{ardupilotdocs}.
+	This chapter summarizes everything done for the first time flying and what could go wrong based on my experience. It is based on the ArduPilot copter documentation \cite{ardupilotdocs}.
 	
 	\subsubsection{Ground Station}
 	To configure ArduPilot, there are multiple softwares, so called \gls{GCS} required. They are normally ground-based and can transmit data via wireless telemetry device or USB cable.  With the telemetry device, they can also control the drone from the ground and alter the route as the drone is autonomously flying. 
@@ -173,7 +173,7 @@
 	\begin{Explanation}[to flash]
 		\item Flashing is the process of taking new firmware and loading it onto the device the firmware is needed on.
 	\end{Explanation} 
-	In order to install the ArduPilot firmware for the Kakute H7  it needs to be downloaded onto a computer \cite{ArduPilotFirmware}. Afterwards the STM32CubeProgrammer is used to flash the firmware onto the Fc \cite{STM32CubeProgrammer}. The \gls{Fc} in \gls{DFU} mode is directly connected with the computer using a USB cable. Then the USB port, with which the \gls{Fc} is connected, select and firmware is flashed onto the \gls{Fc} . A reboot is required to leave the \gls{DFU} mode, before connecting the \gls{Fc} to \gls{MP}. The progress of flashing the firmware was straightforward which will not be the case for the rest of the configuration.
+	To install the ArduPilot firmware for the Kakute H7  it needs to be downloaded onto a computer \cite{ArduPilotFirmware}. Afterwards the STM32CubeProgrammer is used to flash the firmware onto the Fc \cite{STM32CubeProgrammer}. The \gls{Fc} in \gls{DFU} mode is directly connected with the computer using a USB cable. Then the USB port, with which the \gls{Fc} is connected, select and firmware is flashed onto the \gls{Fc} . A reboot is required to leave the \gls{DFU} mode, before connecting the \gls{Fc} to \gls{MP}. The progress of flashing the firmware was straightforward, unlike for the rest of the configuration.
 	% TODO read through from here on further
 	\begin{Explanation}[device firmware upgrade (DFU)]% no \gls because it looks bad in the text box
 		\item The \gls{DFU} mode is the mode, which allows the user to upload new firmware to the \gls{Fc}. It is normally accessible through a button which needs to be pressed, while connecting the battery. 
@@ -181,106 +181,59 @@
 
 
 	\subsubsection{GPS Connection}
-	When I tried to get a GPS connection a No GPS message appeared. Changing the \lstinline|GPS_Type = 2| for the Ublox GPS did not change the No GPS error message.
+	In the beginning no immediate \gls{GPS} connection appeared. Even changing the parameter \lstinline|GPS_Type = 2| for the Ublox \gls{GPS}, the 'No \gls{GPS}' error, as seen in the bottom right corner of \cref{fig:nogps}, was still there. Even though the it was clear that the \gls{GPS} worked and was connected to the \gls{Fc}, because the compass appeared in the compass calibration tab on \gls{MP}.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.2]{pictures/No_GPS}
-	\caption{}
+	\caption{No \gls{GPS} connection}
 	\label{fig:nogps}
 \end{figure}
 
-	Even though I was certain that the GPS worked well, because the compass of the GPS was already detected in the compass calibration tab.
-	% TODO get better picture
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.7\linewidth]{pictures/M10_compass_detected}
-	\caption{}
-	\label{fig:m10compassdetected}
-\end{figure}
+	The issue could be that the \gls{GPS} is too close to metal surfaces,the Computer, which is connected via USB cable, is too close or that soldering was done poorly and the cables from the \gls{GPS} to the \gls{Fc} are falsely connected. After testing for each of the possible issues and mitigating the proximity in which metal was near the drone, the \gls{GPS} still not working. The GPS itself was also not damaged, because the blue led was blinking constantly which means it is connecting to a \gls{GNSS}.
 
-	I then went outside, away from metal tables and as far away from my computer that was possible with the USB cable it still did not show up in MP. I also checked the soldering and if the cables from the GPS to the Fc are connected correctly and both seemed fine. The GPS itself was not damaged, because the blue led was blinking constantly which means it is connecting to a GNSS.
+	The problem was that the \lstinline|Serial3_Protocol| (Which is for the Uart3, which will be used for the connection to the RaspberryPi) was set to 5 which stands for \gls{GPS}, however with that it blocked the Uart4 from being received as a \gls{GPS}, to which the \gls{GPS} was really connected. After disabling the Uart3 it finally worked.
 
-	The problem was that the \lstinline|Serial3_Protocol|(Which is for the Uart3, which will be used for the connection to the RaspberryPi) was set to 5 which means GPS, however by being on 5 it blocked the Uart4, to which my GPS was really connected. After disabling the Uart3 it finally worked.
-
-	The GPS is quite precise outside \cref{fig:gpsoutside}.
-	%TODO add point on the picture where I'm really at
+	The GPS is quite precise outside \cref{fig:gpsoutside}\footnote{It also works sometimes inside and is precisely on my room, but it can also show that it is in Poland the middle of the Atlantic Ocean or Iceland.}.
 	
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.2]{pictures/GPS_Outside}
-	\caption{}
+	\includegraphics[scale=0.2]{pictures/GPS_Outsidewithdot}
+	\caption{\gls{GPS} outside}
 	\label{fig:gpsoutside}
 \end{figure}
 	
-	It also works sometimes inside and is precisely on my room, but sometimes it shows that I'm in Poland the middle of the Atlantic Ocean or Iceland.
+	
 
-	% TODO delete this probably it is of now value to the work
-\begin{figure}[ht]
-	\centering
-	\begin{minipage}[b]{0.4\textwidth}
-		\includegraphics[width=\textwidth]{pictures/GPS_inside1}
-		\caption{At home}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.4\textwidth}
-		\includegraphics[width=\textwidth]{pictures/GPS_inside2}
-		\caption{}
-	\end{minipage}
-\end{figure}
-	% until here
 	 
 	\subsubsection{Receiver/Transmitter}
-	To get the connection between the receiver and radio I first followed the ExpressLRS\cite{expresslrsorg} page. I changed the \lstinline|Serial6_Protocol| to 23 and the \lstinline|RSSI_Type| to 3 for the receiver protocol. I also changed the \lstinline|RC_Options| to the correct bitmask.
+	To get the connection between the receiver and radio the ExpressLRS page needs to be followed \cite{expresslrsorg}. It required changing the \lstinline|Serial6_Protocol| to 23 and the \lstinline|RSSI_Type| to 3 for the receiver protocol. I also changed the \lstinline|RC_Options| to the correct bitmask (\cref{fig:bitmask}).
 % TODO do I really need this picture
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/bitmask}
-	\caption{}
+	\caption{correct bitmask for ExpressLRS}
 	\label{fig:bitmask}
 \end{figure}
+	The connection between the radio and receiver seemed to be working, because the receiver had a constant blue light and the receiver notified that the telemetry recovered after it was lost for a moment. However, it did not yet have a connection to the Fc. There was the possibility to change the Uart6 ot the Uart1, which is usually the Uart used for receivers with the Kakute H7, but it would require a JST (a special connector) and more soldering. The solution was found in the Kakute H7 tab in the ArduPilot documentation, where it was listed that for a CRSF\footnote{Even though it is a ELRS receiver it has the same interface as CRSF receivers} interface the parameter \lstinline|Brd_Alt_Config| needs to be set to 1. \lstinline|Brd_Alt_Config| is a Fc specific parameter, this is also the reason why it did not come up in the ExpressLRS page or the ArduPilot documentation. 
 
-	The connection between the radio and receiver then worked, because the receiver had a constant blue light and the receiver said telemetry recovered after it was lost for a moment. However as it comes it did not have a connection to the Fc. I thought about changing the receiver from Uart6 to Uart 1, because Uart1 is the usual Uart for a receiver on the Kakute H7, but it would require a JST and more soldering. So I searched for a different solution. I looked at the Kakute H7 tab in the documentation and saw that for the Kakute H7 I needed to set \lstinline|Brd_Alt_Config| to 1 for the CRSF interface of the receiver. \lstinline|Brd_Alt_Config| is a Fc specific parameter so it makes sense that it did not come up in the search for a solution. 
-
-	\subsubsection*{Battery}
-	When I plugged in the battery the smoke stopper in between did not light up. The battery was not immediately recognized in MP and I needed to change the battery settings for the Tekko32 F4 4in1 I only needed to change the \lstinline|Batt_Monitor| to 4 the other parameters were already correct. The battery voltage and amperage now shows up in Mission Planner, as can be seen in \cref{fig:battery}.
-	
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.7\linewidth]{pictures/Battery}
-	\caption{battery voltage and amperage}
-	\label{fig:battery}
-\end{figure}
-	
-	The only prearm check missing now is the compass calibration.(Figure 9\footnote{The drone currently inside and the GPS has no fix, but it works as soon as it is under free Sky.})
-% TODO might delete this figure is of no value to the work
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.7\linewidth]{pictures/prearmcheck}
-	\caption{}
-	\label{fig:prearmcheck}
-\end{figure}
-
+	\subsubsection{Battery}
+	The battery was rather straightforward. The smoke stopper did not light up when plugging it in. Firstly the battery was not recognized by the \gls{Fc}, but it was solved by changing the parameter \lstinline|Batt_Monitor| to 4. After that the voltage and amperage shows up in \gls{MP}.
 
 	\subsubsection{Motor Test}
-	The motor test works correct after assigning the right position to the motors, because I'm using the M5-M8 ports instead of the M1-M4. I also needed to set \lstinline|Mot_PWM_Type| to dshot 600 for the 
-	\\ Motor testing works after connecting assigning the right position to the motors and setting the mot\_pwm\_type to dshot 600. Dshot is just the digital protocol for communication between the Fc and ESC. After some time the motors began to beep, but after testing them again they stopped so it was most likely a inactivity warning. A new error also appeared called battery failsafe. This was caused by a unstable connection between the ESC and Fc and so the Fc took the connection from the computer as power source and had to little power to use the motors. 
+	The motor test works correct after assigning the right position to the motors, because I'm using the M5-M8 ports instead of the M1-M4. The parameter \lstinline|Mot_PWM_Type| needs to be set to dshot 600. The motor testing works after assigning the correct motor to the correct output in the servo output tab in \gls{MP}. Dshot is the digital protocol for communication between the \gls{Fc} and \gls{ESC}. The motors begin to beep after a certain time, due to the beacon delay. This will be turned of later. This was also the first time the \gls{ESC} had power and through that a new error appeared called 'battery failsafe'. This is caused by a unstable connection between the \gls{ESC} and the \gls{Fc}, because of that the \gls{Fc} takes the computer as power source and has to little power to spin the motors.
 	
 	\subsubsection{Compass Calibration}
-	I first tried to callibrate the compass inside, but it turns out that you need a good GPS lock. I went outside and tried calibrating the compass and it failed multiple times. I set the fitness to relaxed and it still failed. The Holybro docs\cite{holybrodocscompass} recommended to set the parameter \lstinline|Compass_Orient| to 6 for proper orientation. It failed again. I was definitely far enough away from metal or my computer which could influence the calibration.
-	\\ I then fixed it temporarily by doing the large vehical MagCal, however this only took away the prearm message and did not really work. What I did not know at the time is that the ArduPilot documentation warns from using this calibration, because it can look as if it is correctly configured, but in reality the orientation is incorrect. 
-	I later on needed to disassamble the copter anyway, because a wire between the motor and ESC came off and needed to be soldered on again, and put the GPS module directly onto the Fc and it worked using the normal compass calibration. 
-	
-
+	The compass calibration needs a good \gls{GPS} lock. However, even with a good lock, relaxed fitness\footnote{The fitness can be in four different states very strict, strict, default and relaxed. The stricter the fitness is the longer the calibration takes.} and \lstinline|Compass_Orient| set to 6, as recommended by the Holybro docs, it still failed \cite{HolybroDocs}. Large Metal parts could again influence the calibration, but there were none in the vicinity of the compass. To temporarily do the calibration the large vehicle MagCal can be done. However, this mostly takes away the prearm message. It is strongly advised against by the ArduPilot documentation, because it can look as if it is correctly configured, but the orientation is incorrect. The best way to calibrate the compass is to put the compass directly on  top of the \gls{Fc} and then do the calibration.
 
 	\subsubsection{Road to First Flight}
-	All prearm checks are gone except the occasional magfield variance error(it disapeared completely after being able to calibrate the compass normally), which went away after positioning the drone further away from the computer. To arm
-	% TODO explanation box of arm
+	The first step to flying is to arm the drone.
 	\begin{Explanation}[to arm]
 		\item To arm a drone means that the motors begin to spin without producing enough thrust to lift the drone from the ground. It is used when you want to fly before the actual flight.		
 	\end{Explanation}
-	the drone I still needed to assign a switch on the radio. I did that by setting \lstinline|RC5_Option| to 153 which means to arm the drone when I flick the switch number 5. Even though there was no prearm check that failed I was not able to arm the drone, also when I disabled the parameter \lstinline|Arming_Check| it did not work. The Fc still rejected the force arm command from MP. The command however does not disable the geofence which I enabled some when earlier. I disabled it and was able to test the motors spinning on my bench. When I tried it with blades one of them hit one of the antennas from the receiver and tear it off. I was able to just attach it, but I'm not one hundred percent sure that this antenna is working. After this little hiccup a new prearm error appeared, crashdump bin detected. It comes from crashes with your drone to analyze what went wrong. 
-	However, because I've only tested it on the bench, I concluded that it is insignificant and that I can delete it. But it is not just easily deleted and so I ignored it and did all the other prearm checks and then disabled \lstinline|Arming_Check| by setting it to 0. I then armed the quadcopter and throttled up. The only thing it did was spinning on the ground, because some of the motors are turning in the wrong direction. Through a blog post I was also able to delete the crashdump.bin file by flashing new firmware onto the Fc \cite{blogcrashdump}  . I tried to reverse the motors by using the reverse button in MP. It worked then by setting \lstinline|Servo_BLh_Auto| to 1 and open it in BLHeliSuite32\cite{BLHeliSuite32}. By using the reversed mode in BLHeliSuite32 I was able to get the right motors spinning clockwise. It is also advisable to turn off beacon delay, when working on the bench, because it lets the motors beep after 10 minutes of being unused.
-	% TODO explain beacon delay, find out for what it is good, probably to locate a crashed drone
+	For that a switch on the radio needs to be assigned to arming and disarming. In my configuration the switch five is used. In order for it to work the parameter \lstinline|RC5_Option| is set to 153, which means to arm the drone when the switch number 5 is flicked. To test the drone on the bench inside there will be many prearm errors to ignore the parameter \lstinline|Arming_Check| is disabled and more importantly the geofence, which still blocks the arming when \lstinline|Arming_Check| is disabled. After this when flicking the switch 5 the motors will arm and spin\footnote{A battery needs to be connected.}. From my experience it is really important to tie down every cable or antenna before arming the drone with propellers, else they might just be cut through or teared off. This will cause a new prearm error to appear called 'crashdump bin detected'. This file can be used to analyze the crashes your drone has had. As long as it is tested on the bench it should not be a problem and can be deleted by flashing new firmware onto the drone \cite{blogcrashdump}. This time however not via STM32CubeProgrammer, but directly over \gls{MP}. Additionally the some of the motors need to be reversed for the X-configuration of the drone, seen in \cref{fig:quadx}. To reverse them the reverse button in \gls{MP} does not work. The BLHeliSuite32 software is needed and the parameter \lstinline|Servo_BLh_Auto| is set to 1 which enables a pass through from the \gls{ESC} through the \gls{Fc}. In the software one can change the motor spinning direction. It is also advisable to turn off beacon delay, at least for now, or else the motors will beep after ten minutes of being idle.
+	\begin{Explanation}[beacon delay]
+		\item The beeping of the beacon delay is used to located a crashed drone. If the drone has lost the contact to the radio it will automatically activate after a certain amount of time.
+	\end{Explanation}
 	
 \begin{figure}[ht]
 	\centering
@@ -289,8 +242,8 @@
 	\label{fig:quadx}
 \end{figure}
 
-	After arming the quad and pushing the throttle I was able to get the drone to fly, but it was shaking violently also known as wobbling and then somewhat crashed it into the ground causing the props to get minimal damage. I tried to tighten everything on the drone, because until that point everything was just somewhat loosely taped onto it, the wobbling still continued. Trying new and also the other props, as there could be a prop imbalance that causes the drone to wobble, had no effect. Through a video\cite{dronewobblevideo} about drone wobbling I came to the conclusion that my \gls{PID} values are for a 9 inch drone not a 5 inch drone. 
-	%TODO explanation box for PID
+	After arming the quad and pushing the throttle I was able to get the drone to fly, but it was shaking violently also known as wobbling and then somewhat crashed it into the ground causing minimal damage to propellers. I tried to tighten everything on the drone, because until that point everything was just somewhat loosely taped onto it, the wobbling still continued. Trying new and also the other props, as there could be a prop imbalance that causes the drone to wobble, had no effect. Through a video\cite{dronewobblevideo} about drone wobbling I came to the conclusion that my \gls{PID} values are for a 9 inch drone not a 5 inch drone. 
+
 	\begin{Explanation}[{{proportional, integral, derivative (PID)}}]
 		\item The \gls{PID} refers to three variables who control the error adjusting system in a drone. With error is meant the difference between how much the motors rotate and how much they should rotate. 
 	\end{Explanation}
@@ -304,7 +257,7 @@
 	Choosing the RaspberryPi instead of an other companion computer is advisable, due to it being the most used in drone projects.
 	
 	The RaspberryPi is not shipped with an microSD card and through that also not with the \gls{OS}. To download the \gls{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the wifi and the possibility for the \gls{SSH} connection. 
-	% TODO explanaition box OS
+
 	
 	
 	To see a desktop instead of only a command line based interface with an \gls{SSH} a \gls{VNC} is used. In this case the recommended option was RealVNC viewer a widely spread \gls{VNC}. For this RealVNC server needs to be installed over the terminal via \lstinline|sudo apt-get realvnc-vnc-server| \cite{ionisvnctutorial}\footnote{realvnc-vnc-viewer only required if you want to see a VNC from the RaspberryPi}.

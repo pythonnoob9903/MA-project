@@ -26,16 +26,17 @@
 \contentsline {subsubsection}{\numberline {4.4.2}Firmware Installation}{10}{subsubsection.4.4.2}%
 \contentsline {subsubsection}{\numberline {4.4.3}GPS Connection}{11}{subsubsection.4.4.3}%
 \contentsline {subsubsection}{\numberline {4.4.4}Receiver/Transmitter}{12}{subsubsection.4.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.5}Motor Test}{13}{subsubsection.4.4.5}%
-\contentsline {subsubsection}{\numberline {4.4.6}Compass Calibration}{14}{subsubsection.4.4.6}%
-\contentsline {subsubsection}{\numberline {4.4.7}Road to First Flight}{14}{subsubsection.4.4.7}%
-\contentsline {subsection}{\numberline {4.5}Companion Computer}{16}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}RaspberryPi Setup}{16}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}MAVProxy Installation}{17}{subsubsection.4.5.2}%
-\contentsline {subsubsection}{\numberline {4.5.3}Dronekit}{17}{subsubsection.4.5.3}%
-\contentsline {section}{\numberline {5}Results}{21}{section.5}%
-\contentsline {section}{\numberline {6}Discussion and Outlook}{21}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{21}{section.7}%
-\contentsline {section}{\numberline {8}References}{21}{section.8}%
-\contentsline {section}{Bibliography}{21}{section*.8}%
-\contentsline {section}{\numberline {9}Table of Figures}{24}{section.9}%
+\contentsline {subsubsection}{\numberline {4.4.5}Battery}{12}{subsubsection.4.4.5}%
+\contentsline {subsubsection}{\numberline {4.4.6}Motor Test}{13}{subsubsection.4.4.6}%
+\contentsline {subsubsection}{\numberline {4.4.7}Compass Calibration}{13}{subsubsection.4.4.7}%
+\contentsline {subsubsection}{\numberline {4.4.8}Road to First Flight}{13}{subsubsection.4.4.8}%
+\contentsline {subsection}{\numberline {4.5}Companion Computer}{15}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}RaspberryPi Setup}{15}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}MAVProxy Installation}{15}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}Dronekit}{16}{subsubsection.4.5.3}%
+\contentsline {section}{\numberline {5}Results}{20}{section.5}%
+\contentsline {section}{\numberline {6}Discussion and Outlook}{20}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}%
+\contentsline {section}{\numberline {8}References}{20}{section.8}%
+\contentsline {section}{Bibliography}{20}{section*.7}%
+\contentsline {section}{\numberline {9}Table of Figures}{23}{section.9}%
