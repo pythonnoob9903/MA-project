@@ -12,22 +12,17 @@
 	
 	In the world of today where technology is advancing faster than ever before this "Maturitätsarbeit" tries to shine a light into the corner of self-built and autonomous drones.
 	
-	However, it first needs to be defined what a drone even is. According to the Cambridge Dictionary, a drone is defined as: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work, the term 'drone' will refer to a quadcopter which is a drone with four motors and propellers and not a conventional \gls{UAV}, which is mostly used for military grade drones. 
+	However, it first needs to be defined what a drone even is. According to the Cambridge Dictionary, a drone is defined as: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work, the term 'drone' will refer to a quadcopter which is a drone with four motors that lifts off and flies through the power provided by the motors and does not glide like a plane. There is also the term \gls{UAV}, however this is mostly used to describe military grade drones.
 
 	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now widely and effectively used to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones have become increasingly autonomous. Drone pilots with more advanced setups, are able to simply lock onto the target and let the drone follow and detonate near it \cite{nytimesaidrones}. This increased use in war has also had an impact on the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides in the Ukraine war are buying the \glspl{ESC} no matter what software is on them.  
-
-	% TODO write personal motivation
-	% TODO introduction
-	% do at the end of the writing process
-	% drones are being used in war more and more self-built ones(Blheli32 is dead, because of the use in wars.)
-	% article about more and more autonomous drones in the Ukraine-Russia War
+	% Would have an additional article about drones that are produced in Switzerland that do the same thing
 	
-	% personal motivation
+	The goal of this "Maturitätsarbeit" is to develop an autonomous path-following drone; by path-following a \gls{GPS} path is meant not one on a map. Additionally it should be written so that somebody with no prior knowledge about drones can read, easily understand, and also might reproduce the first part until chapter 4.5 Companion Computer. After that first part, having some understanding of python will be useful, but it is not a requirement. However, without such knowledge, the explanations might be a bit confusing.
+	
+	I was first interested in drones when was in fifth grade and got one as a Christmas present. After that, I also wrote a rather interesting piece about different types of drones in the sixth grade and then lost interest. Later on, when I was in the "Gymnasium", I was randomly recommended a drone video on YouTube and began gaining interest again. I initially planned to build an \gls{FPV} drone. However, I never really found the time to build one. When the "Maturitätsarbeit" came around I found it to be the perfect opportunity to work with a drone, although not just building a \gls{FPV} drone, but doing something more complex.
 
-	\section{Personal Motivation}
-	% TODO might delete and put into introduction
-	\section{Literature Review}
-	% TODO rather short
+
+	
 	\subsection{General Software Considerations}
 	% TODO work around the same topic that already exists
 	\subsubsection{Open Source Software}
@@ -51,26 +46,84 @@
 	\section{Methodology}
 	%only what has been done
 	\subsection{Drone Overview}
-	If you want to fly a drone you have two options available: either you buy one or you build one. The second option is from a technical viewpoint, not only the better option but also the cheaper one.
+	If you want to fly a drone you have two options available: either you buy one or you build one. From a technical viewpoint, the second option is, not only the better option but also the cheaper one.
 	
-	The main parts needed for a drone are the \gls{Fc}, the \gls{ESC}, the receiver, the battery, servos and of course the mainframe. Additionally a \gls{GPS} and LEDs can be added as needed. The \gls{Fc} and the \gls{ESC} are sometimes more generally referred to as \gls{PCB}\footnote{A \gls{PCB} is a board that consists of electronic components, which are connected through the laced copper wires in board} or simply 'board'. 
-	% TODO do footnote better sounds really weird
-	The \gls{Fc} runs the chosen software and controls every other part in one way or another. It is directly connected to the \gls{ESC}, which controls the motors and is connected to the battery. The \gls{Fc} also communicates with the receiver and \gls{GPS} if there is one. In this case there will also be a microcomputer, I chose the RaspberryPi, which connects to the \gls{Fc}.
+	The main parts needed for a drone are the \gls{Fc}, the \gls{ESC}, the receiver, the battery, servos and of course the mainframe. Additionally a \gls{GPS} and LEDs can be added as needed. The \gls{Fc} and the \gls{ESC} are sometimes more generally referred to as \glspl{PCB}\footnote{A \gls{PCB} is a flat board that houses electronic components and features conductive pathways etched onto its surface to connect those components.} or simply 'boards'.
+
+
+	The \gls{Fc} runs the chosen software and controls every other part in one way or another. It is directly connected to the \gls{ESC}, which controls the motors and is connected to the battery. The \gls{Fc} also communicates with the receiver and, if present, the \gls{GPS}. In this case there will also be a microcomputer, I chose the RaspberryPi, which connects to the \gls{Fc}. The connections between the parts are shown in \cref{fig:cheappartconnection}.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{pictures/cheappartconnection}
+		\caption{connection between the parts}
+		\label{fig:cheappartconnection}
+	\end{figure} 
+	
+
 	% TODO add a graphic which illustrates the connection between the parts
+	
 	\subsection{Data Transfer Protocols}
-	\subsubsection{SPI}
+	There are two types of data transfer protocols: serial and parallel. The way they transfer data is by pulsing 5V for a 1 and 0V for a 0. The difference is that the parallel communication sends the data for each bit parallel to the other component through eight connections, as seen in \cref{parallel}, and the serial sends the data over one connection. This also requires a clock to synchronize the output of data.
+	\begin{figure}[ht]
+		\centering
+		\begin{minipage}[c]{0.4\textwidth}
+			\includegraphics[width=\textwidth]{pictures/SPIparallel}
+			\caption{parallel communication of the letter "C" \cite{spiprotocol}}
+			\label{parallel}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[c]{0.4\textwidth}
+			\includegraphics[width=\textwidth]{pictures/SPIserial}
+			\caption{serial communication of the letter "C" \cite{spiprotocol}}
+			\label{serial}
+		\end{minipage}
+	\end{figure}
+	
 	\subsubsection{Uart}
+	The \gls{UART} is not a communication protocol, but a physical circuit. In the field of self-built drones it is used to communicate to and from the \gls{Fc}. It works by transmitting data asynchronously, which means without a clock to synchronize the data transfer. Instead it has a so-called baud rate, which is a measure of \gls{bps}. When connecting two \gls{UART} microcontrollers there are two lines needed from the Tx of one to the Rx of the other and vice versa, as shown in \cref{fig:uartconnection}. With a \gls{UART} a data packet is transferred instead of individual bits. The packet consists of a start bit, followed by 5 to 9 data bits and at the end there are 1 to 2 stop bits, as shown in \cref{fig:uartpackage}. There is also the option to include a parity bit instead of one of the data bits. A parity bit is used to verify that none of the bits were changed during the transfer. It is a 0 if the number of 1 in the sequence is even and 1 if it is odd.
+	\cite{uartprotocol}
+\begin{figure}[ht]
+	\begin{minipage}[c]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{pictures/UARTconnection}
+		\caption{\gls{UART} connection \cite{uartprotocol}}
+		\label{fig:uartconnection}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{pictures/Uartpackage}
+		\caption{\gls{UART} package \cite{uartprotocol}}
+		\label{fig:uartpackage}
+	\end{minipage}
+	
+\end{figure}
+
 	\subsubsection{I2C}
-	\subsubsection{Mavlink}
-	
-	
+	The \gls{I2C} communication is also serial like \gls{UART}, but it has the advantage of being able to communicate to more than one slave\footnote{The relationship between two parts where one controls the other is called a master-slave relationship. Obviously the master is the one that controls the slave. Although the terminology is rather controversial, but still widely used \cite{masterslave}.} part. In this work, it is used for the compass built into the \gls{GPS}. There are two lines between the master and the slave; the \gls{SDA} and the \gls{SCL}. The \gls{SCL} line is used for synchronization and the \gls{SDA} line for the transfer of a packet. The data packet looks quite different to the one from the \gls{UART}. There is a start condition, afterwards the address frame is used to figure out to which slave the packet goes, followed by a bit to determine if the master sends or requests data, afterwards the data is sent followed by a ACK/NACK bit, which confirms that the data frame was received and at the end there is a stop condition \cite{i2cprotocol}.
+\begin{figure}[ht]
+	\begin{minipage}[c]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{pictures/I2Cconnection}
+		\caption{\gls{I2C} connection \cite{i2cprotocol}}
+		\label{fig:I2Cconnection}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{pictures/I2Cpackage}
+		\caption{\gls{I2C} package \cite{i2cprotocol}}
+		\label{fig:I2Cpackage}
+	\end{minipage}
+\end{figure}
+	\subsubsection{MAVLink}
+	The MAVLink protocol is more complex compared to \gls{UART} or \gls{I2C}. It can transfer up to 263 bytes or 280 bytes, depending on the version used. It is used for the connection between the \gls{Fc} and a \gls{GCS} or in this case the RaspberryPi companion computer.
+	% TODO do a graphic for the message that somewhat ressembles the other two
 	\subsection{Parts}
 	
 	\subsubsection[Fc]{Flight Controller}
 	There are two different types of flight controllers: the \gls{AIO} and a standalone \gls{Fc}. The \gls{AIO} consists not only a \gls{Fc} but also the \gls{ESC} in one board. This has the advantage of only needing one board instead of two or five, in some alternative setups. However, if only parts of the \gls{ESC} or the \gls{Fc} are damaged you need to replace the whole board, which is more expensive than replacing only the \gls{Fc} or \gls{ESC}. 
 	
 	Betaflight and INAV both support a wide variety of \glspl{Fc} compared to Ardupilot which is only supporting a very specific sample of boards \cite{FcSupport}. They have the option of open and closed hardware. Because the open hardware \glspl{Fc} are quite expensive, so I decided to go with a closed one. The chip used in \glspl{Fc} is usually a STM32. There are multiple generations of it the mainly used ones are F4, F7 and H7, the newest version is the H7. I then decided to go with the Kakute H7 v1.3 (MPU6000) from Holybro, because it was affordable and available as a stack \cite{KakuteH7}. A stack is a \gls{Fc} and \gls{ESC} mounted on top of each other. It normally comes with stack screws. It comes shipped with Betaflight so it is required to flash Ardupilot. 
-	% TODO explanation open and closed hardware
+	\begin{Explanation}[open and closed hardware]
+		\item Like open source software, the "source code" -or in this case blueprints- open hardware can be accessed by everyone and adjusted to meet one's individual needs \cite{openhardware}.
+	\end{Explanation}
 
 
 
@@ -83,14 +136,11 @@
 	At the time I bought the Tekko32, it was still shipped with BLHeli32, which as mentioned in the beginning has since seized their operations. It is however possible to flash AM32\footnote{A different \gls{ESC} software, which has gained quite some popularity after BLHeli32 is off the market.} onto it \cite{AM32}.
 
 	\subsubsection{Motor}
-	There are two types of motor: brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven, while the brushless motors are electrically driven. Therefore brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in very small drones with 1S\footnote{What 1S means will be explained in the next section} batteries. However, even in the small drones brushless motors are the more popular choice \cite{brush/lessmotors}. 
-	% TODO explain brush/less motors better
-	% TODO get a better picture for this
+	There are two types of motor: brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven, while the brushless motors are electrically driven. As a result, brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in very small drones with 1S\footnote{What 1S means will be explained in the next section} batteries. However, even in smaller drones brushless motors are the more popular choice \cite{brush/lessmotors}. A brushed motor, as shown on the left in \cref{fig:brushedbrushlessmotor}, works by having two brushes that are delivering the power to a coil in the middle of a permanent magnet. This creates a magnetic field around the coiled, which is then attracted to the magnet surrounding it. Due to the commutator the direction in which the provided electricity flows is changed every half turn. This causes the magnetic field around the coil to change the direction and in turn gets attracted to the other side of the magnet. A brushless motor, as shown in \cref{fig:brushedbrushlessmotor} on the right, works by having a field magnet in the middle and coils surrounding it. The coils surrounding the magnet are part of the so-called stator. These coils are provided with a positive and negative voltage, which will cause the magnetic field around them to alternate. When the alternation is synchronized, which is done by an \gls{ESC}, it will cause the field magnet to spin. 
 \begin{figure}[ht]
-	\centering
-	\includegraphics[scale=0.2]{pictures/motor}
-	\caption{\cite{picturemotor}}
-	\label{fig:motor}
+	\includegraphics[width=0.9\columnwidth]{pictures/brushed_brushlessmotor}
+	\caption{brushed and brushless motors \cite{brushlessedmotor}}
+	\label{fig:brushedbrushlessmotor}
 \end{figure}
 
 	The numbers that are seen on the motors, such as '2207', describe the stator of the motor itself. In the case of a 2207 that would be a 22mm diameter and a height of 7mm. The usual stator sizes of 5 inch drones are either 2207 or 2306. There is also the KV value, which has to be considered. The KV value is the number of revolutions per minute (rpm) a motor turns when one volt is applied. The lower the KV value, the more efficient the motor is and the higher the KV value the more responsive it is. The KV value for a 5-inch drone with a 4S battery ranges from 2300 to 2800. I chose the Iflight Xing-E Pro 2207\cite{xingepro} with a KV value of 2450, because the IFlight-Xing motors are known to be of good quality, \textit{'they (Xing motors) also prove to be very reliable and most importantly durable'} \textcite{xingreview}. 
@@ -116,27 +166,18 @@
 
 	\subsubsection{Radio/Transmitter}
 	The following information about transmitter protocols is based on two YouTube videos from \textcite{transprotocols} and \textcite{mlrs}.
-	% TODO explain difference between 900MHz and 2.4 GHz
-	% TODO explain latency and range in the beginning of subsubsection
-	% TODO delete uneccessary radio protocols
-	% TODO i don't know something, forgot...
-	\subsubsection*{FrSky}
-	There are three FrSky protocols that are not compatible with each other ACCST, ACCESS and FrSky R9 ACCESS. ACCST has a range of around 1-2 km in open air. The firmware is built into almost all radios. It has a good latency but not as good as the other options. ACCESS is the successor to ACCST and has about the same range, but a lower latency, however not a class leading one. FrSky R9 ACCCESS gives you a range of over 50km in ideal condition. Unfortunately, the FrSky ACCESS porotcols are only supported by FrSky radios. There is one problem with FrSky. It is quite a difficult to manage, because of the three protocols that are not compatible with each other.
+	
+	The two things to consider when it comes to transmitter protocols are latency and range. Latency is the delay between the input on the radio controller and when the reaction of the \gls{Fc}. The lower the latency, the faster the drone will react. It is related to the frequency bands of the receiver, of which there are normally two: 900 MHz and 2.4 GHz. When both are optimized the 900 MHz has better penetration and range, due to the longer wavelength, while the 2.4 GHz has a higher latency, because the frequency allows for faster data transmission.
 
-	\subsubsection*{TBS Crossfire/Tracer and Immersion RC Ghost}
-	TBS Crossfire has a range of over 100km and is easy to use. It is also well tested and stable and has a good latency. 
-	TBS Tracer can have also over 10km, but drains the battery when flying further away. It is more focused on racing due to the low-latency.
-	Immersion RC Ghost as a range of over 10km. It is possible to switch between a low-latency for racing and a high-latency for long range flying. 
 	\subsubsection*{ExpressLRS}
-	ExpressLRS is the best in long range and in the combination of long range and latency. It has been shown by \textcite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km\footnote{There are two version a 900MHz and a 2.4GHz and the main difference is that the 2.4GHz only at least over 30km but unlikely over 100km, but it has the lowest latency compared to any other protocol.}. It is together with mLRS the only two options who are open source.
+	ExpressLRS is the best protocol in long range and for the combination of long range and low latency. It has been shown by \textcite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km away from the starting point. There are two version: a 900 MHz and a 2.4 GHz. The main difference is that the 2.4 GHz can reach over 30km, but it is unlikely to go to 100km. However, it has the lowest latency. It, together with mLRS, is the only protocols that is open-source.
 	\subsubsection*{mLrs}
-	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency to send larger data packages to your telemetry device. Which is something that is needed if you want to adjust something or get more data from your drone over the Mavlink protocol during the flight. 
-	% TODO explanationbox for Mavlink
+	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency, which allows it to send larger data packages to your telemetry device. Which is something that is needed if you want to adjust something or get more data from your drone over the MAVLink protocol during the flight. 
 	
 	\subsubsection*{Transmitter/Radio}
-	I've decided to go with the Radiomaster RP4TD ExpressLRS 2.4GHz True Diversity Receiver based on a recommendation of a friend \cite{radiomasterreceiver}. It also is compatible with mLRS if I want to switch later on.
+	I decided to go with the Radiomaster RP4TD ExpressLRS 2.4GHz True Diversity Receiver based on a recommendation of a friend \cite{radiomasterreceiver}. It is also compatible with mLRS if I want to switch later on.
 	
-	I went with the Radiomaster Boxer\cite{radiomasterboxer} radio, because it is somewhat in the middle range from radios and seems to be quite reliable and has many switches to assign flight modes or other functions to. 
+	I chose with the Radiomaster Boxer\cite{radiomasterboxer} radio, because it is somewhat in the middle range from radios and seems to be quite reliable and has many switches to assign flight modes or other functions to. 
 
 	\subsubsection{Smoke Stopper}
 	A smoke stopper is a device that prevents the ESC from short-circuiting due to incorrectly soldered parts and can save quite a lot of money. There are two groups of smoke stoppers one that you buy and get destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own\cite{smokestopper}. 
@@ -181,7 +222,7 @@
 
 
 	\subsubsection{GPS Connection}
-	In the beginning no immediate \gls{GPS} connection appeared. Even changing the parameter \lstinline|GPS_Type = 2| for the Ublox \gls{GPS}, the 'No \gls{GPS}' error, as seen in the bottom right corner of \cref{fig:nogps}, was still there. Even though the it was clear that the \gls{GPS} worked and was connected to the \gls{Fc}, because the compass appeared in the compass calibration tab on \gls{MP}.
+	In the beginning no immediate \gls{GPS} connection appeared. Even changing the parameter \lstinline|GPS_Type = 2| for the Ublox \gls{GPS}, the 'No \gls{GPS}' error, as seen in the bottom right corner of \cref{fig:nogps}, was still there. Even though it was clear that the \gls{GPS} worked and was connected to the \gls{Fc}, because the compass appeared in the compass calibration tab on \gls{MP}.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.2]{pictures/No_GPS}
@@ -189,9 +230,9 @@
 	\label{fig:nogps}
 \end{figure}
 
-	The issue could be that the \gls{GPS} is too close to metal surfaces,the Computer, which is connected via USB cable, is too close or that soldering was done poorly and the cables from the \gls{GPS} to the \gls{Fc} are falsely connected. After testing for each of the possible issues and mitigating the proximity in which metal was near the drone, the \gls{GPS} still not working. The GPS itself was also not damaged, because the blue led was blinking constantly which means it is connecting to a \gls{GNSS}.
+	The issue could be that the \gls{GPS} is too close to metal surfaces, the computer, which is connected via USB cable, is too close, or that soldering was done poorly and the cables from the \gls{GPS} to the \gls{Fc} are falsely connected. After testing for each of the possible issues and mitigating the proximity in which metal was near the drone, the \gls{GPS} was still not working. The GPS itself was also not damaged, because the blue led was blinking constantly which means it is connecting to a \gls{GNSS}.
 
-	The problem was that the \lstinline|Serial3_Protocol| (Which is for the Uart3, which will be used for the connection to the RaspberryPi) was set to 5 which stands for \gls{GPS}, however with that it blocked the Uart4 from being received as a \gls{GPS}, to which the \gls{GPS} was really connected. After disabling the Uart3 it finally worked.
+	The problem was that the \lstinline|Serial3_Protocol| (which is for the Uart3, which will be used for the connection to the RaspberryPi) was set to 5 which stands for \gls{GPS}. However, this blocked the Uart4 from being received as a \gls{GPS}, to which the \gls{GPS} was really connected. After disabling the Uart3 it finally worked.
 
 	The GPS is quite precise outside \cref{fig:gpsoutside}\footnote{It also works sometimes inside and is precisely on my room, but it can also show that it is in Poland the middle of the Atlantic Ocean or Iceland.}.
 	
@@ -217,20 +258,20 @@
 	The connection between the radio and receiver seemed to be working, because the receiver had a constant blue light and the receiver notified that the telemetry recovered after it was lost for a moment. However, it did not yet have a connection to the Fc. There was the possibility to change the Uart6 ot the Uart1, which is usually the Uart used for receivers with the Kakute H7, but it would require a JST (a special connector) and more soldering. The solution was found in the Kakute H7 tab in the ArduPilot documentation, where it was listed that for a CRSF\footnote{Even though it is a ELRS receiver it has the same interface as CRSF receivers} interface the parameter \lstinline|Brd_Alt_Config| needs to be set to 1. \lstinline|Brd_Alt_Config| is a Fc specific parameter, this is also the reason why it did not come up in the ExpressLRS page or the ArduPilot documentation. 
 
 	\subsubsection{Battery}
-	The battery was rather straightforward. The smoke stopper did not light up when plugging it in. Firstly the battery was not recognized by the \gls{Fc}, but it was solved by changing the parameter \lstinline|Batt_Monitor| to 4. After that the voltage and amperage shows up in \gls{MP}.
+	The battery was rather straightforward. The smoke stopper did not light up when plugging it in. In the beginning the battery was not recognized by the \gls{Fc}, but it was solved by changing the parameter \lstinline|Batt_Monitor| to 4. After that the voltage and amperage shows up in \gls{MP}.
 
 	\subsubsection{Motor Test}
-	The motor test works correct after assigning the right position to the motors, because I'm using the M5-M8 ports instead of the M1-M4. The parameter \lstinline|Mot_PWM_Type| needs to be set to dshot 600. The motor testing works after assigning the correct motor to the correct output in the servo output tab in \gls{MP}. Dshot is the digital protocol for communication between the \gls{Fc} and \gls{ESC}. The motors begin to beep after a certain time, due to the beacon delay. This will be turned of later. This was also the first time the \gls{ESC} had power and through that a new error appeared called 'battery failsafe'. This is caused by a unstable connection between the \gls{ESC} and the \gls{Fc}, because of that the \gls{Fc} takes the computer as power source and has to little power to spin the motors.
+	The motor test works correct after assigning the right position to the motors, because I'm using the M5-M8 ports instead of the M1-M4. The parameter \lstinline|Mot_PWM_Type| needs to be set to dshot 600. The motor testing works after assigning the correct motor to the correct output in the servo output tab in \gls{MP}. Dshot is the digital protocol for communication between the \gls{Fc} and \gls{ESC}. The motors began to beep after a certain time, due to the beacon delay. This will be turned of later. This was also the first time the \gls{ESC} had power and through that a new error appeared called 'battery failsafe'. This is caused by an unstable connection between the \gls{ESC} and the \gls{Fc}, which causes the \gls{Fc} takes the computer as power source and has too little power to spin the motors.
 	
 	\subsubsection{Compass Calibration}
-	The compass calibration needs a good \gls{GPS} lock. However, even with a good lock, relaxed fitness\footnote{The fitness can be in four different states very strict, strict, default and relaxed. The stricter the fitness is the longer the calibration takes.} and \lstinline|Compass_Orient| set to 6, as recommended by the Holybro docs, it still failed \cite{HolybroDocs}. Large Metal parts could again influence the calibration, but there were none in the vicinity of the compass. To temporarily do the calibration the large vehicle MagCal can be done. However, this mostly takes away the prearm message. It is strongly advised against by the ArduPilot documentation, because it can look as if it is correctly configured, but the orientation is incorrect. The best way to calibrate the compass is to put the compass directly on  top of the \gls{Fc} and then do the calibration.
+	The compass calibration needs a good \gls{GPS} lock. However, even with a good lock, relaxed fitness\footnote{The fitness can be in four different states very strict, strict, default and relaxed. The stricter the fitness is the longer the calibration takes.}, and \lstinline|Compass_Orient| set to 6, as recommended by the Holybro docs, it still failed \cite{HolybroDocs}. Large Metal parts could again influence the calibration, but there were none in the vicinity of the compass. To temporarily do the calibration the large vehicle MagCal can be done. However, this mostly takes away the prearm message. It is strongly discouraged by the ArduPilot documentation, because it can look as if it is correctly configured, but the orientation is incorrect. The best way to calibrate the compass is to put it directly on  top of the \gls{Fc} and then do the calibration.
 
 	\subsubsection{Road to First Flight}
 	The first step to flying is to arm the drone.
 	\begin{Explanation}[to arm]
 		\item To arm a drone means that the motors begin to spin without producing enough thrust to lift the drone from the ground. It is used when you want to fly before the actual flight.		
 	\end{Explanation}
-	For that a switch on the radio needs to be assigned to arming and disarming. In my configuration the switch five is used. In order for it to work the parameter \lstinline|RC5_Option| is set to 153, which means to arm the drone when the switch number 5 is flicked. To test the drone on the bench inside there will be many prearm errors to ignore the parameter \lstinline|Arming_Check| is disabled and more importantly the geofence, which still blocks the arming when \lstinline|Arming_Check| is disabled. After this when flicking the switch 5 the motors will arm and spin\footnote{A battery needs to be connected.}. From my experience it is really important to tie down every cable or antenna before arming the drone with propellers, else they might just be cut through or teared off. This will cause a new prearm error to appear called 'crashdump bin detected'. This file can be used to analyze the crashes your drone has had. As long as it is tested on the bench it should not be a problem and can be deleted by flashing new firmware onto the drone \cite{blogcrashdump}. This time however not via STM32CubeProgrammer, but directly over \gls{MP}. Additionally the some of the motors need to be reversed for the X-configuration of the drone, seen in \cref{fig:quadx}. To reverse them the reverse button in \gls{MP} does not work. The BLHeliSuite32 software is needed and the parameter \lstinline|Servo_BLh_Auto| is set to 1 which enables a pass through from the \gls{ESC} through the \gls{Fc}. In the software one can change the motor spinning direction. It is also advisable to turn off beacon delay, at least for now, or else the motors will beep after ten minutes of being idle.
+	For that a switch on the radio needs to be assigned to arming and disarming. In my configuration the switch five is used. In order for it to work the parameter \lstinline|RC5_Option| is set to 153, which means to arm the drone when the switch number 5 is flicked. To test the drone on the bench inside there will be many prearm errors to ignore the parameter \lstinline|Arming_Check| is disabled and more importantly the geofence, which still blocks the arming when \lstinline|Arming_Check| is disabled. After this when flicking the switch 5 the motors will arm and spin\footnote{A battery needs to be connected.}. From my experience it is really important to tie down every cable or antenna before arming the drone with propellers, else they might just be cut through or teared off. This will cause a new prearm error to appear called 'crashdump bin detected'. This file can be used to analyze the crashes your drone has had. As long as it is tested on the bench, it should not be a problem and can be deleted by flashing new firmware onto the drone \cite{blogcrashdump}. This time however not via STM32CubeProgrammer, but directly over \gls{MP}. Additionally the some of the motors need to be reversed for the X-configuration of the drone, seen in \cref{fig:quadx}. To reverse them the reverse button in \gls{MP} does not work. The BLHeliSuite32 software is needed and the parameter \lstinline|Servo_BLh_Auto| is set to 1 which enables a pass through from the \gls{ESC} through the \gls{Fc}. In the software one can change the motor spinning direction. It is also advisable to turn off beacon delay, at least for now, or else the motors will beep after ten minutes of being idle.
 	\begin{Explanation}[beacon delay]
 		\item The beeping of the beacon delay is used to located a crashed drone. If the drone has lost the contact to the radio it will automatically activate after a certain amount of time.
 	\end{Explanation}
@@ -242,35 +283,35 @@
 	\label{fig:quadx}
 \end{figure}
 
-	After arming the quad and pushing the throttle I was able to get the drone to fly, but it was shaking violently also known as wobbling and then somewhat crashed it into the ground causing minimal damage to propellers. I tried to tighten everything on the drone, because until that point everything was just somewhat loosely taped onto it, the wobbling still continued. Trying new and also the other props, as there could be a prop imbalance that causes the drone to wobble, had no effect. Through a video\cite{dronewobblevideo} about drone wobbling I came to the conclusion that my \gls{PID} values are for a 9 inch drone not a 5 inch drone. 
+	In my first test flight the drone was shaking violently, which is also known as wobbling. This caused me to crash it into the ground. Reasons for this behavior can be loosely fastened parts, imbalanced propellers, or also wrong \gls{PID} values \cite{dronewobblevideo}. In my case it was the \gls{PID} values, which were for a 9-inch drone and not a 5-inch. The \gls{PID} values can be adjusted via the initial tuning parameter. After this the drone flew fine, except that the sticks of the radio controller needed to be reversed. This can be done using the \lstinline|RC2_Reversed| parameter.
 
 	\begin{Explanation}[{{proportional, integral, derivative (PID)}}]
 		\item The \gls{PID} refers to three variables who control the error adjusting system in a drone. With error is meant the difference between how much the motors rotate and how much they should rotate. 
 	\end{Explanation}
-	After adjusting them via the intial tuning parameter quick adjustment settings the drone flew. But when I put the stick left the drone flew right and vice versa. I was able to put the \lstinline|RC2_Reversed| to 1, which reversed the controls. 
 	
 	\subsection{Companion Computer}
+	The following section is rather technical and can be used as a reference to reproduce the combination of the Kakute H7 and a RaspberryPi working together using Dronekit python.
 	\subsubsection{RaspberryPi Setup}
 	
-	To let the drone fly on its own a companion computer is needed, because the \gls{Fc} does not have enough power to process more complex operations as autonomous flight.
+	To let the drone fly on its own a companion computer is needed, because the \gls{Fc} does not have enough power to process more complex operations such as autonomous flight.
 	
-	Choosing the RaspberryPi instead of an other companion computer is advisable, due to it being the most used in drone projects.
+	Choosing the RaspberryPi instead of another companion computer is advisable, due to it being the most popular in drone projects.
 	
-	The RaspberryPi is not shipped with an microSD card and through that also not with the \gls{OS}. To download the \gls{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the wifi and the possibility for the \gls{SSH} connection. 
+	The RaspberryPi is not shipped with an microSD card and through that also not with the \gls{OS}. To download the \gls{OS}, the RaspberryPi Imager is used. Through the imager it is possible to create an account for the RaspberryPi,  configure the WiFi and the possibility for a \gls{SSH} connection. 
 
 	
-	
-	To see a desktop instead of only a command line based interface with an \gls{SSH} a \gls{VNC} is used. In this case the recommended option was RealVNC viewer a widely spread \gls{VNC}. For this RealVNC server needs to be installed over the terminal via \lstinline|sudo apt-get realvnc-vnc-server| \cite{ionisvnctutorial}\footnote{realvnc-vnc-viewer only required if you want to see a VNC from the RaspberryPi}.
+	To see a desktop instead of only a command line based interface with an \gls{SSH} a \gls{VNC} is used. In this case the recommended option was RealVNC viewer a widely used \gls{VNC}. For this RealVNC server needs to be installed over the terminal via \lstinline|sudo apt-get realvnc-vnc-server| \cite{ionisvnctutorial}\footnote{\lstinline|realvnc-vnc-viewer| is only required if you want to see a VNC from the RaspberryPi}.
 	
 	\subsubsection{MAVProxy Installation}
-	The following was based on the MAVProxy Documentation \cite{MavProxydocs} from the ArduPilot website.
+	The following was based on the MAVProxy Documentation from the ArduPilot website  \cite{MavProxydocs}.
 	
 	First all the needed packages need to be installed through the \lstinline|sudo apt-get install| command. 
 	\begin{lstlisting}
-sudo apt-get install python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame
-pip3 install PyYAML
-\end{lstlisting}
-	What is not said in the MAVProxy Documentation, is that you need a \gls{venv} and can not download it without one or the this error; \lstinline|error: externally-managed-environment| pops up. To get around this issue you need to create and activate a \gls{venv}.
+		sudo apt-get install python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame
+		pip3 install PyYAML
+	\end{lstlisting}
+
+	What is not said in the MAVProxy Documentation, is that you need a \gls{venv} and cannot download it without one or the error; \lstinline|error: externally-managed-environment| pops up. To get around this issue you need to create and activate a \gls{venv}.
 	\begin{lstlisting}
 		python3 -m venv mavproxy-env
 		source mavproxy-env/bin/activate
@@ -278,45 +319,45 @@ pip3 install PyYAML
 	\end{lstlisting} 
 	
 	
-	To connect the drone over MAVProxy it is needed to know how the \gls{Fc} is connected to the Raspberry Pi. The command \lstinline!dmesg | tail! will provide the information.
-	
-	% TODO insert picture USBRaspPiconnect 
+	To connect the drone over MAVProxy it is needed to know how the \gls{Fc} is connected to the RaspberryPi. The command \lstinline!dmesg | tail! will provide the information, as seen in \cref{fig:usbrasppiconnect}.
+
+\begin{figure}[th]
+	\centering
+	\includegraphics[width=0.7\linewidth]{pictures/USBRaspPiconnect}
+	\caption{output from \lstinline!dmesg | tail!}
+	\label{fig:usbrasppiconnect}
+\end{figure}
 	% TODO visually showing on the picture where it shows the connection 
-	The command \lstinline|mavproxy.py --master=/dev/ttyACM0 --baudrate 115200 --aircraft MyCopter|, a error will appear if \lstinline|\ttyUSB0| is used. If the Raspberry Pi is connected over the serial ports, \lstinline|\serial0| is used instead of \lstinline|\ttyACM0| and if the baudrate is changed also take the other one, in this case it would be 921600. If the Raspberry Pi will not have another power source except over the \gls{Fc}, the 5+ V pin on the Raspberry Pi needs to be connected to a 5 volt pin on the \gls{Fc} and additionally a ground pin. There will be a low voltage warning that pops up, but the RaspberryPi works fine. In addition the \lstinline|Serial3_Protocol| needs to be changed to 2 for the Mavlink protocol.
+	
+	The command \lstinline|mavproxy.py --master=/dev/ttyACM0 --baudrate 115200 --aircraft MyCopter|, is used to connect over MavProxy, an error will appear if \lstinline|\ttyUSB0| instead of \lstinline|\ttyACM0| is utilized. If the RaspberryPi is connected over the serial ports, \lstinline|\serial0| is used instead of \lstinline|\ttyACM0|. The baudrate can also vary, in this case it is 921600. The RaspberryPi will not have another power source except over the \gls{Fc}, the 5+ V pin on the RaspberryPi needs to be connected to a 5 volt pin on the \gls{Fc} and additionally a ground pin. There will be a low voltage warning, but the RaspberryPi works fine. In addition the \lstinline|Serial3_Protocol| needs to be changed to 2 for the MAVLink protocol.
 	
 	When connected to the \gls{Fc} you can use simple simple commands to change the parameters, as \lstinline|param set arming_check 0|, or to arm the copter with \lstinline|arm throttle|.
 	
 	\subsubsection{Dronekit}
-	It needs to be mentioned that the software dronekit is not maintained very well, as it says in the Github repository \cite{dronekitgithub}.The following is mostly based on the Dronekit Documentation \cite{dronekitdocs}.
+	It first needs to be mentioned that the Dronekit python software is not maintained very well, as it is stated in the Github repository \cite{dronekitgithub}. The following is still mostly based on the Dronekit Documentation \cite{dronekitdocs}.
 	
-	
-	% TODO fix this listing example so I can reference listing environments more easily
-	First the Dronekit library needs to be installed in the \gls{venv} with \lstinline|pip install dronekit|. To create a file in the \gls{venv} over the terminal \lstinline|nano dronekittest.py| is used. Noteworthy is that it is not useful to name the file the same as the library itself, because python will confuse it. In the created document you then can connect the \gls{Fc} to the Raspberry Pi as can be seen in \cref{lst:listing-connection}.
+	First the Dronekit library needs to be installed in the \gls{venv} with \lstinline|pip install dronekit|. To create a file in the \gls{venv} over the terminal \lstinline|nano dronekittest.py| is used. It is noteworthy to not use the same name as the library itself, because python will confuse it. In the created document one then can connect the RaspberryPi to the \gls{Fc} as can be seen in \cref{lst:listing-connection}.
 	\begin{lstlisting}[language=Python, style=myPython, caption=Python DroneKit Example, label={lst:listing-connection}]
-from dronekit import connect
+		from dronekit import connect
 
-vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
-\end{lstlisting}
+		vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
+	\end{lstlisting}
 	
-	Afterwards an error occurred. 
-	\begin{lstlisting}
-dronekit/__init__.py" , line 2689, in <module>
-class Parameters(collections.MutableMapping, HasObservers):
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: module 'collections' has no attribute 'MutableMapping'
+	However this will cause an attribute error, as one can see in \cref{lst:attributeerror} 
+	\begin{lstlisting}[label=lst:attributeerror, caption={AttributeError after connecting}]
+		dronekit/__init__.py" , line 2689, in <module>
+		class Parameters(collections.MutableMapping, HasObservers):
+		^^^^^^^^^^^^^^^^^^^^^^^^^^
+		AttributeError: module 'collections' has no attribute 'MutableMapping'
 \end{lstlisting}
-	The source of the error is that in python 3.10 the abstract base class, MutapleMapping, was moved from collections to collections.abc. This needs to be changed(\cref{changed line}) in the dronekit source code. Which can be accessed with the the command \cref{sourcecode}\footnote{If it would not be open source, the change(\cref{changed line}) would not be possible}.
+	The source of the error is that in python 3.10 the abstract base class, MutapleMapping, was moved from collections to collections.abc. This needs to be changed (\cref{changed line}) in the dronekit source code. Which can be accessed with the the command \cref{sourcecode}\footnote{If it would not be open source, the change(\cref{changed line}) would not be possible}.
 	
 	\begin{lstlisting}[caption= accessing source code, label=sourcecode]
 nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 \end{lstlisting}
-	
-	\begin{lstlisting}[caption= original source code, language=python, style=myPython]
-		class Parameters(collections.MutableMapping, HasObservers):
-\end{lstlisting}	
-to:
+
 %TODO mark inside the listing the change/write a little bit smoother transition inbetween the inserted points
-	\begin{lstlisting}[caption={changed line}, label=changed line, language=python, style=myPython, literate={.abc}{{\color{Green}.abc}}4]
+	\begin{lstlisting}[caption={changed line in source code (change marked in green)}, label=changed line, language=python, style=myPython, literate={.abc}{{\color{Green}.abc}}4]
 		class Parameters(collections.abc.MutableMapping, HasObservers):
 	\end{lstlisting}
 	
@@ -328,29 +369,9 @@ to:
 	\begin{lstlisting}[caption= output from \cref{lst:listing-autopilot}]
 		Autopilot version: APM:Copter-4.5.7
 	\end{lstlisting}
-	% TODO might move up to the part where all the connections are explained to the RaspberryPi
-	% TODO look at the exact connections again 
-	%Uart ports are seen as /dev/ttyS0 or as 
-	%can be looked at via:
-	%\begin{lstlisting}
-	%	ls /dev/ttys0
-	%\end{lstlisting}
-	% TODO might delete this
-	%Error: 
-	%\begin{lstlisting}
-	%	Failed to connect to /dev/ttys0 : [Errno 2] could not open port /dev/ttys0: [Errno 2] No such file or directory: '/dev/ttys0'
-	%\end{lstlisting}
-	%
-	%needed to add 
-	%\begin{lstlisting}
-	%	sudo usermod -a -G dialout $USER
-	%\end{lstlisting}
-	which adds dialout so the pins to sudo
 
-	The main problem of the outdated Dronkitpython library is, that the function \lstinline|vehicle.channels|, which should read the channel values from the Radiocontroler, is only returning none. It is a long-known issue and to circumvent it a decorator is used \cite{rcchannelissue}. 
-	
-	
-	% TODO explanation box do this decorator
+	The main problem of the outdated Dronkit python library is, that the function \lstinline|vehicle.channels|, which should read the channel values from the radio controller, is returning none instead of values between 900 and 2100. This is a long-known issue and to circumvent it a decorator is used \cite{rcchannelissue}. 
+
 	\begin{Explanation}[Decorator]
 		\item A decorator is a function that modifies the behavior of a function or a class \cite{decorator}.
 	\end{Explanation} 
@@ -369,45 +390,25 @@ to:
 			return channel_value
 		
 	\end{lstlisting}
-	The decorator in \cref{lst:decorator} is already predefined in the Dronekit library. When calling it with \lstinline|@vehicle.on_message("RC_CHANNELS)| and saving it to the global variable latest\_rc\_channels as a dictionary it looks like \cref{lst:message}.
+	The decorator in \cref{lst:decorator} is already predefined in the Dronekit library. When calling it with \lstinline|@vehicle.on_message("RC_CHANNELS)| (line 1 \cref{lst:decorator}) and saving it to the global variable \lstinline|latest_rc_channels| (line 4 \cref{lst:decorator}) as a dictionary (\cref{lst:message}).
 	
 	\begin{lstlisting}[label=lst:message, caption={output from decorator in \cref{lst:decorator}\protect\footnote{}}]
 		chan{i}_raw : x
 	\end{lstlisting}
 	\footnotetext{With i being the channel number and x the value the channel receives form the radiocontroler}
+	\pagebreak
 	
-	trying to get a channel value over dronekitpython... does not work
 	
-	seeing it over mavproxy via the status command, but not the rc status
 	
-	is probably a bug in dronekit, might have found the issue in question and a  "solution" for it
 	
-	after a lot of trial and error I got this which works to retrieve a value from the radio
-	\begin{lstlisting}[language=python, style=myPython]
-		from dronekit import connect, VehicleMode
-		import time
-		
-		vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
-		
-		latest_rc_channels = None
-		
-		@vehicle.on_message("RC_CHANNELS")
-		def rc_channel_listener(vehicle, name, message):
-			global latest_rc_channels
-			latest_rc_channels = message
-		
-		def get_rc_channel_value(channel_number):
-			global latest_rc_channels
-			if latest_rc_channels is None:
-				return None
-			channel_value = getattr(latest_rc_channels, f"chan{channel_number}_raw", None)
-			return channel_value
-	\end{lstlisting}
+	
+	
+	
 	% TODO add flowchart of the code for what is planned
 	
 	home coordinates are set every time the vehicle is armed
 	
-	there is no special dronekit command to set a new home location, however it would be possible to access it over mavlink
+	there is no special dronekit command to set a new home location, however it would be possible to access it over MAVLink
 	
 	\lstinline|vehicle.home_location.lat| gives you the latitude of the home location set by ardupilot while arming the quad.
 	
@@ -433,7 +434,7 @@ to:
 	\section{Discussion and Outlook}
 	\section{Conclusion}
 	
-	\section{References}
+	\appendix
 	\printbibliography[
 		heading=bibintoc,
 		title={Bibliography}
@@ -442,9 +443,7 @@ to:
 	\listoffigures	
 	% TODO do this into the appendix?
 	% TODO add list of the parts used in the drone build with links directing to websites used to purchase them
-	\section{Table of Figures}
-	%(short table on which every figure description with the page number is listed)
-	
+
 	\printglossary[type=\acronymtype]
 	
 \end{document}

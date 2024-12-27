@@ -1,42 +1,37 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {section}{\numberline {2}Personal Motivation}{3}{section.2}%
-\contentsline {section}{\numberline {3}Literature Review}{3}{section.3}%
-\contentsline {subsection}{\numberline {3.1}General Software Considerations}{3}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Open Source Software}{3}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Flight Softwares}{4}{subsubsection.3.1.2}%
-\contentsline {section}{\numberline {4}Methodology}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Drone Overview}{4}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Data Transfer Protocols}{5}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}SPI}{5}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Uart}{5}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}I2C}{5}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Mavlink}{5}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}Parts}{5}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Fc}{5}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}ESC}{5}{subsubsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.3}Motor}{6}{subsubsection.4.3.3}%
-\contentsline {subsubsection}{\numberline {4.3.4}Battery}{7}{subsubsection.4.3.4}%
-\contentsline {subsubsection}{\numberline {4.3.5}GNSS(Global Navigation Satellite System)/Compass}{7}{subsubsection.4.3.5}%
-\contentsline {subsubsection}{\numberline {4.3.6}Radio/Transmitter}{8}{subsubsection.4.3.6}%
-\contentsline {subsubsection}{\numberline {4.3.7}Smoke Stopper}{9}{subsubsection.4.3.7}%
-\contentsline {subsubsection}{\numberline {4.3.8}Problems with the Parts}{9}{subsubsection.4.3.8}%
-\contentsline {subsubsection}{\numberline {4.3.9}Propellers and Battery Charger}{9}{subsubsection.4.3.9}%
-\contentsline {subsection}{\numberline {4.4}ArduPilot}{10}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Ground Station}{10}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}Firmware Installation}{10}{subsubsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.3}GPS Connection}{11}{subsubsection.4.4.3}%
-\contentsline {subsubsection}{\numberline {4.4.4}Receiver/Transmitter}{12}{subsubsection.4.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.5}Battery}{12}{subsubsection.4.4.5}%
-\contentsline {subsubsection}{\numberline {4.4.6}Motor Test}{13}{subsubsection.4.4.6}%
-\contentsline {subsubsection}{\numberline {4.4.7}Compass Calibration}{13}{subsubsection.4.4.7}%
-\contentsline {subsubsection}{\numberline {4.4.8}Road to First Flight}{13}{subsubsection.4.4.8}%
-\contentsline {subsection}{\numberline {4.5}Companion Computer}{15}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}RaspberryPi Setup}{15}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}MAVProxy Installation}{15}{subsubsection.4.5.2}%
-\contentsline {subsubsection}{\numberline {4.5.3}Dronekit}{16}{subsubsection.4.5.3}%
-\contentsline {section}{\numberline {5}Results}{20}{section.5}%
-\contentsline {section}{\numberline {6}Discussion and Outlook}{20}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}%
-\contentsline {section}{\numberline {8}References}{20}{section.8}%
-\contentsline {section}{Bibliography}{20}{section*.7}%
-\contentsline {section}{\numberline {9}Table of Figures}{23}{section.9}%
+\contentsline {subsection}{\numberline {1.1}General Software Considerations}{4}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Open Source Software}{4}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Flight Softwares}{4}{subsubsection.1.1.2}%
+\contentsline {section}{\numberline {2}Methodology}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Drone Overview}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Data Transfer Protocols}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Uart}{6}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}I2C}{6}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}MAVLink}{7}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Parts}{7}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Fc}{7}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}ESC}{8}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Motor}{8}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Battery}{9}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.5}GNSS(Global Navigation Satellite System)/Compass}{10}{subsubsection.2.3.5}%
+\contentsline {subsubsection}{\numberline {2.3.6}Radio/Transmitter}{10}{subsubsection.2.3.6}%
+\contentsline {subsubsection}{\numberline {2.3.7}Smoke Stopper}{11}{subsubsection.2.3.7}%
+\contentsline {subsubsection}{\numberline {2.3.8}Problems with the Parts}{11}{subsubsection.2.3.8}%
+\contentsline {subsubsection}{\numberline {2.3.9}Propellers and Battery Charger}{12}{subsubsection.2.3.9}%
+\contentsline {subsection}{\numberline {2.4}ArduPilot}{12}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Ground Station}{12}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Firmware Installation}{13}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}GPS Connection}{13}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Receiver/Transmitter}{14}{subsubsection.2.4.4}%
+\contentsline {subsubsection}{\numberline {2.4.5}Battery}{15}{subsubsection.2.4.5}%
+\contentsline {subsubsection}{\numberline {2.4.6}Motor Test}{15}{subsubsection.2.4.6}%
+\contentsline {subsubsection}{\numberline {2.4.7}Compass Calibration}{15}{subsubsection.2.4.7}%
+\contentsline {subsubsection}{\numberline {2.4.8}Road to First Flight}{16}{subsubsection.2.4.8}%
+\contentsline {subsection}{\numberline {2.5}Companion Computer}{17}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}RaspberryPi Setup}{17}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}MAVProxy Installation}{18}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Dronekit}{19}{subsubsection.2.5.3}%
+\contentsline {section}{\numberline {3}Results}{21}{section.3}%
+\contentsline {section}{\numberline {4}Discussion and Outlook}{21}{section.4}%
+\contentsline {section}{\numberline {5}Conclusion}{21}{section.5}%
+\contentsline {section}{Bibliography}{21}{section*.5}%
