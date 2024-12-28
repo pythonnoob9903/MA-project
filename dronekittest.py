@@ -1,4 +1,4 @@
-from dronekit import connect, VehicleMode, LocationGlobal, LocationGlobalRelative
+from dronekit import connect, VehicleMode, LocationGlobal
 import time
 from coordinatesread import *
 import math
@@ -67,11 +67,12 @@ while radiocontrol() is True:
 	
 	setup(vehicle) #arms and sets important parameters
 	log("armed")
-	meters_to_coordinates(getcords()[0], getcords()[1], getcords()[2]) # gets the global variables Xcord, Ycord and Zcord
+	meters_to_coordinates(getcords()[0], getcords()[1], getcords()[2], vehicle) # gets the global variables Xcord, Ycord and Zcord
 	time.sleep(5)
 
 	target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
 	#target = LocationGlobalRelative(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
+	target1 = LocationGlobal(Xcord[1], Ycord[1], Zcord[1])
 
 	time.sleep(5)
 	if checks(vehicle) is False:
@@ -112,9 +113,17 @@ while radiocontrol() is True:
 		time.sleep(1)
 
 	
-	flytoallcoordinates(vehicle, VehicleMode)
-	
-	log()
+	# flytoallcoordinates(vehicle, VehicleMode)
+	vehicle.simple_goto(target1)
+	time.sleep(1)
+	radiocontrol()
+	time.sleep(1)
+	radiocontrol()
+	time.sleep(1)
+	radiocontrol()
+	time.sleep(1)
+	radiocontrol()
+	log(f"location before RTL: {vehicle.location.global_frame}")
 
 	vehicle.mode = VehicleMode('RTL')
 	while not vehicle.mode.name == "RTL":

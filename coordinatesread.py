@@ -38,7 +38,7 @@ def getcords():
     return Xcord, Ycord, Zcord
 
 
-def meters_to_coordinates(Xcord, Ycord, Zcord, vehicle): # converts coordinates in meters to coordinates in degrees with the global frame in connection to the home_location
+def meters_to_coordinates(X, Y, Z, vehicle): # converts coordinates in meters to coordinates in degrees with the global frame in connection to the home_location
 
     home_location = vehicle.home_location 
     log(f"home location: {home_location}")
@@ -54,21 +54,21 @@ def meters_to_coordinates(Xcord, Ycord, Zcord, vehicle): # converts coordinates 
     Ycord = []
     Zcord = []
 
-    for i in range(len(Xcord)):
+    for i in range(len(X)):
         earth_radius = 6378137.0
-        changeX = home_location.lat + math.degrees(float(Xcord[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
-        changeY = home_location.lon + math.degrees(float(Ycord[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
-        changeZ = home_location.alt + float(Zcord[i])
+        changeX = home_location.lat + math.degrees(float(X[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
+        changeY = home_location.lon + math.degrees(float(Y[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
+        changeZ = home_location.alt + float(Z[i])
 
         Xcord += [changeX]
         Ycord += [changeY]
         Zcord += [changeZ]
     
     log(f"Xcoordinates {Xcord}")
-    log(f"Ycoordinates {Xcord}")
-    log(f"Zcoordinates {Xcord}")
+    log(f"Ycoordinates {Ycord}")
+    log(f"Zcoordinates {Zcord}")
 
-    return 
+    return Xcord, Ycord, Zcord
 
 def setup(vehicle): #sets up the initial variables for flight and calculates the target coordinates
     log("Speed_Up and groundspeed set/vehicle armed.")
