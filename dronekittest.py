@@ -44,7 +44,7 @@ initial_log()
 while get_rc_channel_value(6) == None: # checks if there is a rc_channel already connected, could be put in checks()
 	log(f"currently no communication to radio: {get_rc_channel_value(6)}")
 	time.sleep(1)
-print(get_rc_channel_value)
+log(get_rc_channel_value)
 
 setup(vehicle, VehicleMode)
 vehicle.armed = True
@@ -65,7 +65,8 @@ while radiocontrol() is True:
 
 	
 	setup(vehicle, VehicleMode) #arms and sets important parameters
-	log("armed")
+	log(f"armed, {vehicle.armed}")
+	print("vehicle armed")
 	Xcord, Ycord, Zcord = meters_to_coordinates(getcords()[0], getcords()[1], getcords()[2], vehicle) # gets the global variables Xcord, Ycord and Zcord
 	time.sleep(5)
 
@@ -76,11 +77,15 @@ while radiocontrol() is True:
 	time.sleep(5)
 	if checks(vehicle) is False:
 		log("Arming Checks failed midflight setting mode to RTL.")
-		vehicle.mode = VehicleMode["RTL"]
+		vehicle.mode = VehicleMode("RTL")
 		break
 
 	radiocontrol()
 	
+	vehicle.armed = True
+	log(f"vehicle armed: {vehicle.armed}")
+	print("vehicle armed")
+
 	log(f"board safety option bitmask set to: {vehicle.parameters['BRD_SAFETYOPTION']}")
 	# vehicle.simple_goto(target)
 	vehicle.simple_takeoff(Zcord[0])
@@ -89,7 +94,7 @@ while radiocontrol() is True:
 	start_time = time.time() # starts timer for the the vehicle.simple_takeoff
 	time.sleep(2)
 
-	while True: # is killing the 
+	while True: # is killing the simple takeoff if too much time has gone by or it deviated to far from the origin
 		elapsed_time = time.time() - start_time
 		radiocontrol()
 		current_altitude = vehicle.location.global_frame.alt
@@ -99,12 +104,12 @@ while radiocontrol() is True:
 			break
 		if int(current_altitude) >= 5 + int(current_altitude):
 			log(f"drone is too far from home :{current_altitude}") 
-			vehicle.mode = VehicleMode["LOITER"]
+			vehicle.mode = VehicleMode("LOITER")
 			break
 		if elapsed_time >= 10:
-			log(f"Timeout, took to long to reach target altitude: {current_altitude}")
+			log(f"Timeout, took to long to reach target altitude: {current_altitude}, target altitude: {target.alt}")
 			safetyoptions_on_off(vehicle, 1, VehicleMode)
-			vehicle.mode = VehicleMode["RTL"]
+			vehicle.mode = VehicleMode("RTL")
 			while vehicle.mode.name != "RTL":
 				log(f"vehiclemode not RTL: {vehicle.mode.name}")
 			log(f"changing to RTL: {vehicle.mode.name}")

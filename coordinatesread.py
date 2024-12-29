@@ -88,14 +88,15 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     tempbin = False
     if vehicle.is_armable is True:
         log("Vehicle is armable.")
-        tempbin = True
     else:
         log("Vehicle failed Arming_checks")
+        tempbin = False
     if vehicle.battery.voltage <= 14:
         log(f'battery to low: {vehicle.battery.voltage}')
         tempbin = False
     if vehicle.gps_0.fix_type < 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
+        tempbin = False
     return tempbin
 
 def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the drone into RTL) and 0 disables safety option
@@ -116,13 +117,14 @@ def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the dr
         log("safety switch disabled")
 
 def flytoallcoordinates(vehicle, VehicleMode):
-    #vehicle.mode = VehicleMode["GUIDED"]
+    vehicle.mode = VehicleMode("GUIDED")
     radiocontrol()
 
     while vehicle.mode.name != "GUIDED":
         log(f"vehiclemode not GUIDED: {vehicle.mode.name}")
         radiocontrol()
     log(f"vehiclemode GUIDED: {vehicle.mode.name}")
+
     for i in range(len(Xcord)):
         target = LocationGlobal(Xcord[i], Ycord[i], Zcord[i])
         vehicle.simple_goto(target)
@@ -135,18 +137,18 @@ def flytoallcoordinates(vehicle, VehicleMode):
             current_altitude = vehicle.location.global_frame.alt
             current_longitude = vehicle.location.global_frame.lon
             current_latitude = vehicle.location.global_frame.lat
-            log(f"in takeoffloop-> current altitude: {current_altitude}")
-            if current_altitude >= target.alt *0.95 and current_latitude >= Xcord * 0.95 and current_longitude >= Zcord * 0.95:
+            log(f"in gotoloop-> current altitude: {vehicle.location.global_frame}")
+            if current_altitude >= target.alt - 0.1 and current_latitude >= Xcord * 0.95 and current_longitude >= Zcord * 0.95:
             	log(f"target {i} reached {vehicle.location.global_frame}")
             	break
-            if current_altitude >= 5 + current_altitude or current_latitude >= Xcord + 5 or current_longitude >= Zcord + 5: # does not work with coordinates that go into the negative direction of the starting point
-            	log(f"drone is too far from home :{vehicle.location.global_frame}")
-            	vehicle.mode = VehicleMode["RTL"]
+            if current_altitude >= 5 + current_altitude or current_latitude >= Xcord + 1 or current_longitude >= Zcord + 1: # does not work with coordinates that go into the negative direction of the starting point/somehow need to get this to a distance 5 m
+            	log(f"drone is too far from home:{vehicle.location.global_frame}")
+            	vehicle.mode = VehicleMode("RTL")
             	break
             if elapsed_time >= 10:
             	log(f"Timeout, took to long to reach target altitude: {vehicle.location.global_frame}")
             	safetyoptions_on_off(vehicle, 1, VehicleMode)
-            	vehicle.mode = VehicleMode["RTL"]
+            	vehicle.mode = VehicleMode("RTL")
             	while vehicle.mode.name != "RTL":
             		log(f"vehiclemode not RTL: {vehicle.mode.name}")
             	log(f"changing to RTL: {vehicle.mode.name}")
