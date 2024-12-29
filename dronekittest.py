@@ -8,7 +8,7 @@ from pymavlink import mavutil
 
 vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
 
-
+safetyoptions_on_off(vehicle, 1)
 
 latest_rc_channels = None
 
@@ -67,7 +67,7 @@ while radiocontrol() is True:
 	
 	setup(vehicle) #arms and sets important parameters
 	log("armed")
-	meters_to_coordinates(getcords()[0], getcords()[1], getcords()[2], vehicle) # gets the global variables Xcord, Ycord and Zcord
+	Xcord, Ycord, Zcord = meters_to_coordinates(getcords()[0], getcords()[1], getcords()[2], vehicle) # gets the global variables Xcord, Ycord and Zcord
 	time.sleep(5)
 
 	target = LocationGlobal(Xcord[0], Ycord[0], Zcord[0]) # associates target to the target location
