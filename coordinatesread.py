@@ -85,7 +85,7 @@ def setup(vehicle, VehicleMode): #sets up the initial variables for flight and c
 
 def checks(vehicle): #checks arming checks and can stall the while loop if it fails.
     vehicle.parameters["ARMING_CHECK"] = 1 # enables Arming_checks.
-    tempbin = False
+    tempbin = True
     if vehicle.is_armable is True:
         log("Vehicle is armable.")
     else:
@@ -116,41 +116,3 @@ def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the dr
         vehicle.parameters["BRD_SAFETY_DEFLT"] = 0
         log("safety switch disabled")
 
-def flytoallcoordinates(vehicle, VehicleMode):
-    vehicle.mode = VehicleMode("GUIDED")
-    radiocontrol()
-
-    while vehicle.mode.name != "GUIDED":
-        log(f"vehiclemode not GUIDED: {vehicle.mode.name}")
-        radiocontrol()
-    log(f"vehiclemode GUIDED: {vehicle.mode.name}")
-
-    for i in range(len(Xcord)):
-        target = LocationGlobal(Xcord[i], Ycord[i], Zcord[i])
-        vehicle.simple_goto(target)
-        radiocontrol()
-
-        start_time = time.time()
-        while True: # timeout if the target is not reached in 10 seconds or the drone flies more than 5 meters away
-            elapsed_time = time.time() - start_time
-            radiocontrol()
-            current_altitude = vehicle.location.global_frame.alt
-            current_longitude = vehicle.location.global_frame.lon
-            current_latitude = vehicle.location.global_frame.lat
-            log(f"in gotoloop-> current altitude: {vehicle.location.global_frame}")
-            if current_altitude >= target.alt - 0.1 and current_latitude >= Xcord * 0.95 and current_longitude >= Zcord * 0.95:
-            	log(f"target {i} reached {vehicle.location.global_frame}")
-            	break
-            if current_altitude >= 5 + current_altitude or current_latitude >= Xcord + 1 or current_longitude >= Zcord + 1: # does not work with coordinates that go into the negative direction of the starting point/somehow need to get this to a distance 5 m
-            	log(f"drone is too far from home:{vehicle.location.global_frame}")
-            	vehicle.mode = VehicleMode("RTL")
-            	break
-            if elapsed_time >= 10:
-            	log(f"Timeout, took to long to reach target altitude: {vehicle.location.global_frame}")
-            	safetyoptions_on_off(vehicle, 1, VehicleMode)
-            	vehicle.mode = VehicleMode("RTL")
-            	while vehicle.mode.name != "RTL":
-            		log(f"vehiclemode not RTL: {vehicle.mode.name}")
-            	log(f"changing to RTL: {vehicle.mode.name}")
-            	break
-            time.sleep(1)

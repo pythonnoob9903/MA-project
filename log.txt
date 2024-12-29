@@ -265,3 +265,439 @@
 2024-12-29 10:14:00.447951	in RTL mode: RTL
 2024-12-29 10:14:00.549162	safetyoption bitmask set to three
 2024-12-29 10:14:00.650360	safety switch enabled
+2024-12-29 13:41:11.918679	0.0 battery voltage
+2024-12-29 13:41:11.920249	STABILIZE
+2024-12-29 13:41:11.920605	
+
+2024-12-29 13:41:11.920854	2024-12-29 13:41:11.920348
+2024-12-29 13:41:11.921113	currently no communication to radio: None
+2024-12-29 13:41:12.921800	<function get_rc_channel_value at 0x7f99ade0c0>
+2024-12-29 13:41:12.922232	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:41:13.023843	safetyoption bitmask set to zero
+2024-12-29 13:41:13.124830	safety switch disabled
+2024-12-29 13:41:14.126176	control stays autonomous
+2024-12-29 13:41:14.127092	Vehicle is armable.
+2024-12-29 13:41:14.127452	battery to low: 0.0
+2024-12-29 13:41:15.128506	Vehicle is armable.
+2024-12-29 13:41:15.128927	battery to low: 0.0
+2024-12-29 13:41:16.129944	Vehicle is armable.
+2024-12-29 13:41:16.130365	battery to low: 0.0
+2024-12-29 13:41:17.131380	Vehicle is armable.
+2024-12-29 13:41:17.131832	battery to low: 0.0
+2024-12-29 13:46:00.279104	16.732 battery voltage
+2024-12-29 13:46:00.280472	STABILIZE
+2024-12-29 13:46:00.280786	
+
+2024-12-29 13:46:00.281040	2024-12-29 13:46:00.280554
+2024-12-29 13:46:00.281301	currently no communication to radio: None
+2024-12-29 13:46:01.281849	<function get_rc_channel_value at 0x7fa6a3e340>
+2024-12-29 13:46:01.282366	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:46:01.283677	safetyoption bitmask set to zero
+2024-12-29 13:46:01.284257	safety switch disabled
+2024-12-29 13:46:02.285638	control stays autonomous
+2024-12-29 13:46:02.286310	Vehicle is armable.
+2024-12-29 13:46:03.287199	Vehicle is armable.
+2024-12-29 13:46:04.288214	Vehicle is armable.
+2024-12-29 13:46:05.289453	Vehicle is armable.
+2024-12-29 13:46:06.290668	Vehicle is armable.
+2024-12-29 13:46:07.291782	Vehicle is armable.
+2024-12-29 13:46:08.292819	Vehicle is armable.
+2024-12-29 13:46:09.293742	Vehicle is armable.
+2024-12-29 13:46:10.294720	Vehicle is armable.
+2024-12-29 13:46:11.295699	Vehicle is armable.
+2024-12-29 13:46:12.296621	Vehicle is armable.
+2024-12-29 13:46:13.297732	Vehicle is armable.
+2024-12-29 13:46:14.298824	Vehicle is armable.
+2024-12-29 13:46:15.299811	Vehicle is armable.
+2024-12-29 13:46:16.300850	Vehicle is armable.
+2024-12-29 13:46:17.301785	Vehicle is armable.
+2024-12-29 13:46:18.302766	Vehicle is armable.
+2024-12-29 13:46:19.303749	Vehicle is armable.
+2024-12-29 13:46:20.304663	Vehicle is armable.
+2024-12-29 13:46:21.305757	Vehicle is armable.
+2024-12-29 13:46:22.306911	Vehicle is armable.
+2024-12-29 13:46:23.307860	Vehicle is armable.
+2024-12-29 13:46:24.308872	Vehicle is armable.
+2024-12-29 13:46:25.309791	Vehicle is armable.
+2024-12-29 13:46:26.310654	Vehicle is armable.
+2024-12-29 13:46:27.311502	Vehicle is armable.
+2024-12-29 13:46:28.312366	Vehicle is armable.
+2024-12-29 13:46:29.313493	Vehicle is armable.
+2024-12-29 13:46:30.314531	Vehicle is armable.
+2024-12-29 13:46:31.315534	Vehicle is armable.
+2024-12-29 13:46:32.316528	Vehicle is armable.
+2024-12-29 13:46:33.317572	Vehicle is armable.
+2024-12-29 13:46:34.318547	Vehicle is armable.
+2024-12-29 13:46:35.319561	Vehicle is armable.
+2024-12-29 13:46:36.320558	Vehicle is armable.
+2024-12-29 13:46:37.321676	Vehicle is armable.
+2024-12-29 13:46:38.322604	Vehicle is armable.
+2024-12-29 13:46:39.323574	Vehicle is armable.
+2024-12-29 13:46:40.324548	Vehicle is armable.
+2024-12-29 13:46:41.325592	Vehicle is armable.
+2024-12-29 13:49:15.070253	16.595 battery voltage
+2024-12-29 13:49:15.071411	STABILIZE
+2024-12-29 13:49:15.071635	
+
+2024-12-29 13:49:15.071800	2024-12-29 13:49:15.071497
+2024-12-29 13:49:15.071984	currently no communication to radio: None
+2024-12-29 13:49:16.072326	<function get_rc_channel_value at 0x7f92f8e340>
+2024-12-29 13:49:16.072556	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:49:16.073420	safetyoption bitmask set to zero
+2024-12-29 13:49:16.073881	safety switch disabled
+2024-12-29 13:49:17.075109	control stays autonomous
+2024-12-29 13:49:17.076153	Vehicle is armable.
+2024-12-29 13:49:17.077463	Not in GUIDED mode: STABILIZE
+2024-12-29 13:49:18.078155	in GUIDED mode: GUIDED
+2024-12-29 13:49:18.078577	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:49:18.080085	safetyoption bitmask set to zero
+2024-12-29 13:49:18.081833	safety switch disabled
+2024-12-29 13:49:18.082643	armed, False
+2024-12-29 13:49:18.085980	home location: LocationGlobal:lat=47.5973108,lon=8.6747774,alt=389.16
+2024-12-29 13:49:18.089689	Xcoordinates [47.5973108, 47.59731978315284, 47.59732876630569]
+2024-12-29 13:49:18.090234	Ycoordinates [8.6747774, 8.674790721458294, 8.674804042916588]
+2024-12-29 13:49:18.090639	Zcoordinates [390.16, 390.16, 390.16]
+2024-12-29 13:49:28.091434	Vehicle is armable.
+2024-12-29 13:49:28.091710	control stays autonomous
+2024-12-29 13:49:28.091876	vehicle armed: True
+2024-12-29 13:49:28.092115	board safety option bitmask set to: 0.0
+2024-12-29 13:49:28.092605	GUIDED, --> mode
+2024-12-29 13:49:30.093297	control stays autonomous
+2024-12-29 13:49:30.093832	in takeoffloop-> current altitude: 389.36
+2024-12-29 13:49:31.094448	control stays autonomous
+2024-12-29 13:49:31.094895	in takeoffloop-> current altitude: 389.44
+2024-12-29 13:49:32.095509	control stays autonomous
+2024-12-29 13:49:32.095997	in takeoffloop-> current altitude: 389.52
+2024-12-29 13:49:33.096469	control stays autonomous
+2024-12-29 13:49:33.096806	in takeoffloop-> current altitude: 389.62
+2024-12-29 13:49:34.097200	control stays autonomous
+2024-12-29 13:49:34.097488	in takeoffloop-> current altitude: 389.7
+2024-12-29 13:49:35.097874	control stays autonomous
+2024-12-29 13:49:35.098161	in takeoffloop-> current altitude: 389.85
+2024-12-29 13:49:36.098538	control stays autonomous
+2024-12-29 13:49:36.098816	in takeoffloop-> current altitude: 389.91
+2024-12-29 13:49:37.099242	control stays autonomous
+2024-12-29 13:49:37.099521	in takeoffloop-> current altitude: 389.93
+2024-12-29 13:49:38.100066	control stays autonomous
+2024-12-29 13:49:38.100559	in takeoffloop-> current altitude: 389.93
+2024-12-29 13:49:38.101021	Timeout, took to long to reach target altitude: 389.93, target altitude: 390.16
+2024-12-29 13:49:38.102036	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.102413	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.102746	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.103064	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.103382	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.103687	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.103988	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.104290	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.104592	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.104938	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.105513	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.107108	Not in RTL mode: GUIDED
+2024-12-29 13:49:38.107506	in RTL mode: RTL
+2024-12-29 13:49:38.208561	safetyoption bitmask set to three
+2024-12-29 13:49:38.309624	safety switch enabled
+2024-12-29 13:49:38.310542	changing to RTL: RTL
+2024-12-29 13:52:23.036324	16.644 battery voltage
+2024-12-29 13:52:23.038926	GUIDED
+2024-12-29 13:52:23.039427	
+
+2024-12-29 13:52:23.039799	2024-12-29 13:52:23.039120
+2024-12-29 13:52:23.040385	currently no communication to radio: None
+2024-12-29 13:52:24.041018	<function get_rc_channel_value at 0x7f9d9fe340>
+2024-12-29 13:52:24.041459	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:52:24.143229	safetyoption bitmask set to zero
+2024-12-29 13:52:24.244247	safety switch disabled
+2024-12-29 13:52:25.245623	control stays autonomous
+2024-12-29 13:52:25.246223	Vehicle is armable.
+2024-12-29 13:52:25.246814	in GUIDED mode: GUIDED
+2024-12-29 13:52:25.247013	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:52:25.247676	safetyoption bitmask set to zero
+2024-12-29 13:52:25.248181	safety switch disabled
+2024-12-29 13:52:25.248482	armed, True
+2024-12-29 13:52:25.250580	home location: LocationGlobal:lat=47.597322,lon=8.6748154,alt=389.07
+2024-12-29 13:52:25.251231	Xcoordinates [47.597322, 47.59733098315284, 47.59733996630568]
+2024-12-29 13:52:25.251503	Ycoordinates [8.6748154, 8.674828721461145, 8.67484204292229]
+2024-12-29 13:52:25.251692	Zcoordinates [390.07, 390.07, 390.07]
+2024-12-29 13:52:35.252364	Vehicle is armable.
+2024-12-29 13:52:35.252789	control stays autonomous
+2024-12-29 13:52:35.253316	vehicle armed: False
+2024-12-29 13:52:35.253700	board safety option bitmask set to: 0.0
+2024-12-29 13:52:35.254176	GUIDED, --> mode
+2024-12-29 13:52:37.254770	control stays autonomous
+2024-12-29 13:52:37.255327	in takeoffloop-> current altitude: 389.33
+2024-12-29 13:52:38.256000	control stays autonomous
+2024-12-29 13:52:38.256581	in takeoffloop-> current altitude: 389.41
+2024-12-29 13:52:39.257347	control stays autonomous
+2024-12-29 13:52:39.257893	in takeoffloop-> current altitude: 389.45
+2024-12-29 13:52:40.258421	control stays autonomous
+2024-12-29 13:52:40.258783	in takeoffloop-> current altitude: 389.49
+2024-12-29 13:52:41.259390	control stays autonomous
+2024-12-29 13:52:41.259933	in takeoffloop-> current altitude: 389.77
+2024-12-29 13:52:42.260401	control stays autonomous
+2024-12-29 13:52:42.260649	in takeoffloop-> current altitude: 390.0
+2024-12-29 13:52:42.260882	target altitude reached 390.07, 390.0
+2024-12-29 13:52:42.261457	control stays autonomous
+2024-12-29 13:52:42.261679	vehiclemode GUIDED: GUIDED
+2024-12-29 13:52:42.262203	control stays autonomous
+2024-12-29 13:52:42.262381	control stays autonomous
+2024-12-29 13:52:42.263013	in gotoloop-> current altitude: LocationGlobal:lat=47.5973199,lon=8.6748152,alt=390.0
+2024-12-29 13:55:50.066907	16.162 battery voltage
+2024-12-29 13:55:50.067528	GUIDED
+2024-12-29 13:55:50.067970	
+
+2024-12-29 13:55:50.068374	2024-12-29 13:55:50.067678
+2024-12-29 13:55:50.068952	currently no communication to radio: None
+2024-12-29 13:55:51.069639	<function get_rc_channel_value at 0x7f85d5e3e0>
+2024-12-29 13:55:51.070145	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:55:51.072165	safetyoption bitmask set to zero
+2024-12-29 13:55:51.073989	safety switch disabled
+2024-12-29 13:55:52.075682	control stays autonomous
+2024-12-29 13:55:52.076933	Vehicle is armable.
+2024-12-29 13:55:52.079829	in GUIDED mode: GUIDED
+2024-12-29 13:55:52.081269	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 13:55:52.083149	safetyoption bitmask set to zero
+2024-12-29 13:55:52.084251	safety switch disabled
+2024-12-29 13:55:52.084754	armed, True
+2024-12-29 13:55:52.089114	home location: LocationGlobal:lat=47.5972948,lon=8.6747854,alt=389.5
+2024-12-29 13:55:52.089738	Xcoordinates [47.5972948, 47.59730378315284, 47.597312766305684]
+2024-12-29 13:55:52.090160	Ycoordinates [8.6747854, 8.67479872145422, 8.674812042908439]
+2024-12-29 13:55:52.090541	Zcoordinates [390.5, 390.5, 390.5]
+2024-12-29 13:56:02.091599	Vehicle is armable.
+2024-12-29 13:56:02.092056	control stays autonomous
+2024-12-29 13:56:02.092848	vehicle armed: False
+2024-12-29 13:56:02.093466	board safety option bitmask set to: 0.0
+2024-12-29 13:56:02.094138	GUIDED, --> mode
+2024-12-29 13:56:04.094766	control stays autonomous
+2024-12-29 13:56:04.095228	in takeoffloop-> current altitude: 389.5
+2024-12-29 13:56:05.095779	control stays autonomous
+2024-12-29 13:56:05.096217	in takeoffloop-> current altitude: 389.47
+2024-12-29 13:56:06.096917	control stays autonomous
+2024-12-29 13:56:06.097611	in takeoffloop-> current altitude: 389.68
+2024-12-29 13:56:07.098283	control stays autonomous
+2024-12-29 13:56:07.098794	in takeoffloop-> current altitude: 389.83
+2024-12-29 13:56:08.099450	control stays autonomous
+2024-12-29 13:56:08.099967	in takeoffloop-> current altitude: 390.2
+2024-12-29 13:56:09.100663	control stays autonomous
+2024-12-29 13:56:09.101351	in takeoffloop-> current altitude: 390.47
+2024-12-29 13:56:09.101798	target altitude reached 390.5, 390.47
+2024-12-29 13:56:09.102714	control stays autonomous
+2024-12-29 13:56:09.103242	vehiclemode GUIDED: GUIDED
+2024-12-29 13:56:09.104925	control stays autonomous
+2024-12-29 13:56:09.105801	control stays autonomous
+2024-12-29 13:56:09.106186	in gotoloop-> current altitude: LocationGlobal:lat=47.5972947,lon=8.6747883,alt=390.47
+2024-12-29 13:56:10.106868	control stays autonomous
+2024-12-29 13:56:10.107333	in gotoloop-> current altitude: LocationGlobal:lat=47.5972941,lon=8.6747883,alt=390.5
+2024-12-29 13:56:11.107908	control stays autonomous
+2024-12-29 13:56:11.108371	in gotoloop-> current altitude: LocationGlobal:lat=47.5972926,lon=8.6747858,alt=390.54
+2024-12-29 13:56:12.109007	control stays autonomous
+2024-12-29 13:56:12.109509	in gotoloop-> current altitude: LocationGlobal:lat=47.5972934,lon=8.6747833,alt=390.58
+2024-12-29 13:56:13.110196	control stays autonomous
+2024-12-29 13:56:13.110667	in gotoloop-> current altitude: LocationGlobal:lat=47.5972945,lon=8.6747838,alt=390.56
+2024-12-29 13:56:14.111297	control stays autonomous
+2024-12-29 13:56:14.111874	in gotoloop-> current altitude: LocationGlobal:lat=47.5972955,lon=8.6747859,alt=390.59
+2024-12-29 13:56:15.112490	control stays autonomous
+2024-12-29 13:56:15.113214	in gotoloop-> current altitude: LocationGlobal:lat=47.5972947,lon=8.6747873,alt=390.54
+2024-12-29 13:56:16.113820	control stays autonomous
+2024-12-29 13:56:16.114249	in gotoloop-> current altitude: LocationGlobal:lat=47.5972941,lon=8.6747866,alt=390.55
+2024-12-29 13:56:17.114838	control stays autonomous
+2024-12-29 13:56:17.115293	in gotoloop-> current altitude: LocationGlobal:lat=47.5972944,lon=8.6747863,alt=390.55
+2024-12-29 13:56:18.115853	control stays autonomous
+2024-12-29 13:56:18.116341	in gotoloop-> current altitude: LocationGlobal:lat=47.5972941,lon=8.6747857,alt=390.5
+2024-12-29 13:56:19.117209	control stays autonomous
+2024-12-29 13:56:19.117600	in gotoloop-> current altitude: LocationGlobal:lat=47.5972931,lon=8.6747853,alt=390.39
+2024-12-29 13:56:19.117863	Timeout, took to long to reach target altitude: LocationGlobal:lat=47.5972931,lon=8.6747853,alt=390.39
+2024-12-29 13:56:19.118517	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.118754	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.119010	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.119228	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.119443	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.119659	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.119872	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.120085	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.120297	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.120509	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.120856	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.121214	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.121575	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.122935	Not in RTL mode: GUIDED
+2024-12-29 13:56:19.123491	in RTL mode: RTL
+2024-12-29 13:56:19.224511	safetyoption bitmask set to three
+2024-12-29 13:56:19.325687	safety switch enabled
+2024-12-29 13:56:19.326483	changing to RTL: RTL
+2024-12-29 13:56:19.327299	control stays autonomous
+2024-12-29 13:56:19.327584	control stays autonomous
+2024-12-29 13:56:19.327922	in gotoloop-> current altitude: LocationGlobal:lat=47.5972932,lon=8.6747853,alt=390.38
+2024-12-29 13:56:20.328486	control stays autonomous
+2024-12-29 13:56:20.329097	in gotoloop-> current altitude: LocationGlobal:lat=47.597294,lon=8.6747854,alt=390.43
+2024-12-29 13:56:21.329746	control stays autonomous
+2024-12-29 13:56:21.330286	in gotoloop-> current altitude: LocationGlobal:lat=47.5972942,lon=8.6747858,alt=390.43
+2024-12-29 13:56:22.332288	control stays autonomous
+2024-12-29 13:56:22.332942	in gotoloop-> current altitude: LocationGlobal:lat=47.5972929,lon=8.6747861,alt=390.43
+2024-12-29 13:56:23.333569	control stays autonomous
+2024-12-29 13:56:23.334550	in gotoloop-> current altitude: LocationGlobal:lat=47.5972925,lon=8.6747869,alt=390.34
+2024-12-29 13:56:24.335223	control stays autonomous
+2024-12-29 13:56:24.335771	in gotoloop-> current altitude: LocationGlobal:lat=47.5972932,lon=8.6747862,alt=390.31
+2024-12-29 13:56:25.336209	control stays autonomous
+2024-12-29 13:56:25.336477	in gotoloop-> current altitude: LocationGlobal:lat=47.5972926,lon=8.6747853,alt=390.18
+2024-12-29 13:56:26.336862	control stays autonomous
+2024-12-29 13:56:26.337260	in gotoloop-> current altitude: LocationGlobal:lat=47.5972917,lon=8.6747853,alt=390.07
+2024-12-29 13:56:27.337820	control stays autonomous
+2024-12-29 13:56:27.338908	in gotoloop-> current altitude: LocationGlobal:lat=47.5972921,lon=8.6747864,alt=390.0
+2024-12-29 13:56:28.341101	control stays autonomous
+2024-12-29 13:56:28.341692	in gotoloop-> current altitude: LocationGlobal:lat=47.597293,lon=8.6747867,alt=389.96
+2024-12-29 13:56:29.342589	control stays autonomous
+2024-12-29 13:56:29.343094	in gotoloop-> current altitude: LocationGlobal:lat=47.5972938,lon=8.6747876,alt=389.91
+2024-12-29 13:56:29.343532	Timeout, took to long to reach target altitude: LocationGlobal:lat=47.5972938,lon=8.6747876,alt=389.91
+2024-12-29 13:56:29.344435	in RTL mode: RTL
+2024-12-29 13:56:29.345305	safetyoption bitmask set to three
+2024-12-29 13:56:29.346062	safety switch enabled
+2024-12-29 13:56:29.348340	changing to RTL: RTL
+2024-12-29 13:56:29.350169	control stays autonomous
+2024-12-29 13:56:29.351686	control stays autonomous
+2024-12-29 13:56:29.352163	in gotoloop-> current altitude: LocationGlobal:lat=47.5972938,lon=8.6747876,alt=389.91
+2024-12-29 13:56:30.352934	control stays autonomous
+2024-12-29 13:56:30.353551	in gotoloop-> current altitude: LocationGlobal:lat=47.5972943,lon=8.6747878,alt=389.87
+2024-12-29 13:56:31.354260	Giving back control to radio
+2024-12-29 13:56:31.355353	in RTL mode: RTL
+2024-12-29 13:56:31.356346	safetyoption bitmask set to three
+2024-12-29 13:56:31.358106	safety switch enabled
+2024-12-29 14:01:40.134881	15.889 battery voltage
+2024-12-29 14:01:40.135567	RTL
+2024-12-29 14:01:40.136352	
+
+2024-12-29 14:03:22.087276	15.51 battery voltage
+2024-12-29 14:03:22.087849	GUIDED
+2024-12-29 14:03:22.088227	
+
+2024-12-29 14:03:22.088586	2024-12-29 14:03:22.087982
+2024-12-29 14:03:22.089035	currently no communication to radio: None
+2024-12-29 14:03:23.090540	<function get_rc_channel_value at 0x7fb106df80>
+2024-12-29 14:03:23.092242	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 14:03:23.094891	safetyoption bitmask set to zero
+2024-12-29 14:03:23.097635	safety switch disabled
+2024-12-29 14:03:24.103438	control stays autonomous
+2024-12-29 14:03:24.105540	Vehicle is armable.
+2024-12-29 14:03:24.110815	in GUIDED mode: GUIDED
+2024-12-29 14:03:24.111413	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 14:03:24.115633	safetyoption bitmask set to zero
+2024-12-29 14:03:24.120232	safety switch disabled
+2024-12-29 14:03:24.122433	armed, True
+2024-12-29 14:03:24.125156	home location: LocationGlobal:lat=47.5972831,lon=8.6748466,alt=388.82
+2024-12-29 14:03:24.126439	Xcoordinates [47.5972831, 47.59729208315284, 47.59730106630568]
+2024-12-29 14:03:24.127551	Ycoordinates [8.6748466, 8.674859921451242, 8.674873242902482]
+2024-12-29 14:03:24.128462	Zcoordinates [389.82, 389.82, 389.82]
+2024-12-29 14:03:34.129494	Vehicle is armable.
+2024-12-29 14:03:34.129802	control stays autonomous
+2024-12-29 14:03:34.130346	vehicle armed: False
+2024-12-29 14:03:34.130744	board safety option bitmask set to: 0.0
+2024-12-29 14:03:34.131177	GUIDED, --> mode
+2024-12-29 14:03:36.131784	control stays autonomous
+2024-12-29 14:03:36.132364	in takeoffloop-> current altitude: 388.8
+2024-12-29 14:03:37.133440	control stays autonomous
+2024-12-29 14:03:37.134079	in takeoffloop-> current altitude: 388.78
+2024-12-29 14:03:38.136338	control stays autonomous
+2024-12-29 14:03:38.140445	in takeoffloop-> current altitude: 388.93
+2024-12-29 14:03:39.142804	control stays autonomous
+2024-12-29 14:03:39.143548	in takeoffloop-> current altitude: 389.05
+2024-12-29 14:03:40.144772	control stays autonomous
+2024-12-29 14:03:40.145794	in takeoffloop-> current altitude: 389.28
+2024-12-29 14:03:41.147003	control stays autonomous
+2024-12-29 14:03:41.148323	in takeoffloop-> current altitude: 389.44
+2024-12-29 14:03:42.149910	control stays autonomous
+2024-12-29 14:03:42.151045	in takeoffloop-> current altitude: 389.7
+2024-12-29 14:03:43.151893	control stays autonomous
+2024-12-29 14:03:43.152247	in takeoffloop-> current altitude: 389.84
+2024-12-29 14:03:43.152414	target altitude reached 389.82, 389.84
+2024-12-29 14:03:43.153193	control stays autonomous
+2024-12-29 14:03:43.153554	vehiclemode GUIDED: GUIDED
+2024-12-29 14:03:43.154270	control stays autonomous
+2024-12-29 14:03:43.154598	control stays autonomous
+2024-12-29 14:03:43.155470	in gotoloop-> current altitude: LocationGlobal:lat=47.5972837,lon=8.6748449,alt=389.84
+2024-12-29 14:03:44.157055	control stays autonomous
+2024-12-29 14:03:44.157962	in gotoloop-> current altitude: LocationGlobal:lat=47.597283,lon=8.674845,alt=389.81
+2024-12-29 14:03:45.159540	control stays autonomous
+2024-12-29 14:03:45.160568	in gotoloop-> current altitude: LocationGlobal:lat=47.597283,lon=8.6748443,alt=389.9
+2024-12-29 14:03:46.161717	control stays autonomous
+2024-12-29 14:03:46.164824	in gotoloop-> current altitude: LocationGlobal:lat=47.5972827,lon=8.6748456,alt=389.83
+2024-12-29 14:03:47.166173	control stays autonomous
+2024-12-29 14:03:47.168189	in gotoloop-> current altitude: LocationGlobal:lat=47.5972827,lon=8.6748465,alt=389.84
+2024-12-29 14:03:48.169877	control stays autonomous
+2024-12-29 14:03:48.170893	in gotoloop-> current altitude: LocationGlobal:lat=47.5972835,lon=8.6748467,alt=389.76
+2024-12-29 14:03:49.172310	control stays autonomous
+2024-12-29 14:03:49.173738	in gotoloop-> current altitude: LocationGlobal:lat=47.5972836,lon=8.6748473,alt=389.67
+2024-12-29 14:03:50.175656	control stays autonomous
+2024-12-29 14:03:50.176769	in gotoloop-> current altitude: LocationGlobal:lat=47.5972839,lon=8.6748477,alt=389.72
+2024-12-29 14:03:51.177967	control stays autonomous
+2024-12-29 14:03:51.181305	in gotoloop-> current altitude: LocationGlobal:lat=47.5972837,lon=8.6748476,alt=389.69
+2024-12-29 14:03:52.182440	control stays autonomous
+2024-12-29 14:03:52.183416	in gotoloop-> current altitude: LocationGlobal:lat=47.5972837,lon=8.6748469,alt=389.71
+2024-12-29 14:03:53.184408	control stays autonomous
+2024-12-29 14:03:53.185406	in gotoloop-> current altitude: LocationGlobal:lat=47.597284,lon=8.6748464,alt=389.67
+2024-12-29 14:03:53.186343	Timeout, took to long to reach target altitude: LocationGlobal:lat=47.597284,lon=8.6748464,alt=389.67
+2024-12-29 14:03:53.188586	Not in RTL mode: GUIDED
+2024-12-29 14:03:53.190148	Not in RTL mode: GUIDED
+2024-12-29 14:03:53.194291	Not in RTL mode: GUIDED
+2024-12-29 14:03:53.194979	in RTL mode: RTL
+2024-12-29 14:03:53.297069	safetyoption bitmask set to three
+2024-12-29 14:03:53.400058	safety switch enabled
+2024-12-29 14:03:53.403185	changing to RTL: RTL
+2024-12-29 14:03:53.407177	control stays autonomous
+2024-12-29 14:03:53.415824	control stays autonomous
+2024-12-29 14:03:53.418555	in gotoloop-> current altitude: LocationGlobal:lat=47.5972841,lon=8.6748462,alt=389.68
+2024-12-29 14:03:54.419875	control stays autonomous
+2024-12-29 14:03:54.424019	in gotoloop-> current altitude: LocationGlobal:lat=47.5972842,lon=8.6748456,alt=389.62
+2024-12-29 14:03:55.425850	control stays autonomous
+2024-12-29 14:03:55.426681	in gotoloop-> current altitude: LocationGlobal:lat=47.5972839,lon=8.674846,alt=389.66
+2024-12-29 14:03:56.429714	control stays autonomous
+2024-12-29 14:03:56.431535	in gotoloop-> current altitude: LocationGlobal:lat=47.5972843,lon=8.6748459,alt=389.71
+2024-12-29 14:03:57.432616	control stays autonomous
+2024-12-29 14:03:57.433415	in gotoloop-> current altitude: LocationGlobal:lat=47.597285,lon=8.6748454,alt=389.79
+2024-12-29 14:03:58.434557	control stays autonomous
+2024-12-29 14:03:58.435492	in gotoloop-> current altitude: LocationGlobal:lat=47.5972843,lon=8.6748451,alt=389.87
+2024-12-29 14:03:59.436315	control stays autonomous
+2024-12-29 14:03:59.437435	in gotoloop-> current altitude: LocationGlobal:lat=47.5972829,lon=8.6748447,alt=389.97
+2024-12-29 14:04:00.438466	control stays autonomous
+2024-12-29 14:04:00.439094	in gotoloop-> current altitude: LocationGlobal:lat=47.5972825,lon=8.6748452,alt=390.02
+2024-12-29 14:04:01.440373	control stays autonomous
+2024-12-29 14:04:01.441335	in gotoloop-> current altitude: LocationGlobal:lat=47.5972837,lon=8.674846,alt=389.9
+2024-12-29 14:04:02.442716	control stays autonomous
+2024-12-29 14:04:02.444190	in gotoloop-> current altitude: LocationGlobal:lat=47.5972839,lon=8.674845,alt=389.89
+2024-12-29 14:04:03.445243	control stays autonomous
+2024-12-29 14:04:03.446873	in gotoloop-> current altitude: LocationGlobal:lat=47.5972841,lon=8.6748453,alt=389.95
+2024-12-29 14:04:03.447637	Timeout, took to long to reach target altitude: LocationGlobal:lat=47.5972841,lon=8.6748453,alt=389.95
+2024-12-29 14:04:03.450222	in RTL mode: RTL
+2024-12-29 14:04:03.453624	safetyoption bitmask set to three
+2024-12-29 14:04:03.456675	safety switch enabled
+2024-12-29 14:04:03.459906	changing to RTL: RTL
+2024-12-29 14:04:03.462368	control stays autonomous
+2024-12-29 14:04:03.463092	control stays autonomous
+2024-12-29 14:04:03.463632	in gotoloop-> current altitude: LocationGlobal:lat=47.5972841,lon=8.6748453,alt=389.95
+2024-12-29 14:04:04.465849	control stays autonomous
+2024-12-29 14:04:04.466829	in gotoloop-> current altitude: LocationGlobal:lat=47.5972841,lon=8.6748462,alt=389.96
+2024-12-29 14:04:05.467924	control stays autonomous
+2024-12-29 14:04:05.468578	in gotoloop-> current altitude: LocationGlobal:lat=47.597284,lon=8.6748467,alt=389.92
+2024-12-29 14:04:06.469695	control stays autonomous
+2024-12-29 14:04:06.472012	in gotoloop-> current altitude: LocationGlobal:lat=47.5972841,lon=8.6748466,alt=389.77
+2024-12-29 14:04:07.472998	control stays autonomous
+2024-12-29 14:04:07.473620	in gotoloop-> current altitude: LocationGlobal:lat=47.5972834,lon=8.6748473,alt=389.68
+2024-12-29 14:04:08.474732	control stays autonomous
+2024-12-29 14:04:08.477007	in gotoloop-> current altitude: LocationGlobal:lat=47.5972836,lon=8.6748477,alt=389.76
+2024-12-29 14:04:09.479352	control stays autonomous
+2024-12-29 14:04:09.481373	in gotoloop-> current altitude: LocationGlobal:lat=47.5972836,lon=8.6748469,alt=389.88
+2024-12-29 14:04:10.482590	control stays autonomous
+2024-12-29 14:04:10.483679	in gotoloop-> current altitude: LocationGlobal:lat=47.5972833,lon=8.674847,alt=389.99
+2024-12-29 14:04:11.484924	control stays autonomous
+2024-12-29 14:04:11.485688	in gotoloop-> current altitude: LocationGlobal:lat=47.5972832,lon=8.6748469,alt=390.07
+2024-12-29 14:04:12.486944	control stays autonomous
+2024-12-29 14:04:12.488283	in gotoloop-> current altitude: LocationGlobal:lat=47.5972834,lon=8.6748462,alt=389.66
+2024-12-29 14:04:13.489802	control stays autonomous
+2024-12-29 14:04:13.490681	in gotoloop-> current altitude: LocationGlobal:lat=47.5972831,lon=8.6748466,alt=389.57
+2024-12-29 14:04:13.491285	Timeout, took to long to reach target altitude: LocationGlobal:lat=47.5972831,lon=8.6748466,alt=389.57
+2024-12-29 14:04:13.493886	in RTL mode: RTL
+2024-12-29 14:04:13.497083	safetyoption bitmask set to three
+2024-12-29 14:04:13.498661	safety switch enabled
+2024-12-29 14:04:13.501953	changing to RTL: RTL
+2024-12-29 14:04:13.505373	location before RTL: LocationGlobal:lat=47.5972831,lon=8.6748466,alt=389.57
+2024-12-29 14:04:13.506663	in RTL mode: RTL
+2024-12-29 14:04:13.608530	safetyoption bitmask set to zero
+2024-12-29 14:04:13.713218	safety switch disabled
