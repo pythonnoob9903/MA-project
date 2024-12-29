@@ -38,14 +38,14 @@ def getcords():
     return X, Y, Z
 
 
-def meters_to_coordinates(X, Y, Z):#, vehicle): # converts coordinates in meters to coordinates in degrees with the global frame in connection to the home_location
+def meters_to_coordinates(X, Y, Z, vehicle): # converts coordinates in meters to coordinates in degrees with the global frame in connection to the home_location
 
-    #home_location = vehicle.home_location 
-    #log(f"home location: {home_location}")
-    #if not home_location:
-    #    log("Waiting for home location to be set")
-    #while not home_location:
-    #    time.sleep(1)
+    home_location = vehicle.home_location 
+    log(f"home location: {home_location}")
+    if not home_location:
+        log("Waiting for home location to be set")
+    while not home_location:
+        time.sleep(1)
 
     global Xcord    # makes the coordinates global for no further redefinition
     global Ycord
@@ -56,13 +56,13 @@ def meters_to_coordinates(X, Y, Z):#, vehicle): # converts coordinates in meters
 
     for i in range(len(X)):
         earth_radius = 6378137.0
-        changeX = math.degrees(float(X[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
-        changeY = math.degrees(float(Y[i]) / (earth_radius)) #* math.cos(math.radians(home_location.lat))))
-        changeZ = float(Z[i])
+        #changeX = math.degrees(float(X[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
+        #changeY = math.degrees(float(Y[i]) / (earth_radius)) #* math.cos(math.radians(home_location.lat))))
+        #changeZ = float(Z[i])
         
-        #changeX = home_location.lat + math.degrees(float(X[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
-        #changeY = home_location.lon + math.degrees(float(Y[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
-        #changeZ = home_location.alt + float(Z[i])
+        changeX = home_location.lat + math.degrees(float(X[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
+        changeY = home_location.lon + math.degrees(float(Y[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
+        changeZ = home_location.alt + float(Z[i])
 
         Xcord += [changeX]
         Ycord += [changeY]
@@ -76,11 +76,11 @@ def meters_to_coordinates(X, Y, Z):#, vehicle): # converts coordinates in meters
 
 
 
-def setup(vehicle): #sets up the initial variables for flight and calculates the target coordinates
+def setup(vehicle, VehicleMode): #sets up the initial variables for flight and calculates the target coordinates
     log("Speed_Up and groundspeed set/vehicle armed.")
     vehicle.groundspeed = 1
     vehicle.parameters["PILOT_SPEED_UP"] = 100
-    safetyoptions_on_off(vehicle, 0)
+    safetyoptions_on_off(vehicle, 0, VehicleMode)
     vehicle.armed = True
 
 def checks(vehicle): #checks arming checks and can stall the while loop if it fails.
@@ -98,7 +98,7 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
     return tempbin
 
-def safetyoptions_on_off(vehicle, on_off): # 1 sets(and puts the drone into RTL) and 0 disables safety option
+def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the drone into RTL) and 0 disables safety option
     if on_off == 1:
         vehicle.mode = VehicleMode('RTL')
         while not vehicle.mode.name == "RTL":
@@ -116,7 +116,7 @@ def safetyoptions_on_off(vehicle, on_off): # 1 sets(and puts the drone into RTL)
         log("safety switch disabled")
 
 def flytoallcoordinates(vehicle, VehicleMode):
-    vehicle.mode = VehicleMode["GUIDED"]
+    #vehicle.mode = VehicleMode["GUIDED"]
     radiocontrol()
 
     while vehicle.mode.name != "GUIDED":
@@ -145,7 +145,7 @@ def flytoallcoordinates(vehicle, VehicleMode):
             	break
             if elapsed_time >= 10:
             	log(f"Timeout, took to long to reach target altitude: {vehicle.location.global_frame}")
-            	safetyoptions_on_off(vehicle, 1)
+            	safetyoptions_on_off(vehicle, 1, VehicleMode)
             	vehicle.mode = VehicleMode["RTL"]
             	while vehicle.mode.name != "RTL":
             		log(f"vehiclemode not RTL: {vehicle.mode.name}")

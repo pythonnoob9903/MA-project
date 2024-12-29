@@ -8,7 +8,6 @@ from pymavlink import mavutil
 
 vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
 
-safetyoptions_on_off(vehicle, 1)
 
 latest_rc_channels = None
 
@@ -27,7 +26,7 @@ def get_rc_channel_value(channel_number): # checks the value of a certain channe
 def radiocontrol(): # checks if the switch is still on the right position to fly autonomously
 	if int(get_rc_channel_value(6)) >= 1800:
 		log('Giving back control to radio')
-		safetyoptions_on_off(vehicle, 1)
+		safetyoptions_on_off(vehicle, 1, VehicleMode)
 		vehicle.mode = VehicleMode["RTL"]
 		while vehicle.mode.name != "RTL":
 			log(f"vehiclemode not set to RTL: {vehicle.mode.name}")
@@ -47,7 +46,7 @@ while get_rc_channel_value(6) == None: # checks if there is a rc_channel already
 	time.sleep(1)
 print(get_rc_channel_value)
 
-setup(vehicle)
+setup(vehicle, VehicleMode)
 vehicle.armed = True
 time.sleep(1)
 vehicle.armed = False
@@ -65,7 +64,7 @@ while radiocontrol() is True:
 	log(f"in GUIDED mode: {vehicle.mode.name}")
 
 	
-	setup(vehicle) #arms and sets important parameters
+	setup(vehicle, VehicleMode) #arms and sets important parameters
 	log("armed")
 	Xcord, Ycord, Zcord = meters_to_coordinates(getcords()[0], getcords()[1], getcords()[2], vehicle) # gets the global variables Xcord, Ycord and Zcord
 	time.sleep(5)
@@ -88,15 +87,15 @@ while radiocontrol() is True:
 
 	log(f"{vehicle.mode.name}, --> mode")
 	start_time = time.time() # starts timer for the the vehicle.simple_takeoff
-	time.sleep(1)
+	time.sleep(2)
 
 	while True: # is killing the 
 		elapsed_time = time.time() - start_time
 		radiocontrol()
 		current_altitude = vehicle.location.global_frame.alt
 		log(f"in takeoffloop-> current altitude: {current_altitude}")
-		if float(current_altitude) >= float(target.alt) *0.95:
-			log(f"target altitude reached {target.alt}")
+		if float(current_altitude) >= float(target.alt) - 0.1:
+			log(f"target altitude reached {target.alt}, {current_altitude}")
 			break
 		if int(current_altitude) >= 5 + int(current_altitude):
 			log(f"drone is too far from home :{current_altitude}") 
@@ -104,7 +103,7 @@ while radiocontrol() is True:
 			break
 		if elapsed_time >= 10:
 			log(f"Timeout, took to long to reach target altitude: {current_altitude}")
-			safetyoptions_on_off(vehicle, 1)
+			safetyoptions_on_off(vehicle, 1, VehicleMode)
 			vehicle.mode = VehicleMode["RTL"]
 			while vehicle.mode.name != "RTL":
 				log(f"vehiclemode not RTL: {vehicle.mode.name}")
@@ -113,21 +112,14 @@ while radiocontrol() is True:
 		time.sleep(1)
 
 	
-	# flytoallcoordinates(vehicle, VehicleMode)
-	vehicle.simple_goto(target1)
-	time.sleep(1)
-	radiocontrol()
-	time.sleep(1)
-	radiocontrol()
-	time.sleep(1)
-	radiocontrol()
-	time.sleep(1)
-	radiocontrol()
+	flytoallcoordinates(vehicle, VehicleMode)
+	
+
 	log(f"location before RTL: {vehicle.location.global_frame}")
 
 	vehicle.mode = VehicleMode('RTL')
 	while not vehicle.mode.name == "RTL":
         	log(f"Not in RTL mode: {vehicle.mode.name}")
 	log(f"in RTL mode: {vehicle.mode.name}")
-	safetyoptions_on_off(vehicle, 0)
+	safetyoptions_on_off(vehicle, 0, VehicleMode)
 	break

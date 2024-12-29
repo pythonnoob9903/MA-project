@@ -113,21 +113,155 @@
 2024-12-28 13:57:55.387140	Ycoordinates [8.6747655, 8.674778821449763, 8.674792142899529, 8.674832107248822]
 2024-12-28 13:57:55.387494	Zcoordinates [374.11, 374.11, 374.11, 374.11]
 
-2024-12-29 08:20:25.631313	Xcoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:20:25.631313	Ycoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:20:25.632288	Zcoordinates [1.0, 1.0, 1.0]
-2024-12-29 08:20:33.521127	Xcoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:20:33.522124	Ycoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:20:33.523126	Zcoordinates [1.0, 1.0, 1.0]
-2024-12-29 08:20:33.524120	Xcoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:20:33.525123	Ycoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:20:33.525123	Zcoordinates [1.0, 1.0, 1.0]
-2024-12-29 08:21:20.585223	Xcoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:21:20.586237	Ycoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:21:20.586237	Zcoordinates [1.0, 1.0, 1.0]
-2024-12-29 08:21:58.983885	Xcoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:21:58.985022	Ycoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:21:58.985780	Zcoordinates [1.0, 1.0, 1.0]
-2024-12-29 08:22:06.767499	Xcoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:22:06.767499	Ycoordinates [0.0, 8.983152841195214e-06, 1.7966305682390428e-05]
-2024-12-29 08:22:06.768494	Zcoordinates [1.0, 1.0, 1.0]
+
+2024-12-29 10:03:38.630006	16.32 battery voltage
+2024-12-29 10:03:38.631221	STABILIZE
+2024-12-29 10:03:38.631532	
+
+2024-12-29 10:03:38.631745	2024-12-29 10:03:38.631362
+2024-12-29 10:03:38.631986	currently no communication to radio: None
+2024-12-29 10:03:39.632427	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:03:39.633372	safetyoption bitmask set to zero
+2024-12-29 10:03:39.633987	safety switch disabled
+2024-12-29 10:03:40.635164	control stays autonomous
+2024-12-29 10:03:40.637570	Vehicle is armable.
+2024-12-29 10:03:40.638953	Not in GUIDED mode: STABILIZE
+2024-12-29 10:03:41.640497	in GUIDED mode: GUIDED
+2024-12-29 10:03:41.640916	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:03:41.642502	safetyoption bitmask set to zero
+2024-12-29 10:03:41.643541	safety switch disabled
+2024-12-29 10:03:41.645803	armed
+2024-12-29 10:03:41.649538	home location: LocationGlobal:lat=47.5972883,lon=8.6748195,alt=373.88
+2024-12-29 10:03:41.650784	Xcoordinates [47.5972883, 47.59729728315284, 47.59730626630569]
+2024-12-29 10:03:41.651319	Ycoordinates [8.6748195, 8.674832821452565, 8.67484614290513]
+2024-12-29 10:03:41.651748	Zcoordinates [374.88, 374.88, 374.88]
+2024-12-29 10:03:51.652984	Vehicle is armable.
+2024-12-29 10:03:51.653486	control stays autonomous
+2024-12-29 10:03:51.654123	board safety option bitmask set to: 0.0
+2024-12-29 10:03:51.655797	GUIDED, --> mode
+2024-12-29 10:03:52.656528	control stays autonomous
+2024-12-29 10:03:52.656960	in takeoffloop-> current altitude: 373.4
+2024-12-29 10:03:52.657408	target altitude reached 374.88
+2024-12-29 10:03:53.658546	control stays autonomous
+2024-12-29 10:03:54.659267	control stays autonomous
+2024-12-29 10:03:55.660030	control stays autonomous
+2024-12-29 10:03:56.660992	control stays autonomous
+2024-12-29 10:03:56.661608	location before RTL: LocationGlobal:lat=47.5972888,lon=8.6748159,alt=373.58
+2024-12-29 10:03:56.664725	Not in RTL mode: GUIDED
+2024-12-29 10:03:56.665239	Not in RTL mode: GUIDED
+2024-12-29 10:03:56.665634	Not in RTL mode: GUIDED
+2024-12-29 10:03:56.666034	Not in RTL mode: GUIDED
+2024-12-29 10:03:56.666785	Not in RTL mode: GUIDED
+2024-12-29 10:03:56.668452	Not in RTL mode: GUIDED
+2024-12-29 10:03:56.668905	in RTL mode: RTL
+2024-12-29 10:03:56.669953	safetyoption bitmask set to zero
+2024-12-29 10:03:56.670772	safety switch disabled
+2024-12-29 10:06:54.488544	16.132 battery voltage
+2024-12-29 10:06:54.489059	RTL
+2024-12-29 10:06:54.489397	
+
+2024-12-29 10:06:54.489733	2024-12-29 10:06:54.489175
+2024-12-29 10:06:54.490098	currently no communication to radio: None
+2024-12-29 10:06:55.490574	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:06:55.491543	safetyoption bitmask set to zero
+2024-12-29 10:06:55.492099	safety switch disabled
+2024-12-29 10:06:56.493272	control stays autonomous
+2024-12-29 10:06:56.494686	Vehicle is armable.
+2024-12-29 10:06:56.496790	Not in GUIDED mode: RTL
+2024-12-29 10:06:57.497717	in GUIDED mode: GUIDED
+2024-12-29 10:06:57.498190	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:06:57.499900	safetyoption bitmask set to zero
+2024-12-29 10:06:57.500821	safety switch disabled
+2024-12-29 10:06:57.501610	armed
+2024-12-29 10:06:57.508090	home location: LocationGlobal:lat=47.5972819,lon=8.6747583,alt=373.84
+2024-12-29 10:06:57.508651	Xcoordinates [47.5972819, 47.59729088315284, 47.59729986630568]
+2024-12-29 10:06:57.509058	Ycoordinates [8.6747583, 8.674771621450937, 8.674784942901871]
+2024-12-29 10:06:57.509420	Zcoordinates [374.84, 374.84, 374.84]
+2024-12-29 10:07:07.510176	Vehicle is armable.
+2024-12-29 10:07:07.510449	control stays autonomous
+2024-12-29 10:07:07.510654	board safety option bitmask set to: 0.0
+2024-12-29 10:07:07.511059	GUIDED, --> mode
+2024-12-29 10:07:08.511653	control stays autonomous
+2024-12-29 10:07:08.512138	in takeoffloop-> current altitude: 373.54
+2024-12-29 10:07:08.512500	target altitude reached 374.84, 373.54
+2024-12-29 10:11:20.440962	16.307 battery voltage
+2024-12-29 10:11:20.441461	GUIDED
+2024-12-29 10:11:20.441822	
+
+2024-12-29 10:11:20.442143	2024-12-29 10:11:20.441583
+2024-12-29 10:11:20.442456	currently no communication to radio: None
+2024-12-29 10:11:21.442942	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:11:21.443983	safetyoption bitmask set to zero
+2024-12-29 10:11:21.444510	safety switch disabled
+2024-12-29 10:11:22.445389	control stays autonomous
+2024-12-29 10:11:22.445963	Vehicle is armable.
+2024-12-29 10:11:22.446542	in GUIDED mode: GUIDED
+2024-12-29 10:11:22.446770	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:11:22.447539	safetyoption bitmask set to zero
+2024-12-29 10:11:22.447975	safety switch disabled
+2024-12-29 10:11:22.448175	armed
+2024-12-29 10:11:22.448855	home location: LocationGlobal:lat=47.5973113,lon=8.6748369,alt=373.98
+2024-12-29 10:11:22.449496	Xcoordinates [47.5973113, 47.59732028315284, 47.597329266305685]
+2024-12-29 10:11:22.450119	Ycoordinates [8.6748369, 8.674850221458422, 8.674863542916842]
+2024-12-29 10:11:22.450492	Zcoordinates [374.98, 374.98, 374.98]
+2024-12-29 10:11:32.451784	Vehicle is armable.
+2024-12-29 10:11:32.452358	control stays autonomous
+2024-12-29 10:11:32.452884	board safety option bitmask set to: 0.0
+2024-12-29 10:11:32.455412	GUIDED, --> mode
+2024-12-29 10:11:34.456118	control stays autonomous
+2024-12-29 10:11:34.456664	in takeoffloop-> current altitude: 373.8
+2024-12-29 10:11:34.457136	target altitude reached 374.98, 373.8
+2024-12-29 10:13:38.415707	16.15 battery voltage
+2024-12-29 10:13:38.416380	GUIDED
+2024-12-29 10:13:38.416871	
+
+2024-12-29 10:13:38.417342	2024-12-29 10:13:38.416550
+2024-12-29 10:13:38.417810	currently no communication to radio: None
+2024-12-29 10:13:39.418287	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:13:39.419221	safetyoption bitmask set to zero
+2024-12-29 10:13:39.419790	safety switch disabled
+2024-12-29 10:13:40.420588	control stays autonomous
+2024-12-29 10:13:40.421178	Vehicle is armable.
+2024-12-29 10:13:40.421739	in GUIDED mode: GUIDED
+2024-12-29 10:13:40.421996	Speed_Up and groundspeed set/vehicle armed.
+2024-12-29 10:13:40.422640	safetyoption bitmask set to zero
+2024-12-29 10:13:40.423302	safety switch disabled
+2024-12-29 10:13:40.423968	armed
+2024-12-29 10:13:40.425374	home location: LocationGlobal:lat=47.5973077,lon=8.6748363,alt=373.73
+2024-12-29 10:13:40.426691	Xcoordinates [47.5973077, 47.59731668315284, 47.597325666305686]
+2024-12-29 10:13:40.427447	Ycoordinates [8.6748363, 8.674849621457506, 8.67486294291501]
+2024-12-29 10:13:40.428472	Zcoordinates [374.73, 374.73, 374.73]
+2024-12-29 10:13:50.429842	Vehicle is armable.
+2024-12-29 10:13:50.430360	control stays autonomous
+2024-12-29 10:13:50.430741	board safety option bitmask set to: 0.0
+2024-12-29 10:13:50.431591	GUIDED, --> mode
+2024-12-29 10:13:52.432221	control stays autonomous
+2024-12-29 10:13:52.432720	in takeoffloop-> current altitude: 373.49
+2024-12-29 10:13:53.433377	control stays autonomous
+2024-12-29 10:13:53.433912	in takeoffloop-> current altitude: 373.51
+2024-12-29 10:13:54.434773	control stays autonomous
+2024-12-29 10:13:54.435485	in takeoffloop-> current altitude: 373.56
+2024-12-29 10:13:55.435983	control stays autonomous
+2024-12-29 10:13:55.436700	in takeoffloop-> current altitude: 373.52
+2024-12-29 10:13:56.437060	control stays autonomous
+2024-12-29 10:13:56.437315	in takeoffloop-> current altitude: 373.47
+2024-12-29 10:13:57.437670	control stays autonomous
+2024-12-29 10:13:57.437940	in takeoffloop-> current altitude: 373.49
+2024-12-29 10:13:58.438288	control stays autonomous
+2024-12-29 10:13:58.438537	in takeoffloop-> current altitude: 373.5
+2024-12-29 10:13:59.439128	control stays autonomous
+2024-12-29 10:13:59.439698	in takeoffloop-> current altitude: 373.53
+2024-12-29 10:14:00.440385	control stays autonomous
+2024-12-29 10:14:00.441053	in takeoffloop-> current altitude: 373.54
+2024-12-29 10:14:00.441411	Timeout, took to long to reach target altitude: 373.54
+2024-12-29 10:14:00.442253	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.442584	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.442901	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.443209	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.444026	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.444867	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.445487	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.446818	Not in RTL mode: GUIDED
+2024-12-29 10:14:00.447951	in RTL mode: RTL
+2024-12-29 10:14:00.549162	safetyoption bitmask set to three
+2024-12-29 10:14:00.650360	safety switch enabled
