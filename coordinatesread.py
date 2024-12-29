@@ -3,18 +3,18 @@ import math
 import time
 from datetime import datetime
 
-def log(content):
+def log(content): # logs what needs to be logged
     p = pathlib.Path(__file__).with_name('log.txt')
     o = p.open(mode="a")#opens the target file in append mode
     o.write("\n"+ str(datetime.now())+"	" +str(content))
     o.close()
 
-def initial_log():
+def initial_log(): 
     current_time = datetime.now()
     log("\n")
     log(current_time)
 
-def getcords():
+def getcords(): # grabs coordinates out of coordinates.txt
     p = pathlib.Path(__file__).with_name('coordinates.txt')
 
     X = []
@@ -47,18 +47,12 @@ def meters_to_coordinates(X, Y, Z, vehicle): # converts coordinates in meters to
     while not home_location:
         time.sleep(1)
 
-    global Xcord    # makes the coordinates global for no further redefinition
-    global Ycord
-    global Zcord
     Xcord = []
     Ycord = []
     Zcord = []
 
     for i in range(len(X)):
         earth_radius = 6378137.0
-        #changeX = math.degrees(float(X[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
-        #changeY = math.degrees(float(Y[i]) / (earth_radius)) #* math.cos(math.radians(home_location.lat))))
-        #changeZ = float(Z[i])
         
         changeX = home_location.lat + math.degrees(float(X[i]) / earth_radius) # changes the Xcord to coordinates in the global frame and adds them to the coordinates from the home location
         changeY = home_location.lon + math.degrees(float(Y[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
@@ -99,7 +93,7 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
         tempbin = False
     return tempbin
 
-def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the drone into RTL) and 0 disables safety option
+def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the drone into RTL) and 0 disables safety option--> if safetyoptions is enabled the script cannot control the drone
     if on_off == 1:
         vehicle.mode = VehicleMode('RTL')
         while not vehicle.mode.name == "RTL":
@@ -109,10 +103,27 @@ def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the dr
         log("safetyoption bitmask set to three")
         vehicle.parameters["BRD_SAFETY_DEFLT"] = 1
         log("safety switch enabled")
-        
     else: 
         vehicle.parameters["BRD_SAFETYOPTION"] = 0
         log("safetyoption bitmask set to zero")
         vehicle.parameters["BRD_SAFETY_DEFLT"] = 0
         log("safety switch disabled")
 
+def distance_in_meters_to_target(vehicle, target): # calculates the current distance to the target distance
+    earth_radius = 6378137.0
+    current_location = vehicle.global_frame
+
+    while current_location is None:
+        log("Home location is not set.")
+        time.sleep(1)
+
+    # calculates horizontal distance to target destination
+    Xdistance = math.radians(vehicle.global_frame.lon - target.lon) * earth_radius
+    Ydistance = math.radians(vehicle.global_frame.lat - target.lat) * earth_radius * math.cos(math.radians(home_location))
+    
+    #gets the vertical distance to the target location
+    Zdistance = vehicle.global_frame.alt - target.alt
+
+    distance = math.sqrt(Xdistance**2 + Ydistance**2 + Zdistance**2)
+
+    return distance

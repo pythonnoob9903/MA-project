@@ -1,8 +1,8 @@
 # Documentation
 ## 23.12-29.12
 1. first autonomous takeoff
-2. lots of editing
-3. adding a flyto function
+2. editing all to page 20
+3. adding a flyto function, distance to target function
 2. writing
 3. preamble.tex instead of having it in the beginning of document.tex
 ## Week 16.12-22.12
