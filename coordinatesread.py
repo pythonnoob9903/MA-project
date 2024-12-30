@@ -34,7 +34,7 @@ def getcords(): # grabs coordinates out of coordinates.txt
         while lines[i][counter2] != ";":
             counter2 += 1
         Y += [lines[i][counter1+1:counter2]]
-        Z += [lines[i][counter2+1:-1]]
+        Z += [lines[i][counter2+1:]]
     return X, Y, Z
 
 
@@ -111,19 +111,19 @@ def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the dr
 
 def distance_in_meters_to_target(vehicle, target): # calculates the current distance to the target distance
     earth_radius = 6378137.0
-    current_location = vehicle.global_frame
+    current_location = vehicle.location.global_frame
 
     while current_location is None:
         log("Home location is not set.")
         time.sleep(1)
 
     # calculates horizontal distance to target destination
-    Xdistance = math.radians(vehicle.global_frame.lon - target.lon) * earth_radius
-    Ydistance = math.radians(vehicle.global_frame.lat - target.lat) * earth_radius * math.cos(math.radians(home_location))
+    Xdistance = math.radians(vehicle.location.global_frame.lon - target.lon) * earth_radius
+    Ydistance = math.radians(vehicle.location.global_frame.lat - target.lat) * earth_radius * math.cos(math.radians(target.lat))
     
     #gets the vertical distance to the target location
-    Zdistance = vehicle.global_frame.alt - target.alt
+    Zdistance = vehicle.location.global_frame.alt - target.alt
 
     distance = math.sqrt(Xdistance**2 + Ydistance**2 + Zdistance**2)
-
+    log(f"distance to target: {distance}")
     return distance

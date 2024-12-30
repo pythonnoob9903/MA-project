@@ -3,7 +3,7 @@ import time
 from coordinatesread import *
 import math
 #from pymavlink import mavutil
-
+"""
 def coordinates_to_meters_from_starting_point(vehicle, target):
     earth_radius = 6378137.0
     current_location = vehicle.global_frame
@@ -22,3 +22,4 @@ def coordinates_to_meters_from_starting_point(vehicle, target):
     distance = math.sqrt(Xdistance**2 + Ydistance**2 + Zdistance**2)
 
     return distance
+"""
