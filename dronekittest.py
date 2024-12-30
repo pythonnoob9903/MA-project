@@ -51,8 +51,9 @@ def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates p
 		target = LocationGlobal(Xcord[i], Ycord[i], Zcord[i])
 		vehicle.simple_goto(target)
 		radiocontrol()
-		log(f"forloop number: {i}")
+		log(f"forloop number: {i+1}")
 		log(f"target location: {target}")
+		log(f"vehicle mode: {vehicle.mode.name}")
         
 		start_time = time.time()
 
@@ -68,7 +69,7 @@ def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates p
 
 
 			log(f"in gotoloop-> current altitude: {vehicle.location.global_frame}")
-			if distance_in_meters_to_target(vehicle, target) >= 0.1:
+			if distance_in_meters_to_target(vehicle, target) <= 0.1:
 				log(f"target {i} reached {vehicle.location.global_frame}")
 				break
 			if distance_in_meters_to_target(vehicle, target) >= 5:
@@ -76,12 +77,6 @@ def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates p
 				vehicle.mode = VehicleMode("RTL")
 				break
 			if elapsed_time >= 10:
-				#log(f"Timeout, took to long to reach target: {vehicle.location.global_frame}")
-				#safetyoptions_on_off(vehicle, 1, VehicleMode)
-				#vehicle.mode = VehicleMode("RTL")
-				#while vehicle.mode.name != "RTL":
-				#	log(f"vehiclemode not RTL: {vehicle.mode.name}")
-				#log(f"changing to RTL: {vehicle.mode.name}")
 				log(f"target not reached, going to next target: initial target{target}, current position {current_location}, distance: {distance_in_meters_to_target()}")
 				break
 			time.sleep(1)
@@ -154,7 +149,7 @@ while radiocontrol() is True:
 		if distance_in_meters_to_target(vehicle, target) <=  0.1:
 			log(f"target altitude reached {target.alt}, {current_altitude}")
 			break
-		if distance_in_meters_to_target(vehicle, target) >= 5:
+		if target.alt - current_altitude >= 5:
 			log(f"drone is too far from home :{current_altitude}") 
 			vehicle.mode = VehicleMode("LOITER")
 			break

@@ -125,5 +125,5 @@ def distance_in_meters_to_target(vehicle, target): # calculates the current dist
     Zdistance = vehicle.location.global_frame.alt - target.alt
 
     distance = math.sqrt(Xdistance**2 + Ydistance**2 + Zdistance**2)
-    log(f"distance to target: {distance}")
+    log(f"distance to target: {distance}m")
     return distance
