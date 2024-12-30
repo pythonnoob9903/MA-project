@@ -77,7 +77,7 @@ def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates p
 				vehicle.mode = VehicleMode("RTL")
 				break
 			if elapsed_time >= 10:
-				log(f"target not reached, going to next target: initial target{target}, current position {current_location}, distance: {distance_in_meters_to_target()}")
+				log(f"target not reached, going to next target: initial target{target}, current position {current_location}, distance: {distance_in_meters_to_target(vehicle, target)}")
 				break
 			time.sleep(1)
 
@@ -146,7 +146,7 @@ while radiocontrol() is True:
 		radiocontrol()
 		current_altitude = vehicle.location.global_frame.alt
 		log(f"in takeoffloop-> current altitude: {current_altitude}")
-		if distance_in_meters_to_target(vehicle, target) <=  0.1:
+		if target.alt - current_altitude <=  0.1:
 			log(f"target altitude reached {target.alt}, {current_altitude}")
 			break
 		if target.alt - current_altitude >= 5:
