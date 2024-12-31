@@ -112,6 +112,8 @@
 		\label{fig:I2Cpackage}
 	\end{minipage}
 \end{figure}
+
+% TODO make figure on the left larger cannot read
 	\subsubsection{MAVLink}
 	The MAVLink protocol is more complex compared to \gls{UART} or \gls{I2C}. It can transfer up to 263 bytes or 280 bytes, depending on the version used. It is used for the connection between the \gls{Fc} and a \gls{GCS} or in this case the RaspberryPi companion computer.
 	% TODO do a graphic for the message that somewhat ressembles the other two
@@ -149,7 +151,8 @@
 	
 	\subsubsection{Battery}
 	There are two main types of batteries: \gls{LiPo} and \gls{Li-ion} batteries. \gls{LiPo} batteries have a tendency to go up in flames. They have a much higher discharge rate compared to \gls{Li-ion} batteries, also denoted as the C value, so they are well suited for racing drones. However, \gls{Li-ion} batteries have a higher energy density, which means that they can store more mAh for the same weight compared to \gls{LiPo} batteries, so they are more common in long-range flying. The batteries normally have multiple cells, for example a 4S \gls{LiPo} battery contains 4 cells. This is important, because the more cells you have, the higher is the voltage and so you will need a motor with a lower KV value. 
-	
+	% TODO explain why I need a high amount of mAH
+	 
 	I first wanted to buy two \gls{Li-ion} battery packs, however they are hard to get and much more expensive. The other option would be to solder them together, but it requires some soldering skill, which I personally did not have then. Hence, I decided to go with 4S \gls{LiPo} batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I wanted something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress, from where I also sourced all the other components, so it seemed to be easier to also chose a battery from there. 
 	
 	% TODO \gls from now on	____________________________________
@@ -282,7 +285,7 @@
 	\caption{Motor turning directions}
 	\label{fig:quadx}
 \end{figure}
-
+	%TODO fix this picture placement
 	In my first test flight the drone was shaking violently, which is also known as wobbling. This caused me to crash it into the ground. Reasons for this behavior can be loosely fastened parts, imbalanced propellers, or also wrong \gls{PID} values \cite{dronewobblevideo}. In my case it was the \gls{PID} values, which were for a 9-inch drone and not a 5-inch. The \gls{PID} values can be adjusted via the initial tuning parameter. After this the drone flew fine, except that the sticks of the radio controller needed to be reversed. This can be done using the \lstinline|RC2_Reversed| parameter.
 
 	\begin{Explanation}[{{proportional, integral, derivative (PID)}}]
@@ -336,8 +339,10 @@
 	\subsubsection{Dronekit}
 	It first needs to be mentioned that the Dronekit python software is not maintained very well, as it is stated in the Github repository \cite{dronekitgithub}. The following is still mostly based on the Dronekit Documentation \cite{dronekitdocs}.
 	
+	% TODO add flowchart of the code for what is planned
+	
 	First the Dronekit library needs to be installed in the \gls{venv} with \lstinline|pip install dronekit|. To create a file in the \gls{venv} over the terminal \lstinline|nano dronekittest.py| is used. It is noteworthy to not use the same name as the library itself, because python will confuse it. In the created document one then can connect the RaspberryPi to the \gls{Fc} as can be seen in \cref{lst:listing-connection}.
-	\begin{lstlisting}[language=Python, style=myPython, caption=Python DroneKit Example, label={lst:listing-connection}]
+	\begin{lstlisting}[language=Python, style=myPython, caption=Python DroneKit Example, label=lst:listing-connection]
 		from dronekit import connect
 
 		vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
@@ -376,7 +381,7 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 		\item A decorator is a function that modifies the behavior of a function or a class \cite{decorator}.
 	\end{Explanation} 
 	
-	\begin{lstlisting}[language=python, style=myPython, label={lst:decorator}, caption={decorator for channel values}]
+	\begin{lstlisting}[language=python, style=myPython, label=lst:decorator, caption={decorator for channel values}]
 		@vehicle.on_message("RC_CHANNELS")
 		def rc_channel_listener(vehicle, name, message):
 			global latest_rc_channels
@@ -396,31 +401,36 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 		chan{i}_raw : x
 	\end{lstlisting}
 	\footnotetext{With i being the channel number and x the value the channel receives form the radiocontroler}
-	\pagebreak
 	
+	The location is straight-forward. There is a home location that is set every time the drone is armed. In addition there is also local frame generated with it, which takes over the coordinates for north and south, but sets the height to 0 at the starting point. The home location could also be newly set via a MAVlink command. To access any given location local or global can be done over \lstinline|vehicle.location.global_frame|\footnote{"vehicle" is the connection to the \gls{Fc} from \cref{lst:listing-connection}}. This will have a list output \lstinline|[longitude, latitude, altitude]|, to access the longitude a \lstinline|.lon| is added after the \lstinline|_frame| from before\footnote{\lstinline|.lat| for the latitude and \lstinline|.alt| for the altitude}.
 	
+	I personally added the \lstinline|log()| function to be able to troubleshoot what went wrong in the testflight, can be seen in \cref{lst:logfunciton}. On line 2 the correct file is defined, which is then opened in append mode in line 3. Line 4 writes the given content into the file and line 5 closes the file again.
 	
+	\begin{lstlisting}[style=myPython, caption={log function}, label=lst:logfunciton]
+		def log(content):
+			p = pathlib.Path(__file__).with_name('log.txt')
+			o = p.open(mode="a")
+			o.write("\n"+ str(datetime.now())+"	" +str(content))
+			o.close()
+	\end{lstlisting}
 	
+	The desired coordinates for the drone to fly to are taken from a .tex file in the format \lstinline|X;Y;Z| in meters and need to be converted into degrees. This is done by the code from \cref{lst:coordinatesconversion}.
 	
+	\begin{lstlisting}[style=myPython, caption= coordinate conversion, label=lst:coordinatesconversion]
+		earth_radius = 6378137.0
+		
+		changeX = home_location.lat + math.degrees(float(X[i]) / earth_radius)
+		changeY = home_location.lon + math.degrees(float(Y[i]) / (earth_radius * math.cos(math.radians(home_location.lat))))
+		changeZ = home_location.alt + float(Z[i])
+		
+	\end{lstlisting}
 	
-	
-	% TODO add flowchart of the code for what is planned
-	
-	home coordinates are set every time the vehicle is armed
-	
-	there is no special dronekit command to set a new home location, however it would be possible to access it over MAVLink
-	
-	\lstinline|vehicle.home_location.lat| gives you the latitude of the home location set by ardupilot while arming the quad.
-	
-	you can access it in the local frame via \lstinline|vehicle.location.local_frame|
-	
-	
-	reading a file in python and exporting coordinates.
-	done by \lstinline|p = Path(__file__).with_name('coordinates.txt')| to get the correct file, which is in the same folder
-	
-	opening the file via \lstinline|p.open('r')|
-	exporting the data...
-	using the exported data to create new list for alt/lon/alt coordinate to have all the alt in one list and so on.
+	To fly to a certain coordinate the \lstinline|vehicle.simple_takeoff| and the \lstinline|vehicle.simple_goto| functions are used. However, with the standard parameters from ArduPilot this will not work, because the parameters bitmask of  \lstinline|Brd_Safetyoption| is set to be active even when \lstinline|Brd_safety_deflt| is deactivated. 
+	% TODO get the shitty third parameter that says which channels goe through
+	This will not let anything except defined in ??????? go through. Hence both of them need to be deactivated by the code, as demonstrated in \cref{lst:deactivation}
+	\begin{lstlisting}[caption={deactivation of parameters}\protect\footnote{}, style=myPython, label=lst:deactivation]
+		vehicle.parameters["BRD_SAFETYOPTION"] = 0
+	\end{lstlisting}\footnotetext{This can be done with any parameter, by putting it into the place of \lstinline|Brd_safetyoption|.}
 	
 	
 	converting the coordinates from the coordinates.txt to 
@@ -434,16 +444,18 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	\section{Discussion and Outlook}
 	\section{Conclusion}
 	
-	\appendix
+	\appendixpage
 	\printbibliography[
 		heading=bibintoc,
 		title={Bibliography}
 	]
+	\pagebreak
 	\listoftables
+	\pagebreak
 	\listoffigures	
 	% TODO do this into the appendix?
 	% TODO add list of the parts used in the drone build with links directing to websites used to purchase them
-
+	\pagebreak
 	\printglossary[type=\acronymtype]
 	
 \end{document}

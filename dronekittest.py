@@ -4,10 +4,10 @@ from coordinatesread import *
 import math
 from pymavlink import mavutil
 
-
+initial_log()
 
 vehicle = connect('/dev/serial0', baud=912600, wait_ready=True)
-
+log("connected to Fc")
 
 latest_rc_channels = None
 
@@ -84,7 +84,7 @@ def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates p
 
 
 
-initial_log()
+
 log(str(vehicle.battery.voltage) + " battery voltage")
 log(f"vehicle mode: {vehicle.mode.name}")
 
