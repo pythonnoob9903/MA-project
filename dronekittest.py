@@ -42,7 +42,7 @@ def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates p
 	vehicle.mode = VehicleMode("GUIDED")
 	radiocontrol()
 
-	while vehicle.mode.name != "GUIDED":
+	while vehicle.mode.name != "GUIDED" and radiocontrol() is True:
 		log(f"vehiclemode not GUIDED: {vehicle.mode.name}")
 		radiocontrol()
 	log(f"vehiclemode GUIDED: {vehicle.mode.name}")
@@ -151,7 +151,7 @@ while radiocontrol() is True:
 			break
 		if target.alt - current_altitude >= 5:
 			log(f"drone is too far from home :{current_altitude}") 
-			vehicle.mode = VehicleMode("LOITER")
+			vehicle.mode = VehicleMode("RTL")
 			break
 		if elapsed_time >= 10:
 			log(f"Timeout, took to long to reach target altitude: {current_altitude}, target altitude: {target.alt}")

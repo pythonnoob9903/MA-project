@@ -7,26 +7,26 @@
 \maketitle
 \tableofcontents
 \pagebreak
-
+% TODO side width of empty space.... are too big
 	\section{Introduction}
 	
-	In the world of today where technology is advancing faster than ever before this "Maturitätsarbeit" tries to shine a light into the corner of self-built and autonomous drones.
+	In the world of today where technology is advancing faster than ever before this Matura Paper tries to shine a light into the corner of self-built and autonomous drones.
 	
 	However, it first needs to be defined what a drone even is. According to the Cambridge Dictionary, a drone is defined as: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work, the term 'drone' will refer to a quadcopter which is a drone with four motors that lifts off and flies through the power provided by the motors and does not glide like a plane. There is also the term \gls{UAV}, however this is mostly used to describe military grade drones.
 
-	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now widely and effectively used to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor for example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones have become increasingly autonomous. Drone pilots with more advanced setups, are able to simply lock onto the target and let the drone follow and detonate near it \cite{nytimesaidrones}. This increased use in war has also had an impact on the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides in the Ukraine war are buying the \glspl{ESC} no matter what software is on them.  
+	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now widely and effectively used to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor. For example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones have become increasingly autonomous. Drone pilots with more advanced setups, are able to simply lock onto the target and let the drone follow and detonate near it \cite{nytimesaidrones}. This increased use in war has also had an impact on the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides in the Ukraine war are buying the \glspl{ESC} no matter what software is on them.  
 	% Would have an additional article about drones that are produced in Switzerland that do the same thing
 	
-	The goal of this "Maturitätsarbeit" is to develop an autonomous path-following drone; by path-following a \gls{GPS} path is meant not one on a map. Additionally it should be written so that somebody with no prior knowledge about drones can read, easily understand, and also might reproduce the first part until chapter 4.5 Companion Computer. After that first part, having some understanding of python will be useful, but it is not a requirement. However, without such knowledge, the explanations might be a bit confusing.
+	The goal of this Matura Paper is to develop an autonomous path-following drone; by path-following a \gls{GPS} path is meant not one on a map. Additionally it should be written so that somebody with no prior knowledge about drones can read, easily understand, and also might reproduce the first part until \cref{companion computer} (Companion Computer). After that first part, having some understanding of python will be useful, but it is not a requirement. However, without such knowledge, the explanations might be a bit confusing.
 	
-	I was first interested in drones when was in fifth grade and got one as a Christmas present. After that, I also wrote a rather interesting piece about different types of drones in the sixth grade and then lost interest. Later on, when I was in the "Gymnasium", I was randomly recommended a drone video on YouTube and began gaining interest again. I initially planned to build an \gls{FPV} drone. However, I never really found the time to build one. When the "Maturitätsarbeit" came around I found it to be the perfect opportunity to work with a drone, although not just building a \gls{FPV} drone, but doing something more complex.
+	I was first interested in drones when was in fifth grade and got one as a Christmas present. After that, I also wrote a rather interesting piece about different types of drones in the sixth grade and then I lost interest. Later on, when I was in the "Gymnasium", I was randomly recommended a drone video on YouTube and began gaining interest again. I initially planned to build a \gls{FPV} drone. However, I never really found the time to build one. When the Matura Work came around I found it to be the perfect opportunity to work with a drone, although not just building a \gls{FPV} drone, but doing something more complex.
 
 
 	
 	\subsection{General Software Considerations}
 	% TODO work around the same topic that already exists
 	\subsubsection{Open Source Software}
-	An important part of this "Maturitätsarbeit" is \gls{OSS}. \gls{OSS} is software which everybody can download and develop in their own time. This process is known as 'forking', which refers to when a person other than the original developer takes the code and modifies it independently. The main benefit over closed software is that it can be freely downloaded by everyone and everybody can modify it as they see fit. However the downside is that if the development team loses interest, the software will become outdated and will not work smoothly with other systems anymore. Both aspects will later be found both useful and time-consuming. 
+	An important part of this Matura Work is \gls{OSS}. \gls{OSS} is a software which everybody can download and develop in their own time. This process is known as 'forking', which refers to when a person other than the original developer takes the code and modifies it independently. The main benefit over closed software is that it can be freely downloaded by everyone and everybody can modify it as they see fit. However the downside is that if the development team loses interest, the software will become outdated and will not work smoothly with other systems anymore. Both aspects will later be found both useful and time-consuming. 
 	
 	
 	\subsubsection{Flight Softwares}
@@ -38,7 +38,7 @@
 	
 	INAV offers basic autonomous flight using waypoints and automated landing. It does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface to Betaflight, so switching from one to the other is easier than switching from INAV to Ardupilot.
 	
-	Ardupilot basically offers everything the other two have to offer and more, for example Submarines and VTOLs. Although it is not commonly used with \gls{FPV}, it is still possible. Ardupilot involves more steps to set up, which also leads to the main benefit of it, namely the nearly limitless customization options.
+	Ardupilot basically offers everything the other two have to offer and more, for example Submarines and \glspl{VTOL}. Although it is not commonly used with \gls{FPV}, it is still possible. Ardupilot involves more steps to set up, which also leads to the main benefit of it, namely the nearly limitless customization options.
 	% TODO get this sentence to work somehow, that it says that it is more complicated, but this is also the benefit, because of the limitless customization options
 	
 	It is also the only option to use together with a companion computer like the RaspberryPi. A few years ago it was really expensive to start, because it only supported the Pixhawk family of flight controllers which cost several hundred Franks per piece. However, in recent years it has began to support more and cheaper flight controllers.
@@ -120,7 +120,7 @@
 	\subsection{Parts}
 	
 	\subsubsection[Fc]{Flight Controller}
-	There are two different types of flight controllers: the \gls{AIO} and a standalone \gls{Fc}. The \gls{AIO} consists not only a \gls{Fc} but also the \gls{ESC} in one board. This has the advantage of only needing one board instead of two or five, in some alternative setups. However, if only parts of the \gls{ESC} or the \gls{Fc} are damaged you need to replace the whole board, which is more expensive than replacing only the \gls{Fc} or \gls{ESC}. 
+	There are two different types of flight controllers: the \gls{AIO} and a standalone \gls{Fc}. The \gls{AIO} consists not only a \gls{Fc} but also the \gls{ESC} on the same board. This has the advantage of only needing one board instead of two or five, in some alternative setups. However, if only parts of the \gls{ESC} or the \gls{Fc} are damaged you need to replace the whole board, which is more expensive than replacing only the \gls{Fc} or \gls{ESC}. 
 	
 	Betaflight and INAV both support a wide variety of \glspl{Fc} compared to Ardupilot which is only supporting a very specific sample of boards \cite{FcSupport}. They have the option of open and closed hardware. Because the open hardware \glspl{Fc} are quite expensive, so I decided to go with a closed one. The chip used in \glspl{Fc} is usually a STM32. There are multiple generations of it the mainly used ones are F4, F7 and H7, the newest version is the H7. I then decided to go with the Kakute H7 v1.3 (MPU6000) from Holybro, because it was affordable and available as a stack \cite{KakuteH7}. A stack is a \gls{Fc} and \gls{ESC} mounted on top of each other. It normally comes with stack screws. It comes shipped with Betaflight so it is required to flash Ardupilot. 
 	\begin{Explanation}[open and closed hardware]
@@ -153,7 +153,7 @@
 	There are two main types of batteries: \gls{LiPo} and \gls{Li-ion} batteries. \gls{LiPo} batteries have a tendency to go up in flames. They have a much higher discharge rate compared to \gls{Li-ion} batteries, also denoted as the C value, so they are well suited for racing drones. However, \gls{Li-ion} batteries have a higher energy density, which means that they can store more mAh for the same weight compared to \gls{LiPo} batteries, so they are more common in long-range flying. The batteries normally have multiple cells, for example a 4S \gls{LiPo} battery contains 4 cells. This is important, because the more cells you have, the higher is the voltage and so you will need a motor with a lower KV value. 
 	% TODO explain why I need a high amount of mAH
 	 
-	I first wanted to buy two \gls{Li-ion} battery packs, however they are hard to get and much more expensive. The other option would be to solder them together, but it requires some soldering skill, which I personally did not have then. Hence, I decided to go with 4S \gls{LiPo} batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I wanted something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress, from where I also sourced all the other components, so it seemed to be easier to also chose a battery from there. 
+	I first wanted to buy two \gls{Li-ion} battery packs, however they are hard to get and much more expensive. The other option would be to solder them together, but it requires some soldering skill, which I personally did not have then. Hence I decided to go with 4S \gls{LiPo} batteries from the Tattu R-line with 120C and 2000mAh\cite{tattu}, because I wanted something that can fly longer than just three or four minutes. I chose the brand Tattu, because it was the only known brand that was on AliExpress, from where I also sourced all the other components, so it seemed to be easier to also chose a battery from there. 
 	
 	% TODO \gls from now on	____________________________________
 
@@ -172,9 +172,10 @@
 	
 	The two things to consider when it comes to transmitter protocols are latency and range. Latency is the delay between the input on the radio controller and when the reaction of the \gls{Fc}. The lower the latency, the faster the drone will react. It is related to the frequency bands of the receiver, of which there are normally two: 900 MHz and 2.4 GHz. When both are optimized the 900 MHz has better penetration and range, due to the longer wavelength, while the 2.4 GHz has a higher latency, because the frequency allows for faster data transmission.
 
+% TODO explain abbreviation LRS
 	\subsubsection*{ExpressLRS}
-	ExpressLRS is the best protocol in long range and for the combination of long range and low latency. It has been shown by \textcite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km away from the starting point. There are two version: a 900 MHz and a 2.4 GHz. The main difference is that the 2.4 GHz can reach over 30km, but it is unlikely to go to 100km. However, it has the lowest latency. It, together with mLRS, is the only protocols that is open-source.
-	\subsubsection*{mLrs}
+	ExpressLRS is the best protocol in long range and for the combination of long range and low latency. It has been shown by \textcite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km away from the starting point. There are two version: a 900 MHz and a 2.4 GHz. The main difference is that the 2.4 GHz can reach over 30km, but it is unlikely to go to 100km. However, it has the lowest latency. It is together with mLRS, is the only protocol that is open-source.
+	\subsubsection*{mLRS}
 	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency, which allows it to send larger data packages to your telemetry device. Which is something that is needed if you want to adjust something or get more data from your drone over the MAVLink protocol during the flight. 
 	
 	\subsubsection*{Transmitter/Radio}
@@ -292,7 +293,7 @@
 		\item The \gls{PID} refers to three variables who control the error adjusting system in a drone. With error is meant the difference between how much the motors rotate and how much they should rotate. 
 	\end{Explanation}
 	
-	\subsection{Companion Computer}
+	\subsection{Companion Computer}\label{companion computer}
 	The following section is rather technical and can be used as a reference to reproduce the combination of the Kakute H7 and a RaspberryPi working together using Dronekit python.
 	\subsubsection{RaspberryPi Setup}
 	
@@ -439,6 +440,9 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	
 	it worked miraculously after diabling the parameter \lstinline|BRD_Safety_Deflt| and setting the bitmask to zero of the parameter \lstinline|BRD_Safetyoption| 
 	this is used to enable or disable the outputs to motors and servos. there is also the parameter \lstinline|BRD_Safety_Mask| which controls which switches can still get through when the safety switch is enabled... So the problem was that the \lstinline|Brd_Safetyoption| was set to be activated when \lstinline|Brd_safety_deflt| was disabled and enabled... so there was nothing except radiocontrol going through to the motors not my script.
+	
+	
+	hdop and vdop problems...
 	
 	\section{Results}
 	\section{Discussion and Outlook}
