@@ -81,7 +81,7 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     vehicle.parameters["ARMING_CHECK"] = 1 # enables Arming_checks.
     tempbin = True
     if vehicle.is_armable is True:
-        log("Vehicle is armable.")
+        log("Vehicle is armable.") # does not check the Armingchecks
     else:
         log("Vehicle failed Arming_checks")
         tempbin = False

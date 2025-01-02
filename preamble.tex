@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage[
+sorting=none,
 backend=biber,
 style=numeric,
 sorting=ynt
@@ -41,9 +42,6 @@ sorting=ynt
 
 \usepackage{amsmath}
 \usepackage{array}
-
-
-
 
 \makeglossary
 \usepackage{lstautogobble}
@@ -89,6 +87,9 @@ sorting=ynt
 % set to 'BaselineStyle'
 \lstset{style=BaselineStyle}
 
+% use before glossaries
+\usepackage{hyperref}
+
 % imports glossaries and activates it
 \usepackage[acronym, nomain]{glossaries}
 \makeglossaries
@@ -101,7 +102,7 @@ sorting=ynt
 \newacronym{GPS}{GPS}{global positioning system}
 \newacronym{OS}{OS}{operating system}
 \newacronym{SSH}{SSH}{secure shell}
-\newacronym{DFU}{DFU}{device firmware updgrad}
+\newacronym{DFU}{DFU}{device firmware updgrade}
 \newacronym{PID}{PID}{proportional, integral, derivative}
 \newacronym{AIO}{AIO}{All-in-One}
 \newacronym{CEP}{CEP}{circular error probable}
@@ -121,15 +122,33 @@ sorting=ynt
 \newacronym{I2C}{I2C}{inter-integrated circuit}
 \newacronym{SDA}{SDA}{serial data}
 \newacronym{SCL}{SCL}{serial clock}
+\newacronym{INAV}{INAV}{intelligen navigation system for aerial vehicles}
+\newacronym{DShot}{DShot}{digital shot}
+
+\newcommand{\mydshot}{
+	\glsentryshort{DShot}
+%	\glsunset{Dshot}
+}
+
+\newcommand{\myinav}{
+	\glsentryshort{INAV}
+	\glsunset{INAV}
+}
 
 
 
-\usepackage{hyperref}
 \hypersetup{
-	colorlinks,
+	colorlinks = true,
 	linkcolor={red!40!black},
 	urlcolor={blue!90!black},
 	citecolor=,
 }
+
+\makeatletter
+\renewcommand\@makefnmark{\textsuperscript{\textcolor{red!40!black}{\@thefnmark}}}
+\makeatother
+
+\usepackage{chngcntr}
+
 % Intelligent cross-referencing. [LOAD AFTER \hypersetup AND amsmath]
 \usepackage[nameinlink,noabbrev,capitalise]{cleveref}
