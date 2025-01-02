@@ -95,3 +95,112 @@
 2024-12-30 16:25:27.489486	control stays autonomous
 2024-12-30 16:25:27.489958	in gotoloop-> current altitude: LocationGlobal:lat=47.5973102,lon=8.6747953,alt=386.33
 2024-12-30 16:25:27.490362	distance to target: 0.51238049
+2025-01-01 16:18:37.283076	
+
+
+2025-01-02 09:53:51.633237	
+
+2025-01-02 09:53:51.636679	2025-01-02 09:53:51.632689
+2025-01-02 09:54:17.878602	connected to Fc
+2025-01-02 09:54:17.881933	16.245 battery voltage
+2025-01-02 09:54:17.882528	vehicle mode: STABILIZE
+2025-01-02 09:54:17.883061	currently no communication to radio: None
+2025-01-02 09:54:18.883958	rc channel value:999
+2025-01-02 09:54:18.884682	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:54:18.890617	safetyoption bitmask set to zero
+2025-01-02 09:54:18.892780	safety switch disabled
+2025-01-02 09:54:19.895072	control stays autonomous
+2025-01-02 09:54:19.896347	Vehicle is armable.
+2025-01-02 09:54:19.897561	Not in GUIDED mode: STABILIZE
+2025-01-02 09:54:20.898283	in GUIDED mode: GUIDED
+2025-01-02 09:54:20.898816	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:54:20.900773	safetyoption bitmask set to zero
+2025-01-02 09:54:20.903577	safety switch disabled
+2025-01-02 09:54:20.904771	armed, False
+2025-01-02 09:54:20.910454	home location: LocationGlobal:lat=47.5971028,lon=8.6752339,alt=388.78
+2025-01-02 09:54:20.911040	Xcoordinates [47.5971028, 47.59711178315284, 47.597120766305686]
+2025-01-02 09:54:20.911554	Ycoordinates [8.6752339, 8.675247221405337, 8.675260542810674]
+2025-01-02 09:54:20.911958	Zcoordinates [390.28, 390.28, 390.28]
+2025-01-02 09:54:25.913277	Vehicle is armable.
+2025-01-02 09:54:25.913868	control stays autonomous
+2025-01-02 09:54:25.914828	vehicle armed: False
+2025-01-02 09:55:03.348736	
+
+2025-01-02 09:55:03.349345	2025-01-02 09:55:03.348295
+2025-01-02 09:55:28.528515	connected to Fc
+2025-01-02 09:55:28.529321	16.35 battery voltage
+2025-01-02 09:55:28.529835	vehicle mode: GUIDED
+2025-01-02 09:55:28.530298	currently no communication to radio: None
+2025-01-02 09:55:29.531016	rc channel value:999
+2025-01-02 09:55:29.531667	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:55:29.534300	safetyoption bitmask set to zero
+2025-01-02 09:55:29.536166	safety switch disabled
+2025-01-02 09:55:30.537553	control stays autonomous
+2025-01-02 09:55:30.538750	Vehicle is armable.
+2025-01-02 09:55:30.539914	in GUIDED mode: GUIDED
+2025-01-02 09:55:30.540351	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:55:30.543622	safetyoption bitmask set to zero
+2025-01-02 09:55:30.544747	safety switch disabled
+2025-01-02 09:55:30.547478	armed, False
+2025-01-02 09:55:30.552088	home location: None
+2025-01-02 09:55:30.552518	Waiting for home location to be set
+2025-01-02 09:56:15.940680	
+
+2025-01-02 09:56:15.940993	2025-01-02 09:56:15.940461
+2025-01-02 09:56:41.382459	connected to Fc
+2025-01-02 09:56:41.382995	16.257 battery voltage
+2025-01-02 09:56:41.383477	vehicle mode: GUIDED
+2025-01-02 09:56:41.383859	currently no communication to radio: None
+2025-01-02 09:56:42.384443	rc channel value:999
+2025-01-02 09:56:42.384952	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:56:42.386478	safetyoption bitmask set to zero
+2025-01-02 09:56:42.387345	safety switch disabled
+2025-01-02 09:56:43.388545	control stays autonomous
+2025-01-02 09:56:43.389686	Vehicle is armable.
+2025-01-02 09:56:43.390756	in GUIDED mode: GUIDED
+2025-01-02 09:56:43.391175	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:56:43.394353	safetyoption bitmask set to zero
+2025-01-02 09:56:43.396568	safety switch disabled
+2025-01-02 09:56:43.397773	armed, False
+2025-01-02 09:56:43.400561	home location: None
+2025-01-02 09:56:43.401875	Waiting for home location to be set
+2025-01-02 09:57:48.397710	
+
+2025-01-02 09:57:48.398352	2025-01-02 09:57:48.397278
+2025-01-02 09:58:13.469486	connected to Fc
+2025-01-02 09:58:13.470032	16.114 battery voltage
+2025-01-02 09:58:13.470426	vehicle mode: GUIDED
+2025-01-02 09:58:13.470788	currently no communication to radio: None
+2025-01-02 09:58:14.471409	rc channel value:999
+2025-01-02 09:58:14.472452	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:58:14.473958	safetyoption bitmask set to zero
+2025-01-02 09:58:14.474707	safety switch disabled
+2025-01-02 09:58:15.476006	control stays autonomous
+2025-01-02 09:58:15.477147	Vehicle is armable.
+2025-01-02 09:58:15.480314	in GUIDED mode: GUIDED
+2025-01-02 09:58:15.481306	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 09:58:15.483606	safetyoption bitmask set to zero
+2025-01-02 09:58:15.484587	safety switch disabled
+2025-01-02 09:58:15.485415	armed, False
+2025-01-02 09:58:15.491280	home location: None
+2025-01-02 09:58:15.492217	Waiting for home location to be set
+2025-01-02 09:59:36.382993	
+
+2025-01-02 09:59:36.384315	2025-01-02 09:59:36.382566
+2025-01-02 10:00:01.548379	connected to Fc
+2025-01-02 10:00:01.549042	16.18 battery voltage
+2025-01-02 10:00:01.549657	vehicle mode: GUIDED
+2025-01-02 10:00:01.550128	currently no communication to radio: None
+2025-01-02 10:00:02.550771	rc channel value:999
+2025-01-02 10:00:02.551409	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 10:00:02.553434	safetyoption bitmask set to zero
+2025-01-02 10:00:02.555126	safety switch disabled
+2025-01-02 10:00:03.556566	control stays autonomous
+2025-01-02 10:00:03.557786	Vehicle is armable.
+2025-01-02 10:00:03.558900	in GUIDED mode: GUIDED
+2025-01-02 10:00:03.559344	Speed_Up and groundspeed set/vehicle armed.
+2025-01-02 10:00:03.562380	safetyoption bitmask set to zero
+2025-01-02 10:00:03.563316	safety switch disabled
+2025-01-02 10:00:03.564074	armed, False
+2025-01-02 10:00:03.569818	home location: None
+2025-01-02 10:00:03.570253	Waiting for home location to be set

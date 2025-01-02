@@ -132,14 +132,15 @@ while radiocontrol() is True:
 	vehicle.armed = True
 	log(f"vehicle armed: {vehicle.armed}")
 	print("vehicle armed")
-
+	time.sleep(10)
+	
 	log(f"board safety option bitmask set to: {vehicle.parameters['BRD_SAFETYOPTION']}")
 	# vehicle.simple_goto(target)
 	vehicle.simple_takeoff(Zcord[0])
 
 	log(f"{vehicle.mode.name}, --> mode")
 	start_time = time.time() # starts timer for the the vehicle.simple_takeoff
-	time.sleep(2)
+	radiocontrol()
 
 	while True: # is killing the simple takeoff if too much time has gone by or it deviated to far from the origin
 		elapsed_time = time.time() - start_time
