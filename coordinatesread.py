@@ -91,6 +91,9 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     if vehicle.gps_0.fix_type < 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
         tempbin = False
+    if vehicle.GPSinfo.epv >= 2:
+        log(f"high GPS HDOP: {vehicle.GPSinfo.eph} (Vdop: {vehicle.GPSinfo.epv})")
+        tempbin = False
     return tempbin
 
 def safetyoptions_on_off(vehicle, on_off, VehicleMode): # 1 sets(and puts the drone into RTL) and 0 disables safety option--> if safetyoptions is enabled the script cannot control the drone

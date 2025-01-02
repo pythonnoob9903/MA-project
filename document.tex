@@ -19,14 +19,14 @@
 	
 	The goal of this Matura Paper is to develop an autonomous path-following drone; by path-following a \gls{GPS} path is meant not one on a map. Additionally it should be written so that somebody with no prior knowledge about drones can read, easily understand, and also might reproduce the first part until \cref{companion computer} (Companion Computer). After that first part, having some understanding of python will be useful, but it is not a requirement. However, without such knowledge, the explanations might be a bit confusing.
 	
-	I was first interested in drones when was in fifth grade and got one as a Christmas present. After that, I also wrote a rather interesting piece about different types of drones in the sixth grade and then I lost interest. Later on, when I was in the "Gymnasium", I was randomly recommended a drone video on YouTube and began gaining interest again. I initially planned to build a \gls{FPV} drone. However, I never really found the time to build one. When the Matura Work came around I found it to be the perfect opportunity to work with a drone, although not just building a \gls{FPV} drone, but doing something more complex.
+	I was first interested in drones when was in fifth grade and got one as a Christmas present. After that, I also wrote a rather interesting piece about different types of drones in the sixth grade and then I lost interest. Later on, when I was in the "Gymnasium", I was randomly recommended a drone video on YouTube and began gaining interest again. I initially planned to build a \gls{FPV} drone. However, I never really found the time to build one. When the Matura Paper came around I found it to be the perfect opportunity to work with a drone, although not just building a \gls{FPV} drone, but doing something more complex.
 
 
 	
 	\subsection{General Software Considerations}
 	% TODO work around the same topic that already exists
 	\subsubsection{Open Source Software}
-	An important part of this Matura Work is \gls{OSS}. \gls{OSS} is a software which everybody can download and develop in their own time. This process is known as 'forking', which refers to when a person other than the original developer takes the code and modifies it independently. The main benefit over closed software is that it can be freely downloaded by everyone and everybody can modify it as they see fit. However the downside is that if the development team loses interest, the software will become outdated and will not work smoothly with other systems anymore. Both aspects will later be found both useful and time-consuming. 
+	An important part of this Matura Paper is \gls{OSS}. \gls{OSS} is a software which everybody can download and develop in their own time. This process is known as 'forking', which refers to when a person other than the original developer takes the code and modifies it independently. The main benefit over closed software is that it can be freely downloaded by everyone and everybody can modify it as they see fit. However the downside is that if the development team loses interest, the software will become outdated and will not work smoothly with other systems anymore. Both aspects will later be found both useful and time-consuming. 
 	
 	
 	\subsubsection{Flight Softwares}
@@ -81,7 +81,7 @@
 	
 	\subsubsection{Uart}
 	The \gls{UART} is not a communication protocol, but a physical circuit. In the field of self-built drones it is used to communicate to and from the \gls{Fc}. It works by transmitting data asynchronously, which means without a clock to synchronize the data transfer. Instead it has a so-called baud rate, which is a measure of \gls{bps}. When connecting two \gls{UART} microcontrollers there are two lines needed from the Tx of one to the Rx of the other and vice versa, as shown in \cref{fig:uartconnection}. With a \gls{UART} a data packet is transferred instead of individual bits. The packet consists of a start bit, followed by 5 to 9 data bits and at the end there are 1 to 2 stop bits, as shown in \cref{fig:uartpackage}. There is also the option to include a parity bit instead of one of the data bits. A parity bit is used to verify that none of the bits were changed during the transfer. It is a 0 if the number of 1 in the sequence is even and 1 if it is odd.
-	\cite{uartprotocol}
+	\cite{uartprotocol} % TODO reference control
 \begin{figure}[ht]
 	\begin{minipage}[c]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{pictures/UARTconnection}
@@ -454,7 +454,6 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 		title={Bibliography}
 	]
 	\pagebreak
-	\listoftables
 	\pagebreak
 	\listoffigures	
 	% TODO do this into the appendix?

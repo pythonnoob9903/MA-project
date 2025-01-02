@@ -38,6 +38,16 @@ def radiocontrol(): # checks if the switch is still on the right position to fly
 		return True
 
 
+@vehicle.on_message("STATUSTEXT") 
+def prearm_failures(vehicle, name, message): # is called when a message appears as statustext and saves it to the log.txt file
+	if "Prearm" in message.text:
+		log(f"Prearm failure: {message.text}")
+	elif "Arm" in message.text:
+		log(f"Arm problem: {message.text}")
+	else:
+		log(f"unexpected Statustext in format: {message}")
+
+
 def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates provided by coordinates.txt
 	vehicle.mode = VehicleMode("GUIDED")
 	radiocontrol()
@@ -113,6 +123,9 @@ while radiocontrol() is True:
 	
 	setup(vehicle, VehicleMode) #arms and sets important parameters
 
+	log(f"Hdop: {vehicle.GPSinfo.eph}, Vdop: {vehicle.GPSinfo.epv}, sattelites visible: {vehicle.GPSinfo.satellites_visible}")
+
+	log(f"current position: {vehicle.location.global_frame}")
 
 	log(f"armed, {vehicle.armed}")
 	print("vehicle armed")
