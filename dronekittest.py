@@ -120,6 +120,7 @@ vehicle.armed = False
 while radiocontrol() is True: 
 	while checks(vehicle) is False:
 		time.sleep(1)
+		log(f"checks {checks(vehicle)}")
 	
 	vehicle.mode = VehicleMode('GUIDED') #setting mode to guided
 	while not vehicle.mode.name == "GUIDED":
