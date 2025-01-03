@@ -123,7 +123,7 @@ while radiocontrol() is True:
 	
 	setup(vehicle, VehicleMode) #arms and sets important parameters
 
-	log(f"Hdop: {vehicle.GPSinfo.eph}, Vdop: {vehicle.GPSinfo.epv}, sattelites visible: {vehicle.GPSinfo.satellites_visible}")
+	log(f"Hdop: {vehicle.gps_0.eph}, Vdop: {vehicle.gps_0.epv}, sattelites visible: {vehicle.gps_0.satellites_visible}")
 
 	log(f"current position: {vehicle.location.global_frame}")
 

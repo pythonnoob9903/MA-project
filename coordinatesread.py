@@ -91,8 +91,8 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     if vehicle.gps_0.fix_type < 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
         tempbin = False
-    if vehicle.GPSinfo.epv >= 2:
-        log(f"high GPS HDOP: {vehicle.GPSinfo.eph} (Vdop: {vehicle.GPSinfo.epv})")
+    if vehicle.gps_0.epv >= 200:
+        log(f"high GPS HDOP: {vehicle.gps_0.eph} (Vdop: {vehicle.gps_0.epv})")
         tempbin = False
     return tempbin
 
@@ -128,5 +128,5 @@ def distance_in_meters_to_target(vehicle, target): # calculates the current dist
     Zdistance = vehicle.location.global_frame.alt - target.alt
 
     distance = math.sqrt(Xdistance**2 + Ydistance**2 + Zdistance**2)
-    log(f"distance to target: {distance}m, Hdop: {vehicle.GPSinfo.eph}, Vdop: {vehicle.GPSinfo.epv}")
+    log(f"distance to target: {distance}m, Hdop: {vehicle.gps_0.eph}, Vdop: {vehicle.gps_0.epv}")
     return distance
