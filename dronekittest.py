@@ -112,9 +112,6 @@ log(f"in GUIDED mode: {vehicle.mode.name}")
 
 
 setup(vehicle, VehicleMode) #arms and sets important parameters
-vehicle.armed = True
-time.sleep(1)
-vehicle.armed = False
 
 
 while radiocontrol() is True: 
@@ -132,6 +129,12 @@ while radiocontrol() is True:
 	log(f"Hdop: {vehicle.gps_0.eph}, Vdop: {vehicle.gps_0.epv}, sattelites visible: {vehicle.gps_0.satellites_visible}")
 
 	log(f"current position: {vehicle.location.global_frame}")
+
+	vehicle.armed = True
+	while not vehicle.armed:
+		log("Waiting for arming...")
+	time.sleep(1)
+
 
 	log(f"armed, {vehicle.armed}")
 	print("vehicle armed")
@@ -157,6 +160,7 @@ while radiocontrol() is True:
 	
 	log(f"board safety option bitmask set to: {vehicle.parameters['BRD_SAFETYOPTION']}")
 	# vehicle.simple_goto(target)
+
 	vehicle.simple_takeoff(Zcord[0])
 
 	log(f"{vehicle.mode.name}, --> mode")

@@ -8,51 +8,54 @@
 \newpage
 \tableofcontents
 \newpage
-% TODO side width of empty space.... are too big
 % TODO link color really???
 	\section{Introduction}
 	
-	In the world of today where technology is advancing faster than ever before this Matura Paper tries to shine a light into the corner of self-built and autonomous drones.
+	In the today's where technology is advancing faster than ever before this Matura paper is enlightening the corner of self-built and autonomous drones.
 	
 	However, it first needs to be defined what a drone even is. According to the Cambridge Dictionary, a drone is defined as: \textit{an aircraft that does not have a pilot but is controlled by someone on the ground} \cite{cambridgedrone}. In this work, the term 'drone' will refer to a quadcopter which is a drone with four motors that lifts off and flies through the power provided by the motors and does not glide like a plane. There is also the term \gls{UAV}, however this is mostly used to describe military grade drones.
 
-	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now widely and effectively used to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor. For example they use drones with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones have become increasingly autonomous. Drone pilots with more advanced setups, are able to simply lock onto the target and let the drone follow and detonate near it \cite{nytimesaidrones}. This increased use in war has also had an impact on the hobby side of the project. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. Which is really difficult to do regarding that both sides in the Ukraine war are buying the \glspl{ESC} no matter what software is on them.  
+	In current conflicts the meanings of \gls{UAV} and quadcopters have become more entangled than ever. The typical hobbyist drone is now widely and effectively used to target enemy forces. In the Ukraine war drones are one of the most effective weapons to use against the Russian aggressor. For example, in this conflict drones are used with thermite canisters attached to them to target the enemies under tree covers \cite{thermitedrones}. Since the war began the drones have become increasingly autonomous. Drone pilots with more advanced setups, are able to simply lock onto the target and let the drone follow and detonate near it \cite{nytimesaidrones}. This increased use in war has also had an impact on the market for components. The most used \gls{ESC} firmware BLHeli\_32 ceased its operation due to laws being passed in Norway that penalised firms that are not able to verify that their products are not used in wars \cite{blhelidead}. However, this is really difficult to do regarding that the \glspl{ESC} are dual-use goods\footnote{Dual-use goods are products that are designed for civilian purposes, but in the wrong hands can become deadly weapons \cite{dualuse}.}.
+	
+%	Which is really difficult to do regarding that both sides in the Ukraine war are buying the \glspl{ESC} no matter what software is on them.  
 	% Would have an additional article about drones that are produced in Switzerland that do the same thing
 	
-	The goal of this Matura Paper is to develop an autonomous path-following drone; by path-following following a \gls{GPS} path is meant and not following a path on the ground using image recognition. Additionally it should be written so that somebody with no prior knowledge about drones can read, easily understand, and also might reproduce the first part until \cref{companion computer} (Companion Computer). After that first part, having some understanding of python will be useful, but it is not a requirement. However, without such knowledge, the explanations might be a bit confusing.
+	The goal of this Matura paper is to develop an autonomous path-following drone, where path-following refers to navigating a \gls{GPS} path rather than following a ground path using image recognition. Additionally it should be written so that somebody with no prior knowledge about drones can read, easily understand, and also might reproduce the first part until \cref{companion computer} (Companion Computer). After that first part, having some understanding of python will be useful, but it is not a requirement. However, without prior knowledge, the explanations might be a bit confusing.
 
-	I was first interested in drones when I was in fifth grade and got one as a Christmas present. After that, I also wrote a rather interesting piece about different types of drones in the sixth grade, but after this I lost interest. Later on, when I was in the "Gymnasium", I was randomly recommended a drone video on YouTube and began gaining interest again. I initially planned to build a \gls{FPV} drone. Sadly, I never really found the time to build one. When the Matura Paper came around I found it to be the perfect opportunity to work with a drone, although not just building a \gls{FPV} drone, but doing something more complex.
+	I was first interested in drones when I was in fifth grade and got one as a Christmas present. After that, I also wrote a rather interesting piece about different types of drones in sixth grade, but I lost the interest shortly after. Later on, when I was in the "Gymnasium", I was randomly recommended a drone video on YouTube and began gaining interest again. I initially planned to build a \gls{FPV} drone. Sadly, I never really found the time to build one. When the Matura paper came around I found it to be the perfect opportunity to work with a drone. However, a \gls{FPV} can be bought as commodity in contrast to an autonomous drone. 
+	% TODO something new
 
 
 	\section{Literature Review}
-	A path-following drone has been built before. However, the drone built in this combination with a Kakute H7 and a RaspberryPi running a Dronekit Python script has not.
+	After extensive internet research it becomes clear that only one kind of a comparable published autonomous drone project exists, one with a \gls{Fc} from the Pixhawk family of \glspl{Fc} in connection to a RaspberryPi. However, it is clear that there are many underground drone laboratories in the Ukraine war, which do not publish their advances in drone technologies, due to the risk of being bomb by their own inventions. Additionally, there are many large firms, as Amazons, who are trying to deliver packages by drones \cite{amazondrone}.
 	
 	
 	\section{Methodology}
 	\subsection{General Software Considerations}
 
 	\subsubsection{Open Source Software}
-	An important part of this Matura Paper is \gls{OSS}. \gls{OSS} is a software which everybody can download and develop in their own time. This process is known as 'forking', which refers to when a person other than the original developer takes the code and modifies it independently. The main benefit over closed software is that it can be freely downloaded by everyone and everybody can modify it as they see fit. However the downside is that if the development team loses interest, the software will become outdated and will not work smoothly with other systems anymore. Both aspects will later be found both useful and time-consuming. 
-	
+	The software integration in this Matura Paper is based on \gls{OSS}. \gls{OSS} is a software of which the source code is public. There is an important process known as 'forking', which refers to when a person other than the original developer takes the code and modifies it independently. The main benefit over closed software is that it can be freely downloaded by everyone and everybody can modify it as they see fit. However the downside is that if the development team loses interest, the software will become outdated and will not work smoothly with other systems anymore. Both aspects will later be found both useful and time-consuming. 
+	% TODO question from the pdf about forking in the next section
 	
 	\subsubsection{Flight Softwares}
-	Based on the literature reviewed there are three main softwares to consider when it comes to drones Betaflight, \myinav (\glsentrylong{INAV}) and Ardupilot. All of them are open source. Multiwii is the origin of Betaflight and \gls{INAV}. Multwii was Arduino based and then upgraded to Baseflight to be able to utilize a better chipset. Then it was forked to Cleanflight, which was later forked again into Betaflight and \gls{INAV} \cite{history}. 
+	Based on the literature reviewed there are three main software stacks to consider when it comes to drones: Betaflight, \myinav (\glsentrylong{INAV}), and Ardupilot. All of them are open source. Multiwii is the origin of Betaflight and \gls{INAV}. Multwii was Arduino based and then upgraded to Baseflight to be able to utilize a better chipset. Then it was forked to Cleanflight, which was later forked again into Betaflight and \gls{INAV} \cite{history}. 
 	
 	The following overview of the three softwares, is mostly based on the article written by \textcite{firmwarearticle} and a video made by \textcite{firmwarevideo}.
 	
 	Betaflight appears to be the go-to option for \gls{FPV}, commonly used for filming or racing. It is the most beginner friendly out of the three, because it has a large community, which results in a wide range of tutorials. When a new \gls{Fc} comes out it is normally made to be used with Betaflight. However, Betaflight lacks support for different types of vehicles and generally the automated features are less developed compared to the other two. 
 	
-	\gls{INAV} offers basic autonomous flight using waypoints and automated landing. It does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface to Betaflight, so switching from one to the other is easier than switching from \gls{INAV} to Ardupilot.
+	\gls{INAV} offers basic autonomous flight using waypoints and automated landing. It does not only support quadcopters, but also boats, rovers, planes and wings. It has a similar interface as Betaflight, so switching from one to the other is easier than switching from \gls{INAV} to Ardupilot.
 	
 	Ardupilot basically offers everything the other two have to offer and more, for example Submarines and \glspl{VTOL}. Although it is not commonly used with \gls{FPV}, it is still possible. Ardupilot involves more steps to set up, which also leads to the main benefit of it, namely the nearly limitless customization options.
 
 	
-	It is also the only option to use together with a companion computer like the RaspberryPi. A few years ago it was really expensive to start, because it only supported the Pixhawk family of flight controllers which cost several hundred Franks per piece. However, in recent years it has began to support more and cheaper flight controllers.
+	It is also the only option to use together with a companion computer like the RaspberryPi. A few years ago it was really expensive to start, because it only supported the Pixhawk family of flight controllers which cost a few hundred Francs per piece. However, in recent years it has began to support more and cheaper flight controllers.
 	
 
 
 	\subsection{Drone Overview}
-	If you want to fly a drone you have two options available: either you buy one or you build one. From a technical viewpoint, the second option is, not only the better option but also the cheaper one.
+	If you want to fly a drone you have two options available: either you buy one or you build one. From a technical viewpoint, the second option is, not only the better option but also the cheaper one. Additionally, in the case of this Matura paper there is not an option to buy a prebuilt drone. 
+	% TODO not as standard existing not an option does not exist compared to \gls{FPV} which xould be bought prebuilt
 	
 	The main parts needed for a drone are the \gls{Fc}, the \gls{ESC}, the receiver, the battery, servos and of course the mainframe. Additionally a \gls{GPS} and LEDs can be added as needed. The \gls{Fc} and the \gls{ESC} are sometimes more generally referred to as \glspl{PCB}\footnote{A \gls{PCB} is a flat board that houses electronic components and features conductive pathways etched onto its surface to connect those components.} or simply 'boards'.
 
@@ -64,12 +67,13 @@
 		\caption{connection between the parts}
 		\label{fig:cheappartconnection}
 	\end{figure} 
+	% TODO do the numbers to reference data changes, already in the connection sketch
 	
-
 	% TODO add a graphic which illustrates the connection between the parts
 	
 	\subsection{Data Transfer Protocols}
-	There are two types of data transfer protocols: serial and parallel. The way they transfer data is by pulsing 5V for a 1 and 0V for a 0. The difference is that the parallel communication sends the data for each bit parallel to the other component through eight connections, as seen in \cref{parallel}, and the serial sends the data over one connection. This also requires a clock to synchronize the output of data.
+	There are two types of data transfer protocols: serial and parallel. The way they transfer data is by pulsing 5V for a 1 and 0V for a 0. The difference is that the parallel communication sends the data for each bit parallel to the other 7 bits through eight connections, as seen in \cref{parallel}, and the serial sends the data over one connection. This also requires a clock to synchronize the output of data.
+	% TODO order the picture somewhat smartly
 	\begin{figure}[ht]
 		\centering
 		\begin{minipage}[c]{0.4\textwidth}
@@ -86,8 +90,8 @@
 	\end{figure}
 	
 	\subsubsection{Uart}
-	The \gls{UART} is a physical circuit. In the field of self-built drones it is used to communicate to and from the \gls{Fc}. It works by transmitting data asynchronously, which means without a clock to synchronize the data transfer. Instead it has a so-called baud rate, which is a measure of \gls{bps}. When connecting two \gls{UART} microcontrollers there are two lines needed from the Tx of one to the Rx of the other and vice versa, as shown in \cref{fig:uartconnection}. With a \gls{UART} a data packet is transferred instead of individual bits. The packet consists of a start bit, followed by 5 to 9 data bits and at the end there are 1 to 2 stop bits, as shown in \cref{fig:uartpackage}. There is also the option to include a parity bit instead of one of the data bits. A parity bit is used to verify that none of the bits were changed during the transfer. It is a 0 if the number of 1 in the sequence is even and 1 if it is odd.
-	\cite{uartprotocol} % TODO reference control
+	The \gls{UART} is a physical circuit \cite{uartprotocol}. In the field of self-built drones it is used to communicate to and from the \gls{Fc}. It works by transmitting data asynchronously. Instead it has a so-called baud rate, which is a measure of \gls{bps}. When connecting two \gls{UART} microcontrollers there are two lines needed from the Tx of one to the Rx of the other and vice versa, as shown in \cref{fig:uartconnection}. With a \gls{UART} a data packet is transferred instead of individual bits. The packet consists of a start bit, followed by 5 to 9 data bits and at the end there are 1 to 2 stop bits, as shown in \cref{fig:uartpackage}. There is also the option to include a parity bit instead of one of the data bits. A parity bit is used to verify that none of the bits were changed during the transfer. It is a 0 if the number of 1 in the sequence is even and 1 if it is odd.
+	% TODO reference control
 \begin{figure}[ht]
 	\begin{minipage}[c]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{pictures/UARTconnection}
@@ -97,14 +101,14 @@
 	\hfill
 	\begin{minipage}[c]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{pictures/Uartpackage}
-		\caption{\gls{UART} package \cite{uartprotocol}}
+		\caption{\gls{UART} packet \cite{uartprotocol}}
 		\label{fig:uartpackage}
 	\end{minipage}
 	
 \end{figure}
 
 	\subsubsection{I2C}
-	The \gls{I2C} communication is also serial like \gls{UART}, but it has the advantage of being able to communicate to more than one slave\footnote{The relationship between two parts where one controls the other is called a master-slave relationship. Obviously the master is the one that controls the slave. Although the terminology is rather controversial, it is still widely used \cite{masterslave}.} part. In this work, it is used for the compass built into the \gls{GPS}. There are two lines between the master and the slave; the \gls{SDA} and the \gls{SCL}. The \gls{SCL} line is used for synchronization and the \gls{SDA} line for the transfer of a packet. The data packet looks quite different to the one from the \gls{UART}. There is a start condition, afterwards the address frame is used to figure out to which slave the packet goes, followed by a bit to determine if the master sends or requests data, the data is followed by a ACK/NACK\footnote{ACK stands for acknowledgment and NACK for negative acknowledgment} bit, which confirms either that the data frame was received or not, and at the end there is a stop condition \cite{i2cprotocol}.
+	The \gls{I2C} communication is also serial like \gls{UART}, but it has the advantage of being able to communicate to more than one slave\footnote{The relationship between two parts where one controls the other is called a master-slave relationship \cite{i2cprotocol}. Obviously the master is the one that controls the slave. Although the terminology is rather controversial, it is still widely used \cite{masterslave}.} part. In this work, it is used for the compass built into the \gls{GPS}. There are two lines between the master and the slave; the \gls{SDA} and the \gls{SCL}. The \gls{SCL} line is used for synchronization and the \gls{SDA} line for the transfer of a packet. The data packet looks quite different to the one from the \gls{UART}. There is a start condition, afterwards the address frame is used to figure out to which slave the packet goes, followed by a bit to determine if the master sends or requests data, the data is followed by a ACK/NACK\footnote{ACK stands for acknowledgment and NACK for negative acknowledgment} bit, which confirms either that the data frame was received or not, and at the end there is a stop condition.
 \begin{figure}[ht]
 	\begin{minipage}[c]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{pictures/I2Cconnection}
@@ -122,7 +126,6 @@
 % TODO make figure on the left larger cannot read do only after decreasing the space on the sid, top and bottom
 	\subsubsection{MAVLink}
 	The MAVLink protocol is more complex compared to \gls{UART} or \gls{I2C}. It can transfer up to 263 bytes or 280 bytes, depending on the version used. It is used for the connection between the \gls{Fc} and a \gls{GCS} or in this case the RaspberryPi companion computer.
-	% TODO do a graphic for the message that somewhat ressembles the other two might not do this
 	\subsection{Parts}
 	
 	\subsubsection[Fc]{Flight Controller}
@@ -144,7 +147,7 @@
 	At the time I bought the Tekko32, it was still shipped with BLHeli32, which as mentioned in the beginning has since seized their operations. It is however possible to flash AM32\footnote{A different \gls{ESC} software, which has gained quite some popularity after BLHeli32 is off the market.} onto it \cite{AM32}.
 
 	\subsubsection{Motor}
-	There are two types of motors: brushed and brushless ones. The difference between the two types is that the brushed motors are mechanically driven, while the brushless motors are electrically driven. As a result, brushless motors also need an ESC to function compared to brushed ones. Brushed motors are used in very small drones with 1S\footnote{What 1S means will be explained in the next section} batteries. However, even in smaller drones brushless motors are the more popular choice \cite{brush/lessmotors}. A brushed motor, as shown on the left in \cref{fig:brushedbrushlessmotor}, works by having two brushes that are delivering the power to a coil in the middle of a permanent magnet. This creates a magnetic field around the coiled, which is then attracted to the magnet surrounding it. Due to the commutator the direction in which the provided electricity flows is changed every half turn. This causes the magnetic field around the coil to change the direction and in turn gets attracted to the other side of the magnet. A brushless motor, as shown in \cref{fig:brushedbrushlessmotor} on the right, works by having a field magnet in the middle and coils surrounding it. The coils surrounding the magnet are part of the so-called stator. These coils are provided with a positive and negative voltage, which will cause the magnetic field around them to alternate. When the alternation is synchronized, which is done by an \gls{ESC}, it will cause the field magnet to spin. 
+	There are two types of motors: brushed and brushless ones. Brushed motors are used in very small drones with 1S\footnote{What 1S means will be explained in the next section} batteries. However, even in smaller drones brushless motors are the more popular choice \cite{brush/lessmotors}. A brushed motor, as shown on the left in \cref{fig:brushedbrushlessmotor}, works by having two brushes that are delivering the power to a coil in the middle of a permanent magnet. This creates a magnetic field around the coiled, which is then attracted to the magnet surrounding it. Due to the commutator the direction in which the provided electricity flows is changed every half turn. This causes the magnetic field around the coil to change the direction and in turn gets attracted to the other side of the magnet. A brushless motor, as shown in \cref{fig:brushedbrushlessmotor} on the right, works by having a field magnet in the middle and coils surrounding it. The coils surrounding the magnet are part of the so-called stator. These coils are provided with a positive and negative voltage, which will cause the magnetic field around them to alternate. When the alternation is synchronized, which is done by an \gls{ESC}, it will cause the field magnet to spin. 
 \begin{figure}[ht]
 	\includegraphics[width=0.9\columnwidth]{pictures/brushed_brushlessmotor}
 	\caption{brushed and brushless motors \cite{brushlessedmotor}}
@@ -158,10 +161,10 @@
 	\subsubsection{Battery}
 	There are two main types of batteries: \gls{LiPo} and \gls{Li-ion} batteries. \gls{LiPo} batteries have a tendency to go up in flames. They have a much higher discharge rate compared to \gls{Li-ion} batteries, also denoted as the C value, so they are well suited for racing drones. However, \gls{Li-ion} batteries have a higher energy density, which means that they can store more mAh for the same weight compared to \gls{LiPo} batteries, so they are more common in long-range flying. The batteries normally have multiple cells, for example a 4S \gls{LiPo} battery contains 4 cells. This is important, because the more cells you have, the higher is the voltage and so you will need a motor with a lower KV value. 
 	 
-	I first wanted to buy two \gls{Li-ion} battery packs, however they are hard to get and much more expensive. The other option would be to solder them together, but it requires some soldering skill, which I personally did not have then. Hence I decided to go with 4S \gls{LiPo} batteries from the Tattu R-line with 120C and 2000mAh, because it needs to also power the RaspberryPi and testing the drone is rather tedious, when one needs to go back to charge every few minutes \cite{tattu}. I chose the brand Tattu, because it was the only known brand that was on AliExpress, from where I also sourced all the other components, so it seemed to be easier to also chose a battery from there. 
+	I first wanted to buy two \gls{Li-ion} battery packs, however they are hard to get and much more expensive. The other option would be to solder them together in parallel, but it requires some soldering skill, which I personally did not have at the time. Hence I decided to go with 4S \gls{LiPo} batteries from the Tattu R-line with 120C and 2000mAh, because it needs to also power the RaspberryPi and testing the drone is rather tedious, when one needs to go back to charge every few minutes \cite{tattu}. I chose the brand Tattu, because it was the only known brand that was on AliExpress, from where I also sourced all the other components, so it seemed to be easier to also chose a battery from there. 
 
 	\subsubsection{GNSS(Global Navigation Satellite System)/Compass}
-	There are two different kinds of \gls{GNSS}\footnote{The \gls{GNSS} is usually referred to as \gls{GPS} even though \gls{GPS} is only the American \gls{GNSS} system} modules: the normal \gls{GPS} and compass boards and \gls{RTK} \gls{GPS}. Usually the chips used in both the RTK GPS and the normal GPS are manufactured by the company Ublox. The RTK GPS can achieve an accuracy of 1cm by incorporating information correction data from a \gls{RTCM}\footnote{It was first used for the positions of boats and other vessels}. However, the correction data is either subscription-based, not guaranteed to cover all of the area or one needs to build one by themselves, which is quite complicated \cite{rtkgps}. For a small drone it may not be worth it to have a \gls{RTK} \gls{GPS} that costs several hundred Swiss Franks instead of a \gls{GPS} with a 2m \gls{CEP} which costs less than 30 Swiss Franks. Some of the \gls{GPS} units also have a compass built-in, so you will not need to buy an extra compass when using ArduPilot. 
+	There are two different kinds of \gls{GNSS}\footnote{The \gls{GNSS} is usually referred to as \gls{GPS} even though \gls{GPS} is only the American \gls{GNSS} system} modules: the normal \gls{GPS} and compass boards and \gls{RTK} \gls{GPS}. Usually the chips used in both the RTK GPS and the normal GPS are manufactured by the company Ublox. The RTK GPS can achieve an accuracy of 1cm by incorporating information correction data from a \gls{RTCM}\footnote{It was first used for the positions of boats and other maritime vessels}. However, the correction data is either subscription-based, not guaranteed to cover all of the area or one needs to build one by themselves, which is quite complicated \cite{rtkgps}. For a small drone it may not be worth it to have a \gls{RTK} \gls{GPS} that costs several hundred Swiss Franks instead of a \gls{GPS} with a 2m \gls{CEP} which costs less than 30 Swiss Franks. Some of the \gls{GPS} units also have a compass built-in, so you will not need to buy an extra compass when using ArduPilot. 
 	\begin{Explanation}[circular error probable (CEP)]
 		\item The \gls{CEP} refers to how close to the real value the \gls{GPS} normally is. So if a \gls{GPS} has a \gls{CEP}
 		of 2m it is normally in the range of 2 meters of the correct value \cite{CEP}.
@@ -177,7 +180,7 @@
 	\subsubsection*{ExpressLRS\protect\footnote{The LRS stands for long range system.}}
 	ExpressLRS is the best protocol in long range and for the combination of long range and low latency. It has been shown by \textcite{elrswezley}\footnote{Due to him being fined by the Australian government he took down his own video, so only a copy from an other YouTube channel exists.} that it really can fly up to 100km away from the starting point. There are two version: a 900 MHz and a 2.4 GHz. The main difference is that the 2.4 GHz can reach over 30km, but it is unlikely to go to 100km. However, it has the lowest latency. It is together with mLRS the only protocol that is open-source.
 	% TODO at the end check if this footnote still references the one from ExpressLRS
-	\subsubsection*{mLRS\protect\footnote[8]{}}
+	\subsubsection*{mLRS\protect\footnote[9]{}}
 	The main difference between ExpressLRS and mLRS is that mLRS has a higher latency, which allows it to send larger data packages to your telemetry device. Which is something that is needed if you want to adjust something or get more data from your drone over the MAVLink protocol during the flight. 
 	
 	\subsubsection*{Transmitter/Radio}
@@ -188,16 +191,17 @@
 	\subsubsection{Smoke Stopper}
 	A smoke stopper is a device that prevents the ESC from short-circuiting due to incorrectly soldered parts and can save quite a lot of money. There are two groups of smoke stoppers one that you buy and get destroyed when the ESC short circuits instead of the ESC. There is another category that does not destroy itself and there are also some that you can solder together on your own \cite{smokestopper}. 
 	
-	\subsubsection{Problems with the Parts}
+	\subsubsection{Propellers and Battery Charger}
+	For the propellers and battery chargers, I went off the recommendations from AOS-RC and FPVknowitall. I chose the Foxeer Donut 5145  and the HQ 5x4.3x3 V1S \cite{toroidal, hqprops}. For the battery charger, I went with the cheapest option the 608 AC Lipo Battery Charger \cite{lipocharger}.
 
-	There were mainly two problems that arose during the process of assembling the drone. One less severe than the other. The first problem was that my ordered Kakute-Tekko stack did not include stack screws, which they normally do. Stack screws are just screws that you can use to mount the stack onto the frame. So I needed to purchase them separately, which was rather tedious and time-consuming.
+
+	\subsubsection{Problems with the Parts Procurement}
+	There were mainly two problems that. One less severe than the other. The first problem was that my ordered Kakute-Tekko stack did not include stack screws, which they normally do. Stack screws are just screws that you can use to mount the stack onto the frame. So I needed to purchase them separately, which was rather tedious and time-consuming.
 	
 	The more severe problem I ran into was that the batteries from AliExpress were first withheld by the Swiss border control and then I received two insect traps instead of batteries. Luckily I ordered one of the same batteries from another online shop (Conrad), because the other two took too long to deliver.
 	
 	Two months later, when my father decided to open the insect traps. To our surprise, the LiPo batteries were inside the insect traps at the bottom. And in hindsight it was also obvious that they were in there, because it had the numbering 3 4s 2000 on top which stands for version 3 of the 4s batteries with 2000 mAh. However, we dismissed the numbering on top as just some random numbers put there. 
 	
-	\subsubsection{Propellers and Battery Charger}
-	For the propellers and battery chargers, I went off the recommendations from AOS-RC and FPVknowitall. I chose the Foxeer Donut 5145  and the HQ 5x4.3x3 V1S \cite{toroidal, hqprops}. For the battery charger, I went with the cheapest option the 608 AC Lipo Battery Charger \cite{lipocharger}.
 
 	\subsection{ArduPilot}
 	This chapter summarizes everything done for the first time flying and what could go wrong based on my experience. It is based on the ArduPilot copter documentation \cite{ardupilotdocs}.
@@ -207,7 +211,7 @@
 	
 	The most widely used \gls{GCS} is \gls{MP}, but runs only on Windows and Mac OS. It has a wiki, which was used for the first-time configuration of my drone \cite{MissionPlanner}. 
 	
-	Another \gls{GCS} is MavProxy. It is written in Python and intended to be used on unix based systems. One of the unix based systems is the Debian \gls{OS}, which will be used on the RaspberryPi.
+	Another \gls{GCS} is MavProxy. It is written in python and intended to be used on Unix-based systems. MavProxy will be used to test the connection between the \gls{Fc} and the RaspberryPi, which is using the Debian \gls{OS}, a Unix-based system.
 	\begin{Explanation}[operating system(OS)]
 		\item A \gls{OS} is a software, which controls all the hardware of a computer.
 	\end{Explanation}
@@ -272,7 +276,7 @@
 	The motor test worked correct after assigning the right position to the motors. Which needed to be done, as I am using the ports M5-M8, instead of the M1-M4. Additionally the parameter \lstinline|Mot_PWM_Type| needs to be set to \mydshot 600. \Gls{DShot} is the digital protocol for communication between the \gls{Fc} and \gls{ESC}. The motors began to beep after a certain time, due to the beacon delay. This will be turned of later. This was also the first time the \gls{ESC} had power, because that a new error appeared called 'battery failsafe'. This is caused by an unstable connection between the \gls{ESC} and the \gls{Fc}, which causes the \gls{Fc} to take the USB cable from the computer as power source and has through too little power to spin the motors, as they need a higher voltage than provided by the computer.
 	
 	\subsubsection{Compass Calibration}
-	The compass calibration needs a good \gls{GPS} lock. However, even with a good lock, relaxed fitness\footnote{The fitness can be in four different states very strict, strict, default and relaxed. The stricter the fitness is the longer the calibration takes.}, and \lstinline|Compass_Orient| set to 6, as recommended by the Holybro docs, it still failed \cite{HolybroDocs}. Large Metal parts could again influence the calibration, but there were none in the vicinity of the compass. To temporarily do the calibration the large vehicle MagCal\footnote{The compass calibration is done by rotating the copter in the air. However, this is not really an option for larger vehicles, to calibrate them the large vehicle MagCal is used, by just putting in the direction the compass is facing.} can be done. However, this mostly takes away the prearm message. It is strongly discouraged by the ArduPilot documentation, because it can look as if it is correctly configured, but the orientation is incorrect. The best way to calibrate the compass is to put it directly on  top of the \gls{Fc} and then do the calibration.
+	The compass calibration needs a good \gls{GPS} lock. However, even with a good lock, relaxed fitness\footnote{The fitness can be in four different states very strict, strict, default and relaxed. The stricter the fitness is the longer the calibration takes.}, and \lstinline|Compass_Orient| set to 6, as recommended by the Holybro docs, it still failed \cite{HolybroDocs}. Large metal parts could again influence the calibration, but there were none in the vicinity of the compass. To temporarily do the calibration the large vehicle MagCal\footnote{The compass calibration is done by rotating the copter in the air. However, this is not really an option for larger vehicles, to calibrate them the large vehicle MagCal is used, by just putting in the direction the compass is facing.} can be done. However, this mostly takes away the prearm message. It is strongly discouraged by the ArduPilot documentation, because it can look as if it is correctly configured, but the orientation is incorrect. The best way to calibrate the compass is to put it directly on  top of the \gls{Fc} and then do the calibration.
 
 	\subsubsection{Road to First Flight}
 	The first step to flying is to arm the drone.
@@ -293,10 +297,10 @@
 	\label{fig:quadx}
 \end{figure}
 	%TODO fix this picture placement
-	In my first test flight the drone was shaking violently, which is also known as wobbling. This caused the drone to crash  into the ground. Reasons for this behavior can be loosely fastened parts, imbalanced propellers, or wrong \gls{PID} values \cite{dronewobblevideo}. In my case it was the \gls{PID} values, which were for a 9-inch drone and not a 5-inch. The \gls{PID} values can be adjusted via the initial tuning parameter. After this the drone flew fine, except that the sticks of the radio controller needed to be reversed, because when I pulled the stick left the drone flew to the right. This can be done using the \lstinline|RC2_Reversed| parameter.
+	In the first test flight the drone was shaking violently, which is also known as wobbling. This caused the drone to crash  into the ground. Reasons for this behavior can be loosely fastened parts, imbalanced propellers, or wrong parameters used for the \gls{PID} controller \cite{dronewobblevideo}. In this case those parameters were for a 9-inch drone and not a 5-inch. The parameters can be adjusted via the initial tuning parameter. After this the drone flew fine, except that the sticks of the radio controller needed to be reversed, because when one pulled the stick left the drone flew to the right. This can be done using the \lstinline|RC2_Reversed| parameter.
 
 	\begin{Explanation}[{{proportional, integral, derivative (PID)}}]
-		\item The \gls{PID} refers to three variables who control the error adjusting system in a drone. With error is meant the difference between how much the motors rotate and how much they should rotate. 
+		\item The three parameters are used as weights for the three parts (\gls{PID}) of the error function.
 	\end{Explanation}
 	
 	\subsection{Companion Computer}\label{companion computer}
@@ -447,12 +451,15 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	
 	\section{Results}
 
-	The different testflights showed promising results. The drone followed the path from the coordinates.txt file, achieving the goal of this Matura paper. The different trials showed how much one or two parameters already influence the capability of the drone to fly. Another challenge was integrating the different software components, which are not transparent and sometimes outdated. The software components often conflicted during drone takeoff, with one allowing flight while another prevented it\footnote{The prevention was the one with the upper hand.}.
+	The various testflights showed promising results. The drone followed the path from the coordinates.txt file, which was the main goal of this Matura paper. The different trials showed also, how much one or two parameters already influence the capability of the drone to fly. 
+	
+	Another challenge was integrating the different software components, which are not transparent and sometimes outdated. The software components often conflicted during drone takeoff, with one allowing flight while another prevented it\footnote{The prevention was the one with the upper hand.}.
 
+	This Matura paper also shows how important a log file is for an autonomous system, because once the system takes  control, it is impossible to know what is happening and without the data provided by a log file one can also not improve the system.
 	
 	
 	\section{Discussion and Outlook}
-	This matura paper also shows how important a log file is for an autonomous system, because once the system takes  control, it is impossible to know what is happening. However, one needs to know for further tuning, tweaking, and error solving. It should be noted that the built drone is only a proof of concept and requires further testing to reach full maturity. Additionally, a (infrared) camera can be added to the RaspberryPi. Due to the nature of the RaspberryPi being a fully functioning computer, unlike an Arduino, the pictures taken by the camera could be processed directly on board for tasks such as image recognition. This would be straight-forward, because it is already integrated into the in RaspberryPi.
+	 It should be noted that the built drone is only a proof of concept and requires further testing and tuning to reach full maturity. Additionally, a (infrared) camera can be added to the RaspberryPi. Due to the nature of the RaspberryPi being a fully functioning computer, unlike an Arduino, the pictures taken by the camera could be processed directly on board for tasks such as image recognition. This would be straight-forward, because it is already integrated into the in RaspberryPi.
 	
 	\section{Conclusion}
 	\newpage
@@ -462,6 +469,17 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	\pagebreak
 	\appendix
 	\section{Appendices}
+	
+
+	\printbibliography
+	
+	\newpage
+	\listoffigures
+	% TODO mdight sort them by author...
+
+	\newpage
+	\printglossary[type=\acronymtype]
+	\newpage
 	\subsection{List of Parts}
 	\subsubsection{Physical Parts}
 	\begin{itemize}
@@ -482,18 +500,5 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 		\item RaspberryPi Mount: 	\url{https://github.com/pythonnoob9903/MA-project/tree/main/RaspberryPi%20Mount}
 		\item Code and Coordinates\footnote{Found as dronekittest.py, coordinates.py, and coordinates.txt}:  \url{https://github.com/pythonnoob9903/MA-project/tree/main}
 	\end{itemize}
-
-	\listoffigures	% TODO get this shit right
-	% TODO do this into the appendix?
-	% TODO add list of the parts used in the drone build with links directing to websites used to purchase them
-	% TODO might sort them by author...
-	\newpage
-	\printbibliography[
-		heading=bibintoc,
-		title={Bibliography}
-	]
-	
-	\newpage
-	\printglossary[type=\acronymtype]
 	
 \end{document}

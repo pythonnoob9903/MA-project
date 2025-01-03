@@ -1,11 +1,11 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
 \contentsline {section}{\numberline {2}Literature Review}{3}{section.2}%
-\contentsline {section}{\numberline {3}Methodology}{3}{section.3}%
-\contentsline {subsection}{\numberline {3.1}General Software Considerations}{3}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Open Source Software}{3}{subsubsection.3.1.1}%
+\contentsline {section}{\numberline {3}Methodology}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}General Software Considerations}{4}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Open Source Software}{4}{subsubsection.3.1.1}%
 \contentsline {subsubsection}{\numberline {3.1.2}Flight Softwares}{4}{subsubsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.2}Drone Overview}{4}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Data Transfer Protocols}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Data Transfer Protocols}{5}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Uart}{5}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}I2C}{6}{subsubsection.3.3.2}%
 \contentsline {subsubsection}{\numberline {3.3.3}MAVLink}{6}{subsubsection.3.3.3}%
@@ -17,26 +17,25 @@
 \contentsline {subsubsection}{\numberline {3.4.5}GNSS(Global Navigation Satellite System)/Compass}{8}{subsubsection.3.4.5}%
 \contentsline {subsubsection}{\numberline {3.4.6}Radio/Transmitter}{9}{subsubsection.3.4.6}%
 \contentsline {subsubsection}{\numberline {3.4.7}Smoke Stopper}{9}{subsubsection.3.4.7}%
-\contentsline {subsubsection}{\numberline {3.4.8}Problems with the Parts}{9}{subsubsection.3.4.8}%
-\contentsline {subsubsection}{\numberline {3.4.9}Propellers and Battery Charger}{10}{subsubsection.3.4.9}%
+\contentsline {subsubsection}{\numberline {3.4.8}Propellers and Battery Charger}{10}{subsubsection.3.4.8}%
+\contentsline {subsubsection}{\numberline {3.4.9}Problems with the Parts Procurement}{10}{subsubsection.3.4.9}%
 \contentsline {subsection}{\numberline {3.5}ArduPilot}{10}{subsection.3.5}%
 \contentsline {subsubsection}{\numberline {3.5.1}Ground Station}{10}{subsubsection.3.5.1}%
 \contentsline {subsubsection}{\numberline {3.5.2}Firmware Installation}{10}{subsubsection.3.5.2}%
 \contentsline {subsubsection}{\numberline {3.5.3}GPS Connection}{11}{subsubsection.3.5.3}%
-\contentsline {subsubsection}{\numberline {3.5.4}Receiver/Transmitter}{12}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.4}Receiver/Transmitter}{11}{subsubsection.3.5.4}%
 \contentsline {subsubsection}{\numberline {3.5.5}Battery}{12}{subsubsection.3.5.5}%
 \contentsline {subsubsection}{\numberline {3.5.6}Motor Test}{12}{subsubsection.3.5.6}%
-\contentsline {subsubsection}{\numberline {3.5.7}Compass Calibration}{12}{subsubsection.3.5.7}%
+\contentsline {subsubsection}{\numberline {3.5.7}Compass Calibration}{13}{subsubsection.3.5.7}%
 \contentsline {subsubsection}{\numberline {3.5.8}Road to First Flight}{13}{subsubsection.3.5.8}%
 \contentsline {subsection}{\numberline {3.6}Companion Computer}{14}{subsection.3.6}%
 \contentsline {subsubsection}{\numberline {3.6.1}RaspberryPi Setup}{14}{subsubsection.3.6.1}%
 \contentsline {subsubsection}{\numberline {3.6.2}MAVProxy Installation}{14}{subsubsection.3.6.2}%
 \contentsline {subsubsection}{\numberline {3.6.3}Dronekit}{15}{subsubsection.3.6.3}%
 \contentsline {section}{\numberline {4}Results}{17}{section.4}%
-\contentsline {section}{\numberline {5}Discussion and Outlook}{17}{section.5}%
+\contentsline {section}{\numberline {5}Discussion and Outlook}{18}{section.5}%
 \contentsline {section}{\numberline {6}Conclusion}{18}{section.6}%
 \contentsline {section}{\numberline {A}Appendices}{19}{appendix.A}%
-\contentsline {subsection}{\numberline {A}List of Parts}{19}{subsection.A.1}%
-\contentsline {subsubsection}{\numberline {A.1}Physical Parts}{19}{subsubsection.A.1.1}%
-\contentsline {subsubsection}{\numberline {A.2}Non-Physical Parts}{19}{subsubsection.A.1.2}%
-\contentsline {section}{Bibliography}{20}{section*.6}%
+\contentsline {subsection}{\numberline {A}List of Parts}{25}{subsection.A.1}%
+\contentsline {subsubsection}{\numberline {A.1}Physical Parts}{25}{subsubsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.2}Non-Physical Parts}{25}{subsubsection.A.1.2}%
