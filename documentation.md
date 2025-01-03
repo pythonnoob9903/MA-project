@@ -1,4 +1,10 @@
 # Documentation
+## 3012-5.1
+1. autonomous takeoff and flying to point
+2. crashing due to high HDOP value
+3. crashing due to wire that came of from the previous crash
+4. got reviewed by multiple people and edited accordingly
+5. writing in section dronekit
 ## 23.12-29.12
 1. first autonomous takeoff
 2. editing all to page 20
