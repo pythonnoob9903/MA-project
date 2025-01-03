@@ -25,7 +25,10 @@
 
 
 	\section{Literature Review}
-	% TODO explain what is new..
+	A path-following drone has been built before. However, the drone built in this combination with a Kakute H7 and a RaspberryPi running a Dronekit Python script has not.
+	
+	
+	\section{Methodology}
 	\subsection{General Software Considerations}
 
 	\subsubsection{Open Source Software}
@@ -46,8 +49,8 @@
 	
 	It is also the only option to use together with a companion computer like the RaspberryPi. A few years ago it was really expensive to start, because it only supported the Pixhawk family of flight controllers which cost several hundred Franks per piece. However, in recent years it has began to support more and cheaper flight controllers.
 	
-	\section{Methodology}
-	%only what has been done
+
+
 	\subsection{Drone Overview}
 	If you want to fly a drone you have two options available: either you buy one or you build one. From a technical viewpoint, the second option is, not only the better option but also the cheaper one.
 	
@@ -434,21 +437,31 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	This will not let anything, except the channels defined in \lstinline|Brd_Safety_Mask|, go through to the \gls{ESC}. Hence both of them need to be deactivated by the code, as demonstrated in \cref{lst:deactivation}
 	\begin{lstlisting}[caption={deactivation of parameters}\protect\footnote{}, style=myPython, label=lst:deactivation]
 		vehicle.parameters["BRD_SAFETYOPTION"] = 0
-	\end{lstlisting}\footnotetext{This can be done with any parameter, by putting it into the place of \lstinline|Brd_safetyoption|.}
+	\end{lstlisting}\footnotetext{This can be done with any parameter, by putting it into the place of \lstinline|Brd_Safetyoption|.}
 	
+	Something that needs to be looked out for when flying low over the ground is that there is a low \gls{VDOP}, because it is not one of the prearm messages that would hinder the drone from taking off. 
 	
-	converting the coordinates from the coordinates.txt to 
-	
-	trying to let the drone fly with the \lstinline|vehicle.simple_takeoff(Zcoordinate)| command does not work
-	
-	it worked miraculously after diabling the parameter \lstinline|BRD_Safety_Deflt| and setting the bitmask to zero of the parameter \lstinline|BRD_Safetyoption| 
-	this is used to enable or disable the outputs to motors and servos. there is also the parameter \lstinline|BRD_Safety_Mask| which controls which switches can still get through when the safety switch is enabled... So the problem was that the \lstinline|Brd_Safetyoption| was set to be activated when \lstinline|Brd_safety_deflt| was disabled and enabled... so there was nothing except radiocontrol going through to the motors not my script.
-	
-	
-	hdop and vdop problems...
+	\begin{Explanation}[horizontal and vertical dillution of precision (HDOP/VDOP)]
+		\item The \gls{HDOP} or \gls{VDOP} refers to the dillution of the precision of the \gls{GPS}. The values are not in meters and range from under 1 (ideal) up to over 20 (poor). 
+	\end{Explanation}
 	
 	\section{Results}
+%	For the first seven testflights the Drone armed, but did not takeoff. This was due to the safety parameters that were still active. Afterwards the drone took off, but did not fly to the targeted location yet. To get there the code needed to be improved. It then flew to the targeted point, however the drone crashed, because it got stuck between some plates, due to a high \gls{VDOP}.
+	The drone definitely flew to the assigned point. However, a few parameters can already render the code useless, as example the parameter \lstinline|Brd_Safetyoption|. Especially the \gls{PID} can still be tweaked, which would lead to a more stable flight. Instead of the somewhat unreliable wobbling it still has.
+
+% flew to a point
+% however parameters can completely destroy anything
+% rather unreliable and more testflights needed for better flight
+
+	
+	
 	\section{Discussion and Outlook}
+%	The drone definitely flew autonomous, however can be massively improved with further testing and tuning of the \gls{PID} values. Additionally, one can connect a camera to the RaspberryPi. This would result in possibilities for mapping or detection of anomalies using image recognition. 
+% log data curcial
+% camera for further exploration
+
+
+	
 	\section{Conclusion}
 	\newpage
 	\renewcommand{\thesubsection}{\Alph{subsection}}
@@ -457,11 +470,11 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	\pagebreak
 	\appendix
 	\section{Appendices}
+	\subsection{List of Parts}
 
-	\listoffigures	
+	\subsection{}\listoffigures	% TODO get this shit right
 	% TODO do this into the appendix?
 	% TODO add list of the parts used in the drone build with links directing to websites used to purchase them
-	\pagebreak
 	% TODO might sort them by author...
 	\newpage
 	\printbibliography[
