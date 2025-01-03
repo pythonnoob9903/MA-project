@@ -104,7 +104,14 @@ while get_rc_channel_value(6) == None: # checks if there is a rc_channel already
 	time.sleep(1)
 log(f"rc channel value:{get_rc_channel_value(6)}")
 
-setup(vehicle, VehicleMode) # quick arming and disarming for home_location to be set
+vehicle.mode = VehicleMode('GUIDED')
+while not vehicle.mode.name == "GUIDED":
+		log(f"Not in GUIDED mode: {vehicle.mode.name}")
+		time.sleep(1)
+log(f"in GUIDED mode: {vehicle.mode.name}")
+
+
+setup(vehicle, VehicleMode) #arms and sets important parameters
 vehicle.armed = True
 time.sleep(1)
 vehicle.armed = False
@@ -120,8 +127,6 @@ while radiocontrol() is True:
 			time.sleep(1)
 	log(f"in GUIDED mode: {vehicle.mode.name}")
 
-	
-	setup(vehicle, VehicleMode) #arms and sets important parameters
 
 	log(f"Hdop: {vehicle.gps_0.eph}, Vdop: {vehicle.gps_0.epv}, sattelites visible: {vehicle.gps_0.satellites_visible}")
 
@@ -133,6 +138,8 @@ while radiocontrol() is True:
 	time.sleep(5)
 
 	target = LocationGlobal(Zcord[0], Ycord[0], Zcord[0])
+	log(f"target location: {target}")
+
 
 	if checks(vehicle) is False:
 		safetyoptions_on_off(vehicle, 1, VehicleMode)

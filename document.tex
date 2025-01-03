@@ -446,21 +446,13 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	\end{Explanation}
 	
 	\section{Results}
-%	For the first seven testflights the Drone armed, but did not takeoff. This was due to the safety parameters that were still active. Afterwards the drone took off, but did not fly to the targeted location yet. To get there the code needed to be improved. It then flew to the targeted point, however the drone crashed, because it got stuck between some plates, due to a high \gls{VDOP}.
-	The drone definitely flew to the assigned point. However, a few parameters can already render the code useless, as example the parameter \lstinline|Brd_Safetyoption|. Especially the \gls{PID} can still be tweaked, which would lead to a more stable flight. Instead of the somewhat unreliable wobbling it still has.
 
-% flew to a point
-% however parameters can completely destroy anything
-% rather unreliable and more testflights needed for better flight
+	The different testflights showed promising results. The drone followed the path from the coordinates.txt file, achieving the goal of this Matura paper. The different trials showed how much one or two parameters already influence the capability of the drone to fly. Another challenge was integrating the different software components, which are not transparent and sometimes outdated. The software components often conflicted during drone takeoff, with one allowing flight while another prevented it\footnote{The prevention was the one with the upper hand.}.
 
 	
 	
 	\section{Discussion and Outlook}
-%	The drone definitely flew autonomous, however can be massively improved with further testing and tuning of the \gls{PID} values. Additionally, one can connect a camera to the RaspberryPi. This would result in possibilities for mapping or detection of anomalies using image recognition. 
-% log data curcial
-% camera for further exploration
-
-
+	This matura paper also shows how important a log file is for an autonomous system, because once the system takes  control, it is impossible to know what is happening. However, one needs to know for further tuning, tweaking, and error solving. It should be noted that the built drone is only a proof of concept and requires further testing to reach full maturity. Additionally, a (infrared) camera can be added to the RaspberryPi. Due to the nature of the RaspberryPi being a fully functioning computer, unlike an Arduino, the pictures taken by the camera could be processed directly on board for tasks such as image recognition. This would be straight-forward, because it is already integrated into the in RaspberryPi.
 	
 	\section{Conclusion}
 	\newpage
@@ -471,8 +463,27 @@ nano /home/EduPi/mavproxy-env/lib/python3.11/site-packages/dronekit/__init__.py
 	\appendix
 	\section{Appendices}
 	\subsection{List of Parts}
+	\subsubsection{Physical Parts}
+	\begin{itemize}
+		\item \gls{Fc}:		Kakute H7 v1.3 (MPU6000) \cite{KakuteH7}
+		\item \gls{ESC}: 	Tekko32 F4 Metal 4in1 65A ESC (AM32) \cite{Tekko32}
+		\item \gls{GPS}: 	Micro M10 GPS \cite{m10gps}
+		\item 4 Motors: 	XING-E Pro 2207 2450KV \cite{xingepro}
+		\item Propellers: 	Foxeer Donut 5145 Props \cite{toroidal} or HQProp 5X4.3X3V1S \cite{hqprops}
+		\item Battery: 		Tattu 2000mAh 4S 120C 14.8V R-Line Version 3.0 \cite{tattu}
+		\item Receiver: 	RP4TD ExpressLRS 2.4GHz True Diversity Receiver \cite{radiomasterreceiver}
+		\item Radio: 		Boxer Radio Controller (M2) \cite{radiomasterboxer}
+		\item RaspberryPi:	Raspberry Pi 4 Model B - 2GB \cite{raspberrypi}
+		\item Frame:		TBS Source One V5.1 5inch \cite{frame}
+		\item Additional Screws: 4x M3x20, 4x M3x30 (for the \gls{Fc}/\gls{ESC} stack), 4x M3x40
+	\end{itemize}
+	\subsubsection{Non-Physical Parts}
+	\begin{itemize}
+		\item RaspberryPi Mount: 	\url{https://github.com/pythonnoob9903/MA-project/tree/main/RaspberryPi%20Mount}
+		\item Code and Coordinates\footnote{Found as dronekittest.py, coordinates.py, and coordinates.txt}:  \url{https://github.com/pythonnoob9903/MA-project/tree/main}
+	\end{itemize}
 
-	\subsection{}\listoffigures	% TODO get this shit right
+	\listoffigures	% TODO get this shit right
 	% TODO do this into the appendix?
 	% TODO add list of the parts used in the drone build with links directing to websites used to purchase them
 	% TODO might sort them by author...
