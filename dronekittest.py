@@ -11,6 +11,8 @@ log("connected to Fc")
 
 latest_rc_channels = None
 
+# do the global coordinates for non hard  coding
+
 @vehicle.on_message("RC_CHANNELS") # listens to the RC_Channels
 def rc_channel_listener(vehicle, name, message): 
 	global latest_rc_channels
