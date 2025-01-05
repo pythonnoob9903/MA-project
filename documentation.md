@@ -1,10 +1,15 @@
 # Documentation
-## 3012-5.1
+## 30.12-5.1
 1. autonomous takeoff and flying to point
 2. crashing due to high HDOP value
 3. crashing due to wire that came of from the previous crash
-4. got reviewed by multiple people and edited accordingly
+4. reviewed by multiple people and edited accordingly
 5. writing in section dronekit
+6. writing literature review, results, dicussion and outlook, and conclusion
+7. adding title page
+8. problems with takeoff even though it worked before, one parameter was changed... changing it back
+9. finalising the written part
+10. printing the matura paper
 ## 23.12-29.12
 1. first autonomous takeoff
 2. editing all to page 20

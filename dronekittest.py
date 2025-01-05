@@ -11,6 +11,15 @@ log("connected to Fc")
 
 latest_rc_channels = None
 
+global targetdiff
+targetdiff = 0.1
+
+global targetheightdiff
+targetheightdiff = 5
+
+global timeout
+timeout = 10
+
 # do the global coordinates for non hard  coding
 
 @vehicle.on_message("RC_CHANNELS") # listens to the RC_Channels
@@ -81,14 +90,14 @@ def flytoallcoordinates(vehicle, VehicleMode): # loops through all coordinates p
 
 
 			log(f"in gotoloop-> current altitude: {vehicle.location.global_frame}")
-			if distance_in_meters_to_target(vehicle, target) <= 0.1:
+			if distance_in_meters_to_target(vehicle, target) <= targetdiff:
 				log(f"target {i} reached {vehicle.location.global_frame}")
 				break
-			if distance_in_meters_to_target(vehicle, target) >= 5:
+			if distance_in_meters_to_target(vehicle, target) >= targetheightdiff:
 				log(f"drone is too far from home:{vehicle.location.global_frame}")
 				vehicle.mode = VehicleMode("RTL")
 				break
-			if elapsed_time >= 10:
+			if elapsed_time >= timeout:
 				log(f"target not reached, going to next target: initial target{target}, current position {current_location}, distance: {distance_in_meters_to_target(vehicle, target)}")
 				break
 			time.sleep(1)
@@ -174,14 +183,14 @@ while radiocontrol() is True:
 		radiocontrol()
 		current_altitude = vehicle.location.global_frame.alt
 		log(f"in takeoffloop-> current altitude: {current_altitude}")
-		if target.alt - current_altitude <=  0.1:
+		if target.alt - current_altitude <=  targetdiff:
 			log(f"target altitude reached {target.alt}, {current_altitude}")
 			break
-		if target.alt - current_altitude >= 5:
+		if target.alt - current_altitude >= targetheightdiff:
 			log(f"drone is too far from home :{current_altitude}") 
 			vehicle.mode = VehicleMode("RTL")
 			break
-		if elapsed_time >= 10:
+		if elapsed_time >= timeout:
 			log(f"Timeout, took to long to reach target altitude: {current_altitude}, target altitude: {target.alt}")
 			safetyoptions_on_off(vehicle, 1, VehicleMode)
 			vehicle.mode = VehicleMode("RTL")
