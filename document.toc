@@ -19,7 +19,7 @@
 \contentsline {subsubsection}{\numberline {3.4.7}Smoke Stopper}{9}{subsubsection.3.4.7}%
 \contentsline {subsubsection}{\numberline {3.4.8}Propellers and Battery Charger}{9}{subsubsection.3.4.8}%
 \contentsline {subsubsection}{\numberline {3.4.9}Problems with the Parts Procurement}{9}{subsubsection.3.4.9}%
-\contentsline {subsection}{\numberline {3.5}ArduPilot}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.5}ArduPilot}{10}{subsection.3.5}%
 \contentsline {subsubsection}{\numberline {3.5.1}Ground Station}{10}{subsubsection.3.5.1}%
 \contentsline {subsubsection}{\numberline {3.5.2}Firmware Installation}{10}{subsubsection.3.5.2}%
 \contentsline {subsubsection}{\numberline {3.5.3}GPS Connection}{10}{subsubsection.3.5.3}%
@@ -29,14 +29,15 @@
 \contentsline {subsubsection}{\numberline {3.5.7}Compass Calibration}{12}{subsubsection.3.5.7}%
 \contentsline {subsubsection}{\numberline {3.5.8}Road to First Flight}{12}{subsubsection.3.5.8}%
 \contentsline {subsection}{\numberline {3.6}Companion Computer}{13}{subsection.3.6}%
-\contentsline {subsubsection}{\numberline {3.6.1}Raspberry Pi Setup}{13}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.1}Raspberry Pi Setup}{14}{subsubsection.3.6.1}%
 \contentsline {subsubsection}{\numberline {3.6.2}MAVProxy Installation}{14}{subsubsection.3.6.2}%
 \contentsline {subsubsection}{\numberline {3.6.3}Dronekit}{15}{subsubsection.3.6.3}%
 \contentsline {section}{\numberline {4}Results}{18}{section.4}%
 \contentsline {section}{\numberline {5}Discussion and Outlook}{19}{section.5}%
 \contentsline {section}{\numberline {6}Conclusion}{19}{section.6}%
-\contentsline {section}{\numberline {A}Appendices}{20}{appendix.A}%
-\contentsline {subsection}{\numberline {A}Thanks}{20}{subsection.A.1}%
-\contentsline {subsection}{\numberline {B}List of Parts}{26}{subsection.A.2}%
-\contentsline {subsubsection}{\numberline {B.1}Physical Parts}{26}{subsubsection.A.2.1}%
-\contentsline {subsubsection}{\numberline {B.2}Non-Physical Parts}{26}{subsubsection.A.2.2}%
+\contentsline {section}{\large Appendices}{20}{section.6}%
+\contentsline {section}{\numberline {A}Thanks}{20}{appendix.A}%
+\contentsline {section}{\numberline {B}List of Parts}{20}{appendix.B}%
+\contentsline {section}{C \hspace {0em} Bibliography}{21}{section*.6}%
+\contentsline {section}{D \hspace {0em} List of Figures}{24}{section*.7}%
+\contentsline {section}{E \hspace {0em} Acronyms}{25}{section*.8}%
