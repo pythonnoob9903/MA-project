@@ -234,272 +234,208 @@
 2025-01-03 14:48:03.011629	high GPS HDOP: 115 (Vdop: 208)
 2025-01-03 14:49:13.882200	
 
-2025-01-03 14:49:13.882798	2025-01-03 14:49:13.881773
-2025-01-03 14:49:39.190300	connected to Fc
-2025-01-03 14:49:39.191059	16.64 battery voltage
-2025-01-03 14:49:39.191601	vehicle mode: GUIDED
-2025-01-03 14:49:39.192027	currently no communication to radio: None
-2025-01-03 14:49:40.193283	rc channel value:999
-2025-01-03 14:49:40.198408	in GUIDED mode: GUIDED
-2025-01-03 14:49:40.199635	Speed_Up and groundspeed set/vehicle armed.
-2025-01-03 14:49:40.204578	safetyoption bitmask set to zero
-2025-01-03 14:49:40.210463	safety switch disabled
-2025-01-03 14:49:41.214641	control stays autonomous
-2025-01-03 14:49:41.215858	Vehicle is armable.
-2025-01-03 14:49:41.216426	high GPS HDOP: 115 (Vdop: 206)
-2025-01-03 14:49:42.217738	Vehicle is armable.
-2025-01-03 14:49:42.218308	high GPS HDOP: 115 (Vdop: 206)
-2025-01-03 14:49:43.219569	Vehicle is armable.
-2025-01-03 14:49:43.220091	high GPS HDOP: 115 (Vdop: 206)
-2025-01-03 14:49:44.221330	Vehicle is armable.
-2025-01-03 14:49:44.222162	high GPS HDOP: 115 (Vdop: 205)
-2025-01-03 14:49:45.224840	Vehicle is armable.
-2025-01-03 14:49:45.225411	high GPS HDOP: 115 (Vdop: 205)
-2025-01-03 14:49:46.227329	Vehicle is armable.
-2025-01-03 14:49:46.229577	high GPS HDOP: 115 (Vdop: 205)
-2025-01-03 14:49:47.233433	Vehicle is armable.
-2025-01-03 14:49:47.235516	high GPS HDOP: 115 (Vdop: 205)
-2025-01-03 14:49:48.237855	Vehicle is armable.
-2025-01-03 14:49:48.238872	high GPS HDOP: 115 (Vdop: 205)
-2025-01-03 14:49:49.240246	Vehicle is armable.
-2025-01-03 14:49:49.240905	high GPS HDOP: 115 (Vdop: 205)
-2025-01-03 14:49:50.242135	Vehicle is armable.
-2025-01-03 14:49:50.242799	high GPS HDOP: 115 (Vdop: 205)
-2025-01-03 14:52:15.560544	
 
-2025-01-03 14:52:15.561336	2025-01-03 14:52:15.560000
-2025-01-03 14:52:40.813303	connected to Fc
-2025-01-03 14:52:40.819060	16.6 battery voltage
-2025-01-03 14:52:40.819617	vehicle mode: GUIDED
-2025-01-03 14:52:40.820325	currently no communication to radio: None
-2025-01-03 14:52:41.821063	rc channel value:999
-2025-01-03 14:52:41.822397	in GUIDED mode: GUIDED
-2025-01-03 14:52:41.822879	Speed_Up and groundspeed set/vehicle armed.
-2025-01-03 14:52:41.825255	safetyoption bitmask set to zero
-2025-01-03 14:52:41.826252	safety switch disabled
-2025-01-03 14:52:42.829316	control stays autonomous
-2025-01-03 14:52:42.830250	Vehicle is armable.
-2025-01-03 14:52:42.831136	in GUIDED mode: GUIDED
-2025-01-03 14:52:42.831502	Hdop: 96, Vdop: 186, sattelites visible: 8
-2025-01-03 14:52:42.831885	current position: LocationGlobal:lat=47.5971166,lon=8.675236,alt=363.83
-2025-01-03 14:52:42.833291	armed, True
-2025-01-03 14:52:42.836691	home location: LocationGlobal:lat=47.5971178,lon=8.6752366,alt=363.81
-2025-01-03 14:52:42.837161	Xcoordinates [47.5971178, 47.59712678315284, 47.59713576630568]
-2025-01-03 14:52:42.837531	Ycoordinates [8.6752366, 8.675249921409156, 8.675263242818312]
-2025-01-03 14:52:42.837891	Zcoordinates [365.31, 365.31, 365.31]
-2025-01-03 14:52:47.838579	target location: LocationGlobal:lat=365.31,lon=8.6752366,alt=365.31
-2025-01-03 14:52:47.839731	Vehicle is armable.
-2025-01-03 14:52:47.840257	control stays autonomous
-2025-01-03 14:52:47.841124	vehicle armed: False
-2025-01-03 14:52:57.842118	board safety option bitmask set to: 0.0
-2025-01-03 14:52:57.843143	GUIDED, --> mode
-2025-01-03 14:52:57.844464	control stays autonomous
-2025-01-03 14:52:57.845106	control stays autonomous
-2025-01-03 14:52:57.845669	in takeoffloop-> current altitude: 363.97
-2025-01-03 14:52:58.846362	control stays autonomous
-2025-01-03 14:52:58.846937	in takeoffloop-> current altitude: 364.01
-2025-01-03 14:52:59.847770	control stays autonomous
-2025-01-03 14:52:59.848458	in takeoffloop-> current altitude: 364.01
-2025-01-03 14:53:00.849315	control stays autonomous
-2025-01-03 14:53:00.849974	in takeoffloop-> current altitude: 363.98
-2025-01-03 14:53:01.850713	Giving back control to radio
-2025-01-03 14:53:01.851889	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.852357	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.852744	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.853128	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.853652	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.854148	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.854509	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.854847	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.855180	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.855502	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.855832	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.856155	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.856496	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.856835	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.857175	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.859277	Not in RTL mode: GUIDED
-2025-01-03 14:53:01.860170	in RTL mode: RTL
-2025-01-03 14:53:01.965638	safetyoption bitmask set to three
-2025-01-03 14:53:02.067093	safety switch enabled
-2025-01-03 14:53:02.068790	vehiclemode set to RTL: RTL
-2025-01-03 14:53:02.069759	in takeoffloop-> current altitude: 364.03
-2025-01-03 14:53:03.070872	Giving back control to radio
-2025-01-03 14:53:03.072040	in RTL mode: RTL
-2025-01-03 14:53:03.072831	safetyoption bitmask set to three
-2025-01-03 14:53:03.076496	safety switch enabled
-2025-01-03 14:53:03.079215	vehiclemode set to RTL: RTL
-2025-01-03 14:53:03.080600	in takeoffloop-> current altitude: 364.09
-2025-01-03 14:53:04.082847	Giving back control to radio
-2025-01-03 14:53:04.084099	in RTL mode: RTL
-2025-01-03 14:53:04.084826	safetyoption bitmask set to three
-2025-01-03 14:53:04.085455	safety switch enabled
-2025-01-03 14:53:04.092202	vehiclemode set to RTL: RTL
-2025-01-03 14:53:04.092679	in takeoffloop-> current altitude: 364.22
-2025-01-03 14:53:05.093376	Giving back control to radio
-2025-01-03 14:53:05.095054	in RTL mode: RTL
-2025-01-03 14:53:05.095832	safetyoption bitmask set to three
-2025-01-03 14:53:05.100681	safety switch enabled
-2025-01-03 14:53:05.102573	vehiclemode set to RTL: RTL
-2025-01-03 14:53:05.104879	in takeoffloop-> current altitude: 364.24
-2025-01-03 14:53:06.106506	Giving back control to radio
-2025-01-03 14:53:06.109132	in RTL mode: RTL
-2025-01-03 14:53:06.116567	safetyoption bitmask set to three
-2025-01-03 14:53:06.120091	safety switch enabled
-2025-01-03 14:53:06.125113	vehiclemode set to RTL: RTL
-2025-01-03 14:53:06.126176	in takeoffloop-> current altitude: 364.2
-2025-01-03 14:53:07.127307	Giving back control to radio
-2025-01-03 14:53:07.128950	in RTL mode: RTL
-2025-01-03 14:53:07.130349	safetyoption bitmask set to three
-2025-01-03 14:53:07.132851	safety switch enabled
-2025-01-03 14:53:07.136599	vehiclemode set to RTL: RTL
-2025-01-03 14:53:07.137453	in takeoffloop-> current altitude: 364.17
-2025-01-03 14:54:35.308280	
+2025-01-19 15:19:28.546148	
 
-2025-01-03 14:54:35.308876	2025-01-03 14:54:35.307860
-2025-01-03 14:55:00.836564	connected to Fc
-2025-01-03 14:55:00.837428	16.565 battery voltage
-2025-01-03 14:55:00.838021	vehicle mode: RTL
-2025-01-03 14:55:00.838447	currently no communication to radio: None
-2025-01-03 14:55:01.839886	rc channel value:2000
-2025-01-03 14:55:01.846767	Not in GUIDED mode: RTL
-2025-01-03 14:55:02.847692	in GUIDED mode: GUIDED
-2025-01-03 14:55:02.849151	Speed_Up and groundspeed set/vehicle armed.
-2025-01-03 14:55:02.961346	safetyoption bitmask set to zero
-2025-01-03 14:55:03.074332	safety switch disabled
-2025-01-03 14:55:04.078066	Giving back control to radio
-2025-01-03 14:55:04.083249	Not in RTL mode: GUIDED
-2025-01-03 14:55:04.086741	in RTL mode: RTL
-2025-01-03 14:55:04.191547	safetyoption bitmask set to three
-2025-01-03 14:55:04.303446	safety switch enabled
-2025-01-03 14:55:04.308485	vehiclemode set to RTL: RTL
-2025-01-03 14:55:32.537977	
+2025-01-19 15:19:28.547361	2025-01-19 15:19:28.545683
+2025-01-19 15:19:54.125419	connected to Fc
+2025-01-19 15:19:54.125788	16.097 battery voltage
+2025-01-19 15:19:54.126113	vehicle mode: GUIDED
+2025-01-19 15:19:54.126347	currently no communication to radio: None
+2025-01-19 15:19:55.126961	rc channel value:999
+2025-01-19 15:19:55.128279	in GUIDED mode: GUIDED
+2025-01-19 15:19:55.129624	Speed_Up and groundspeed set/vehicle armed.
+2025-01-19 15:19:55.131174	safetyoption bitmask set to zero
+2025-01-19 15:19:55.132072	safety switch disabled
+2025-01-19 15:19:55.132882	control stays autonomous
+2025-01-19 15:19:55.133789	Vehicle is armable.
+2025-01-19 15:19:55.135571	in GUIDED mode: GUIDED
+2025-01-19 15:19:55.138912	Hdop: 95, Vdop: 122, sattelites visible: 11
+2025-01-19 15:19:55.140799	current position: LocationGlobal:lat=47.5972971,lon=8.6747907,alt=376.48
+2025-01-19 15:19:55.142041	Waiting for arming...
+2025-01-19 15:19:57.142589	armed, True
+2025-01-19 15:19:57.144367	home location: LocationGlobal:lat=47.5972971,lon=8.6747907,alt=376.47
+2025-01-19 15:19:57.144652	Xcoordinates [47.5972971, 47.59730608315284, 47.59731506630568]
+2025-01-19 15:19:57.144855	Ycoordinates [8.6747907, 8.674804021454806, 8.674817342909613]
+2025-01-19 15:19:57.145029	Zcoordinates [377.97, 377.97, 377.97]
+2025-01-19 15:20:02.145573	target location: LocationGlobal:lat=377.97,lon=8.6747907,alt=377.97
+2025-01-19 15:20:02.146680	Vehicle is armable.
+2025-01-19 15:20:02.147162	control stays autonomous
+2025-01-19 15:20:02.147546	vehicle armed: True
+2025-01-19 15:21:13.544565	
 
-2025-01-03 14:55:32.538592	2025-01-03 14:55:32.537553
-2025-01-03 14:55:57.821954	connected to Fc
-2025-01-03 14:55:57.823437	16.57 battery voltage
-2025-01-03 14:55:57.824581	vehicle mode: RTL
-2025-01-03 14:55:57.834521	currently no communication to radio: None
-2025-01-03 14:55:58.835653	rc channel value:999
-2025-01-03 14:55:58.837054	Not in GUIDED mode: RTL
-2025-01-03 14:55:59.838345	in GUIDED mode: GUIDED
-2025-01-03 14:55:59.839187	Speed_Up and groundspeed set/vehicle armed.
-2025-01-03 14:55:59.945245	safetyoption bitmask set to zero
-2025-01-03 14:56:00.048093	safety switch disabled
-2025-01-03 14:56:01.069218	control stays autonomous
-2025-01-03 14:56:01.078149	Vehicle is armable.
-2025-01-03 14:56:01.086445	in GUIDED mode: GUIDED
-2025-01-03 14:56:01.100096	Hdop: 104, Vdop: 181, sattelites visible: 10
-2025-01-03 14:56:01.110540	current position: LocationGlobal:lat=47.5971323,lon=8.6752232,alt=363.47
-2025-01-03 14:56:01.114816	armed, True
-2025-01-03 14:56:01.120942	home location: LocationGlobal:lat=47.5971326,lon=8.6752226,alt=363.45
-2025-01-03 14:56:01.134327	Xcoordinates [47.5971326, 47.59714158315284, 47.597150566305686]
-2025-01-03 14:56:01.139374	Ycoordinates [8.6752226, 8.675235921412924, 8.675249242825847]
-2025-01-03 14:56:01.163284	Zcoordinates [364.95, 364.95, 364.95]
-2025-01-03 14:56:06.164173	target location: LocationGlobal:lat=364.95,lon=8.6752226,alt=364.95
-2025-01-03 14:56:06.164762	Vehicle is armable.
-2025-01-03 14:56:06.164942	control stays autonomous
-2025-01-03 14:56:06.165245	vehicle armed: False
-2025-01-03 14:56:16.166126	board safety option bitmask set to: 0.0
-2025-01-03 14:56:16.167134	GUIDED, --> mode
-2025-01-03 14:56:16.167643	Giving back control to radio
-2025-01-03 14:56:16.168591	Not in RTL mode: GUIDED
-2025-01-03 14:56:16.169003	Not in RTL mode: GUIDED
-2025-01-03 14:56:16.169406	Not in RTL mode: GUIDED
-2025-01-03 14:56:16.170718	Not in RTL mode: GUIDED
-2025-01-03 14:56:16.172345	Not in RTL mode: GUIDED
-2025-01-03 14:56:16.172809	in RTL mode: RTL
-2025-01-03 14:56:16.275911	safetyoption bitmask set to three
-2025-01-03 14:56:16.379107	safety switch enabled
-2025-01-03 14:56:16.380277	vehiclemode set to RTL: RTL
-2025-01-03 14:56:16.380618	Giving back control to radio
-2025-01-03 14:56:16.381917	in RTL mode: RTL
-2025-01-03 14:56:16.382791	safetyoption bitmask set to three
-2025-01-03 14:56:16.384000	safety switch enabled
-2025-01-03 14:56:16.387841	vehiclemode set to RTL: RTL
-2025-01-03 14:56:16.391134	in takeoffloop-> current altitude: 363.93
-2025-01-03 14:56:17.393385	Giving back control to radio
-2025-01-03 14:56:17.397391	in RTL mode: RTL
-2025-01-03 14:56:17.400244	safetyoption bitmask set to three
-2025-01-03 14:56:17.404148	safety switch enabled
-2025-01-03 14:56:17.408254	vehiclemode set to RTL: RTL
-2025-01-03 14:56:17.410743	in takeoffloop-> current altitude: 363.9
-2025-01-03 14:56:18.412301	Giving back control to radio
-2025-01-03 14:56:18.414643	in RTL mode: RTL
-2025-01-03 14:56:18.416727	safetyoption bitmask set to three
-2025-01-03 14:56:18.419232	safety switch enabled
-2025-01-03 14:56:18.420671	vehiclemode set to RTL: RTL
-2025-01-03 14:56:18.422135	in takeoffloop-> current altitude: 363.8
-2025-01-03 14:56:19.425217	Giving back control to radio
-2025-01-03 14:56:19.427958	in RTL mode: RTL
-2025-01-03 14:56:19.432212	safetyoption bitmask set to three
-2025-01-03 14:56:19.439631	safety switch enabled
-2025-01-03 14:56:19.441154	vehiclemode set to RTL: RTL
-2025-01-03 14:56:19.445418	in takeoffloop-> current altitude: 363.86
-2025-01-03 14:59:58.366034	
+2025-01-19 15:21:13.545188	2025-01-19 15:21:13.544119
+2025-01-19 15:21:39.206857	connected to Fc
+2025-01-19 15:21:39.207739	15.79 battery voltage
+2025-01-19 15:21:39.208308	vehicle mode: GUIDED
+2025-01-19 15:21:39.208781	currently no communication to radio: None
+2025-01-19 15:21:40.209437	rc channel value:999
+2025-01-19 15:21:40.210719	in GUIDED mode: GUIDED
+2025-01-19 15:21:40.211235	Speed_Up and groundspeed set/vehicle armed.
+2025-01-19 15:21:40.213359	safetyoption bitmask set to zero
+2025-01-19 15:21:40.215513	safety switch disabled
+2025-01-19 15:21:40.216531	control stays autonomous
+2025-01-19 15:21:40.219749	Vehicle is armable.
+2025-01-19 15:21:40.224125	in GUIDED mode: GUIDED
+2025-01-19 15:21:40.224674	Hdop: 93, Vdop: 118, sattelites visible: 12
+2025-01-19 15:21:40.225136	current position: LocationGlobal:lat=47.5972826,lon=8.6747793,alt=376.13
+2025-01-19 15:21:40.225948	Waiting for arming...
+2025-01-19 15:21:42.226707	armed, True
+2025-01-19 15:21:42.228872	home location: LocationGlobal:lat=47.5972826,lon=8.6747793,alt=376.13
+2025-01-19 15:21:42.229443	Xcoordinates [47.5972826, 47.59729158315284, 47.597300566305684]
+2025-01-19 15:21:42.229908	Ycoordinates [8.6747793, 8.674792621451115, 8.674805942902228]
+2025-01-19 15:21:42.230782	Zcoordinates [377.63, 377.63, 377.63]
+2025-01-19 15:21:47.231752	target location: LocationGlobal:lat=377.63,lon=8.6747793,alt=377.63
+2025-01-19 15:21:47.232919	Vehicle is armable.
+2025-01-19 15:21:47.233408	high GPS HDOP: 136 or Vdop: 146
+2025-01-19 15:21:47.234354	Not in RTL mode: GUIDED
+2025-01-19 15:21:47.234739	Not in RTL mode: GUIDED
+2025-01-19 15:21:47.235090	Not in RTL mode: GUIDED
+2025-01-19 15:21:47.235428	Not in RTL mode: GUIDED
+2025-01-19 15:21:47.235828	Not in RTL mode: GUIDED
+2025-01-19 15:21:47.237037	Not in RTL mode: GUIDED
+2025-01-19 15:21:47.238517	Not in RTL mode: GUIDED
+2025-01-19 15:21:47.238945	in RTL mode: RTL
+2025-01-19 15:21:47.340074	safetyoption bitmask set to three
+2025-01-19 15:21:47.445885	safety switch enabled
+2025-01-19 15:21:47.446377	Arming Checks failed midflight setting mode to RTL.
+2025-01-19 15:24:00.676559	
 
-2025-01-03 15:01:39.989015	2025-01-03 15:01:39.987809
-2025-01-03 15:04:06.310529	
+2025-01-19 15:24:00.681786	2025-01-19 15:24:00.676083
+2025-01-19 15:24:26.372869	connected to Fc
+2025-01-19 15:24:26.373550	15.542 battery voltage
+2025-01-19 15:24:26.374021	vehicle mode: RTL
+2025-01-19 15:24:26.374418	currently no communication to radio: None
+2025-01-19 15:24:27.374846	rc channel value:999
+2025-01-19 15:24:27.375701	Not in GUIDED mode: RTL
+2025-01-19 15:24:28.376274	in GUIDED mode: GUIDED
+2025-01-19 15:24:28.376506	Speed_Up and groundspeed set/vehicle armed.
+2025-01-19 15:24:28.477676	safetyoption bitmask set to zero
+2025-01-19 15:24:28.578652	safety switch disabled
+2025-01-19 15:24:28.579752	control stays autonomous
+2025-01-19 15:24:28.580753	Vehicle is armable.
+2025-01-19 15:24:28.581912	in GUIDED mode: GUIDED
+2025-01-19 15:24:28.582801	Hdop: 93, Vdop: 120, sattelites visible: 12
+2025-01-19 15:24:28.585060	current position: LocationGlobal:lat=47.5973098,lon=8.6748074,alt=377.02
+2025-01-19 15:24:28.586153	Waiting for arming...
+2025-01-19 15:24:30.586636	armed, True
+2025-01-19 15:24:30.588190	home location: LocationGlobal:lat=47.5973098,lon=8.6748074,alt=377.02
+2025-01-19 15:24:30.588623	Xcoordinates [47.5973098, 47.597318783152836, 47.59732776630568]
+2025-01-19 15:24:30.588927	Ycoordinates [8.6748074, 8.67482072145804, 8.674834042916078]
+2025-01-19 15:24:30.589204	Zcoordinates [378.52, 378.52, 378.52]
+2025-01-19 15:24:35.589847	target location: LocationGlobal:lat=378.52,lon=8.6748074,alt=378.52
+2025-01-19 15:24:35.590843	Vehicle is armable.
+2025-01-19 15:24:35.591228	control stays autonomous
+2025-01-19 15:24:35.591549	vehicle armed: True
+2025-01-19 15:24:40.592391	board safety option bitmask set to: 0.0
+2025-01-19 15:24:40.593384	GUIDED, --> mode
+2025-01-19 15:24:40.593892	control stays autonomous
+2025-01-19 15:24:40.594340	control stays autonomous
+2025-01-19 15:24:40.594795	in takeoffloop-> current altitude: 376.95
+2025-01-19 15:24:41.595452	control stays autonomous
+2025-01-19 15:24:41.596077	in takeoffloop-> current altitude: 377.0
+2025-01-19 15:24:42.596850	control stays autonomous
+2025-01-19 15:24:42.597395	in takeoffloop-> current altitude: 377.05
+2025-01-19 15:24:43.598033	control stays autonomous
+2025-01-19 15:24:43.598616	in takeoffloop-> current altitude: 377.16
+2025-01-19 15:24:44.599270	control stays autonomous
+2025-01-19 15:24:44.599889	in takeoffloop-> current altitude: 377.27
+2025-01-19 15:24:45.605858	control stays autonomous
+2025-01-19 15:24:45.606407	in takeoffloop-> current altitude: 377.44
+2025-01-19 15:24:46.607216	control stays autonomous
+2025-01-19 15:24:46.607829	in takeoffloop-> current altitude: 377.54
+2025-01-19 15:24:47.608558	control stays autonomous
+2025-01-19 15:24:47.609079	in takeoffloop-> current altitude: 377.56
+2025-01-19 15:24:48.609760	control stays autonomous
+2025-01-19 15:24:48.610304	in takeoffloop-> current altitude: 377.6
+2025-01-19 15:25:40.142702	
 
-2025-01-03 15:04:06.314217	2025-01-03 15:04:06.310024
-2025-01-03 15:04:31.998932	connected to Fc
-2025-01-03 15:04:31.999685	0.0 battery voltage
-2025-01-03 15:04:32.000159	vehicle mode: STABILIZE
-2025-01-03 15:04:32.000516	currently no communication to radio: None
-2025-01-03 15:04:32.633724	Arm problem: PreArm: Hardware safety switch
-2025-01-03 15:04:32.635487	Arm problem: PreArm: Battery 1 unhealthy
-2025-01-03 15:04:33.001280	rc channel value:999
-2025-01-03 15:04:33.002339	Not in GUIDED mode: STABILIZE
-2025-01-03 15:04:34.003095	in GUIDED mode: GUIDED
-2025-01-03 15:04:34.003572	Speed_Up and groundspeed set/vehicle armed.
-2025-01-03 15:04:34.105828	safetyoption bitmask set to zero
-2025-01-03 15:04:34.206948	safety switch disabled
-2025-01-03 15:04:34.211905	Arm problem: Arm: Hardware safety switch
-2025-01-03 15:04:34.212594	Arm problem: Arm: Battery 1 unhealthy
-2025-01-03 15:04:34.213769	Arm problem: Arm: Hardware safety switch
-2025-01-03 15:04:34.214801	Arm problem: Arm: Battery 1 unhealthy
-2025-01-03 15:04:35.207897	control stays autonomous
-2025-01-03 15:04:35.209095	Vehicle is armable.
-2025-01-03 15:04:35.211245	battery to low: 0.0
-2025-01-03 15:04:36.213612	Vehicle is armable.
-2025-01-03 15:04:36.214090	battery to low: 0.0
-2025-01-03 15:04:36.214431	checks False
-2025-01-03 15:04:36.215451	Vehicle is armable.
-2025-01-03 15:04:36.215849	battery to low: 0.0
-2025-01-03 15:04:37.216468	Vehicle is armable.
-2025-01-03 15:04:37.216712	battery to low: 0.0
-2025-01-03 15:04:37.216835	checks False
-2025-01-03 15:04:37.217162	Vehicle is armable.
-2025-01-03 15:04:37.217310	battery to low: 0.0
-2025-01-03 15:06:48.794365	
+2025-01-19 15:25:40.147470	2025-01-19 15:25:40.142265
+2025-01-19 15:26:05.317002	connected to Fc
+2025-01-19 15:26:05.317568	15.417 battery voltage
+2025-01-19 15:26:05.317927	vehicle mode: GUIDED
+2025-01-19 15:26:05.318239	currently no communication to radio: None
+2025-01-19 15:26:06.318933	rc channel value:999
+2025-01-19 15:26:06.321298	in GUIDED mode: GUIDED
+2025-01-19 15:26:06.322932	Speed_Up and groundspeed set/vehicle armed.
+2025-01-19 15:26:06.325036	safetyoption bitmask set to zero
+2025-01-19 15:26:06.325828	safety switch disabled
+2025-01-19 15:26:06.326510	control stays autonomous
+2025-01-19 15:26:06.328119	Vehicle is armable.
+2025-01-19 15:26:06.330814	in GUIDED mode: GUIDED
+2025-01-19 15:26:06.332326	Hdop: 93, Vdop: 121, sattelites visible: 12
+2025-01-19 15:26:06.334763	current position: LocationGlobal:lat=47.5973076,lon=8.6747935,alt=376.52
+2025-01-19 15:26:06.338015	Waiting for arming...
+2025-01-19 15:26:08.339676	armed, True
+2025-01-19 15:26:08.341839	home location: LocationGlobal:lat=47.5973075,lon=8.6747934,alt=376.52
+2025-01-19 15:26:08.342399	Xcoordinates [47.5973075, 47.59731648315284, 47.59732546630568]
+2025-01-19 15:26:08.342801	Ycoordinates [8.6747934, 8.674806721457454, 8.674820042914908]
+2025-01-19 15:26:08.343206	Zcoordinates [378.02, 378.02, 378.02]
+2025-01-19 15:26:13.343621	target location: LocationGlobal:lat=378.02,lon=8.6747934,alt=378.02
+2025-01-19 15:26:13.344211	Vehicle is armable.
+2025-01-19 15:26:13.344471	control stays autonomous
+2025-01-19 15:26:13.344622	vehicle armed: True
+2025-01-19 15:26:18.345088	board safety option bitmask set to: 0.0
+2025-01-19 15:26:18.345651	GUIDED, --> mode
+2025-01-19 15:26:18.345899	control stays autonomous
+2025-01-19 15:26:18.346076	control stays autonomous
+2025-01-19 15:26:18.346254	in takeoffloop-> current altitude: 376.22
+2025-01-19 15:26:19.346833	control stays autonomous
+2025-01-19 15:26:19.347414	in takeoffloop-> current altitude: 376.26
+2025-01-19 15:26:20.348166	control stays autonomous
+2025-01-19 15:26:20.349393	in takeoffloop-> current altitude: 376.37
+2025-01-19 15:26:21.350056	control stays autonomous
+2025-01-19 15:26:21.350604	in takeoffloop-> current altitude: 376.51
+2025-01-19 15:26:22.351219	control stays autonomous
+2025-01-19 15:26:22.351798	in takeoffloop-> current altitude: 376.59
+2025-01-19 15:26:23.352367	control stays autonomous
+2025-01-19 15:26:23.352803	in takeoffloop-> current altitude: 376.64
+2025-01-19 15:26:24.353449	control stays autonomous
+2025-01-19 15:26:24.353994	in takeoffloop-> current altitude: 376.61
+2025-01-19 15:26:25.354655	control stays autonomous
+2025-01-19 15:26:25.355286	in takeoffloop-> current altitude: 376.63
+2025-01-19 15:28:02.509328	
 
-2025-01-03 15:06:48.796039	2025-01-03 15:06:48.793875
-2025-01-03 15:07:14.022025	connected to Fc
-2025-01-03 15:07:14.022844	16.257 battery voltage
-2025-01-03 15:07:14.028087	vehicle mode: STABILIZE
-2025-01-03 15:07:14.028555	currently no communication to radio: None
-2025-01-03 15:07:15.029321	rc channel value:999
-2025-01-03 15:07:15.030543	Not in GUIDED mode: STABILIZE
-2025-01-03 15:07:16.038426	in GUIDED mode: GUIDED
-2025-01-03 15:07:16.039005	Speed_Up and groundspeed set/vehicle armed.
-2025-01-03 15:07:16.040897	safetyoption bitmask set to zero
-2025-01-03 15:07:16.042027	safety switch disabled
-2025-01-03 15:07:17.053988	control stays autonomous
-2025-01-03 15:07:17.055290	Vehicle is armable.
-2025-01-03 15:07:17.056750	in GUIDED mode: GUIDED
-2025-01-03 15:07:17.057387	Hdop: 68, Vdop: 119, sattelites visible: 14
-2025-01-03 15:07:17.057992	current position: LocationGlobal:lat=47.5971448,lon=8.6752282,alt=367.84
-2025-01-03 15:07:17.058499	armed, True
-2025-01-03 15:07:17.072333	home location: LocationGlobal:lat=47.597145,lon=8.675228,alt=367.89
-2025-01-03 15:07:17.073084	Xcoordinates [47.597145, 47.597153983152836, 47.59716296630568]
-2025-01-03 15:07:17.073685	Ycoordinates [8.675228, 8.675241321416081, 8.675254642832163]
-2025-01-03 15:07:17.074255	Zcoordinates [369.39, 369.39, 369.39]
-2025-01-03 15:07:22.089241	target location: LocationGlobal:lat=369.39,lon=8.675228,alt=369.39
-2025-01-03 15:07:22.095283	Vehicle is armable.
-2025-01-03 15:07:22.096216	control stays autonomous
-2025-01-03 15:07:22.102319	vehicle armed: False
-2025-01-03 15:07:32.105604	board safety option bitmask set to: 0.0
-2025-01-03 15:07:32.107264	GUIDED, --> mode
-2025-01-03 15:07:32.108881	control stays autonomous
-2025-01-03 15:07:32.110011	control stays autonomous
-2025-01-03 15:
+2025-01-19 15:28:02.509946	2025-01-19 15:28:02.508885
+2025-01-19 15:28:28.063253	connected to Fc
+2025-01-19 15:28:28.065324	15.695 battery voltage
+2025-01-19 15:28:28.067590	vehicle mode: GUIDED
+2025-01-19 15:28:28.069146	rc channel value:999
+2025-01-19 15:28:28.072207	in GUIDED mode: GUIDED
+2025-01-19 15:28:28.074037	Speed_Up and groundspeed set/vehicle armed.
+2025-01-19 15:28:28.076926	safetyoption bitmask set to zero
+2025-01-19 15:28:28.078938	safety switch disabled
+2025-01-19 15:28:28.080393	control stays autonomous
+2025-01-19 15:28:28.081886	Vehicle is armable.
+2025-01-19 15:28:28.082798	in GUIDED mode: GUIDED
+2025-01-19 15:28:28.083215	Hdop: 94, Vdop: 123, sattelites visible: 12
+2025-01-19 15:28:28.084015	current position: LocationGlobal:lat=47.597302,lon=8.6747873,alt=376.95
+2025-01-19 15:28:28.086155	Waiting for arming...
+2025-01-19 15:28:30.087768	armed, True
+2025-01-19 15:28:30.089777	home location: LocationGlobal:lat=47.597302,lon=8.6747873,alt=376.96
+2025-01-19 15:28:30.090339	Xcoordinates [47.597302, 47.59731098315284, 47.59731996630568]
+2025-01-19 15:28:30.090759	Ycoordinates [8.6747873, 8.674800621456054, 8.674813942912106]
+2025-01-19 15:28:30.091155	Zcoordinates [378.46, 378.46, 378.46]
+2025-01-19 15:28:35.091914	target location: LocationGlobal:lat=378.46,lon=8.6747873,alt=378.46
+2025-01-19 15:28:35.093043	Vehicle is armable.
+2025-01-19 15:28:35.093577	control stays autonomous
+2025-01-19 15:28:35.093968	vehicle armed: True
+2025-01-19 15:28:40.094957	board safety option bitmask set to: 0.0
+2025-01-19 15:28:40.095455	Takeoff
+2025-01-19 15:28:40.095895	GUIDED, --> mode
+2025-01-19 15:28:40.096205	control stays autonomous
+2025-01-19 15:28:40.096899	vehicle armed: False
+2025-01-19 15:28:40.097120	control stays autonomous
+2025-01-19 15:28:40.097249	in takeoffloop-> current altitude: 376.76
+2025-01-19 15:28:41.097803	control stays autonomous
+2025-01-19 15:28:41.098312	in takeoffloop-> current altitude: 376.81
+2025-01-19 15:28:42.099045	control stays autonomous
+2025-01-19 15:28:42.099577	in takeoffloop-> current altitude: 376.89
+2025-01-19 15:28:43.100339	control stays autonomous
+2025-01-19 15:28:43.100895	in takeoffloop-> current altitude: 376.95
+2025-01-19 15:28:44.102683	control stays autonomous
+2025-01-19 15:28:44.103190	in takeoffloop-> current altitude: 376.99
+2025-01-19 15:28:45.103875	control stays autonomous
+2025-01-19 15:28:45.104427	in takeoffloop-> current altitude: 377.04
+2025-01-19 15:28:46.105123	control stays autonomous
+2025-01-19 15:28:46.105700	in takeoffloop-> current altitude: 377.1

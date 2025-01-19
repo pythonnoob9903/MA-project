@@ -91,8 +91,8 @@ def checks(vehicle): #checks arming checks and can stall the while loop if it fa
     if vehicle.gps_0.fix_type < 3:
         log(f"No 3D fix: {vehicle.gps_0.fix_type}")
         tempbin = False
-    if vehicle.gps_0.epv >= 140:
-        log(f"high GPS HDOP: {vehicle.gps_0.eph} (Vdop: {vehicle.gps_0.epv})")
+    if vehicle.gps_0.epv >= 160 or vehicle.gps_0.eph >= 140:
+        log(f"high GPS HDOP: {vehicle.gps_0.eph} or Vdop: {vehicle.gps_0.epv}")
         tempbin = False
     return tempbin
 
